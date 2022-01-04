@@ -233,7 +233,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-04 15:32:00" itemprop="dateModified" datetime="2022-01-04T15:32:00+08:00">2022-01-04</time>
+                <time title="Modified: 2022-01-04 15:43:40" itemprop="dateModified" datetime="2022-01-04T15:43:40+08:00">2022-01-04</time>
               </span>
 
           
@@ -258,174 +258,192 @@ const name = &quot;Jack&quot;
 const age = 19
 //创建react元素
 const title = (
-&lt;h1 className=&quot;title&quot;&gt;
-hello React, &#123;name&#125;, 年龄：&#123;age&#125;
-&lt;/h1&gt;
+    &lt;h1 className=&quot;title&quot;&gt;
+    hello React, &#123;name&#125;, 年龄：&#123;age&#125;
+    &lt;/h1&gt;
 )
 //渲染react元素
 ReactDom.render(title, document.getElementById(&#39;root&#39;))
 </code></pre>
-<p>创建元素：</p>
-<pre><code>const title = React.createElement(&quot;h1&quot;, null, &quot;Hello React&quot;);
+<h3 id="创建元素："><a href="#创建元素：" class="headerlink" title="创建元素："></a>创建元素：</h3><pre><code>const title = React.createElement(&quot;h1&quot;, null, &quot;Hello React&quot;);
 const title = (
-&lt;h1 className=&quot;title&quot;&gt;
-hello React!!!
-&lt;/h1&gt;
+    &lt;h1 className=&quot;title&quot;&gt;
+    hello React!!!
+    &lt;/h1&gt;
 )//JSx
 </code></pre>
-<p>React组件的两种创建方式：<br>1.使用函数创建组件</p>
-<p>函数组件：使用JS的函数（或箭头函数）创建组件</p>
-<p>约定1：函数名称必须大写</p>
-<p>约定2：函数组件必须有返回值，表示该组件的结构</p>
-<p>如果返回值是null，表示不渲染任何元素</p>
-<p>渲染函数组件：用函数名作为组件标签名</p>
-<p>组件标签名既可以是单标签，也可以是双标签。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7</p>
-<p>function Hello(){<br>    return (<div><br>            这是我的第一个函数组件<br>        </div>)<br>}<br>const Hello1=()=&gt;<div>这是我的第一个函数组件</div><br>ReactDOM.render(<Hello/>, document.getElementById(‘root’));</p>
-<p>2.使用类创建组件</p>
-<p>类组件：使用ES6的class创建的组件</p>
-<p>约定1：类名称必须以大写字母开头</p>
-<p>约定2：类组件应该继承React.Componet父类，从而可以使用父类中提供的属性与方法</p>
-<p>约定3：类组件必须提供render()方法。</p>
-<p>约定4：render()方法必须有返回值，表示该组件的结构</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7</p>
-<p>class Hello extends React.Component{<br>    render(){<br>        return (<div><br>                这是我的第一个div<br>            </div>)<br>    }<br>}</p>
-<p>3.抽离为独立的JS文件</p>
-<p>1.创建Hello.js</p>
-<p>2.在Hello.js中创建组件并导出该组件</p>
-<p>3.在index.js中导入Hello组件<br>React事件处理<br>1.事件绑定</p>
-<p>语法：on + 事件名称 = {事件处理程序}，比如：</p>
-<p>1</p>
-<p>onClick={()=&gt;{}}</p>
+<h4 id="React组件的两种创建方式："><a href="#React组件的两种创建方式：" class="headerlink" title="React组件的两种创建方式："></a>React组件的两种创建方式：</h4><ol>
+<li><p>使用函数创建组件</p>
+<p> 函数组件：使用JS的函数（或箭头函数）创建组件</p>
+<p> 约定1：函数名称必须大写</p>
+<p> 约定2：函数组件必须有返回值，表示该组件的结构</p>
+<p> 如果返回值是null，表示不渲染任何元素</p>
+<p> 渲染函数组件：用函数名作为组件标签名</p>
+<p> 组件标签名既可以是单标签，也可以是双标签。</p>
+<pre><code> function Hello()&#123;
+ return (&lt;div&gt;
+ 这是我的第一个函数组件
+ &lt;/div&gt;)
+ &#125;
+ const Hello1=()=&gt;&lt;div&gt;这是我的第一个函数组件&lt;/div&gt;
+ ReactDOM.render(&lt;Hello/&gt;, document.getElementById(&#39;root&#39;));
+</code></pre>
+</li>
+<li><p>使用类创建组件</p>
+<p> 类组件：使用ES6的class创建的组件</p>
+<p> 约定1：类名称必须以大写字母开头</p>
+<p> 约定2：类组件应该继承React.Componet父类，从而可以使用父类中提供的属性与方法</p>
+<p> 约定3：类组件必须提供render()方法。</p>
+<p> 约定4：render()方法必须有返回值，表示该组件的结构</p>
+<pre><code> class Hello extends React.Component&#123;
+ render()&#123;
+     return (&lt;div&gt;
+     这是我的第一个div
+     &lt;/div&gt;)
+     &#125;
+ &#125;
+</code></pre>
+</li>
+<li><p>抽离为独立的JS文件</p>
+<p> 1.创建Hello.js</p>
+<p> 2.在Hello.js中创建组件并导出该组件</p>
+<p> 3.在index.js中导入Hello组件</p>
+<h1 id="React事件处理"><a href="#React事件处理" class="headerlink" title="React事件处理"></a>React事件处理</h1><h2 id="1-事件绑定"><a href="#1-事件绑定" class="headerlink" title="1.事件绑定"></a>1.事件绑定</h2></li>
+</ol>
+<p>语法：on + 事件名称 = {事件处理程序}，比如：    </p>
+<pre><code>onClick=&#123;()=&gt;&#123;&#125;&#125;
+</code></pre>
 <p>驼峰命名法：比如：onMouseEnter、onFocus。</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</p>
-<p>class App extends React.Component{<br>    handleClick(){<br>        console.log(“单击事件触发了”);}<br>    render(){<br>        return (<button onClick = {this.handleClick}>点击</button>)<br>                                                                }<br>    }<br>function App(){<br>    function handleClick(){<br>        console.log(“单击事件触发了”);}<br>    return (<button onClick = {handleClick}>点击</button>)<br>}</p>
-<p>2.事件对象</p>
-<p>可以通过事件处理程序的参数获取事件对象</p>
-<p>React中的事件对象叫做：合成事件（对象）</p>
-<p>1<br>2<br>3<br>4<br>5</p>
-<p>function handleClick(e){<br>    e.preventDefault()<br>    console.log(‘事件对象’, e)<br>}<br><a onClick={handleClick}>点我不会挑战页面</a></p>
+<pre><code>class App extends React.Component&#123;
+handleClick()&#123;
+console.log(&quot;单击事件触发了&quot;);&#125;
+render()&#123;
+return (&lt;button onClick = &#123;this.handleClick&#125;&gt;点击&lt;/button&gt;)
+                                                            &#125;
+&#125;
+function App()&#123;
+function handleClick()&#123;
+console.log(&quot;单击事件触发了&quot;);&#125;
+return (&lt;button onClick = &#123;handleClick&#125;&gt;点击&lt;/button&gt;)
+&#125;
+</code></pre>
+<h2 id="2-事件对象"><a href="#2-事件对象" class="headerlink" title="2.事件对象"></a>2.事件对象</h2><p>可以通过事件处理程序的参数获取事件对象</p>
+<p>React中的事件对象叫做：合成事件（对象）<br>    function handleClick(e){<br>        e.preventDefault()<br>        console.log(‘事件对象’, e)<br>    }<br>    <a onClick={handleClick}>点我不会跳转页面</a></p>
 <p>有状态组件与无状态组件</p>
 <p>函数组件又叫做无状态组件，类组件又叫做有状态组件。</p>
 <p>状态即数据，函数组件没有自己的状态，只负责数据展示（静）</p>
 <p>类组件有自己的状态，负责更新UI， 让页面动起来.<br>组件中的state与setState<br>state的基本使用</p>
 <p>状态就是数据，是组件内部私有数据，只能在组件内部使用</p>
-<p>state的值是对象，表示一个组件中可以有多个数据</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8</p>
-<p>constructor() {<br>        super();<br>        this.state = {<br>            count:0<br>        }<br>    }<br>state = {count:0}//两种初始化状态的方法<br>{this.state.count}//获取状态</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16<br>17<br>18<br>19<br>20<br>21<br>22<br>23<br>24<br>25<br>26<br>27<br>28<br>29</p>
-<p>import React from ‘react’<br>class Hello extends React.Component{<br>    constructor() {<br>        super();<br>        this.state = {<br>            count:0,<br>            test:’a’<br>        }<br>    }<br>    // state = {count:0}<br>    handleClick(e){<br>        e.preventDefault()<br>        console.log(“a标签的单击事件被触发了”)<br>    }</p>
-<pre><code>render() &#123;
-    return (&lt;div&gt;
+<p>state的值是对象，表示一个组件中可以有多个数据    </p>
+<pre><code>constructor() &#123;
+    super();
+    this.state = &#123;
+    count:0
+    &#125;
+&#125;
+state = &#123;count:0&#125;//两种初始化状态的方法
+&#123;this.state.count&#125;//获取状态
+
+import React from &#39;react&#39;
+class Hello extends React.Component&#123;
+constructor() &#123;
+    super();
+    this.state = &#123;
+    count:0,
+    test:&#39;a&#39;
+    &#125;
+&#125;
+// state = &#123;count:0&#125;
+handleClick(e)&#123;
+    e.preventDefault()
+    console.log(&quot;a标签的单击事件被触发了&quot;)
+&#125;
+
+render() &#123;
+    return (
+    &lt;div&gt;
         &lt;h1&gt;
-            计数器：&#123;this.state.count&#125;
+        计数器：&#123;this.state.count&#125;
         &lt;/h1&gt;
         &lt;button onClick=&#123;()=&gt;&#123;
             this.setState(&#123;count:this.state.count+1&#125;)
         &#125;&#125;&gt;
-            +1
+        +1
         &lt;/button&gt;
     &lt;/div&gt;);
+    &#125;
 &#125;
+export default Hello
 </code></pre>
-<p>}<br>export default Hello</p>
 <p>setState()修改状态</p>
 <p>状态时可变的</p>
 <p>语法：this.setState({要修改的数据})</p>
 <p>注意：不要直接修改state中的值，这是错误的。</p>
 <p>setState()作用：1.修改state2.更新UI</p>
 <p>思想：数据驱动视图</p>
-<p>1<br>2<br>3<br>4<br>5<br>6</p>
-<p>//正确<br>this.setState({<br>    count:this.state.count+1<br>})<br>//错误<br>this.state.count += 1</p>
-<p>表单处理<br>1.受控组件</p>
-<pre><code>HTML中的表单元素是可输入的，也就是有自己的可变状态
-
-而，react中的可变状态通常保存在state中，并且只能通过setState()方法来修改。
-
-React将state与表单元素值value绑定在一起，由state的值来控制表单元素的值。
-
-受控组件：其值收到React控制的表单元素
+<pre><code>//正确
+this.setState(&#123;
+    count:this.state.count+1
+&#125;)
+//错误
+this.state.count += 1
 </code></pre>
+<h1 id="表单处理"><a href="#表单处理" class="headerlink" title="表单处理"></a>表单处理</h1><h2 id="1-受控组件"><a href="#1-受控组件" class="headerlink" title="1.受控组件"></a>1.受控组件</h2><p>HTML中的表单元素是可输入的，也就是有自己的可变状态</p>
+<p>而，react中的可变状态通常保存在state中，并且只能通过setState()方法来修改。</p>
+<p>React将state与表单元素值value绑定在一起，由state的值来控制表单元素的值。</p>
+<p>受控组件：其值收到React控制的表单元素</p>
 <p>步骤：</p>
-<pre><code>在state中添加一个状态，作为表单元素的value值（控制表单元素值的来源）
-给表单元素绑定change事件，将表单元素的值设置为state的值（控制表单元素值的变化）
+<p>在state中添加一个状态，作为表单元素的value值（控制表单元素值的来源）<br>给表单元素绑定change事件，将表单元素的值设置为state的值（控制表单元素值的变化）</p>
+<pre><code>state = &#123;txt:&#39;&#39;&#125;
+&lt;input type = &quot;text&quot; value = &#123;this.state.txt&#125;
+    onChange = &#123;e=&gt;this.setState(&#123;txt:e.target.value&#125;)&#125;
+    /&gt;
 </code></pre>
-<p>1<br>2<br>3<br>4</p>
-<p>state = {txt:’’}<br>&lt;input type = “text” value = {this.state.txt}<br>    onChange = {e=&gt;this.setState({txt:e.target.value})}<br>    /&gt;</p>
 <p>多表单元素优化：</p>
-<pre><code>给表单元素添加name属性，名称与state相同
-根据表单元素类型获取相应值
-在change事件处理程序中通过[name]来修改对应的state
-</code></pre>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7</p>
-<input type = "text" name = "txt" value = {this.state.txt} onChange = {this.handleForm}/>
+<p>给表单元素添加name属性，名称与state相同<br>根据表单元素类型获取相应值<br>在change事件处理程序中通过[name]来修改对应的state    </p>
+<pre><code>&lt;input type = &quot;text&quot; name = &quot;txt&quot; value = &#123;this.state.txt&#125; onChange = &#123;this.handleForm&#125;/&gt;
 //根据表单元素类型获取值
-const value = target.type === 'checkbox'?target.checked:target.value
+const value = target.type === &#39;checkbox&#39;?target.checked:target.value
 //根据name设置对应的state
-this.setState({
-    [name]:value
-})
-
-<p>2.非受控组件</p>
-<pre><code>调用React.createRef()方法创建一个ref对象
-将创建好的Ref对象添加到文本框中
-通过ref对象获取到文本框中的值
+this.setState(&#123;
+[name]:value
+&#125;)
 </code></pre>
-<p>1<br>2<br>3<br>4<br>5<br>6</p>
-<p>constructor(){<br>    super()<br>    this.txtRef = React.createRef()<br>}<br><input type = "text" ref = {this.txtRef}/><br>Console.log(this.txtRef.current.value)</p>
+<h2 id="2-非受控组件"><a href="#2-非受控组件" class="headerlink" title="2.非受控组件"></a>2.非受控组件</h2><p>调用React.createRef()方法创建一个ref对象将创建好的Ref对象添加到文本框中<br>通过ref对象获取到文本框中的值</p>
+<pre><code>constructor()&#123;
+    super()
+    this.txtRef = React.createRef()
+&#125;
+&lt;input type = &quot;text&quot; ref = &#123;this.txtRef&#125;/&gt;
+Console.log(this.txtRef.current.value)
+</code></pre>
 <p>组件的props</p>
-<pre><code>组件是封闭的，要接收外部数据应该通过props来实现
-
-props的作用：接受传递给组件的数据
-
-传递数据：给组件标签添加属性
-
-接收数据：函数组件通过参数props接收数据，类组件通过this.props接收数据
-</code></pre>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12</p>
-<p><Hello name = "jack" age = {19}/>//传递数据<br>function Hello (props){<br>    //props是一个对象<br>    console.log(props)<br>    return (<div>接收到的数据：{props.name}</div>)<br>}<br>class Hello extends React.Component{<br>    render(){<br>        return (<div><br>            接收到的数据：{this.props.age}</div>)<br>    }<br>}</p>
-<p>组件通讯的三种方式<br>1.父组件传递数据给子组件</p>
-<pre><code>父组件提供要传递的state数据
-
-给子组件标签添加属性，值为state中的数据
-
-子组件中通过props接收负组件中传递的数据
-
-1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-
-    
-
-class Parent extends React.Component&#123;
-    state = &#123;lastName:&#39;王&#39;&#125;//第一步
+<p>组件是封闭的，要接收外部数据应该通过props来实现</p>
+<p>props的作用：接受传递给组件的数据</p>
+<p>传递数据：给组件标签添加属性</p>
+<p>接收数据：函数组件通过参数props接收数据，类组件通过this.props接收数据</p>
+<pre><code>&lt;Hello name = &quot;jack&quot; age = &#123;19&#125;/&gt;//传递数据
+function Hello (props)&#123;
+    //props是一个对象
+    console.log(props)
+    return (&lt;div&gt;接收到的数据：&#123;props.name&#125;&lt;/div&gt;)
+&#125;
+class Hello extends React.Component&#123;
     render()&#123;
         return (&lt;div&gt;
-            传递给子组件：&lt;Child name = &#123;this.state.lastName&#125;//第二步
-        &lt;/div&gt;)
+            接收到的数据：&#123;this.props.age&#125;&lt;/div&gt;)
     &#125;
 &#125;
-
-function Child(props)&#123;
+</code></pre>
+<h1 id="组件通讯的三种方式"><a href="#组件通讯的三种方式" class="headerlink" title="组件通讯的三种方式"></a>组件通讯的三种方式</h1><h2 id="1-父组件传递数据给子组件"><a href="#1-父组件传递数据给子组件" class="headerlink" title="1.父组件传递数据给子组件"></a>1.父组件传递数据给子组件</h2><p>父组件提供要传递的state数据</p>
+<p>给子组件标签添加属性，值为state中的数据</p>
+<p>子组件中通过props接收负组件中传递的数据<br>    class Parent extends React.Component{<br>        state = {lastName:’王’}//第一步<br>        render(){<br>            return (<div><br>                传递给子组件：&lt;Child name = {this.state.lastName}//第二步<br>            </div>)<br>        }<br>    }</p>
+<pre><code>function Child(props)&#123;
         return &lt;div&gt;子组件接收到的数据：&#123;props.lastName&#125;&lt;/div&gt;//第三步
 &#125;
 </code></pre>
-<p>2.子组件传递数据给父组件</p>
-<p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数</p>
-<pre><code>父组件中提供一个回调函数（用于接收数据）
-将该函数作为属性的值传递给子组件
-子组件通过props调用回调函数
-将子组件的数据作为参数传递给回调函数
-</code></pre>
+<h2 id="2-子组件传递数据给父组件"><a href="#2-子组件传递数据给父组件" class="headerlink" title="2.子组件传递数据给父组件"></a>2.子组件传递数据给父组件</h2><p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数</p>
+<p>父组件中提供一个回调函数（用于接收数据）<br>将该函数作为属性的值传递给子组件<br>子组件通过props调用回调函数<br>将子组件的数据作为参数传递给回调函数</p>
 
       
     </div>
