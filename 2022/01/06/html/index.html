@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Redux准备工作 构建react项目   npx create-react-app redux-demo  删除多余的文件(留下index.css,index.js,App.js)  在pages目录下创建Home组件  编写一个简单的结构样式   &lt;button&gt;发送一个action&lt;&#x2F;button&gt;  在App.js中引入这个组件  安装redux   yarn ad">
+  <meta name="description" content="HTML基础学习body 标签    &#96;                        菜鸟教程(runoob.com)                    全红禅祝大家国庆节快乐！     &lt;hr width &#x3D; &quot;20%&quot; size &#x3D; 5px color &#x3D; &quot;purple&quot;&#x2F;&gt; &lt;p&gt;     全红婵发文祝大家国庆节快乐，并">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redux">
-<meta property="og:url" content="http://example.com/2022/01/04/Redux/index.html">
+<meta property="og:title" content="html">
+<meta property="og:url" content="http://example.com/2022/01/06/html/index.html">
 <meta property="og:site_name" content="font-end study">
-<meta property="og:description" content="Redux准备工作 构建react项目   npx create-react-app redux-demo  删除多余的文件(留下index.css,index.js,App.js)  在pages目录下创建Home组件  编写一个简单的结构样式   &lt;button&gt;发送一个action&lt;&#x2F;button&gt;  在App.js中引入这个组件  安装redux   yarn ad">
+<meta property="og:description" content="HTML基础学习body 标签    &#96;                        菜鸟教程(runoob.com)                    全红禅祝大家国庆节快乐！     &lt;hr width &#x3D; &quot;20%&quot; size &#x3D; 5px color &#x3D; &quot;purple&quot;&#x2F;&gt; &lt;p&gt;     全红婵发文祝大家国庆节快乐，并">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-04T07:25:55.000Z">
-<meta property="article:modified_time" content="2022-01-04T11:52:51.507Z">
+<meta property="article:published_time" content="2022-01-06T04:55:25.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:02:41.968Z">
 <meta property="article:author" content="Weiling Wu">
+<meta property="article:tag" content="html">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/04/Redux/">
+<link rel="canonical" href="http://example.com/2022/01/06/html/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>Redux | font-end study</title>
+  <title>html | font-end study</title>
   
 
 
@@ -150,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/04/Redux/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/html/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Redux
+          html
         </h1>
 
         <div class="post-meta">
@@ -174,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-04 15:25:55 / Modified: 19:52:51" itemprop="dateCreated datePublished" datetime="2022-01-04T15:25:55+08:00">2022-01-04</time>
+              <time title="Created: 2022-01-06 12:55:25 / Modified: 13:02:41" itemprop="dateCreated datePublished" datetime="2022-01-06T12:55:25+08:00">2022-01-06</time>
             </span>
 
           
@@ -188,57 +189,129 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li><p>构建react项目</p>
-<p>  <code>npx create-react-app redux-demo</code></p>
-</li>
-<li><p>删除多余的文件<br>(留下index.css,index.js,App.js)</p>
-</li>
-<li><p>在pages目录下创建Home组件</p>
-</li>
-<li><p>编写一个简单的结构样式</p>
-<p>  <code>&lt;button&gt;发送一个action&lt;/button&gt;</code></p>
-</li>
-<li><p>在App.js中引入这个组件</p>
-</li>
-<li><p>安装redux</p>
-<p>  <code>yarn add redux</code></p>
-<h2 id="创建一个Action"><a href="#创建一个Action" class="headerlink" title="创建一个Action"></a>创建一个Action</h2></li>
-<li><p>在根目录下创建一个文件夹action</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建Action</p>
-<p>  const senAction = ()=&gt;{…};</p>
-</li>
-<li><p>在action创建函数里面利用return，返回一个action对象，注意需要携带type属性</p>
-<p>  const sendAction=()=&gt;{return{type:”send_action”, value:”发送了一个action”}}</p>
-</li>
-<li><p>把这个action创建函数进行导出</p>
-<p>  module.exports = {sendAction}</p>
-<h2 id="创建一个Reducer"><a href="#创建一个Reducer" class="headerlink" title="创建一个Reducer"></a>创建一个Reducer</h2></li>
-<li><p>在根目录下创建一个reducer</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建reducer，注意reducer要接收两个参数</p>
-<p>  const rootReducer = (state, action) =&gt;{…};</p>
-</li>
-<li><p>第一个参数是默认状态，我们可以定义一个初始化的state，然后进行赋值</p>
-<p>  const initState = {value:”默认值”}<br>  const rootReducer = (state = initState, action)=&gt;{…};</p>
-</li>
-<li><p>在函数里面判断第二个参数action的type是否是我们发送的</p>
-</li>
-<li><p>如果是的话，我们可以通过return返回新的state</p>
-</li>
-<li><p>把reducer进行导出</p>
-<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2></li>
-<li><p>在根目录下创建一个文件夹store</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建store，注意createStore函数里面第一个参数接收的是reducer</p>
-<p>  import {createStore} from “redux”;<br>  const store = createStore{reducer};</p>
-</li>
-<li><p>我们需要导入刚刚创建的reducer，然后设置到函数里面去</p>
-</li>
-<li><p>createStore的返回值就是我们构建好的store，然后进行导出</p>
-</li>
-</ul>
+        <p>HTML基础学习<br>body 标签<br>    `<!DOCTYPE html><br>    <html><br>    <head><br>        <meta charset="utf-8"><br>        <title>菜鸟教程(runoob.com)</title><br>    </head><br>    <body><br>    <h1 aligh = "left"><br>        全红禅祝大家国庆节快乐！<br>    </h1></p>
+<pre><code>&lt;hr width = &quot;20%&quot; size = 5px color = &quot;purple&quot;/&gt;
+&lt;p&gt;
+    全红婵发文祝大家国庆节快乐，并且晒出长隆假期游玩照，准备恢复挥汗如雨的训练生活了，妹妹玩得开心啊! 妹妹真的太可爱了!
+&lt;/p&gt;
+    哈哈哈，&lt;b&gt;全红婵&lt;/b&gt;妹妹有心啦！特意发文祝大家国庆节快乐！还真是个体贴又温暖的&lt;i&gt;女孩呢！&lt;/i&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;你也要快乐过节，&lt;u&gt;快乐训练！&lt;/u&gt;期待你下次精彩表现。
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;`
+</code></pre>
+<p>标题标签： h1到h6：将其中的内容加粗加黑显示，并且显示依次减弱，自带换行功能（块级标签）。<br>属性：aligh = “center”/ “left”/“right”</p>
+<p>水平线标签：hr 在页面中显示一条水平线，默认居中显示</p>
+<pre><code>属性：width = “宽度” 设置水平线的宽度
+
+            size = “高度” 设置水平线的高度
+
+            color = “颜色” 设置水平线的颜色
+</code></pre>
+<p>段落标签：p 会将一段数据作为整体进行显示自动换行，段间距比较大</p>
+<p>换行符：br 告诉浏览器在此位置增加空格</p>
+<p>权重标签： b 会将内容加黑显示</p>
+<pre><code>             i 会将内容斜体显示
+
+              u 会将内容增加下划线
+
+              del 增加中划线
+</code></pre>
+<p>表单学习</p>
+<pre><code>&lt;table border=&quot;1px&quot; cellspacing=&quot;0px&quot; cellpadding=&quot;8px&quot;&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td colspan=&quot;5&quot;&gt;基本情况&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td width = &quot;120px&quot;&gt;姓名&lt;/td&gt;
+        &lt;td width = &quot;120px&quot;&gt;&lt;/td&gt;
+        &lt;td width = &quot;120px&quot;&gt;性别&lt;/td&gt;
+        &lt;td width = &quot;120px&quot;&gt;&lt;/td&gt;
+        &lt;td width = &quot;120px&quot; rowspan=&quot;7&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;民族&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;出生年月&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;政治面貌&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;健康&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;籍贯&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;学历&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;电子信箱&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+        &lt;td&gt;联系电话&lt;/td&gt;
+        &lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;专业&lt;/td&gt;
+        &lt;td colspan=&quot;3&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;毕业院校&lt;/td&gt;
+        &lt;td colspan=&quot;3&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr height = &quot;27px&quot;&gt;
+        &lt;td&gt;求职意向&lt;/td&gt;
+        &lt;td colspan=&quot;4&quot;&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+</code></pre>
+<p>table：声明一个表格</p>
+<p>tr：声明一行，设置行高以及该行所有单元格的高度<br>th：声明一个单元格，表头格，默认居中加黑显示<br>td：声明一个单元格，默认居左显示原始数据<br>注意：行高即该行所有单元格的宽度，单元格的宽度即列宽<br>简单写法：五行六列的表格</p>
+<pre><code>table&gt;tr*5&gt;td*6
+</code></pre>
+<p>属性：</p>
+<p>border：给表格添加边框</p>
+<p>width：设置表格的宽度</p>
+<p>height：设置表格的高度</p>
+<p>cellpadding：设置内容居边框的距离</p>
+<p>cellspacing：设置边框的大小</p>
+<p>单元格合并：</p>
+<ol>
+<li>首先确保表格是一个规整的表格</li>
+<li>根据要合并的单元格，找到其所在的源码位置</li>
+<li>行合并：在要合并的单元格中第一个单元格上使用属性rowspan=“要合并的单元格的个数”，并删除其他单元格完成合并</li>
+</ol>
+<p>列合并：在要合并的单元格中任意一个上使用属性colspan = “要合并的单元格的个数”并删除其他要合并的单元格完成合并<br>内嵌标签学习</p>
+<p>内嵌标签：iframe</p>
+<p>src：要显示的网页资源路径，可以是本地（相对路径）也可以是网络资源（URL），默认当前页面打开及加载src指向的资源</p>
+<p>width：设置区域的宽度</p>
+<p>height：设置区域的高度<br>form表单标签</p>
+<p>作用：收集并提交用户数据给指定服务器。</p>
+<p>注意：form标签会收集其标签内部的数据，要提交的表单项必须拥有name属性，否则不会提交</p>
+<p>属性：</p>
+<p>action：收集的数据的提交地址，URL</p>
+<p>method：收集的数据的提交方式，</p>
+<p>get：适合小量数据，表单数据以？隔开拼接在用户书写的URL后面，不同的键值对用&amp;连接，不安全。</p>
+<p>post：适合大量数据，安全，隐式提交。</p>
+<p>表单域标签：作用：给用户提供可以进行数据书写或者选择的标签，</p>
+<p>文本框：input：</p>
+<p>type：</p>
+<p>text 收集少量文本数据，用户可见</p>
+<p>password 收集用户密码数据</p>
+<p>name：数据提交的键，也会被js使用</p>
+<p>value：默认值</p>
+<p>单选框：type = “radio”，name属性相同的只能选一项数据 value 要提交的数据，checked checked使用此属性的单选默认是选择状态</p>
+<p>form表单标签：form标签会将其内部所有的form表单标签中的所有的用户数据按照method指定的提交方式提交给action指明的地址</p>
+<pre><code>&lt;form action = &#39;#&#39; method=&quot;get&quot;&gt;
+    用户名&lt;input type=&quot;text&quot; name = &quot;rtr&quot;/&gt;&lt;br/&gt;
+    密码&lt;input type = &quot;text&quot; name = &quot;uid&quot;/&gt;&lt;br&gt;
+    &lt;input type = &quot;submit&quot; value=&quot;提交&quot;/&gt;
+    性别：男&lt;input type = &quot;radio&quot; name = &quot;sex&quot; value = &quot;male&quot; checked = &quot;checked&quot;/&gt;女&lt;input type = &quot;radio&quot; name = &quot;sex&quot; value = &quot;female&quot;/&gt;
+&lt;/form&gt;
+</code></pre>
 
     </div>
 
@@ -247,6 +320,9 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/html/" rel="tag"># html</a>
+          </div>
 
         
 
@@ -254,12 +330,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/03/React/" rel="prev" title="React">
-      <i class="fa fa-chevron-left"></i> React
+    <a href="/2022/01/06/JS-Study/" rel="prev" title="JS Study">
+      <i class="fa fa-chevron-left"></i> JS Study
     </a></div>
       <div class="post-nav-item">
-    <a href="/2022/01/04/jQuery/" rel="next" title="jQuery">
-      jQuery <i class="fa fa-chevron-right"></i>
+    <a href="/2022/01/06/css/" rel="next" title="css">
+      css <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -319,7 +395,9 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">1.</span> <span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="nav-number">1.2.</span> <span class="nav-text">创建一个Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="nav-number">1.3.</span> <span class="nav-text">创建一个Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="nav-number">1.4.</span> <span class="nav-text">创建store</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">
+        全红禅祝大家国庆节快乐！
+    </span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

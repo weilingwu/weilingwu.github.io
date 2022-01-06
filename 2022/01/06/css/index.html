@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="CSScss选择器css的选择器学习：                &#x2F;标签选择器&#x2F;            table{                height: 300px;                width: 200px;                border: solid 1px;                background-color: red;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="css">
+<meta property="og:url" content="http://example.com/2022/01/06/css/index.html">
+<meta property="og:site_name" content="font-end study">
+<meta property="og:description" content="CSScss选择器css的选择器学习：                &#x2F;标签选择器&#x2F;            table{                height: 300px;                width: 200px;                border: solid 1px;                background-color: red;">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://img0.baidu.com/it/u=652732258,3535184171&fm=26&fmt=auto">
+<meta property="og:image" content="https://img0.baidu.com/it/u=3459544028,1422320751&fm=26&fmt=auto">
+<meta property="og:image" content="https://img1.baidu.com/it/u=3806063294,3480903396&fm=26&fmt=auto">
+<meta property="og:image" content="https://img0.baidu.com/it/u=121804161,3053314887&fm=26&fmt=auto">
+<meta property="og:image" content="https://img2.baidu.com/it/u=3108583535,4104247024&fm=253&fmt=auto&app=120&f=JPEG?w=640&h=360">
+<meta property="og:image" content="https://img0.baidu.com/it/u=2135482323,1459336928&fm=26&fmt=auto">
+<meta property="og:image" content="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn%2Fw500h280%2F20171219%2F13f2-fypvuqe0957796.gif&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1636370856&t=e55fc69178ee867433ab3e74c60adbf2">
+<meta property="og:image" content="https://img2.baidu.com/it/u=2414916686,3188715239&fm=26&fmt=auto">
+<meta property="article:published_time" content="2022-01-06T05:00:02.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:02:43.431Z">
+<meta property="article:author" content="Weiling Wu">
+<meta property="article:tag" content="css">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img0.baidu.com/it/u=652732258,3535184171&fm=26&fmt=auto">
+
+<link rel="canonical" href="http://example.com/2022/01/06/css/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>css | font-end study</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">font-end study</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/css/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weiling Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="font-end study">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          css
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-01-06 13:00:02 / Modified: 13:02:43" itemprop="dateCreated datePublished" datetime="2022-01-06T13:00:02+08:00">2022-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h1><h2 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h2><p>css的选择器学习：<br>    <style type = "text/css"><br>            /<em>标签选择器</em>/<br>            table{<br>                height: 300px;<br>                width: 200px;<br>                border: solid 1px;<br>                background-color: red;<br>            }<br>            /<em>id选择器</em>/<br>            #t1{<br>                background-color: blue;<br>            }<br>            /<em>类选择器</em>/<br>            .common{<br>                color:red;<br>            }<br>            /<em>组合选择器</em>/<br>            table,.common{<br>                color:red;<br>            }<br>        </style></p>
+<p>标签选择器：标签名{样式名1：样式值1；…}</p>
+<p>作用：会将当前网页内所有该标签增加相同的样式</p>
+<p>id选择器：#标签的id属性值{样式名1：样式值1；…}</p>
+<p>作用：给某个指定的标签添加样式</p>
+<p>类选择器：.类选择器名{样式名1：样式值1；…}</p>
+<p>作用：给不同的标签添加相同的样式</p>
+<p>全部选择选择器：*{样式名1：样式值1；…}</p>
+<p>作用：选择所有的HTML标签，并添加相同的样式</p>
+<p>组合选择器：选择器1，选择器2，…{样式名1：样式值1；…}</p>
+<p>作用：解决不同的选择器之间重复样式的问题<br>css样式    </p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style type = "text/css">
+        body{
+            text-align: center;
+            background-color: gray;
+        }
+        img{
+            width: 20%;/*设置高度*/
+            padding: 10px;/*设置内边距*/
+            background-color: white;/*设置背景颜色*/
+            transform: rotate(-10deg);/*设置倾斜角度*/
+            margin-left: 10px;/*设置外边距*/
+        }
+        img:hover{
+            transform: rotate(0deg) scale(1.5);/*设置倾斜角度和缩放比例*/
+            z-index: 2;/*    设置显示优先级别*/
+        }
+    </style>
+</head>
+<body>
+    <br/><br/><br/><br/><br/><br/>
+    <img src="https://img0.baidu.com/it/u=652732258,3535184171&fm=26&fmt=auto" alt=""/>
+    <img src="https://img0.baidu.com/it/u=3459544028,1422320751&fm=26&fmt=auto" alt=""/>
+    <img src="https://img1.baidu.com/it/u=3806063294,3480903396&fm=26&fmt=auto" alt=""/>
+    <img src="https://img0.baidu.com/it/u=121804161,3053314887&fm=26&fmt=auto" alt=""/>
+    <br/><br/>
+    <img src="https://img2.baidu.com/it/u=3108583535,4104247024&fm=253&fmt=auto&app=120&f=JPEG?w=640&h=360" alt=""/>
+    <img src="https://img0.baidu.com/it/u=2135482323,1459336928&fm=26&fmt=auto" alt=""/>
+    <img src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn%2Fw500h280%2F20171219%2F13f2-fypvuqe0957796.gif&refer=http%3A%2F%2Fn.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1636370856&t=e55fc69178ee867433ab3e74c60adbf2" alt=""/>
+    <img src="https://img2.baidu.com/it/u=2414916686,3188715239&fm=26&fmt=auto" alt=""/>
+    <hr/>
+</body>
+</html>
+
+<p>盒子模型</p>
+<p>外边距：margin</p>
+<p>作用：用来设置元素与元素之间的间隔</p>
+<p>居中设置：margin：0px auto；上下间隔是0px，水平居中。</p>
+<p>边框：border</p>
+<p>作用：用来设置元素的边框大小，可以单独设置上下左右</p>
+<p>内边距：padding</p>
+<p>作用：设置内容与边框之间的距离，内边距不会改变内容区域的大小，可以单独设置上下左右的内边距</p>
+<p>内容区域：改变内容区域的大小，设置宽和高即可改变内容区域的大小。<br>    <!DOCTYPE html><br>    <html lang="en"><br>    <head><br>        <meta charset="UTF-8"><br>        <title>盒子模型</title><br>        <style type = "text/css"><br>            div{<br>                width: 300px;<br>                height: 300px;<br>            }<br>            #div01{<br>                border: solid 1px orange;<br>            }<br>            #div02{<br>                border:solid 1px blueviolet;<br>            }<br>            #div03{<br>                border:solid 1px aqua;<br>            }<br>            #div04{<br>                border:bisque;<br>            }<br>        </style><br>    </head><br>    <body></p>
+<pre><code>    &lt;div id = &quot;div01&quot;&gt;
+        我是div01
+    &lt;/div&gt;
+    &lt;div id = &quot;div02&quot;&gt;
+        我是div02
+    &lt;/div&gt;
+    &lt;div id = &quot;div03&quot;&gt;
+        我是div03
+    &lt;/div&gt;
+    &lt;div id = &quot;div04&quot;&gt;
+        我是div04
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>CSS模块<br>边框</p>
+<p>边框属性：</p>
+<p>border-radius 用于创建圆角<br>box-shadow 用来添加阴影<br>border-image 属性允许你指定一个图片作为边框，用于创建上文边框的原始图像</p>
+<pre><code>&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+    &lt;style&gt;
+        #test&#123;
+            width:300px;
+            height: 100px;
+            padding: 1px;
+            border: 2px solid #00a0ff;
+            border-radius: 25px;
+            background-image: url(&quot;https://img0.baidu.com/it/u=280905735,1446098188&amp;fm=26&amp;fmt=auto&quot;);
+            box-shadow: 10px 10px 10px aqua;
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id = &quot;test&quot;&gt;
+    这是一道美丽的风景线
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>css背景</p>
+<p>background-image 添加背景图片，不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。</p>
+<p>background-sizebackground-size 指定背景图像的大小。CSS3以前，背景图像大小由图像的实际大小决定。</p>
+<p>CSS3中可以指定背景图片，让我们重新在不同的环境中指定背景图片的大小。您可以指定像素或百分比大小。你指定的大小是相对于父元素的宽度和高度的百分比的大小。</p>
+<p>background-origin</p>
+<p>background-clip</p>
+<p>这部分内容很有意思，要自己去试试，我就不介绍全部的细节了。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/css/" rel="tag"># css</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/06/html/" rel="prev" title="html">
+      <i class="fa fa-chevron-left"></i> html
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS"><span class="nav-number">1.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#css%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">1.1.</span> <span class="nav-text">css选择器</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Weiling Wu</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Weiling Wu</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
