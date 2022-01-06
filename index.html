@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-06 12:44:56 / Modified: 12:53:21" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 12:44:56 / Modified: 12:55:04" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
             </span>
 
           
@@ -275,98 +275,49 @@ arr.shift();//删除数组的第一个元素，并将被删除的元素返回
 var result = arr.splice(0, 2, &quot;牛魔王&quot;);//可以用于删除数组中的指定元素，会将指定元素从原数组中删除，并将被删除的元素作为返回值返回。第一个表示开始位置的索引，第二个表示删除的数量，第三个及以后的元素：可以传递一些新的元素，这些元素将会自动插入到开始位置索引前边。
 </code></pre>
 <p>去重</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13</p>
 <p>var arr = [1,2,3,2,2,1,3,4,2,5];<br>for(var i = 0;i&lt;arr.length;i++)<br>{<br>    for(var j = i+1;j&lt;arr.length;j++)<br>    {<br>        if(arr[i] == arr[j])<br>        {<br>            arr.splice(j, 1);<br>            //当删除了当前j所在的元素以后，后面的元素会自动补位。元素的长度也会跟着改变。<br>            j–;<br>        }<br>    }<br>}</p>
-<p>concat|join|reverse|sort</p>
-<p>1<br>2<br>3<br>4<br>5<br>6<br>7<br>8<br>9<br>10<br>11<br>12<br>13<br>14<br>15<br>16</p>
-<p>var arr = [“孙悟空”, “猪八戒”];<br>var arr2 = [“白骨精”,”蜘蛛精”]<br>result = arr.concat(arr2,”牛魔王”);//该方法可以连接两个或者多个数组，并将新的数组返回，不会对原数组产生影响<br>result = arr.join(“@-@”);//该方法可以将数组转换为一个字符串，该方法不会对原数组产生影响，而是将转换后的字符串返回，在join()中可以指定字符串作为参数，该参数会成为数组中的元素连接符，默认为”,”。<br>arr.reverse();//该方法用来反转数组，修改原数组<br>arr.sort();//用来对数组中的元素进行排序，修改原数组，默认会按照Unicode编码进行排序，即使对于纯数字的数组，可能会得到错误结果。添加回调函数，指定排序规则，回调函数中定义两个形参，a在b前面：<br>arr.sort(funtion(a,b){<br>         if(a&gt;b)<br>            return 1;<br>        else<br>            return 0;<br>            });<br>arr.sort(funtion(a,b){<br>         return a-b;<br>            });<br>Math.min(…arr);获取数组中的最小值。</p>
-<p>indexOf</p>
-<pre><code>array.indexOf 此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1
-
-1
-
-    
-
+<h3 id="concat-join-reverse-sort"><a href="#concat-join-reverse-sort" class="headerlink" title="concat|join|reverse|sort"></a>concat|join|reverse|sort</h3><pre><code>var arr = [&quot;孙悟空&quot;, &quot;猪八戒&quot;];
+var arr2 = [&quot;白骨精&quot;,&quot;蜘蛛精&quot;]
+result = arr.concat(arr2,&quot;牛魔王&quot;);//该方法可以连接两个或者多个数组，并将新的数组返回，不会对原数组产生影响
+result = arr.join(&quot;@-@&quot;);//该方法可以将数组转换为一个字符串，该方法不会对原数组产生影响，而是将转换后的字符串返回，在join()中可以指定字符串作为参数，该参数会成为数组中的元素连接符，默认为&quot;,&quot;。
+arr.reverse();//该方法用来反转数组，修改原数组
+arr.sort();//用来对数组中的元素进行排序，修改原数组，默认会按照Unicode编码进行排序，即使对于纯数字的数组，可能会得到错误结果。添加回调函数，指定排序规则，回调函数中定义两个形参，a在b前面：
+arr.sort(funtion(a,b)&#123;
+         if(a&gt;b)
+            return 1;
+        else 
+            return 0;
+            &#125;);
+arr.sort(funtion(a,b)&#123;
+         return a-b;
+            &#125;);
+Math.min(...arr);获取数组中的最小值。
+</code></pre>
+<h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h3><pre><code>array.indexOf 此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1
 let arr = [&#39;something&#39;, &#39;anything&#39;, &#39;nothing&#39;, &#39;anything&#39;];let index = arr.indexOf(&#39;nothing&#39;);console.log(index) //结果是2
 </code></pre>
 <p>省略号</p>
 <p>1、第一个叫做 展开运算符(spread operator)，作用是和字面意思一样，就是把东西展开。可以用在array和object上都行。</p>
 <p>2、第二个，第三个叫做 剩余操作符(rest operator)，是解构的一种，意思就是把剩余的东西放到一个array里面赋值给它。一般只针对array的解构<br>求数组中的最大值、最小值</p>
-<p>1<br>2<br>3<br>4</p>
-<p>Math.max(…arr);//Math.min(…arr);<br>Math.max.apply(null, arr);<br>Math.max.call(Math, arr[0], arr[1], arr[2], arr[3]);<br>Math.max(arr[0], arr[1], arr[2], arr[3])</p>
+<pre><code>Math.max(...arr);//Math.min(...arr);
+Math.max.apply(null, arr);
+Math.max.call(Math, arr[0], arr[1], arr[2], arr[3]);
+Math.max(arr[0], arr[1], arr[2], arr[3])
+</code></pre>
 <p>Math.max()方法，支持传递多个参数，比如：Math.max(1,4,5,2,9)</p>
 <p>但是它不支持直接传递一个数组作为参数，比如：Math.max(new Array(1,4,5,2,9))。<br>Function.apply()是JS的一个OOP特性，一般用来模拟继承和扩展this的用途，对于上面这段代码，可以这样去理解：</p>
 <p>XXX.apply是一个调用函数的方法，其参数为：apply(Function, Args)，</p>
-<p>Math.max.call可以调用任意个参数；<br>Function为要调用的方法，Args是参数列表，当Function为null时，默认为上文，即</p>
-<p>1</p>
-<p>Math.max.apply(null, arr) </p>
+<p>Math.max.call可以调用任意个参数；<br>Function为要调用的方法，Args是参数列表，当Function为null时，默认为上文，即<br>    Math.max.apply(null, arr) </p>
 <p>可认为是 apply(Math.max, arr)<br>然后，arr是一个参数列表，对于max方法，其参数是若干个数，即</p>
-<p>1</p>
-<p>Math.max(a, b, c, d, …)</p>
+<pre><code>Math.max(a, b, c, d, ...)
+</code></pre>
 <p>当使用apply时，把所有参数加入到一个数组中，即<br>arr = [a, b, c, d, …]，代入到原式，</p>
-<p>1</p>
-<p>Math.max.apply(null, [a, b, c, d, …])</p>
-<p>实际上等同于</p>
-<p>1</p>
-<p>Math.max(a, b, c, d, …)</p>
+<pre><code>Math.max.apply(null, [a, b, c, d, ...])
+</code></pre>
+<p>实际上等同于    </p>
+<pre><code>Math.max(a, b, c, d, ...)
+</code></pre>
 
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/04/jQuery-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Weiling Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="font-end study">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/04/jQuery-1/" class="post-title-link" itemprop="url">jQuery</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-01-04 15:51:47" itemprop="dateCreated datePublished" datetime="2022-01-04T15:51:47+08:00">2022-01-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          
       
     </div>
 
@@ -894,7 +845,7 @@ class Hello extends React.Component&#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
