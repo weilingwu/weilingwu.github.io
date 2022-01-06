@@ -20,19 +20,17 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="Redux准备工作 构建react项目   npx create-react-app redux-demo  删除多余的文件(留下index.css,index.js,App.js)  在pages目录下创建Home组件  编写一个简单的结构样式   &lt;button&gt;发送一个action&lt;&#x2F;button&gt;  在App.js中引入这个组件  安装redux   yarn ad">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Redux">
-<meta property="og:url" content="http://example.com/2022/01/04/Redux/index.html">
+  <meta property="og:type" content="article">
+<meta property="og:title" content="sort">
+<meta property="og:url" content="http://example.com/2022/01/06/sort/index.html">
 <meta property="og:site_name" content="font-end study">
-<meta property="og:description" content="Redux准备工作 构建react项目   npx create-react-app redux-demo  删除多余的文件(留下index.css,index.js,App.js)  在pages目录下创建Home组件  编写一个简单的结构样式   &lt;button&gt;发送一个action&lt;&#x2F;button&gt;  在App.js中引入这个组件  安装redux   yarn ad">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-04T07:25:55.000Z">
-<meta property="article:modified_time" content="2022-01-04T11:52:51.507Z">
+<meta property="article:published_time" content="2022-01-06T05:07:46.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:07:46.732Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/04/Redux/">
+<link rel="canonical" href="http://example.com/2022/01/06/sort/">
 
 
 <script id="page-configurations">
@@ -45,7 +43,7 @@
   };
 </script>
 
-  <title>Redux | font-end study</title>
+  <title>sort | font-end study</title>
   
 
 
@@ -150,7 +148,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/04/Redux/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/sort/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +161,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Redux
+          sort
         </h1>
 
         <div class="post-meta">
@@ -172,9 +170,8 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-04 15:25:55 / Modified: 19:52:51" itemprop="dateCreated datePublished" datetime="2022-01-04T15:25:55+08:00">2022-01-04</time>
+              <time title="Created: 2022-01-06 13:07:46" itemprop="dateCreated datePublished" datetime="2022-01-06T13:07:46+08:00">2022-01-06</time>
             </span>
 
           
@@ -188,58 +185,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li><p>构建react项目</p>
-<p>  <code>npx create-react-app redux-demo</code></p>
-</li>
-<li><p>删除多余的文件<br>(留下index.css,index.js,App.js)</p>
-</li>
-<li><p>在pages目录下创建Home组件</p>
-</li>
-<li><p>编写一个简单的结构样式</p>
-<p>  <code>&lt;button&gt;发送一个action&lt;/button&gt;</code></p>
-</li>
-<li><p>在App.js中引入这个组件</p>
-</li>
-<li><p>安装redux</p>
-<p>  <code>yarn add redux</code></p>
-<h2 id="创建一个Action"><a href="#创建一个Action" class="headerlink" title="创建一个Action"></a>创建一个Action</h2></li>
-<li><p>在根目录下创建一个文件夹action</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建Action</p>
-<p>  const senAction = ()=&gt;{…};</p>
-</li>
-<li><p>在action创建函数里面利用return，返回一个action对象，注意需要携带type属性</p>
-<p>  const sendAction=()=&gt;{return{type:”send_action”, value:”发送了一个action”}}</p>
-</li>
-<li><p>把这个action创建函数进行导出</p>
-<p>  module.exports = {sendAction}</p>
-<h2 id="创建一个Reducer"><a href="#创建一个Reducer" class="headerlink" title="创建一个Reducer"></a>创建一个Reducer</h2></li>
-<li><p>在根目录下创建一个reducer</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建reducer，注意reducer要接收两个参数</p>
-<p>  const rootReducer = (state, action) =&gt;{…};</p>
-</li>
-<li><p>第一个参数是默认状态，我们可以定义一个初始化的state，然后进行赋值</p>
-<p>  const initState = {value:”默认值”}<br>  const rootReducer = (state = initState, action)=&gt;{…};</p>
-</li>
-<li><p>在函数里面判断第二个参数action的type是否是我们发送的</p>
-</li>
-<li><p>如果是的话，我们可以通过return返回新的state</p>
-</li>
-<li><p>把reducer进行导出</p>
-<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2></li>
-<li><p>在根目录下创建一个文件夹store</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建store，注意createStore函数里面第一个参数接收的是reducer</p>
-<p>  import {createStore} from “redux”;<br>  const store = createStore{reducer};</p>
-</li>
-<li><p>我们需要导入刚刚创建的reducer，然后设置到函数里面去</p>
-</li>
-<li><p>createStore的返回值就是我们构建好的store，然后进行导出</p>
-</li>
-</ul>
-
+        
     </div>
 
     
@@ -254,13 +200,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/01/03/React/" rel="prev" title="React">
-      <i class="fa fa-chevron-left"></i> React
+    <a href="/2022/01/06/jQuery-bootstrap/" rel="prev" title="jQuery&bootstrap">
+      <i class="fa fa-chevron-left"></i> jQuery&bootstrap
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/01/04/jQuery/" rel="next" title="jQuery">
-      jQuery <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -319,7 +262,6 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Redux"><span class="nav-number">1.</span> <span class="nav-text">Redux</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="nav-number">1.1.</span> <span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="nav-number">1.2.</span> <span class="nav-text">创建一个Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="nav-number">1.3.</span> <span class="nav-text">创建一个Reducer</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="nav-number">1.4.</span> <span class="nav-text">创建store</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
