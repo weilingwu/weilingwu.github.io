@@ -145,6 +145,74 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weiling Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="font-end study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">KMP&动态规划&贪心算法…&Prime算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-01-06 13:43:53 / Modified: 13:45:36" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>问题</strong></p>
+<p>KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。</p>
+<p><strong>代码实现</strong><br>    function KMPSearch(str1, str2, next){<br>        for(var i = 0, j = 0;i&lt;str1.length;i++){<br>            while(j&gt;0 &amp;&amp; str1[i] != str2[j]){<br>                j = next[j-1];<br>            }<br>            if(str1[i] == str2[j]){<br>                j++;<br>            }<br>            if(j == str2.length){<br>                return i-j+1;<br>            }<br>        }<br>        return -1;<br>    }<br>    function KMPNext(dest){<br>        var next = new Array(dest.length);<br>        for(var i = 0;i&lt;dest.length;i++){<br>            dest[i] = 0;<br>        }<br>        for(var i = 0, j = 0;i&lt;dest.length;i++){<br>            while(j&gt;0 &amp;&amp; dest[i]!=dest[j]){<br>                j = next[j-1];<br>            }<br>            if(dest[i] == dest[j]){<br>                j++;<br>            }<br>            next[i] = j;<br>        }<br>        return next;<br>    }</p>
+<p>#动态规划#<br><strong>背包问题</strong></p>
+<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **<br>    function dynamic_planning(){<br>        var val = [1000, 3000, 2500];<br>        var w = [1, 3, 2];<br>        var sum = 4;<br>        var v = new Array(w.length);<br>        for(var i = 0;i&lt;v.length;i++){<br>            v[i] = new Array(sum);<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(var j = 0;j&lt;sum;j++){<br>                v[i][j] = 0;<br>            }<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(j = 0;j&lt;sum;j++){<br>                if(w[i-1]&gt;j){<br>                    v[i][j] = v[i-1][j];<br>                }<br>                else{<br>                    v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);<br>                }<br>            }<br>        }<br>            }</p>
+<h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
+<p>*算法思路：</p>
+<p>1）遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
+<p>2）将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
+<p>3）重复第一步，直到覆盖了全部的地区。<br>Prim算法（应用场景：修路问题）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/Tree-Graph/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +238,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-06 13:14:38 / Modified: 13:17:06" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:14:38 / Modified: 13:42:41" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
             </span>
 
           
@@ -286,7 +354,7 @@ this.toString = function()&#123;
 &#125;
 </code></pre>
 <p>}</p>
-<p>创建实例<br>//创建实例<br>var graph = new Graph();<br>var myVertices = [‘A’,’B’,’C’,’D’,’E’,’F’,’G’,’H’,’I’];<br>//添加顶点<br>for(var i=0; i&lt;myVertices.length; i++){<br>    graph.addVertex(myVertices[i]);<br>}<br>//逐一加入边<br>graph.addEdge(‘A’,’B’);<br>graph.addEdge(‘A’,’C’);<br>graph.addEdge(‘A’,’D’);<br>graph.addEdge(‘C’,’G’);<br>graph.addEdge(‘C’,’D’);<br>graph.addEdge(‘D’,’G’);<br>graph.addEdge(‘D’,’H’);<br>graph.addEdge(‘B’,’E’);<br>graph.addEdge(‘B’,’F’);<br>graph.addEdge(‘E’,’I’);<br>console.log(graph.toString());</p>
+<p>创建实例<br>//创建实例<br>    var graph = new Graph();<br>    var myVertices = [‘A’,’B’,’C’,’D’,’E’,’F’,’G’,’H’,’I’];<br>    //添加顶点<br>    for(var i=0; i&lt;myVertices.length; i++){<br>        graph.addVertex(myVertices[i]);<br>    }<br>//逐一加入边<br>    graph.addEdge(‘A’,’B’);<br>    graph.addEdge(‘A’,’C’);<br>    graph.addEdge(‘A’,’D’);<br>    graph.addEdge(‘C’,’G’);<br>    graph.addEdge(‘C’,’D’);<br>    graph.addEdge(‘D’,’G’);<br>    graph.addEdge(‘D’,’H’);<br>    graph.addEdge(‘B’,’E’);<br>    graph.addEdge(‘B’,’F’);<br>    graph.addEdge(‘E’,’I’);<br>    console.log(graph.toString());</p>
 <p>输出的结果为：<br>A-&gt;B C D<br>B-&gt;A E F<br>C-&gt;A G D<br>D-&gt;A C G H<br>E-&gt;B I<br>F-&gt;B<br>G-&gt;C D<br>H-&gt;D<br>I-&gt;E </p>
 <p>图的遍历<br>广度优先遍历</p>
 <p>采用队列的方式，先添加节点的先被探索；<br>采用三种颜色来反应节点的状态：<br>白色：还没被访问；<br>灰色：被访问但未被探索；<br>黑色：被访问且探索过；<br>思路：</p>
@@ -322,25 +390,25 @@ this.toString = function()&#123;
 &#125;
 </code></pre>
 <p>创建BFS实例<br>//BFS实例<br>var shortestPathA = graph.BFS(myVertices[0]);//需要输入头节点myVertices[0]<br>//console.log(shortestPathA);</p>
-<p>//搜索路径BFS<br>var fromVertex = myVertices[0];<br>for (var i=1; i&lt;myVertices.length; i++){<br>    var toVertex = myVertices[i];<br>    var path = [];    //path用来储存路径<br>    for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v]){<br>        path.push(v);<br>    }<br>    path.push(fromVertex);<br>    var s = path.pop();<br>    while(!path.length==0){<br>        s += ‘-‘ + path.pop();<br>    }<br>    console.log(s)<br>}</p>
+<p>//搜索路径BFS<br>    var fromVertex = myVertices[0];<br>    for (var i=1; i&lt;myVertices.length; i++){<br>        var toVertex = myVertices[i];<br>        var path = [];    //path用来储存路径<br>        for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v]){<br>            path.push(v);<br>        }<br>        path.push(fromVertex);<br>        var s = path.pop();<br>        while(!path.length==0){<br>            s += ‘-‘ + path.pop();<br>        }<br>        console.log(s)<br>    }</p>
 <p>BFS输出结果<br>A-B<br>A-C<br>A-D<br>A-B-E<br>A-B-F<br>A-C-G<br>A-D-H<br>A-B-E-I</p>
 <p>深度优先遍历</p>
 <p>采用栈的方式，先添加节点的先被探索；<br>由递归实现。<br>思路：</p>
-<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法<br>this.dfs = function(callback){<br>        var color = initializeColor();<br>        for (var i=0; i&lt;vertices.length; i++){<br>            if(color[vertices[i]]===’white’){<br>                dfsVisit(vertices[i], color, callback)//调用递归函数<br>            }<br>        }<br>    }</p>
-<pre><code>var dfsVisit = function(u, color, callback)&#123;
-    color[u] = &#39;grey&#39;;
-    if(callback)&#123;
-        callback(u);
-    &#125;
-    var neighbors = adjList.get(u);
-    for(var i=0; i&lt;neighbors.length; i++)&#123;
-        var w = neighbors[i];
-        if(color[w] === &#39;white&#39;)&#123;
-            dfsVisit(w, color, callback);
+<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法<br>    this.dfs = function(callback){<br>            var color = initializeColor();<br>            for (var i=0; i&lt;vertices.length; i++){<br>                if(color[vertices[i]]===’white’){<br>                    dfsVisit(vertices[i], color, callback)//调用递归函数<br>                }<br>            }<br>        }</p>
+<pre><code>    var dfsVisit = function(u, color, callback)&#123;
+        color[u] = &#39;grey&#39;;
+        if(callback)&#123;
+            callback(u);
         &#125;
+        var neighbors = adjList.get(u);
+        for(var i=0; i&lt;neighbors.length; i++)&#123;
+            var w = neighbors[i];
+            if(color[w] === &#39;white&#39;)&#123;
+                dfsVisit(w, color, callback);
+            &#125;
+        &#125;
+        color[u] = &#39;black&#39;;
     &#125;
-    color[u] = &#39;black&#39;;
-&#125;
 </code></pre>
 <p>创建dfs实例</p>
 <p>graph.dfs(printNode);</p>
@@ -1947,7 +2015,7 @@ class Hello extends React.Component&#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

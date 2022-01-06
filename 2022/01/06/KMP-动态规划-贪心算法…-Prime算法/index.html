@@ -20,15 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="font-end study">
-<meta property="og:url" content="http://example.com/tags/html/index.html">
+  <meta name="description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现    function KMPSearch(str1, str2, next){        for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++){            while(j&gt;0 &amp;&amp; str1[i] !&#x3D; st">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KMP&amp;动态规划&amp;贪心算法…&amp;Prime算法">
+<meta property="og:url" content="http://example.com/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="font-end study">
+<meta property="og:description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现    function KMPSearch(str1, str2, next){        for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++){            while(j&gt;0 &amp;&amp; str1[i] !&#x3D; st">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-01-06T05:43:53.000Z">
+<meta property="article:modified_time" content="2022-01-06T05:45:36.540Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/tags/html/">
+<link rel="canonical" href="http://example.com/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/">
 
 
 <script id="page-configurations">
@@ -36,12 +40,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Tag: html | font-end study</title>
+  <title>KMP&动态规划&贪心算法…&Prime算法 | font-end study</title>
   
 
 
@@ -139,51 +143,86 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">html
-          <small>Tag</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weiling Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="font-end study">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          KMP&动态规划&贪心算法…&Prime算法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-01-06 13:43:53 / Modified: 13:45:36" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
+        <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>问题</strong></p>
+<p>KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。</p>
+<p><strong>代码实现</strong><br>    function KMPSearch(str1, str2, next){<br>        for(var i = 0, j = 0;i&lt;str1.length;i++){<br>            while(j&gt;0 &amp;&amp; str1[i] != str2[j]){<br>                j = next[j-1];<br>            }<br>            if(str1[i] == str2[j]){<br>                j++;<br>            }<br>            if(j == str2.length){<br>                return i-j+1;<br>            }<br>        }<br>        return -1;<br>    }<br>    function KMPNext(dest){<br>        var next = new Array(dest.length);<br>        for(var i = 0;i&lt;dest.length;i++){<br>            dest[i] = 0;<br>        }<br>        for(var i = 0, j = 0;i&lt;dest.length;i++){<br>            while(j&gt;0 &amp;&amp; dest[i]!=dest[j]){<br>                j = next[j-1];<br>            }<br>            if(dest[i] == dest[j]){<br>                j++;<br>            }<br>            next[i] = j;<br>        }<br>        return next;<br>    }</p>
+<p>#动态规划#<br><strong>背包问题</strong></p>
+<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **<br>    function dynamic_planning(){<br>        var val = [1000, 3000, 2500];<br>        var w = [1, 3, 2];<br>        var sum = 4;<br>        var v = new Array(w.length);<br>        for(var i = 0;i&lt;v.length;i++){<br>            v[i] = new Array(sum);<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(var j = 0;j&lt;sum;j++){<br>                v[i][j] = 0;<br>            }<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(j = 0;j&lt;sum;j++){<br>                if(w[i-1]&gt;j){<br>                    v[i][j] = v[i-1][j];<br>                }<br>                else{<br>                    v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);<br>                }<br>            }<br>        }<br>            }</p>
+<h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
+<p>*算法思路：</p>
+<p>1）遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
+<p>2）将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
+<p>3）重复第一步，直到覆盖了全部的地区。<br>Prim算法（应用场景：修路问题）</p>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-01-06T12:55:25+08:00"
-              content="2022-01-06">
-          01-06
-        </time>
-      </div>
+      <footer class="post-footer">
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/01/06/html/" itemprop="url">
-            <span itemprop="name">html</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/01/06/Tree-Graph/" rel="prev" title="Tree&Graph">
+      <i class="fa fa-chevron-left"></i> Tree&Graph
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -236,6 +275,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#KMP%E7%AE%97%E6%B3%95"><span class="nav-number">1.</span> <span class="nav-text">KMP算法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%EF%BC%88%E6%9C%80%E4%BD%B3%E5%BA%94%E7%94%A8%EF%BC%9A%E9%9B%86%E5%90%88%E8%A6%86%E7%9B%96%E9%97%AE%E9%A2%98%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">贪心算法（最佳应用：集合覆盖问题）</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

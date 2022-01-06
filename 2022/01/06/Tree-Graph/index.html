@@ -28,7 +28,7 @@
 <meta property="og:description" content="树树的概念： 树是一种数据结构，它是由n(n≥1)个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点： 每个节点有零个或多个子节点；没有父节点的节点称为根节点；每一个非根节点有且只有一个父节点；除了根节点外，每个子节点可以分为多个不相交的子树。 二叉树： 二叉树是n(n&gt;&#x3D;0)个结点的有限集合，该集合或者为空集（">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:14:38.000Z">
-<meta property="article:modified_time" content="2022-01-06T05:17:06.874Z">
+<meta property="article:modified_time" content="2022-01-06T05:42:41.217Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -174,7 +174,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-06 13:14:38 / Modified: 13:17:06" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:14:38 / Modified: 13:42:41" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
             </span>
 
           
@@ -290,7 +290,7 @@ this.toString = function()&#123;
 &#125;
 </code></pre>
 <p>}</p>
-<p>创建实例<br>//创建实例<br>var graph = new Graph();<br>var myVertices = [‘A’,’B’,’C’,’D’,’E’,’F’,’G’,’H’,’I’];<br>//添加顶点<br>for(var i=0; i&lt;myVertices.length; i++){<br>    graph.addVertex(myVertices[i]);<br>}<br>//逐一加入边<br>graph.addEdge(‘A’,’B’);<br>graph.addEdge(‘A’,’C’);<br>graph.addEdge(‘A’,’D’);<br>graph.addEdge(‘C’,’G’);<br>graph.addEdge(‘C’,’D’);<br>graph.addEdge(‘D’,’G’);<br>graph.addEdge(‘D’,’H’);<br>graph.addEdge(‘B’,’E’);<br>graph.addEdge(‘B’,’F’);<br>graph.addEdge(‘E’,’I’);<br>console.log(graph.toString());</p>
+<p>创建实例<br>//创建实例<br>    var graph = new Graph();<br>    var myVertices = [‘A’,’B’,’C’,’D’,’E’,’F’,’G’,’H’,’I’];<br>    //添加顶点<br>    for(var i=0; i&lt;myVertices.length; i++){<br>        graph.addVertex(myVertices[i]);<br>    }<br>//逐一加入边<br>    graph.addEdge(‘A’,’B’);<br>    graph.addEdge(‘A’,’C’);<br>    graph.addEdge(‘A’,’D’);<br>    graph.addEdge(‘C’,’G’);<br>    graph.addEdge(‘C’,’D’);<br>    graph.addEdge(‘D’,’G’);<br>    graph.addEdge(‘D’,’H’);<br>    graph.addEdge(‘B’,’E’);<br>    graph.addEdge(‘B’,’F’);<br>    graph.addEdge(‘E’,’I’);<br>    console.log(graph.toString());</p>
 <p>输出的结果为：<br>A-&gt;B C D<br>B-&gt;A E F<br>C-&gt;A G D<br>D-&gt;A C G H<br>E-&gt;B I<br>F-&gt;B<br>G-&gt;C D<br>H-&gt;D<br>I-&gt;E </p>
 <p>图的遍历<br>广度优先遍历</p>
 <p>采用队列的方式，先添加节点的先被探索；<br>采用三种颜色来反应节点的状态：<br>白色：还没被访问；<br>灰色：被访问但未被探索；<br>黑色：被访问且探索过；<br>思路：</p>
@@ -326,25 +326,25 @@ this.toString = function()&#123;
 &#125;
 </code></pre>
 <p>创建BFS实例<br>//BFS实例<br>var shortestPathA = graph.BFS(myVertices[0]);//需要输入头节点myVertices[0]<br>//console.log(shortestPathA);</p>
-<p>//搜索路径BFS<br>var fromVertex = myVertices[0];<br>for (var i=1; i&lt;myVertices.length; i++){<br>    var toVertex = myVertices[i];<br>    var path = [];    //path用来储存路径<br>    for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v]){<br>        path.push(v);<br>    }<br>    path.push(fromVertex);<br>    var s = path.pop();<br>    while(!path.length==0){<br>        s += ‘-‘ + path.pop();<br>    }<br>    console.log(s)<br>}</p>
+<p>//搜索路径BFS<br>    var fromVertex = myVertices[0];<br>    for (var i=1; i&lt;myVertices.length; i++){<br>        var toVertex = myVertices[i];<br>        var path = [];    //path用来储存路径<br>        for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v]){<br>            path.push(v);<br>        }<br>        path.push(fromVertex);<br>        var s = path.pop();<br>        while(!path.length==0){<br>            s += ‘-‘ + path.pop();<br>        }<br>        console.log(s)<br>    }</p>
 <p>BFS输出结果<br>A-B<br>A-C<br>A-D<br>A-B-E<br>A-B-F<br>A-C-G<br>A-D-H<br>A-B-E-I</p>
 <p>深度优先遍历</p>
 <p>采用栈的方式，先添加节点的先被探索；<br>由递归实现。<br>思路：</p>
-<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法<br>this.dfs = function(callback){<br>        var color = initializeColor();<br>        for (var i=0; i&lt;vertices.length; i++){<br>            if(color[vertices[i]]===’white’){<br>                dfsVisit(vertices[i], color, callback)//调用递归函数<br>            }<br>        }<br>    }</p>
-<pre><code>var dfsVisit = function(u, color, callback)&#123;
-    color[u] = &#39;grey&#39;;
-    if(callback)&#123;
-        callback(u);
-    &#125;
-    var neighbors = adjList.get(u);
-    for(var i=0; i&lt;neighbors.length; i++)&#123;
-        var w = neighbors[i];
-        if(color[w] === &#39;white&#39;)&#123;
-            dfsVisit(w, color, callback);
+<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法<br>    this.dfs = function(callback){<br>            var color = initializeColor();<br>            for (var i=0; i&lt;vertices.length; i++){<br>                if(color[vertices[i]]===’white’){<br>                    dfsVisit(vertices[i], color, callback)//调用递归函数<br>                }<br>            }<br>        }</p>
+<pre><code>    var dfsVisit = function(u, color, callback)&#123;
+        color[u] = &#39;grey&#39;;
+        if(callback)&#123;
+            callback(u);
         &#125;
+        var neighbors = adjList.get(u);
+        for(var i=0; i&lt;neighbors.length; i++)&#123;
+            var w = neighbors[i];
+            if(color[w] === &#39;white&#39;)&#123;
+                dfsVisit(w, color, callback);
+            &#125;
+        &#125;
+        color[u] = &#39;black&#39;;
     &#125;
-    color[u] = &#39;black&#39;;
-&#125;
 </code></pre>
 <p>创建dfs实例</p>
 <p>graph.dfs(printNode);</p>
@@ -367,7 +367,10 @@ this.toString = function()&#123;
     <a href="/2022/01/06/sort/" rel="prev" title="sort">
       <i class="fa fa-chevron-left"></i> sort
     </a></div>
-      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/" rel="next" title="KMP&动态规划&贪心算法…&Prime算法">
+      KMP&动态规划&贪心算法…&Prime算法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -439,7 +442,7 @@ this.toString = function()&#123;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">9</span>
+          <span class="site-state-item-count">10</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
