@@ -145,6 +145,119 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/09/es6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weiling Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="font-end study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/09/es6/" class="post-title-link" itemprop="url">es6</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-01-09 15:26:41 / Modified: 15:31:58" itemprop="dateCreated datePublished" datetime="2022-01-09T15:26:41+08:00">2022-01-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="JavaScript-关键字-let-和-const。"><a href="#JavaScript-关键字-let-和-const。" class="headerlink" title="JavaScript 关键字: let 和 const。"></a>JavaScript 关键字: let 和 const。</h1><p><strong>let 声明的变量只在 let 命令所在的代码块内有效。</strong></p>
+<p><strong>const 声明一个只读的常量，一旦声明，常量的值就不能改变。</strong></p>
+<p><strong>let 命令</strong></p>
+<p>基本用法:</p>
+<pre><code>&#123;
+  let a = 0;
+  a   // 0
+&#125;
+a   // 报错 ReferenceError: a is not defined
+</code></pre>
+<p>代码块内有效</p>
+<p><em>let 是在代码块内有效，var 是在全局范围内有效:</em></p>
+<pre><code>&#123;
+  let a = 0;
+  var b = 1;
+&#125;
+a  // ReferenceError: a is not defined
+b  // 1
+</code></pre>
+<p>不能重复声明，let 只能声明一次 var 可以声明多次:</p>
+<pre><code>let a = 1;
+let a = 2;
+var b = 3;
+var b = 4;
+a  // Identifier &#39;a&#39; has already been declared
+b  // 4
+</code></pre>
+<p>for 循环计数器很适合用 let</p>
+<pre><code>for (var i = 0; i &lt; 10; i++) &#123;
+  setTimeout(function()&#123;
+    console.log(i);
+  &#125;)
+&#125;
+// 输出十个 10
+for (let j = 0; j &lt; 10; j++) &#123;
+  setTimeout(function()&#123;
+    console.log(j);
+  &#125;)
+&#125;
+// 输出 0123456789
+</code></pre>
+<p>变量 i 是用 var 声明的，在全局范围内有效，所以全局中只有一个变量 i, 每次循环时，setTimeout 定时器里面的 i 指的是全局变量 i ，而循环里的十个 setTimeout 是在循环结束后才执行，所以此时的 i 都是 10。</p>
+<p>变量 j 是用 let 声明的，当前的 j 只在本轮循环中有效，每次循环的 j 其实都是一个新的变量，所以 setTimeout 定时器里面的 j 其实是不同的变量，即最后输出 12345。（若每次循环的变量 j 都是重新声明的，如何知道前一个循环的值？这是因为 JavaScript 引擎内部会记住前一个循环的值）。<br>不存在变量提升</p>
+<p>let 不存在变量提升，var 会变量提升:<br>console.log(a);  //ReferenceError: a is not defined<br>let a = “apple”;</p>
+<p>console.log(b);  //undefined<br>var b = “banana”;</p>
+<p>变量 b 用 var 声明存在变量提升，所以当脚本开始运行的时候，b 已经存在了，但是还没有赋值，所以会输出 undefined。</p>
+<p>变量 a 用 let 声明不存在变量提升，在声明变量 a 之前，a 不存在，所以会报错。<br>const 命令</p>
+<p>const 声明一个只读变量，声明之后不允许改变。意味着，一旦声明必须初始化，否则会报错。</p>
+<p>基本用法:</p>
+<p>const PI = “3.1415926”;<br>PI  // 3.1415926</p>
+<p>const MY_AGE;  // SyntaxError: Missing initializer in const declaration    </p>
+<p>暂时性死区:</p>
+<p>var PI = “a”;<br>if(true){<br>  console.log(PI);  // ReferenceError: PI is not defined<br>  const PI = “3.1415926”;<br>}</p>
+<p>ES6 明确规定，代码块内如果存在 let 或者 const，代码块会对这些命令声明的变量从块的开始就形成一个封闭作用域。代码块内，在声明变量 PI 之前使用它会报错。<br>注意要点</p>
+<p>const 如何做到变量在声明初始化之后不允许改变的？其实 const 其实保证的不是变量的值不变，而是保证变量指向的内存地址所保存的数据不允许改动。此时，你可能已经想到，简单类型和复合类型保存值的方式是不同的。是的，对于简单类型（数值 number、字符串 string 、布尔值 boolean）,值就保存在变量指向的那个内存地址，因此 const 声明的简单类型变量等同于常量。而复杂类型（对象 object，数组 array，函数 function），变量指向的内存地址其实是保存了一个指向实际数据的指针，所以 const 只能保证指针是固定的，至于指针指向的数据结构变不变就无法控制了，所以使用 const 声明复杂类型对象时要慎重。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/09/%E5%88%B7%E9%A2%98%E7%BB%8F%E9%AA%8C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +283,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-09 09:53:11 / Modified: 14:13:46" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
+              <time title="Created: 2022-01-09 09:53:11 / Modified: 15:24:41" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
             </span>
 
           
@@ -193,6 +306,27 @@ while(fast!=null &amp;&amp; fast.next!=null)&#123;
 </code></pre>
 <p>围成圆，提取的位置不能相邻：</p>
 <p>（采用枚举法）<br>两种情况：1.有头没尾；2.没头有尾</p>
+<p>三数之和：</p>
+<pre><code>var threeSum = function(nums) &#123;
+    const len = nums.length;
+    if(len &lt; 3) return [];
+    nums.sort((a, b) =&gt; a - b);
+    const resSet = new Set();
+    for(let i = 0; i &lt; len - 2; i++) &#123;
+        if(nums[i] &gt; 0) break;
+        let l = i + 1, r = len - 1;
+        while(l &lt; r) &#123;
+            const sum = nums[i] + nums[l] + nums[r];
+            if(sum &lt; 0) &#123; l++; continue &#125;;
+            if(sum &gt; 0) &#123; r--; continue &#125;;
+            resSet.add(`$&#123;nums[i]&#125;,$&#123;nums[l]&#125;,$&#123;nums[r]&#125;`);
+            l++;
+            r--;
+        &#125;
+    &#125;
+    return Array.from(resSet).map(i =&gt; i.split(&quot;,&quot;));
+&#125;;
+</code></pre>
 
       
     </div>
@@ -2135,85 +2269,6 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/04/jQuery/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Weiling Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="font-end study">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/04/jQuery/" class="post-title-link" itemprop="url">jQuery</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-01-04 15:49:10 / Modified: 15:52:51" itemprop="dateCreated datePublished" datetime="2022-01-04T15:49:10+08:00">2022-01-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="JQuery"><a href="#JQuery" class="headerlink" title="JQuery"></a>JQuery</h1><pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;test(runoob.com)&lt;/title&gt;
-    &lt;script src=&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;&gt;
-    &lt;/script&gt;
-    &lt;script&gt;
-        $(function()&#123;
-            $(&quot;p&quot;).click(function()&#123;
-                $(this).hide();
-                        &#125;)&#125;);
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;p&gt;如果你点我，我就会消失。&lt;/p&gt;
-    &lt;p&gt;继续点我!&lt;/p&gt;
-    &lt;p&gt;接着点我!&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2283,7 +2338,7 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
