@@ -145,6 +145,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/09/%E5%88%B7%E9%A2%98%E7%BB%8F%E9%AA%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Weiling Wu">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="font-end study">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/01/09/%E5%88%B7%E9%A2%98%E7%BB%8F%E9%AA%8C/" class="post-title-link" itemprop="url">刷题经验</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-01-09 09:53:11" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/06/php/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -423,10 +480,16 @@ echo $gender;
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 13:43:53 / Modified: 13:45:36" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:43:53" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-07 19:19:24" itemprop="dateModified" datetime="2022-01-07T19:19:24+08:00">2022-01-07</time>
+              </span>
 
           
 
@@ -441,9 +504,65 @@ echo $gender;
       
           <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>问题</strong></p>
 <p>KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。</p>
-<p><strong>代码实现</strong><br>    function KMPSearch(str1, str2, next){<br>        for(var i = 0, j = 0;i&lt;str1.length;i++){<br>            while(j&gt;0 &amp;&amp; str1[i] != str2[j]){<br>                j = next[j-1];<br>            }<br>            if(str1[i] == str2[j]){<br>                j++;<br>            }<br>            if(j == str2.length){<br>                return i-j+1;<br>            }<br>        }<br>        return -1;<br>    }<br>    function KMPNext(dest){<br>        var next = new Array(dest.length);<br>        for(var i = 0;i&lt;dest.length;i++){<br>            dest[i] = 0;<br>        }<br>        for(var i = 0, j = 0;i&lt;dest.length;i++){<br>            while(j&gt;0 &amp;&amp; dest[i]!=dest[j]){<br>                j = next[j-1];<br>            }<br>            if(dest[i] == dest[j]){<br>                j++;<br>            }<br>            next[i] = j;<br>        }<br>        return next;<br>    }</p>
+<p><strong>代码实现</strong></p>
+<pre><code>function KMPSearch(str1, str2, next)&#123;
+    for(var i = 0, j = 0;i&lt;str1.length;i++)&#123;
+        while(j&gt;0 &amp;&amp; str1[i] != str2[j])&#123;
+            j = next[j-1];
+        &#125;
+        if(str1[i] == str2[j])&#123;
+            j++;
+        &#125;
+        if(j == str2.length)&#123;
+            return i-j+1;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+function KMPNext(dest)&#123;
+    var next = new Array(dest.length);
+    for(var i = 0;i&lt;dest.length;i++)&#123;
+        dest[i] = 0;
+    &#125;
+    for(var i = 0, j = 0;i&lt;dest.length;i++)&#123;
+        while(j&gt;0 &amp;&amp; dest[i]!=dest[j])&#123;
+            j = next[j-1];
+        &#125;
+        if(dest[i] == dest[j])&#123;
+            j++;
+        &#125;
+        next[i] = j;
+    &#125;
+    return next;
+&#125;
+</code></pre>
 <p>#动态规划#<br><strong>背包问题</strong></p>
-<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **<br>    function dynamic_planning(){<br>        var val = [1000, 3000, 2500];<br>        var w = [1, 3, 2];<br>        var sum = 4;<br>        var v = new Array(w.length);<br>        for(var i = 0;i&lt;v.length;i++){<br>            v[i] = new Array(sum);<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(var j = 0;j&lt;sum;j++){<br>                v[i][j] = 0;<br>            }<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(j = 0;j&lt;sum;j++){<br>                if(w[i-1]&gt;j){<br>                    v[i][j] = v[i-1][j];<br>                }<br>                else{<br>                    v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);<br>                }<br>            }<br>        }<br>            }</p>
+<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **</p>
+<pre><code>function dynamic_planning()&#123;
+    var val = [1000, 3000, 2500];
+    var w = [1, 3, 2];
+    var sum = 4;
+    var v = new Array(w.length);
+    for(var i = 0;i&lt;v.length;i++)&#123;
+        v[i] = new Array(sum);
+    &#125;
+    for(i = 0;i&lt;v.length;i++)&#123;
+        for(var j = 0;j&lt;sum;j++)&#123;
+            v[i][j] = 0;
+        &#125;
+    &#125;
+    for(i = 0;i&lt;v.length;i++)&#123;
+        for(j = 0;j&lt;sum;j++)&#123;
+            if(w[i-1]&gt;j)&#123;
+                v[i][j] = v[i-1][j];
+            &#125;
+            else&#123;
+                v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);
+            &#125;
+        &#125;
+    &#125;
+        &#125;
+</code></pre>
 <h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
 <p>*算法思路：</p>
 <p>1）遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
@@ -703,10 +822,16 @@ echo $gender;
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 13:07:46 / Modified: 13:14:09" itemprop="dateCreated datePublished" datetime="2022-01-06T13:07:46+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:07:46" itemprop="dateCreated datePublished" datetime="2022-01-06T13:07:46+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-07 19:21:39" itemprop="dateModified" datetime="2022-01-07T19:21:39+08:00">2022-01-07</time>
+              </span>
 
           
 
@@ -719,21 +844,83 @@ echo $gender;
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Bubble-Sorting"><a href="#Bubble-Sorting" class="headerlink" title="Bubble Sorting"></a>Bubble Sorting</h1><p>冒泡排序：（Bubble Sorting）：通过对待排序序列从前向后（从下标较小的元素开始）通过依次比较相邻的元素的值，若发现逆序则交换，使值较大的元素逐渐从前向后移动，就像水底的气泡一样逐渐网上冒。<br>    function bubbleSort(arr) {<br>        var i = arr.length, j;<br>        var tempExchangVal;<br>        while (i &gt; 0) {<br>            for (j = 0; j &lt; i - 1; j++) {<br>                if (arr[j] &gt; arr[j + 1]) {<br>                    tempExchangVal = arr[j];<br>                    arr[j] = arr[j + 1];<br>                    arr[j + 1] = tempExchangVal;<br>                }<br>            }<br>            i–;<br>        }<br>        return arr;<br>    }</p>
-<p>var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];<br>var arrSorted = bubbleSort(arr);<br>console.log(arrSorted);<br>alert(arrSorted);</p>
+          <h1 id="Bubble-Sorting"><a href="#Bubble-Sorting" class="headerlink" title="Bubble Sorting"></a>Bubble Sorting</h1><p>冒泡排序：（Bubble Sorting）：通过对待排序序列从前向后（从下标较小的元素开始）通过依次比较相邻的元素的值，若发现逆序则交换，使值较大的元素逐渐从前向后移动，就像水底的气泡一样逐渐网上冒。</p>
+<pre><code>function bubbleSort(arr) &#123;
+    var i = arr.length, j;
+    var tempExchangVal;
+    while (i &gt; 0) &#123;
+        for (j = 0; j &lt; i - 1; j++) &#123;
+            if (arr[j] &gt; arr[j + 1]) &#123;
+                tempExchangVal = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = tempExchangVal;
+            &#125;
+        &#125;
+        i--;
+    &#125;
+    return arr;
+&#125;
+
+var arr = [3, 2, 4, 9, 1, 5, 7, 6, 8];
+var arrSorted = bubbleSort(arr);
+console.log(arrSorted);
+alert(arrSorted);
+</code></pre>
 <h1 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h1><p>选择排序(Selection-sort)是一种简单直观的排序算法。它的工作原理：首先在未排序序列中找到最小（大）元素，存放到排序序列的起始位置，然后，再从剩余未排序元素中继续寻找最小（大）元素，然后放到已排序序列的末尾。以此类推，直到所有元素均排序完毕。</p>
 <p><strong>算法描述：</strong></p>
 <p>n个记录的直接选择排序可经过n-1趟直接选择排序得到有序结果。具体算法描述如下：</p>
-<p>初始状态：无序区为R[1…n]，有序区为空；<br>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1…i-1]和R(i…n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1…i]和R[i+1…n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br>n-1趟结束，数组有序化了。<br>    function selectionSort(arr) {<br>        var len = arr.length;<br>        var minIndex, temp;<br>        for (var i = 0; i &lt; len - 1; i++) {<br>            minIndex = i;<br>            for (var j = i + 1; j &lt; len; j++) {<br>                if (arr[j] &lt; arr[minIndex]) {     // 寻找最小的数<br>                    minIndex = j;                 // 将最小数的索引保存<br>                }<br>            }<br>            temp = arr[i];<br>            arr[i] = arr[minIndex];<br>            arr[minIndex] = temp;<br>        }<br>        return arr;<br>    } </p>
+<p>初始状态：无序区为R[1…n]，有序区为空；<br>第i趟排序(i=1,2,3…n-1)开始时，当前有序区和无序区分别为R[1…i-1]和R(i…n）。该趟排序从当前无序区中-选出关键字最小的记录 R[k]，将它与无序区的第1个记录R交换，使R[1…i]和R[i+1…n)分别变为记录个数增加1个的新有序区和记录个数减少1个的新无序区；<br>n-1趟结束，数组有序化了。</p>
+<pre><code>function selectionSort(arr) &#123;
+    var len = arr.length;
+    var minIndex, temp;
+    for (var i = 0; i &lt; len - 1; i++) &#123;
+        minIndex = i;
+        for (var j = i + 1; j &lt; len; j++) &#123;
+            if (arr[j] &lt; arr[minIndex]) &#123;     // 寻找最小的数
+                minIndex = j;                 // 将最小数的索引保存
+            &#125;
+        &#125;
+        temp = arr[i];
+        arr[i] = arr[minIndex];
+        arr[minIndex] = temp;
+    &#125;
+    return arr;
+&#125; 
+</code></pre>
 <h1 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h1><p>通过构建有序序列，对于未排序数据，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-<p>代码中定义了两个指针：currentIndex，preIndex。<br>    var currentIndex, preIndex, value;<br>    for(var i = 1;i&lt;arr.length;i++)<br>    {<br>        currentIndex = i;<br>        preIndex = i-1;<br>        value = arr[currentIndex];<br>        while(value&lt;arr[preIndex] &amp;&amp; preIndex&gt;=0)<br>        {<br>            arr[currentIndex] = arr[preIndex];<br>            currentIndex = preIndex;<br>            preIndex–;<br>        }<br>        arr[preIndex+1] = value;<br>    }<br>    return arr;<br>    }<br>    var arr = [-1, 2, 5, 9, 1, 5, 7, 6, 8];<br>    var arrSorted = InsertSort(arr);<br>    console.log(arrSorted);<br>    alert(arrSorted);</p>
+<p>代码中定义了两个指针：currentIndex，preIndex。</p>
+<pre><code>var currentIndex, preIndex, value;
+for(var i = 1;i&lt;arr.length;i++)
+&#123;
+    currentIndex = i;
+    preIndex = i-1;
+    value = arr[currentIndex];
+    while(value&lt;arr[preIndex] &amp;&amp; preIndex&gt;=0)
+    &#123;
+        arr[currentIndex] = arr[preIndex];
+        currentIndex = preIndex;
+        preIndex--;
+    &#125;
+    arr[preIndex+1] = value;
+&#125;
+return arr;
+&#125;
+var arr = [-1, 2, 5, 9, 1, 5, 7, 6, 8];
+var arrSorted = InsertSort(arr);
+console.log(arrSorted);
+alert(arrSorted);
+</code></pre>
 <h1 id="希尔排序（shell-sorting）"><a href="#希尔排序（shell-sorting）" class="headerlink" title="希尔排序（shell sorting）"></a>希尔排序（shell sorting）</h1><p>它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
 <p><strong>算法描述：</strong></p>
 <p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
 <ol>
-<li>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</li>
-<li>按增量序列个数k，对序列进行k 趟排序；</li>
-<li>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。<br> function ShellSort(arr) {<pre><code>         var k = 0;
+<li><p>选择一个增量序列t1，t2，…，tk，其中ti&gt;tj，tk=1；</p>
+</li>
+<li><p>按增量序列个数k，对序列进行k 趟排序；</p>
+</li>
+<li><p>每趟排序，根据对应的增量ti，将待排序列分割成若干长度为m 的子序列，分别对各子表进行直接插入排序。仅增量因子为1 时，整个序列作为一个表来处理，表长度即为整个序列的长度。</p>
+<p> function ShellSort(arr) {</p>
+<pre><code>         var k = 0;
          for(var gap = Math.floor(arr.length/2 ); gap&gt;=1; Math.floor(gap /= 2))
          &#123;
              k =0;
@@ -755,9 +942,13 @@ echo $gender;
 </ol>
 <h1 id="归并排序（merge-sorting）"><a href="#归并排序（merge-sorting）" class="headerlink" title="归并排序（merge sorting）"></a>归并排序（merge sorting）</h1><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。<br><strong>算法描述：</strong></p>
 <ol>
-<li>把长度为n的输入序列分成两个长度为n/2的子序列；</li>
-<li>对这两个子序列分别采用归并排序；</li>
-<li>将两个排序好的子序列合并成一个最终的排序序列。<br> function MergeSorting(arr) {<pre><code> if(arr.length&lt;2)
+<li><p>把长度为n的输入序列分成两个长度为n/2的子序列；</p>
+</li>
+<li><p>对这两个子序列分别采用归并排序；</p>
+</li>
+<li><p>将两个排序好的子序列合并成一个最终的排序序列。</p>
+<p> function MergeSorting(arr) {</p>
+<pre><code> if(arr.length&lt;2)
      return arr;
  var middle = Math.floor(arr.length/2);
  var left = arr.slice(0, middle);
@@ -765,7 +956,8 @@ echo $gender;
  return Merge(MergeSorting(left), MergeSorting(right));
      &#125;
 </code></pre>
- function Merge(left, right){<pre><code> var result = [];
+<p> function Merge(left, right){</p>
+<pre><code> var result = [];
  while(left.length&gt;0&amp;&amp;right.length&gt;0)&#123;
      if(left[0]&gt;right[0])
      &#123;
@@ -784,14 +976,18 @@ echo $gender;
 
  return result;
 </code></pre>
- }</li>
+<p> }</p>
+</li>
 </ol>
 <h1 id="快速排序（quick-sorting）"><a href="#快速排序（quick-sorting）" class="headerlink" title="快速排序（quick sorting）"></a>快速排序（quick sorting）</h1><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。<br><strong>算法描述</strong></p>
 <p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
 <ol>
-<li>从数列中挑出一个元素，称为 “基准”（pivot）；</li>
-<li>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</li>
-<li>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。 <!DOCTYPE html>
+<li><p>从数列中挑出一个元素，称为 “基准”（pivot）；</p>
+</li>
+<li><p>重新排序数列，所有元素比基准值小的摆放在基准前面，所有元素比基准值大的摆在基准的后面（相同的数可以到任一边）。在这个分区退出之后，该基准就处于数列的中间位置。这个称为分区（partition）操作；</p>
+</li>
+<li><p>递归地（recursive）把小于基准值元素的子数列和大于基准值元素的子数列排序。</p>
+ <!DOCTYPE html>
  <html lang="en">
  <head>
      <meta charset="UTF-8">
@@ -846,10 +1042,15 @@ echo $gender;
 </ol>
 <h1 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h1><p>桶排序是计数排序的升级版。它利用了函数的映射关系，高效与否的关键就在于这个映射函数的确定。桶排序 (Bucket sort)的工作的原理：假设输入数据服从均匀分布，将数据分到有限数量的桶里，每个桶再分别排序（有可能再使用别的排序算法或是以递归方式继续使用桶排序进行排）。<br><strong>算法描述</strong></p>
 <ol>
-<li>设置一个定量的数组当作空桶；</li>
-<li>遍历输入数据，并且把数据一个一个放到对应的桶里去；</li>
-<li>对每个不是空的桶进行排序；</li>
-<li>从不是空的桶里把排好序的数据拼接起来。<br> function BucketSorting(arr){<pre><code> var maxvalue = arr[0];
+<li><p>设置一个定量的数组当作空桶；</p>
+</li>
+<li><p>遍历输入数据，并且把数据一个一个放到对应的桶里去；</p>
+</li>
+<li><p>对每个不是空的桶进行排序；</p>
+</li>
+<li><p>从不是空的桶里把排好序的数据拼接起来。</p>
+<p> function BucketSorting(arr){</p>
+<pre><code> var maxvalue = arr[0];
  for(var i = 1; i&lt;arr.length;i++)&#123;
      if(maxvalue&lt;arr[i])&#123;
          maxvalue = arr[i];
@@ -883,11 +1084,8 @@ echo $gender;
 </li>
 </ol>
 <h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><p>堆排序（Heapsort）是指利用堆这种数据结构所设计的一种排序算法。堆积是一个近似完全二叉树的结构，并同时满足堆积的性质：即子结点的键值或索引总是小于（或者大于）它的父节点。升序，大顶堆；降序，小顶堆。<br>算法描述</p>
-<pre><code>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；
-将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；
-由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。
-
-var len;    // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
+<p>将初始待排序关键字序列(R1,R2….Rn)构建成大顶堆，此堆为初始的无序区；<br>将堆顶元素R[1]与最后一个元素R[n]交换，此时得到新的无序区(R1,R2,……Rn-1)和新的有序区(Rn),且满足R[1,2…n-1]&lt;=R[n]；<br>由于交换后新的堆顶R[1]可能违反堆的性质，因此需要对当前无序区(R1,R2,……Rn-1)调整为新堆，然后再次将R[1]与无序区最后一个元素交换，得到新的无序区(R1,R2….Rn-2)和新的有序区(Rn-1,Rn)。不断重复此过程直到有序区的元素个数为n-1，则整个排序过程完成。</p>
+<pre><code>var len;    // 因为声明的多个函数都需要数据长度，所以把len设置成为全局变量
  
 function buildMaxHeap(arr) &#123;   // 建立大顶堆
     len = arr.length;
@@ -1879,115 +2077,6 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/04/Redux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Weiling Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="font-end study">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/01/04/Redux/" class="post-title-link" itemprop="url">Redux</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-01-04 15:25:55 / Modified: 19:52:51" itemprop="dateCreated datePublished" datetime="2022-01-04T15:25:55+08:00">2022-01-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Redux"><a href="#Redux" class="headerlink" title="Redux"></a>Redux</h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
-<li><p>构建react项目</p>
-<p>  <code>npx create-react-app redux-demo</code></p>
-</li>
-<li><p>删除多余的文件<br>(留下index.css,index.js,App.js)</p>
-</li>
-<li><p>在pages目录下创建Home组件</p>
-</li>
-<li><p>编写一个简单的结构样式</p>
-<p>  <code>&lt;button&gt;发送一个action&lt;/button&gt;</code></p>
-</li>
-<li><p>在App.js中引入这个组件</p>
-</li>
-<li><p>安装redux</p>
-<p>  <code>yarn add redux</code></p>
-<h2 id="创建一个Action"><a href="#创建一个Action" class="headerlink" title="创建一个Action"></a>创建一个Action</h2></li>
-<li><p>在根目录下创建一个文件夹action</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建Action</p>
-<p>  const senAction = ()=&gt;{…};</p>
-</li>
-<li><p>在action创建函数里面利用return，返回一个action对象，注意需要携带type属性</p>
-<p>  const sendAction=()=&gt;{return{type:”send_action”, value:”发送了一个action”}}</p>
-</li>
-<li><p>把这个action创建函数进行导出</p>
-<p>  module.exports = {sendAction}</p>
-<h2 id="创建一个Reducer"><a href="#创建一个Reducer" class="headerlink" title="创建一个Reducer"></a>创建一个Reducer</h2></li>
-<li><p>在根目录下创建一个reducer</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建reducer，注意reducer要接收两个参数</p>
-<p>  const rootReducer = (state, action) =&gt;{…};</p>
-</li>
-<li><p>第一个参数是默认状态，我们可以定义一个初始化的state，然后进行赋值</p>
-<p>  const initState = {value:”默认值”}<br>  const rootReducer = (state = initState, action)=&gt;{…};</p>
-</li>
-<li><p>在函数里面判断第二个参数action的type是否是我们发送的</p>
-</li>
-<li><p>如果是的话，我们可以通过return返回新的state</p>
-</li>
-<li><p>把reducer进行导出</p>
-<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2></li>
-<li><p>在根目录下创建一个文件夹store</p>
-</li>
-<li><p>在该目录下创建一个index.js文件，用来构建store，注意createStore函数里面第一个参数接收的是reducer</p>
-<p>  import {createStore} from “redux”;<br>  const store = createStore{reducer};</p>
-</li>
-<li><p>我们需要导入刚刚创建的reducer，然后设置到函数里面去</p>
-</li>
-<li><p>createStore的返回值就是我们构建好的store，然后进行导出</p>
-</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2057,7 +2146,7 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

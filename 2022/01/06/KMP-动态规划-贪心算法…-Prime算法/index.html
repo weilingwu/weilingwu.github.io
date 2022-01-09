@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现    function KMPSearch(str1, str2, next){        for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++){            while(j&gt;0 &amp;&amp; str1[i] !&#x3D; st">
+  <meta name="description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现 function KMPSearch(str1, str2, next)&amp;#123;     for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++)&amp;#123;         while(j&gt;0 &amp;&amp; str1[i] !&#x3D; s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KMP&amp;动态规划&amp;贪心算法…&amp;Prime算法">
 <meta property="og:url" content="http://example.com/2022/01/06/KMP-%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92-%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95%E2%80%A6-Prime%E7%AE%97%E6%B3%95/index.html">
 <meta property="og:site_name" content="font-end study">
-<meta property="og:description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现    function KMPSearch(str1, str2, next){        for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++){            while(j&gt;0 &amp;&amp; str1[i] !&#x3D; st">
+<meta property="og:description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现 function KMPSearch(str1, str2, next)&amp;#123;     for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++)&amp;#123;         while(j&gt;0 &amp;&amp; str1[i] !&#x3D; s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:43:53.000Z">
-<meta property="article:modified_time" content="2022-01-06T05:45:36.540Z">
+<meta property="article:modified_time" content="2022-01-07T11:19:24.269Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 13:43:53 / Modified: 13:45:36" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:43:53" itemprop="dateCreated datePublished" datetime="2022-01-06T13:43:53+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-07 19:19:24" itemprop="dateModified" datetime="2022-01-07T19:19:24+08:00">2022-01-07</time>
+              </span>
 
           
 
@@ -190,9 +196,65 @@
       
         <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>问题</strong></p>
 <p>KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。</p>
-<p><strong>代码实现</strong><br>    function KMPSearch(str1, str2, next){<br>        for(var i = 0, j = 0;i&lt;str1.length;i++){<br>            while(j&gt;0 &amp;&amp; str1[i] != str2[j]){<br>                j = next[j-1];<br>            }<br>            if(str1[i] == str2[j]){<br>                j++;<br>            }<br>            if(j == str2.length){<br>                return i-j+1;<br>            }<br>        }<br>        return -1;<br>    }<br>    function KMPNext(dest){<br>        var next = new Array(dest.length);<br>        for(var i = 0;i&lt;dest.length;i++){<br>            dest[i] = 0;<br>        }<br>        for(var i = 0, j = 0;i&lt;dest.length;i++){<br>            while(j&gt;0 &amp;&amp; dest[i]!=dest[j]){<br>                j = next[j-1];<br>            }<br>            if(dest[i] == dest[j]){<br>                j++;<br>            }<br>            next[i] = j;<br>        }<br>        return next;<br>    }</p>
+<p><strong>代码实现</strong></p>
+<pre><code>function KMPSearch(str1, str2, next)&#123;
+    for(var i = 0, j = 0;i&lt;str1.length;i++)&#123;
+        while(j&gt;0 &amp;&amp; str1[i] != str2[j])&#123;
+            j = next[j-1];
+        &#125;
+        if(str1[i] == str2[j])&#123;
+            j++;
+        &#125;
+        if(j == str2.length)&#123;
+            return i-j+1;
+        &#125;
+    &#125;
+    return -1;
+&#125;
+function KMPNext(dest)&#123;
+    var next = new Array(dest.length);
+    for(var i = 0;i&lt;dest.length;i++)&#123;
+        dest[i] = 0;
+    &#125;
+    for(var i = 0, j = 0;i&lt;dest.length;i++)&#123;
+        while(j&gt;0 &amp;&amp; dest[i]!=dest[j])&#123;
+            j = next[j-1];
+        &#125;
+        if(dest[i] == dest[j])&#123;
+            j++;
+        &#125;
+        next[i] = j;
+    &#125;
+    return next;
+&#125;
+</code></pre>
 <p>#动态规划#<br><strong>背包问题</strong></p>
-<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **<br>    function dynamic_planning(){<br>        var val = [1000, 3000, 2500];<br>        var w = [1, 3, 2];<br>        var sum = 4;<br>        var v = new Array(w.length);<br>        for(var i = 0;i&lt;v.length;i++){<br>            v[i] = new Array(sum);<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(var j = 0;j&lt;sum;j++){<br>                v[i][j] = 0;<br>            }<br>        }<br>        for(i = 0;i&lt;v.length;i++){<br>            for(j = 0;j&lt;sum;j++){<br>                if(w[i-1]&gt;j){<br>                    v[i][j] = v[i-1][j];<br>                }<br>                else{<br>                    v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);<br>                }<br>            }<br>        }<br>            }</p>
+<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **</p>
+<pre><code>function dynamic_planning()&#123;
+    var val = [1000, 3000, 2500];
+    var w = [1, 3, 2];
+    var sum = 4;
+    var v = new Array(w.length);
+    for(var i = 0;i&lt;v.length;i++)&#123;
+        v[i] = new Array(sum);
+    &#125;
+    for(i = 0;i&lt;v.length;i++)&#123;
+        for(var j = 0;j&lt;sum;j++)&#123;
+            v[i][j] = 0;
+        &#125;
+    &#125;
+    for(i = 0;i&lt;v.length;i++)&#123;
+        for(j = 0;j&lt;sum;j++)&#123;
+            if(w[i-1]&gt;j)&#123;
+                v[i][j] = v[i-1][j];
+            &#125;
+            else&#123;
+                v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);
+            &#125;
+        &#125;
+    &#125;
+        &#125;
+</code></pre>
 <h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
 <p>*算法思路：</p>
 <p>1）遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
@@ -292,7 +354,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">11</span>
+          <span class="site-state-item-count">12</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
