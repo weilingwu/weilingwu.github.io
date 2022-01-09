@@ -28,7 +28,7 @@
 <meta property="og:description" content="输出语句 JavaScript 没有任何打印或者输出的函数。JavaScript 可以通过不同的方式来输出数据：  使用 window.alert() 弹出警告框。  使用 document.write() 方法将内容写到 HTML 文档中。  使用 innerHTML 写入到 HTML 元素。  使用 console.log() 写入到浏览器的控制台。   一个需要注意的点：return 语句，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T04:44:56.000Z">
-<meta property="article:modified_time" content="2022-01-06T05:58:29.593Z">
+<meta property="article:modified_time" content="2022-01-09T06:15:07.465Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 12:44:56 / Modified: 13:58:29" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 12:44:56" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-09 14:15:07" itemprop="dateModified" datetime="2022-01-09T14:15:07+08:00">2022-01-09</time>
+              </span>
 
           
 
@@ -200,8 +206,20 @@
 <li><p>使用 console.log() 写入到浏览器的控制台。</p>
 </li>
 </ul>
-<p>一个需要注意的点：return 语句，少写了return语句返回值会是undefined，在你得到输出的结果是undefined时要想到是不是少了return。<br><strong>for循环的使用</strong><br>    <!DOCTYPE html><br>    <html><br>    <head><br>        <meta charset="utf-8"><br>        <title>study</title><br>        <script type = "text/javascript"><br>            for(var i = 10;i<15;i++)<br>            {<br>                document.write(i);<br>                document.write('<br />');<br>            }</p>
-<pre><code>    &lt;/script&gt;
+<p>一个需要注意的点：return 语句，少写了return语句返回值会是undefined，在你得到输出的结果是undefined时要想到是不是少了return。<br><strong>for循环的使用</strong></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;study&lt;/title&gt;
+    &lt;script type = &quot;text/javascript&quot;&gt;
+        for(var i = 10;i&lt;15;i++)
+        &#123;
+            document.write(i);
+            document.write(&#39;&lt;br /&gt;&#39;);
+        &#125;
+
+    &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
@@ -400,6 +418,7 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS%E7%9A%84%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">JS的普通函数</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

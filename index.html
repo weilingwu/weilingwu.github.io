@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-01-09 09:53:11" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
+              <time title="Created: 2022-01-09 09:53:11 / Modified: 14:13:46" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
             </span>
 
           
@@ -183,7 +184,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <p>链表求中点：</p>
+<pre><code>var slow = head, fast = head.next;
+while(fast!=null &amp;&amp; fast.next!=null)&#123;
+    slow = slow.next;
+    fast = fast.next.next;
+&#125;
+</code></pre>
+<p>围成圆，提取的位置不能相邻：</p>
+<p>（采用枚举法）<br>两种情况：1.有头没尾；2.没头有尾</p>
+
       
     </div>
 
@@ -1835,10 +1845,16 @@ $(&quot;.test&quot;)
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 12:44:56 / Modified: 13:58:29" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 12:44:56" itemprop="dateCreated datePublished" datetime="2022-01-06T12:44:56+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-09 14:15:07" itemprop="dateModified" datetime="2022-01-09T14:15:07+08:00">2022-01-09</time>
+              </span>
 
           
 
@@ -1863,8 +1879,20 @@ $(&quot;.test&quot;)
 <li><p>使用 console.log() 写入到浏览器的控制台。</p>
 </li>
 </ul>
-<p>一个需要注意的点：return 语句，少写了return语句返回值会是undefined，在你得到输出的结果是undefined时要想到是不是少了return。<br><strong>for循环的使用</strong><br>    <!DOCTYPE html><br>    <html><br>    <head><br>        <meta charset="utf-8"><br>        <title>study</title><br>        <script type = "text/javascript"><br>            for(var i = 10;i<15;i++)<br>            {<br>                document.write(i);<br>                document.write('<br />');<br>            }</p>
-<pre><code>    &lt;/script&gt;
+<p>一个需要注意的点：return 语句，少写了return语句返回值会是undefined，在你得到输出的结果是undefined时要想到是不是少了return。<br><strong>for循环的使用</strong></p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;study&lt;/title&gt;
+    &lt;script type = &quot;text/javascript&quot;&gt;
+        for(var i = 10;i&lt;15;i++)
+        &#123;
+            document.write(i);
+            document.write(&#39;&lt;br /&gt;&#39;);
+        &#125;
+
+    &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
