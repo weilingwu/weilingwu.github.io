@@ -28,7 +28,7 @@
 <meta property="og:description" content="输出语句 JavaScript 没有任何打印或者输出的函数。JavaScript 可以通过不同的方式来输出数据：  使用 window.alert() 弹出警告框。  使用 document.write() 方法将内容写到 HTML 文档中。  使用 innerHTML 写入到 HTML 元素。  使用 console.log() 写入到浏览器的控制台。   一个需要注意的点：return 语句，">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T04:44:56.000Z">
-<meta property="article:modified_time" content="2022-01-09T06:15:07.465Z">
+<meta property="article:modified_time" content="2022-01-09T06:18:25.385Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -180,7 +180,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-09 14:15:07" itemprop="dateModified" datetime="2022-01-09T14:15:07+08:00">2022-01-09</time>
+                <time title="Modified: 2022-01-09 14:18:25" itemprop="dateModified" datetime="2022-01-09T14:18:25+08:00">2022-01-09</time>
               </span>
 
           
@@ -226,15 +226,67 @@
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>JS中的for循环与JAVA中的很相似，这里就不多说了。注意：JS中的换行符是<br>    <br /><br><strong>条件语句</strong><br>if(age &gt;= 18)<br>{<br>    console.log(age);<br>}</p>
-<p><strong>对象的属性</strong><br>    var obj = new Object();<br>    obj.name = “孙悟空”;<br>    obj.var = 798;</p>
+<p>JS中的for循环与JAVA中的很相似，这里就不多说了。注意：JS中的换行符是    </p>
+<pre><code>&lt;br /&gt;
+</code></pre>
+<p><strong>条件语句</strong></p>
+<pre><code>if(age &gt;= 18)
+&#123;
+    console.log(age);
+&#125;
+</code></pre>
+<p><strong>对象的属性</strong></p>
+<pre><code>var obj = new Object();
+obj.name = &quot;孙悟空&quot;;
+obj.var = 798;
+</code></pre>
 <p>对象的属性名不强制要求遵守标识符的规范，但是我们使用时还是尽量按照标识符的规范去做。如果要使用特殊的属性名，不能采用.的方式来操作，使用：对象[“属性名”] = 属性值。</p>
-<h4 id="JS的普通函数"><a href="#JS的普通函数" class="headerlink" title="JS的普通函数"></a>JS的普通函数</h4><p><strong>声明方式一：</strong><br>    function fun()<br>    {<br>        var sum = 0;<br>        for(var i = 0; i&lt;100; i++)<br>        {<br>            sum += i;<br>        }<br>        return sum<br>    }<br>    alert(fun());</p>
-<p><strong>声明方式二：</strong><br>    var fun = function(){<br>                var sum = 0;<br>                for(var i = 0; i&lt;100; i++)<br>                {<br>                    sum += i;<br>                }<br>                return sum<br>            }<br>            alert(fun());</p>
-<p><strong>箭头函数</strong><br>ES6标准新增了一种新的函数：Arrow Function（箭头函数）<br>    x =&gt; x * x<br>相当于：<br>    function (x) {<br>        return x * x;<br>    }</p>
-<p>箭头函数相当于匿名函数，并且简化了函数定义。箭头函数有两种格式，一种像上面的，只包含一个表达式，连{ … }和return都省略掉了。还有一种可以包含多条语句，这时候就不能省略{ … }和return：<br>    x =&gt; {<br>        if (x &gt; 0) {<br>            return x * x;<br>        }<br>        else {<br>            return - x * x;<br>        }<br>    }</p>
-<p>如果参数不是一个，就需要用括号()括起来：<br>    // 两个参数:<br>    (x, y) =&gt; x * x + y * y</p>
-<pre><code>// 无参数:
+<h4 id="JS的普通函数"><a href="#JS的普通函数" class="headerlink" title="JS的普通函数"></a>JS的普通函数</h4><p><strong>声明方式一：</strong></p>
+<pre><code>function fun()
+&#123;
+    var sum = 0;
+    for(var i = 0; i&lt;100; i++)
+    &#123;
+        sum += i;
+    &#125;
+    return sum
+&#125;
+alert(fun());
+</code></pre>
+<p><strong>声明方式二：</strong></p>
+<pre><code>var fun = function()&#123;
+            var sum = 0;
+            for(var i = 0; i&lt;100; i++)
+            &#123;
+                sum += i;
+            &#125;
+            return sum
+        &#125;
+        alert(fun());
+</code></pre>
+<p><strong>箭头函数</strong><br>ES6标准新增了一种新的函数：Arrow Function（箭头函数）</p>
+<pre><code>x =&gt; x * x
+</code></pre>
+<p>相当于：</p>
+<pre><code>function (x) &#123;
+    return x * x;
+&#125;
+</code></pre>
+<p>箭头函数相当于匿名函数，并且简化了函数定义。箭头函数有两种格式，一种像上面的，只包含一个表达式，连{ … }和return都省略掉了。还有一种可以包含多条语句，这时候就不能省略{ … }和return：</p>
+<pre><code>x =&gt; &#123;
+    if (x &gt; 0) &#123;
+        return x * x;
+    &#125;
+    else &#123;
+        return - x * x;
+    &#125;
+&#125;
+</code></pre>
+<p>如果参数不是一个，就需要用括号()括起来：</p>
+<pre><code>// 两个参数:
+(x, y) =&gt; x * x + y * y
+
+// 无参数:
 () =&gt; 3.14
 
 // 可变参数:
@@ -247,8 +299,28 @@
 &#125;
 </code></pre>
 <p><strong>JS的构造方法</strong></p>
-<p>首先展示一个简单的代码：<br>    <!DOCTYPE html><br>    <html><br>    <head><br>        <meta charset="utf-8"><br>        <title>study</title><br>        <script type = "text/javascript"><br>            function Person(name, age, gender)<br>            {<br>                this.name = name;<br>                this.age = age;<br>                this.gender = gender;<br>                alert("Hello!");<br>                this.changeName=changeName;<br>                function changeName(name)<br>                {<br>                    this.lastname=name;<br>                }//changeName() 函数 name 的值赋给 person 的 lastname 属性。<br>            }<br>            var Jogh = new Person("jogh", 12, "male");// 如果 new 了函数内的 this 会指向当前这个 person 并且就算函数内部不 return 也会返回一个对象。</p>
-<pre><code>    &lt;/script&gt;
+<p>首先展示一个简单的代码：</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;study&lt;/title&gt;
+    &lt;script type = &quot;text/javascript&quot;&gt;
+        function Person(name, age, gender)
+        &#123;
+            this.name = name;
+            this.age = age;
+            this.gender = gender;
+            alert(&quot;Hello!&quot;);
+            this.changeName=changeName;
+            function changeName(name)
+            &#123;
+                this.lastname=name;
+            &#125;//changeName() 函数 name 的值赋给 person 的 lastname 属性。 
+        &#125;
+        var Jogh = new Person(&quot;jogh&quot;, 12, &quot;male&quot;);// 如果 new 了函数内的 this 会指向当前这个 person 并且就算函数内部不 return 也会返回一个对象。
+
+    &lt;/script&gt;
 &lt;/head&gt;
 &lt;body&gt;
 
@@ -260,7 +332,14 @@
 &lt;/script&gt;
 </code></pre>
 <p>上述代码块中，Person是一个带参数的构造方法，this是指代该构造方法生成的对象；构造方法与普通方法不同之处在于构造方法调用的时候前面有一个关键字new。<br>原型prototype（重点）</p>
-<p>在我们所创建的每一个函数，解析器都会函数添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象。如果函数作为普通函数调用prototype，这个对象没有任何作用。当函数以构造函数调用，他所创建的对象中都会有一个隐含的属性，通过__proto__来访问该属性。原型对象相当于一个公共的区域，所有的同一类的实例都可以访问到这个原型对象。<br>    function MyClass()<br>    {}<br>    function Person()<br>    {}<br>    var per = new Person();<br>    MyClass.prototype == per.<strong>proto</strong>//true</p>
+<p>在我们所创建的每一个函数，解析器都会函数添加一个属性prototype,这个属性对应着一个对象，这个对象就是我们所谓的原型对象。如果函数作为普通函数调用prototype，这个对象没有任何作用。当函数以构造函数调用，他所创建的对象中都会有一个隐含的属性，通过__proto__来访问该属性。原型对象相当于一个公共的区域，所有的同一类的实例都可以访问到这个原型对象。</p>
+<pre><code>function MyClass()
+&#123;&#125;
+function Person()
+&#123;&#125;
+var per = new Person();
+MyClass.prototype == per.__proto__//true
+</code></pre>
 <p>程序中调试是测试，查找及减少bug(错误)的过程。</p>
 <p>关键字let 和 const</p>
 <p>ES6 可以使用 let 关键字来实现块级作用域。<br>let 声明的变量只在 let 命令所在的代码块 {} 内有效，在 {} 之外不能访问。</p>
@@ -278,15 +357,30 @@
 <p>JSON 易于理解。</p>
 <p>JSON 语法规则<br>数据为 键/值 对。<br>数据由逗号分隔。<br>大括号保存对象<br>方括号保存数组</p>
 <h1 id="数组的基本操作-（Array）"><a href="#数组的基本操作-（Array）" class="headerlink" title="数组的基本操作 #（Array）"></a>数组的基本操作 #（Array）</h1><p>数组也是一个对象，不同的是普通的对象是使用字符串作为属性名，而数组是使用数字作为索引来操作元素。</p>
-<p>数组长度没有限制，数组元素可以是数据类型。<br>数组创建：<br>    var arr = new Array();//使用构造函数创建数组，无参；<br>    var arr0 = new Array(10, 20, 30);//使用构造函数创建数组时，也可以同时添加元素，将要添加的元素作为构造函数的参数传递，元素间用，隔开；<br>    var arr1 = new Array(10);//长度为10<br>    var arr2 = [];<br>    var arr3 = [1,2,3,4];</p>
-<p>使用typeof检查一个数组时，会返回object。<br>    console.log(typeof arr)//返回object<br>    arr[0] = 10;//添加元素，索引是从0开始的整数。<br>    console.log(arr.length)//获取数组的长度</p>
+<p>数组长度没有限制，数组元素可以是数据类型。<br>数组创建：</p>
+<pre><code>var arr = new Array();//使用构造函数创建数组，无参；
+var arr0 = new Array(10, 20, 30);//使用构造函数创建数组时，也可以同时添加元素，将要添加的元素作为构造函数的参数传递，元素间用，隔开；
+var arr1 = new Array(10);//长度为10
+var arr2 = [];
+var arr3 = [1,2,3,4];
+</code></pre>
+<p>使用typeof检查一个数组时，会返回object。    </p>
+<pre><code>console.log(typeof arr)//返回object
+arr[0] = 10;//添加元素，索引是从0开始的整数。
+console.log(arr.length)//获取数组的长度
+</code></pre>
 <h3 id="增删"><a href="#增删" class="headerlink" title="增删"></a>增删</h3><pre><code>arr.push(&quot;唐僧&quot;, &quot;蜘蛛精&quot;);//向数组末尾添加一个或者多个元素，并返回数组新的长度
 arr.unshift(&quot;牛魔王&quot;);//向数组的开头添加一个或者多个元素，并返回新的数组长度
 
 arr.pop();//删除数组最后一个元素，并将被删除的元素返回
 arr.shift();//删除数组的第一个元素，并将被删除的元素返回
 </code></pre>
-<p>#数组遍历：#<br>    for(var i = 0;i&lt;arr.length;i++)<br>    {<br>        console.log(arr[i]);<br>    }</p>
+<p>#数组遍历：#</p>
+<pre><code>for(var i = 0;i&lt;arr.length;i++)
+&#123;
+    console.log(arr[i]);
+&#125;
+</code></pre>
 <h3 id="forEach-这个方法只支持IE8以上的浏览器"><a href="#forEach-这个方法只支持IE8以上的浏览器" class="headerlink" title="forEach(这个方法只支持IE8以上的浏览器)"></a>forEach(这个方法只支持IE8以上的浏览器)</h3><pre><code>arr.forEach(function(a)&#123;
     console.log(&quot;hello&quot;);
     console.log(a);
@@ -296,20 +390,33 @@ arr.shift();//删除数组的第一个元素，并将被删除的元素返回
 <h3 id="slice-splice"><a href="#slice-splice" class="headerlink" title="slice|splice"></a>slice|splice</h3><pre><code>var result = arr.slice(0, 2);//截取开始位置的索引，截取结束位置的索引，包含开始不包含结束索引。该方法不会改变元素数组，而是将截取到的元素封装到一个新的数组中；第二个参数可以省略不写，此时会截取从开始索引往后的所有元素；索引可以传递一个负值，如果传递一个负值，则从后往前计算，-1倒数第一个。
 var result = arr.splice(0, 2, &quot;牛魔王&quot;);//可以用于删除数组中的指定元素，会将指定元素从原数组中删除，并将被删除的元素作为返回值返回。第一个表示开始位置的索引，第二个表示删除的数量，第三个及以后的元素：可以传递一些新的元素，这些元素将会自动插入到开始位置索引前边。
 </code></pre>
-<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><p>var arr = [1,2,3,2,2,1,3,4,2,5];<br>for(var i = 0;i&lt;arr.length;i++)<br>{<br>    for(var j = i+1;j&lt;arr.length;j++)<br>    {<br>        if(arr[i] == arr[j])<br>        {<br>            arr.splice(j, 1);<br>            //当删除了当前j所在的元素以后，后面的元素会自动补位。元素的长度也会跟着改变。<br>            j–;<br>        }<br>    }<br>}</p>
+<h3 id="去重"><a href="#去重" class="headerlink" title="去重"></a>去重</h3><pre><code>var arr = [1,2,3,2,2,1,3,4,2,5];
+for(var i = 0;i&lt;arr.length;i++)
+&#123;
+    for(var j = i+1;j&lt;arr.length;j++)
+    &#123;
+        if(arr[i] == arr[j])
+        &#123;
+            arr.splice(j, 1);
+            //当删除了当前j所在的元素以后，后面的元素会自动补位。元素的长度也会跟着改变。
+            j--;
+        &#125;
+    &#125;
+&#125;
+</code></pre>
 <h3 id="concat-join-reverse-sort"><a href="#concat-join-reverse-sort" class="headerlink" title="concat|join|reverse|sort"></a>concat|join|reverse|sort</h3><pre><code>var arr = [&quot;孙悟空&quot;, &quot;猪八戒&quot;];
 var arr2 = [&quot;白骨精&quot;,&quot;蜘蛛精&quot;]
 result = arr.concat(arr2,&quot;牛魔王&quot;);//该方法可以连接两个或者多个数组，并将新的数组返回，不会对原数组产生影响
 result = arr.join(&quot;@-@&quot;);//该方法可以将数组转换为一个字符串，该方法不会对原数组产生影响，而是将转换后的字符串返回，在join()中可以指定字符串作为参数，该参数会成为数组中的元素连接符，默认为&quot;,&quot;。
 arr.reverse();//该方法用来反转数组，修改原数组
 arr.sort();//用来对数组中的元素进行排序，修改原数组，默认会按照Unicode编码进行排序，即使对于纯数字的数组，可能会得到错误结果。添加回调函数，指定排序规则，回调函数中定义两个形参，a在b前面：
-arr.sort(funtion(a,b)&#123;
+arr.sort(function(a,b)&#123;
          if(a&gt;b)
             return 1;
         else 
             return 0;
             &#125;);
-arr.sort(funtion(a,b)&#123;
+arr.sort(function(a,b)&#123;
          return a-b;
             &#125;);
 Math.min(...arr);获取数组中的最小值。
@@ -328,7 +435,9 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
 <p>Math.max()方法，支持传递多个参数，比如：Math.max(1,4,5,2,9)</p>
 <p>但是它不支持直接传递一个数组作为参数，比如：Math.max(new Array(1,4,5,2,9))。<br>Function.apply()是JS的一个OOP特性，一般用来模拟继承和扩展this的用途，对于上面这段代码，可以这样去理解：</p>
 <p>XXX.apply是一个调用函数的方法，其参数为：apply(Function, Args)，</p>
-<p>Math.max.call可以调用任意个参数；<br>Function为要调用的方法，Args是参数列表，当Function为null时，默认为上文，即<br>    Math.max.apply(null, arr) </p>
+<p>Math.max.call可以调用任意个参数；<br>Function为要调用的方法，Args是参数列表，当Function为null时，默认为上文，即</p>
+<pre><code>Math.max.apply(null, arr) 
+</code></pre>
 <p>可认为是 apply(Math.max, arr)<br>然后，arr是一个参数列表，对于max方法，其参数是若干个数，即</p>
 <pre><code>Math.max(a, b, c, d, ...)
 </code></pre>
@@ -418,7 +527,7 @@ Math.max(arr[0], arr[1], arr[2], arr[3])
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS%E7%9A%84%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">JS的普通函数</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#JS%E7%9A%84%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">JS的普通函数</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#JSON"><span class="nav-number"></span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-%EF%BC%88Array%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">数组的基本操作 #（Array）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A2%9E%E5%88%A0"><span class="nav-number"></span> <span class="nav-text">增删</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#forEach-%E8%BF%99%E4%B8%AA%E6%96%B9%E6%B3%95%E5%8F%AA%E6%94%AF%E6%8C%81IE8%E4%BB%A5%E4%B8%8A%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number"></span> <span class="nav-text">forEach(这个方法只支持IE8以上的浏览器)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#slice-splice"><span class="nav-number"></span> <span class="nav-text">slice|splice</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%BB%E9%87%8D"><span class="nav-number"></span> <span class="nav-text">去重</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#concat-join-reverse-sort"><span class="nav-number"></span> <span class="nav-text">concat|join|reverse|sort</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#indexOf"><span class="nav-number"></span> <span class="nav-text">indexOf</span></a></div>
       </div>
       <!--/noindex-->
 
