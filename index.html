@@ -170,7 +170,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-01-09 15:26:41 / Modified: 15:31:58" itemprop="dateCreated datePublished" datetime="2022-01-09T15:26:41+08:00">2022-01-09</time>
+              <time title="Created: 2022-01-09 15:26:41 / Modified: 16:17:24" itemprop="dateCreated datePublished" datetime="2022-01-09T15:26:41+08:00">2022-01-09</time>
             </span>
 
           
@@ -186,8 +186,7 @@
       
           <h1 id="JavaScript-关键字-let-和-const。"><a href="#JavaScript-关键字-let-和-const。" class="headerlink" title="JavaScript 关键字: let 和 const。"></a>JavaScript 关键字: let 和 const。</h1><p><strong>let 声明的变量只在 let 命令所在的代码块内有效。</strong></p>
 <p><strong>const 声明一个只读的常量，一旦声明，常量的值就不能改变。</strong></p>
-<p><strong>let 命令</strong></p>
-<p>基本用法:</p>
+<h2 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h2><p>基本用法:</p>
 <pre><code>&#123;
   let a = 0;
   a   // 0
@@ -203,7 +202,7 @@ a   // 报错 ReferenceError: a is not defined
 a  // ReferenceError: a is not defined
 b  // 1
 </code></pre>
-<p>不能重复声明，let 只能声明一次 var 可以声明多次:</p>
+<p><em>不能重复声明，let 只能声明一次 var 可以声明多次:</em></p>
 <pre><code>let a = 1;
 let a = 2;
 var b = 3;
@@ -227,18 +226,238 @@ for (let j = 0; j &lt; 10; j++) &#123;
 </code></pre>
 <p>变量 i 是用 var 声明的，在全局范围内有效，所以全局中只有一个变量 i, 每次循环时，setTimeout 定时器里面的 i 指的是全局变量 i ，而循环里的十个 setTimeout 是在循环结束后才执行，所以此时的 i 都是 10。</p>
 <p>变量 j 是用 let 声明的，当前的 j 只在本轮循环中有效，每次循环的 j 其实都是一个新的变量，所以 setTimeout 定时器里面的 j 其实是不同的变量，即最后输出 12345。（若每次循环的变量 j 都是重新声明的，如何知道前一个循环的值？这是因为 JavaScript 引擎内部会记住前一个循环的值）。<br>不存在变量提升</p>
-<p>let 不存在变量提升，var 会变量提升:<br>console.log(a);  //ReferenceError: a is not defined<br>let a = “apple”;</p>
-<p>console.log(b);  //undefined<br>var b = “banana”;</p>
+<p>let 不存在变量提升，var 会变量提升:</p>
+<pre><code>console.log(a);  //ReferenceError: a is not defined
+let a = &quot;apple&quot;;
+
+console.log(b);  //undefined
+var b = &quot;banana&quot;;
+</code></pre>
 <p>变量 b 用 var 声明存在变量提升，所以当脚本开始运行的时候，b 已经存在了，但是还没有赋值，所以会输出 undefined。</p>
-<p>变量 a 用 let 声明不存在变量提升，在声明变量 a 之前，a 不存在，所以会报错。<br>const 命令</p>
-<p>const 声明一个只读变量，声明之后不允许改变。意味着，一旦声明必须初始化，否则会报错。</p>
+<p>变量 a 用 let 声明不存在变量提升，在声明变量 a 之前，a 不存在，所以会报错。</p>
+<h2 id="const-命令"><a href="#const-命令" class="headerlink" title="const 命令"></a>const 命令</h2><p><strong>const 声明一个只读变量，声明之后不允许改变。意味着，一旦声明必须初始化，否则会报错。</strong></p>
 <p>基本用法:</p>
-<p>const PI = “3.1415926”;<br>PI  // 3.1415926</p>
-<p>const MY_AGE;  // SyntaxError: Missing initializer in const declaration    </p>
+<pre><code>const PI = &quot;3.1415926&quot;;
+PI  // 3.1415926
+
+const MY_AGE;  // SyntaxError: Missing initializer in const declaration    
+</code></pre>
 <p>暂时性死区:</p>
-<p>var PI = “a”;<br>if(true){<br>  console.log(PI);  // ReferenceError: PI is not defined<br>  const PI = “3.1415926”;<br>}</p>
-<p>ES6 明确规定，代码块内如果存在 let 或者 const，代码块会对这些命令声明的变量从块的开始就形成一个封闭作用域。代码块内，在声明变量 PI 之前使用它会报错。<br>注意要点</p>
+<pre><code>var PI = &quot;a&quot;;
+if(true)&#123;
+  console.log(PI);  // ReferenceError: PI is not defined
+  const PI = &quot;3.1415926&quot;;
+&#125;
+</code></pre>
+<p>ES6 明确规定，代码块内如果存在 let 或者 const，代码块会对这些命令声明的变量从块的开始就形成一个封闭作用域。代码块内，在声明变量 PI 之前使用它会报错。</p>
+<p><strong>注意要点</strong></p>
 <p>const 如何做到变量在声明初始化之后不允许改变的？其实 const 其实保证的不是变量的值不变，而是保证变量指向的内存地址所保存的数据不允许改动。此时，你可能已经想到，简单类型和复合类型保存值的方式是不同的。是的，对于简单类型（数值 number、字符串 string 、布尔值 boolean）,值就保存在变量指向的那个内存地址，因此 const 声明的简单类型变量等同于常量。而复杂类型（对象 object，数组 array，函数 function），变量指向的内存地址其实是保存了一个指向实际数据的指针，所以 const 只能保证指针是固定的，至于指针指向的数据结构变不变就无法控制了，所以使用 const 声明复杂类型对象时要慎重。</p>
+<h1 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h1><p>解构赋值是对赋值运算符的扩展。<strong>他是一种针对数组或者对象进行模式匹配，然后对其中的变量进行赋值。</strong></p>
+<p>在代码书写上简洁且易读，语义更加清晰明了；也方便了复杂对象中数据字段获取。<br>解构模型</p>
+<p>在解构中，有下面两部分参与：<strong>解构的源，解构赋值表达式的右边部分；解构的目标，解构赋值表达式的左边部分。</strong></p>
+<h2 id="数组模型的解构（Array）"><a href="#数组模型的解构（Array）" class="headerlink" title="数组模型的解构（Array）"></a>数组模型的解构（Array）</h2><p>基本</p>
+<pre><code>let [a, b, c] = [1, 2, 3];
+// a = 1
+// b = 2
+// c = 3
+</code></pre>
+<p>可嵌套</p>
+<pre><code>let [a, [[b], c]] = [1, [[2], 3]];
+// a = 1
+// b = 2
+// c = 3
+</code></pre>
+<p>可忽略</p>
+<pre><code>let [a, , b] = [1, 2, 3];
+// a = 1
+// b = 3
+</code></pre>
+<p>不完全解构</p>
+<pre><code>let [a = 1, b] = []; // a = 1, b = undefined
+</code></pre>
+<p>剩余运算符</p>
+<pre><code>let [a, ...b] = [1, 2, 3];
+//a = 1
+//b = [2, 3]
+</code></pre>
+<h2 id="字符串等"><a href="#字符串等" class="headerlink" title="字符串等"></a>字符串等</h2><p>在数组的解构中，解构的目标若为可遍历对象，皆可进行解构赋值。可遍历对象即实现 Iterator 接口的数据。</p>
+<pre><code>let [a, b, c, d, e] = &#39;hello&#39;;
+// a = &#39;h&#39;
+// b = &#39;e&#39;
+// c = &#39;l&#39;
+// d = &#39;l&#39;
+// e = &#39;o&#39;
+</code></pre>
+<p>解构默认值</p>
+<pre><code>let [a = 2] = [undefined]; // a = 2
+</code></pre>
+<p>当解构模式有匹配结果，且匹配结果是 undefined 时，会触发默认值作为返回结果。</p>
+<pre><code>let [a = 3, b = a] = [];     // a = 3, b = 3
+let [a = 3, b = a] = [1];    // a = 1, b = 1
+let [a = 3, b = a] = [1, 2]; // a = 1, b = 2
+</code></pre>
+<p>a 与 b 匹配结果为 undefined ，触发默认值：a = 3; b = a =3<br>a 正常解构赋值，匹配结果：a = 1，b 匹配结果 undefined ，触发默认值：b = a =1<br>a 与 b 正常解构赋值，匹配结果：a = 1，b = 2 </p>
+<p>对象模型的解构（Object）</p>
+<p>基本</p>
+<pre><code>let &#123; foo, bar &#125; = &#123; foo: &#39;aaa&#39;, bar: &#39;bbb&#39; &#125;;
+// foo = &#39;aaa&#39;
+// bar = &#39;bbb&#39;
+ 
+let &#123; baz : foo &#125; = &#123; baz : &#39;ddd&#39; &#125;;
+// foo = &#39;ddd&#39;
+</code></pre>
+<p>可嵌套可忽略</p>
+<pre><code>let obj = &#123;p: [&#39;hello&#39;, &#123;y: &#39;world&#39;&#125;] &#125;;
+let &#123;p: [x, &#123; y &#125;] &#125; = obj;
+// x = &#39;hello&#39;
+// y = &#39;world&#39;
+let obj = &#123;p: [&#39;hello&#39;, &#123;y: &#39;world&#39;&#125;] &#125;;
+let &#123;p: [x, &#123;  &#125;] &#125; = obj;
+// x = &#39;hello&#39;
+</code></pre>
+<p>不完全解构</p>
+<pre><code>let obj = &#123;p: [&#123;y: &#39;world&#39;&#125;] &#125;;
+let &#123;p: [&#123; y &#125;, x ] &#125; = obj;
+// x = undefined
+// y = &#39;world&#39;
+</code></pre>
+<p>剩余运算符</p>
+<pre><code>let &#123;a, b, ...rest&#125; = &#123;a: 10, b: 20, c: 30, d: 40&#125;;
+// a = 10
+// b = 20
+// rest = &#123;c: 30, d: 40&#125;
+</code></pre>
+<p>解构默认值</p>
+<pre><code>let &#123;a = 10, b = 5&#125; = &#123;a: 3&#125;;
+// a = 3; b = 5;
+let &#123;a: aa = 10, b: bb = 5&#125; = &#123;a: 3&#125;;
+// aa = 3; bb = 5;
+</code></pre>
+<h1 id="ES6-Map-与-Set"><a href="#ES6-Map-与-Set" class="headerlink" title="ES6 Map 与 Set"></a>ES6 Map 与 Set</h1><h2 id="Map-对象"><a href="#Map-对象" class="headerlink" title="Map 对象"></a>Map 对象</h2><p>Map 对象保存键值对。任何值(对象或者原始值) 都可以作为一个键或一个值。</p>
+<p>Maps 和 Objects 的区别：</p>
+<pre><code>一个 Object 的键只能是字符串或者 Symbols，但一个 Map 的键可以是任意值。
+Map 中的键值是有序的（FIFO 原则），而添加到对象中的键则不是。
+Map 的键值对个数可以从 size 属性获取，而 Object 的键值对个数只能手动计算。
+Object 都有自己的原型，原型链上的键名有可能和你自己在对象上的设置的键名产生冲突。
+</code></pre>
+<h2 id="Map-中的-key"><a href="#Map-中的-key" class="headerlink" title="Map 中的 key"></a>Map 中的 key</h2><pre><code>var myMap = new Map();
+var keyString = &quot;a string&quot;; 
+ 
+myMap.set(keyString, &quot;和键&#39;a string&#39;关联的值&quot;);
+ 
+myMap.get(keyString);    // &quot;和键&#39;a string&#39;关联的值&quot;
+myMap.get(&quot;a string&quot;);   // &quot;和键&#39;a string&#39;关联的值&quot;
+                         // 因为 keyString === &#39;a string&#39;
+</code></pre>
+<p>虽然 NaN 和任何值甚至和自己都不相等(NaN !== NaN 返回true)，NaN作为Map的键来说是没有区别的。</p>
+<h3 id="Map-的迭代"><a href="#Map-的迭代" class="headerlink" title="Map 的迭代"></a>Map 的迭代</h3><p>对 Map 进行遍历，以下两个最高级。<br><strong>for…of</strong></p>
+<pre><code>var myMap = new Map();
+myMap.set(0, &quot;zero&quot;);
+myMap.set(1, &quot;one&quot;);
+
+// 将会显示两个 log。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
+
+for (var [key, value] of myMap) &#123;
+  console.log(key + &quot; = &quot; + value);
+&#125;
+for (var [key, value] of myMap.entries()) &#123;
+  console.log(key + &quot; = &quot; + value);
+&#125;
+/* 这个 entries 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的 [key, value] 数组。 */
+
+// 将会显示两个log。 一个是 &quot;0&quot; 另一个是 &quot;1&quot;
+
+for (var key of myMap.keys()) &#123;
+  console.log(key);
+&#125;
+/* 这个 keys 方法返回一个新的 Iterator 对象， 它按插入顺序包含了 Map 对象中每个元素的键。 */
+
+// 将会显示两个log。 一个是 &quot;zero&quot; 另一个是 &quot;one&quot;
+for (var value of myMap.values()) &#123;
+  console.log(value);
+&#125;
+/* 这个 values 方法返回一个新的 Iterator 对象，它按插入顺序包含了 Map 对象中每个元素的值。 */
+
+    forEach()
+    var myMap = new Map();
+    myMap.set(0, &quot;zero&quot;);
+    myMap.set(1, &quot;one&quot;);
+ 
+// 将会显示两个 logs。 一个是 &quot;0 = zero&quot; 另一个是 &quot;1 = one&quot;
+
+    myMap.forEach(function(value, key) &#123;
+      console.log(key + &quot; = &quot; + value);
+    &#125;, myMap)
+</code></pre>
+<h3 id="Map-对象的操作"><a href="#Map-对象的操作" class="headerlink" title="Map 对象的操作"></a>Map 对象的操作</h3><h4 id="Map-与-Array的转换"><a href="#Map-与-Array的转换" class="headerlink" title="Map 与 Array的转换"></a>Map 与 Array的转换</h4><pre><code>var kvArray = [[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]];
+
+// Map 构造函数可以将一个 二维 键值对数组转换成一个 Map 对象
+
+var myMap = new Map(kvArray);
+
+// 使用 Array.from 函数可以将一个 Map 对象转换成一个二维键值对数组
+
+var outArray = Array.from(myMap);
+</code></pre>
+<h4 id="Map-的克隆"><a href="#Map-的克隆" class="headerlink" title="Map 的克隆"></a>Map 的克隆</h4><pre><code>var myMap1 = new Map([[&quot;key1&quot;, &quot;value1&quot;], [&quot;key2&quot;, &quot;value2&quot;]]);
+var myMap2 = new Map(myMap1);
+
+console.log(original === clone); 
+// 打印 false。 Map 对象构造函数生成实例，迭代出新的对象。
+</code></pre>
+<h4 id="Map-的合并"><a href="#Map-的合并" class="headerlink" title="Map 的合并"></a>Map 的合并</h4><pre><code>var first = new Map([[1, &#39;one&#39;], [2, &#39;two&#39;], [3, &#39;three&#39;],]);
+var second = new Map([[1, &#39;uno&#39;], [2, &#39;dos&#39;]]);
+
+// 合并两个 Map 对象时，如果有重复的键值，则后面的会覆盖前面的，对应值即 uno，dos， three
+
+var merged = new Map([...first, ...second]);
+</code></pre>
+<h2 id="Set-对象"><a href="#Set-对象" class="headerlink" title="Set 对象"></a>Set 对象</h2><p>Set 对象允许你存储任何类型的唯一值，无论是原始值或者是对象引用。</p>
+<h3 id="Set-中的特殊值"><a href="#Set-中的特殊值" class="headerlink" title="Set 中的特殊值"></a>Set 中的特殊值</h3><p>Set 对象存储的值总是唯一的，所以需要判断两个值是否恒等。有几个特殊值需要特殊对待：</p>
+<pre><code>+0 与 -0 在存储判断唯一性的时候是恒等的，所以不重复；
+undefined 与 undefined 是恒等的，所以不重复；
+NaN 与 NaN 是不恒等的，但是在 Set 中只能存一个，不重复。
+</code></pre>
+<p>代码</p>
+<pre><code>let mySet = new Set();
+ 
+mySet.add(1); // Set(1) &#123;1&#125;
+mySet.add(5); // Set(2) &#123;1, 5&#125;
+mySet.add(5); // Set(2) &#123;1, 5&#125; 这里体现了值的唯一性
+mySet.add(&quot;some text&quot;); 
+// Set(3) &#123;1, 5, &quot;some text&quot;&#125; 这里体现了类型的多样性
+var o = &#123;a: 1, b: 2&#125;; 
+mySet.add(o);
+mySet.add(&#123;a: 1, b: 2&#125;); 
+// Set(5) &#123;1, 5, &quot;some text&quot;, &#123;…&#125;, &#123;…&#125;&#125; 
+</code></pre>
+<p>// 这里体现了对象之间引用不同不恒等，即使值相同，Set 也能存储<br>类型转换</p>
+<p>Array</p>
+<pre><code>// Array 转 Set
+var mySet = new Set([&quot;value1&quot;, &quot;value2&quot;, &quot;value3&quot;]);
+// 用...操作符，将 Set 转 Array
+var myArray = [...mySet];
+</code></pre>
+<p>String</p>
+<pre><code>// String 转 Set
+var mySet = new Set(&#39;hello&#39;);  // Set(4) &#123;&quot;h&quot;, &quot;e&quot;, &quot;l&quot;, &quot;o&quot;&#125;
+// 注：Set 中 toString 方法是不能将 Set 转换成 String
+</code></pre>
+<h3 id="Set-对象作用"><a href="#Set-对象作用" class="headerlink" title="Set 对象作用"></a>Set 对象作用</h3><h4 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h4><pre><code>var mySet = new Set([1, 2, 3, 4, 4]);
+[...mySet]; // [1, 2, 3, 4]
+</code></pre>
+<h4 id="并集"><a href="#并集" class="headerlink" title="并集"></a>并集</h4><pre><code>var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var union = new Set([...a, ...b]); // &#123;1, 2, 3, 4&#125;
+</code></pre>
+<h4 id="交集"><a href="#交集" class="headerlink" title="交集"></a>交集</h4><pre><code>var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var intersect = new Set([...a].filter(x =&gt; b.has(x))); // &#123;2, 3&#125;
+</code></pre>
+<h4 id="差集"><a href="#差集" class="headerlink" title="差集"></a>差集</h4><pre><code>var a = new Set([1, 2, 3]);
+var b = new Set([4, 3, 2]);
+var difference = new Set([...a].filter(x =&gt; !b.has(x))); // &#123;1&#125;
+</code></pre>
 
       
     </div>
