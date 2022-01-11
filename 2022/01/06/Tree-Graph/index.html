@@ -28,7 +28,7 @@
 <meta property="og:description" content="树树的概念：树是一种数据结构，它是由n(n≥1)个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点： 每个节点有零个或多个子节点；没有父节点的节点称为根节点；每一个非根节点有且只有一个父节点；除了根节点外，每个子节点可以分为多个不相交的子树。 二叉树：二叉树是n(n&gt;&#x3D;0)个结点的有限集合，该集合或者为空集（称为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:14:38.000Z">
-<meta property="article:modified_time" content="2022-01-06T05:48:41.312Z">
+<meta property="article:modified_time" content="2022-01-11T11:47:17.122Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -172,10 +172,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-06 13:14:38 / Modified: 13:48:41" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
+              <time title="Created: 2022-01-06 13:14:38" itemprop="dateCreated datePublished" datetime="2022-01-06T13:14:38+08:00">2022-01-06</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-11 19:47:17" itemprop="dateModified" datetime="2022-01-11T19:47:17+08:00">2022-01-11</time>
+              </span>
 
           
 
@@ -196,8 +202,14 @@
 <p>(1) 若 i=1，则该结点是二叉树的根，无双亲, 否则，编号为 [i/2] 的结点为其双亲结点;<br>(2) 若 2i&gt;n，则该结点无左孩子， 否则，编号为 2i 的结点为其左孩子结点；<br>(3) 若 2i+1&gt;n，则该结点无右孩子结点， 否则，编号为2i+1 的结点为其右孩子结点。</p>
 <h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
 <p>前序遍历通俗的说就是从二叉树的根结点出发，当第一次到达结点时就输出结点数据，按照先向左在向右的方向访问。中序后序以此类推。</p>
-<p><strong>//前序遍历</strong><br>    <script type="text/javascript"><br>            function TreeNode(val) {<br>              this.val = val;<br>              this.left = this.right = null;<br>             }</p>
-<pre><code>        function preorderTraversal(root)&#123;
+<p><strong>//前序遍历</strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+        function TreeNode(val) &#123;
+          this.val = val;
+          this.left = this.right = null;
+         &#125;
+
+        function preorderTraversal(root)&#123;
             const res = [];
             function inorder(root) &#123;
                 if(root==null)
@@ -211,8 +223,28 @@
         &#125;
 &lt;/script&gt;
 </code></pre>
-<p><strong>//中序遍历</strong><br>    function inorderTraversal(root){<br>        const res = [];<br>        function inorder(root) {<br>            if(root==null)<br>                return;<br>            inorder(root.left);//递归<br>            res.push(root.val);<br>            inorder(root.right);<br>        }</p>
-<p><strong>//后序遍历</strong><br>    function postorderTraversal(root){<br>        const res = [];<br>        function inorder(root) {<br>            if(root==null)<br>                return;<br>            inorder(root.left);//递归<br>            inorder(root.right);<br>            res.push(root.val);<br>        }</p>
+<p><strong>//中序遍历</strong></p>
+<pre><code>function inorderTraversal(root)&#123;
+    const res = [];
+    function inorder(root) &#123;
+        if(root==null)
+            return;
+        inorder(root.left);//递归
+        res.push(root.val);
+        inorder(root.right);
+    &#125;
+</code></pre>
+<p><strong>//后序遍历</strong></p>
+<pre><code>function postorderTraversal(root)&#123;
+    const res = [];
+    function inorder(root) &#123;
+        if(root==null)
+            return;
+        inorder(root.left);//递归
+        inorder(root.right);
+        res.push(root.val);
+    &#125;
+</code></pre>
 <h2 id="二叉树结点删除"><a href="#二叉树结点删除" class="headerlink" title="二叉树结点删除"></a>二叉树结点删除</h2><p>规定：</p>
 <p>1）如果删除的节点是叶子节点，则删除该节点</p>
 <p>2）如果删除的节点是非叶子节点，则删除该子树</p>
@@ -230,8 +262,11 @@
 <p>形式和邻接矩阵一样，只是把邻接矩阵的直接维度换成对应的边，适用于边比顶点多的情况。<br>创建图类</p>
 <p>接下来就采用邻接表的方式创建上面的图并且采用字典来表示：</p>
 <p>创建字典类    </p>
-<p> //创建字典类<br>    function Dictionary(){<br>        var items = {};</p>
-<pre><code>    //set(key,value)向字典里添加新元素，这里主要用来添加边
+<p> //创建字典类</p>
+<pre><code>function Dictionary()&#123;
+    var items = &#123;&#125;;
+
+    //set(key,value)向字典里添加新元素，这里主要用来添加边
     this.set = function(key,value)&#123;
         items[key] = value;
     &#125;
@@ -248,8 +283,12 @@
 &#125;
 </code></pre>
 <p>创建图类    </p>
-<p>//创建图类Graph()<br>    function Graph(){<br>        var vertices = [];    //用来储存顶点<br>        var adjList = new Dictionary();    //用来储存边</p>
-<pre><code>    //创建initializeColor用来初始化各个顶点的颜色，为遍历过程中的标记做准备
+<p>//创建图类Graph()</p>
+<pre><code>function Graph()&#123;
+    var vertices = [];    //用来储存顶点
+    var adjList = new Dictionary();    //用来储存边
+
+    //创建initializeColor用来初始化各个顶点的颜色，为遍历过程中的标记做准备
     var initializeColor = function()&#123;
         var color = [];
         for (var i=0; i&lt;vertices.length; i++)&#123;
@@ -285,15 +324,69 @@
     &#125;
 &#125;
 </code></pre>
-<p>创建实例<br>//创建实例<br>    var graph = new Graph();<br>    var myVertices = [‘A’,’B’,’C’,’D’,’E’,’F’,’G’,’H’,’I’];<br>    //添加顶点<br>    for(var i=0; i&lt;myVertices.length; i++){<br>        graph.addVertex(myVertices[i]);<br>    }<br>//逐一加入边<br>    graph.addEdge(‘A’,’B’);<br>    graph.addEdge(‘A’,’C’);<br>    graph.addEdge(‘A’,’D’);<br>    graph.addEdge(‘C’,’G’);<br>    graph.addEdge(‘C’,’D’);<br>    graph.addEdge(‘D’,’G’);<br>    graph.addEdge(‘D’,’H’);<br>    graph.addEdge(‘B’,’E’);<br>    graph.addEdge(‘B’,’F’);<br>    graph.addEdge(‘E’,’I’);<br>    console.log(graph.toString());</p>
+<p>创建实例<br>//创建实例</p>
+<pre><code>var graph = new Graph();
+var myVertices = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;,&#39;H&#39;,&#39;I&#39;];
+//添加顶点
+for(var i=0; i&lt;myVertices.length; i++)&#123;
+    graph.addVertex(myVertices[i]);
+&#125;
+</code></pre>
+<p>//逐一加入边</p>
+<pre><code>graph.addEdge(&#39;A&#39;,&#39;B&#39;);
+graph.addEdge(&#39;A&#39;,&#39;C&#39;);
+graph.addEdge(&#39;A&#39;,&#39;D&#39;);
+graph.addEdge(&#39;C&#39;,&#39;G&#39;);
+graph.addEdge(&#39;C&#39;,&#39;D&#39;);
+graph.addEdge(&#39;D&#39;,&#39;G&#39;);
+graph.addEdge(&#39;D&#39;,&#39;H&#39;);
+graph.addEdge(&#39;B&#39;,&#39;E&#39;);
+graph.addEdge(&#39;B&#39;,&#39;F&#39;);
+graph.addEdge(&#39;E&#39;,&#39;I&#39;);
+console.log(graph.toString());
+</code></pre>
 <p>输出的结果为：<br>A-&gt;B C D<br>B-&gt;A E F<br>C-&gt;A G D<br>D-&gt;A C G H<br>E-&gt;B I<br>F-&gt;B<br>G-&gt;C D<br>H-&gt;D<br>I-&gt;E </p>
 <h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p>采用队列的方式，先添加节点的先被探索；<br>采用三种颜色来反应节点的状态：<br>白色：还没被访问；<br>灰色：被访问但未被探索；<br>黑色：被访问且探索过；<br>思路：</p>
 <p>首先搜索节点A，探索A节点的相邻节点B,C,D,把其加入队列中，再逐一出队列进行探索，从而实现广度遍历。<br>添加bfs方法     </p>
-<p>//广度优先遍历，在Graph()类中添加以下方法<br>    this.bfs = function(v, callback){<br>        var color = initializeColor();    //初始化节点，都标记为白色<br>        var queue = [];    //创建队列用来顶点的入队；<br>        queue.push(v);    //访问的节点入队列<br>        while(!queue.length==0){    //如果队列非空就执行以下<br>            var u = queue.shift();    //节点出队列<br>            var neighbors = adjList.get(u);  //探索节点对应的边<br>            color[u] = ‘grey’;    //把搜索过的节点变成灰色<br>            for (var i=0; i&lt;neighbors.length; i++){<br>                var w = neighbors[i];<br>                if(color[w] === ‘white’){    //如果探索到的子节点是白色就逐一变灰并入队列<br>                    color[w] = ‘grey’;<br>                    queue.push(w);<br>                }<br>            }<br>            color[u] = ‘black’;        //节点完成搜索和探索的过程，直接变黑<br>            if(callback){<br>                callback(u);        //回调函数，可以用来输出<br>            }<br>        }<br>    }</p>
-<p>创建bfs实例<br>//bfs实例<br>    function printNode(value){<br>        console.log(‘Visited vertex:’+value);<br>    }<br>    graph.bfs(myVertices[0],printNode);</p>
+<p>//广度优先遍历，在Graph()类中添加以下方法</p>
+<pre><code>this.bfs = function(v, callback)&#123;
+    var color = initializeColor();    //初始化节点，都标记为白色
+    var queue = [];    //创建队列用来顶点的入队；
+    queue.push(v);    //访问的节点入队列
+    while(!queue.length==0)&#123;    //如果队列非空就执行以下
+        var u = queue.shift();    //节点出队列
+        var neighbors = adjList.get(u);  //探索节点对应的边
+        color[u] = &#39;grey&#39;;    //把搜索过的节点变成灰色
+        for (var i=0; i&lt;neighbors.length; i++)&#123;  
+            var w = neighbors[i];
+            if(color[w] === &#39;white&#39;)&#123;    //如果探索到的子节点是白色就逐一变灰并入队列
+                color[w] = &#39;grey&#39;;
+                queue.push(w);
+            &#125;
+        &#125;
+        color[u] = &#39;black&#39;;        //节点完成搜索和探索的过程，直接变黑
+        if(callback)&#123;    
+            callback(u);        //回调函数，可以用来输出
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p>创建bfs实例<br>//bfs实例</p>
+<pre><code>function printNode(value)&#123;
+    console.log(&#39;Visited vertex:&#39;+value);
+&#125;
+graph.bfs(myVertices[0],printNode);
+</code></pre>
 <p>bfs输出结果<br>Visited vertex:A<br>Visited vertex:B<br>Visited vertex:C<br>Visited vertex:D<br>Visited vertex:E<br>Visited vertex:F<br>Visited vertex:G<br>Visited vertex:H<br>Visited vertex:I</p>
-<p>使用BFS寻找最短路径<br>    this.BFS = function(v){<br>            var color = initializeColor(),<br>            queue = [],<br>            d = [],    //用来储存从v到u的距离<br>            pred = [];    //用来储存节点的前溯点<br>            queue.push(v);</p>
-<pre><code>        for(var i=0; i&lt;vertices.length; i++)&#123;
+<p>使用BFS寻找最短路径</p>
+<pre><code>this.BFS = function(v)&#123;
+        var color = initializeColor(),
+        queue = [],
+        d = [],    //用来储存从v到u的距离
+        pred = [];    //用来储存节点的前溯点
+        queue.push(v);
+
+        for(var i=0; i&lt;vertices.length; i++)&#123;
             d[vertices[i]] = 0;        //初始化
             pred[vertices[i]] = null;
         &#125;
@@ -319,12 +412,39 @@
         &#125;
     &#125;
 </code></pre>
-<p>创建BFS实例<br>//BFS实例<br>    var shortestPathA = graph.BFS(myVertices[0]);//需要输入头节点myVertice[0]<br>    //console.log(shortestPathA);</p>
-<p>//搜索路径BFS<br>    var fromVertex = myVertices[0];<br>    for (var i=1; i&lt;myVertices.length; i++){<br>        var toVertex = myVertices[i];<br>        var path = [];    //path用来储存路径<br>        for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v]){<br>            path.push(v);<br>        }<br>        path.push(fromVertex);<br>        var s = path.pop();<br>        while(!path.length==0){<br>            s += ‘-‘ + path.pop();<br>        }<br>        console.log(s)<br>    }</p>
+<p>创建BFS实例<br>//BFS实例</p>
+<pre><code>var shortestPathA = graph.BFS(myVertices[0]);//需要输入头节点myVertice[0]
+//console.log(shortestPathA);
+</code></pre>
+<p>//搜索路径BFS</p>
+<pre><code>var fromVertex = myVertices[0];
+for (var i=1; i&lt;myVertices.length; i++)&#123;
+    var toVertex = myVertices[i];
+    var path = [];    //path用来储存路径
+    for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v])&#123;
+        path.push(v);
+    &#125;
+    path.push(fromVertex);
+    var s = path.pop();
+    while(!path.length==0)&#123;
+        s += &#39;-&#39; + path.pop();
+    &#125;
+    console.log(s)
+&#125;
+</code></pre>
 <p>BFS输出结果<br>A-B<br>A-C<br>A-D<br>A-B-E<br>A-B-F<br>A-C-G<br>A-D-H<br>A-B-E-I</p>
 <h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>采用栈的方式，先添加节点的先被探索；<br>由递归实现。<br>思路：</p>
-<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法<br>    this.dfs = function(callback){<br>            var color = initializeColor();<br>            for (var i=0; i&lt;vertices.length; i++){<br>                if(color[vertices[i]]===’white’){<br>                    dfsVisit(vertices[i], color, callback)//调用递归函数<br>                }<br>            }<br>        }</p>
-<pre><code>    var dfsVisit = function(u, color, callback)&#123;
+<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法</p>
+<pre><code>this.dfs = function(callback)&#123;
+        var color = initializeColor();
+        for (var i=0; i&lt;vertices.length; i++)&#123;
+            if(color[vertices[i]]===&#39;white&#39;)&#123;
+                dfsVisit(vertices[i], color, callback)//调用递归函数
+            &#125;
+        &#125;
+    &#125;
+
+    var dfsVisit = function(u, color, callback)&#123;
         color[u] = &#39;grey&#39;;
         if(callback)&#123;
             callback(u);
@@ -340,7 +460,8 @@
     &#125;
 </code></pre>
 <p>创建dfs实例</p>
-<p>graph.dfs(printNode);</p>
+<pre><code>graph.dfs(printNode);
+</code></pre>
 <p>dfs输出结果<br>Visited vertex:A<br>Visited vertex:B<br>Visited vertex:E<br>Visited vertex:I<br>Visited vertex:F<br>Visited vertex:C<br>Visited vertex:G<br>Visited vertex:D<br>Visited vertex:H</p>
 
     </div>
@@ -422,7 +543,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">树的概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">二叉树：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="nav-number">1.3.</span> <span class="nav-text">二叉树遍历</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">树</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="nav-number">1.1.</span> <span class="nav-text">树的概念：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="nav-number">1.2.</span> <span class="nav-text">二叉树：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="nav-number">1.3.</span> <span class="nav-text">二叉树遍历</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E7%82%B9%E5%88%A0%E9%99%A4"><span class="nav-number">1.4.</span> <span class="nav-text">二叉树结点删除</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%9B%BE"><span class="nav-number">2.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.</span> <span class="nav-text">图的遍历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.1.</span> <span class="nav-text">广度优先遍历</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="nav-number">2.1.2.</span> <span class="nav-text">深度优先遍历</span></a></li></ol></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
