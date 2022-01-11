@@ -561,10 +561,16 @@ console.log(&quot;h&quot;.padStart(5));      // &quot;    h&quot;
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-01-09 09:53:11 / Modified: 15:24:41" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
+              <time title="Created: 2022-01-09 09:53:11" itemprop="dateCreated datePublished" datetime="2022-01-09T09:53:11+08:00">2022-01-09</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-01-11 15:09:01" itemprop="dateModified" datetime="2022-01-11T15:09:01+08:00">2022-01-11</time>
+              </span>
 
           
 
@@ -577,17 +583,14 @@ console.log(&quot;h&quot;.padStart(5));      // &quot;    h&quot;
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>链表求中点：</p>
-<pre><code>var slow = head, fast = head.next;
+          <h1 id="链表求中点-："><a href="#链表求中点-：" class="headerlink" title="链表求中点 #："></a>链表求中点 #：</h1><pre><code>var slow = head, fast = head.next;
 while(fast!=null &amp;&amp; fast.next!=null)&#123;
     slow = slow.next;
     fast = fast.next.next;
 &#125;
 </code></pre>
-<p>围成圆，提取的位置不能相邻：</p>
-<p>（采用枚举法）<br>两种情况：1.有头没尾；2.没头有尾</p>
-<p>三数之和：</p>
-<pre><code>var threeSum = function(nums) &#123;
+<h1 id="围成圆，提取的位置不能相邻-："><a href="#围成圆，提取的位置不能相邻-：" class="headerlink" title="围成圆，提取的位置不能相邻 #："></a>围成圆，提取的位置不能相邻 #：</h1><p>（采用枚举法）<br>两种情况：1.有头没尾；2.没头有尾</p>
+<h1 id="三数之和："><a href="#三数之和：" class="headerlink" title="三数之和：#"></a>三数之和：#</h1><pre><code>var threeSum = function(nums) &#123;
     const len = nums.length;
     if(len &lt; 3) return [];
     nums.sort((a, b) =&gt; a - b);
@@ -606,6 +609,58 @@ while(fast!=null &amp;&amp; fast.next!=null)&#123;
     &#125;
     return Array.from(resSet).map(i =&gt; i.split(&quot;,&quot;));
 &#125;;
+</code></pre>
+<h1 id="不需要额外空间的方法，就往位运算上想"><a href="#不需要额外空间的方法，就往位运算上想" class="headerlink" title="不需要额外空间的方法，就往位运算上想"></a>不需要额外空间的方法，就往位运算上想</h1><h1 id="map的使用："><a href="#map的使用：" class="headerlink" title="map的使用："></a>map的使用：</h1><pre><code>var majorityElement = function(nums) &#123;
+    if(nums.length &lt; 3)&#123;
+        return nums[0];
+    &#125;
+
+    var map = new Map()
+    var count = Math.floor(nums.length/2);
+    for(let i = 0;i&lt;nums.length;i++)&#123;
+        if(map.get(nums[i]))&#123;
+            map.set(nums[i], map.get(nums[i]) + 1)
+            //修改value值
+        &#125;
+        else&#123;
+            map.set(nums[i], 1)
+        &#125;
+    &#125;
+    console.log(count)
+    for (let key of map.keys()) &#123;
+        if(map.get(key)&gt;count)&#123;
+            //获取value的正确写法
+            return key;
+        &#125;
+    &#125;
+&#125;;
+</code></pre>
+<h1 id="子数组最大和："><a href="#子数组最大和：" class="headerlink" title="子数组最大和："></a>子数组最大和：</h1><pre><code>const maxSubArray = nums =&gt; &#123;
+    // 数组长度，dp初始化
+    const [len, dp] = [nums.length, [nums[0]]];
+    // 最大值初始化为dp[0]
+    let max = dp[0];
+    for (let i = 1; i &lt; len; i++) &#123;
+        dp[i] = Math.max(dp[i - 1] + nums[i], nums[i]);
+        // 更新最大值
+        max = Math.max(max, dp[i]);
+    &#125;
+    return max;
+&#125;;
+</code></pre>
+<p>连续的思想包含在</p>
+<pre><code>Math.max(dp[i - 1] + nums[i], nums[i])
+</code></pre>
+<h1 id="环形数组："><a href="#环形数组：" class="headerlink" title="环形数组："></a>环形数组：</h1><p>两种情况：一种是最大和子数组在数组内；一种是最大子数组在两边，这个时候除开最大子数组，中间的留下的就是最小子数组。</p>
+<pre><code>var total = 0, maxSum = nums[0], curMax = 0, minSum = nums[0], curMin = 0;
+for (let a of nums) &#123;
+    curMax = Math.max(curMax + a, a);
+    maxSum = Math.max(maxSum, curMax);
+    curMin = Math.min(curMin + a, a);
+    minSum = Math.min(minSum, curMin);
+    total += a;
+&#125;
+return maxSum &gt; 0 ? Math.max(maxSum, total - minSum) : maxSum;
 </code></pre>
 
       
@@ -2267,7 +2322,7 @@ $(&quot;.test&quot;)
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-01-09 14:18:25" itemprop="dateModified" datetime="2022-01-09T14:18:25+08:00">2022-01-09</time>
+                <time title="Modified: 2022-01-11 15:10:37" itemprop="dateModified" datetime="2022-01-11T15:10:37+08:00">2022-01-11</time>
               </span>
 
           
@@ -2385,6 +2440,10 @@ alert(fun());
     return sum;
 &#125;
 </code></pre>
+<h2 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h2><p>定义和用法</p>
+<p>reduce() 方法接收一个函数作为累加器，数组中的每个值（从左到右）开始缩减，最终计算为一个值。</p>
+<p>reduce() 可以作为一个高阶函数，用于函数的 compose。</p>
+<p>注意: reduce() 对于空数组是不会执行回调函数的。</p>
 <p><strong>JS的构造方法</strong></p>
 <p>首先展示一个简单的代码：</p>
 <pre><code>&lt;!DOCTYPE html&gt;
@@ -2438,11 +2497,6 @@ MyClass.prototype == per.__proto__//true
 <p>const 用于声明一个或多个常量，声明时必须进行初始化，且初始化后值不可再修改：</p>
 <pre><code>const PI = 3.141592653589793; PI = 3.14;      // 报错 PI = PI + 10;   // 报错
 </code></pre>
-<h1 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h1><p>JSON 英文全称 JavaScript Object Notation；</p>
-<p>JSON 是一种轻量级的数据交换格式；</p>
-<p>JSON是独立的语言；</p>
-<p>JSON 易于理解。</p>
-<p>JSON 语法规则<br>数据为 键/值 对。<br>数据由逗号分隔。<br>大括号保存对象<br>方括号保存数组</p>
 <h1 id="数组的基本操作-（Array）"><a href="#数组的基本操作-（Array）" class="headerlink" title="数组的基本操作 #（Array）"></a>数组的基本操作 #（Array）</h1><p>数组也是一个对象，不同的是普通的对象是使用字符串作为属性名，而数组是使用数字作为索引来操作元素。</p>
 <p>数组长度没有限制，数组元素可以是数据类型。<br>数组创建：</p>
 <pre><code>var arr = new Array();//使用构造函数创建数组，无参；
@@ -2511,9 +2565,8 @@ Math.min(...arr);获取数组中的最小值。
 <h3 id="indexOf"><a href="#indexOf" class="headerlink" title="indexOf"></a>indexOf</h3><pre><code>array.indexOf 此方法判断数组中是否存在某个值，如果存在返回数组元素的下标，否则返回-1
 let arr = [&#39;something&#39;, &#39;anything&#39;, &#39;nothing&#39;, &#39;anything&#39;];let index = arr.indexOf(&#39;nothing&#39;);console.log(index) //结果是2
 </code></pre>
-<p>省略号</p>
-<p>1、第一个叫做 展开运算符(spread operator)，作用是和字面意思一样，就是把东西展开。可以用在array和object上都行。</p>
-<p>2、第二个，第三个叫做 剩余操作符(rest operator)，是解构的一种，意思就是把剩余的东西放到一个array里面赋值给它。一般只针对array的解构<br>求数组中的最大值、最小值</p>
+<h1 id="省略号"><a href="#省略号" class="headerlink" title="省略号"></a>省略号</h1><p>1、第一个叫做 展开运算符(spread operator)，作用是和字面意思一样，就是把东西展开。可以用在array和object上都行。</p>
+<p>2、第二个，第三个叫做 剩余操作符(rest operator)，是解构的一种，意思就是把剩余的东西放到一个array里面赋值给它。一般只针对array的解构。<br>求数组中的最大值、最小值</p>
 <pre><code>Math.max(...arr);//Math.min(...arr);
 Math.max.apply(null, arr);
 Math.max.call(Math, arr[0], arr[1], arr[2], arr[3]);
