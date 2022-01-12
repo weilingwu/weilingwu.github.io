@@ -1,26 +1,17 @@
-<!DOCTYPE html>
+
+ <!DOCTYPE HTML>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.0.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  
+    <title>es6 | font-end study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Weiling Wu">
+    
 
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta name="description" content="JavaScript 关键字: let 和 const。let 声明的变量只在 let 命令所在的代码块内有效。 const 声明一个只读的常量，一旦声明，常量的值就不能改变。 let 命令基本用法: &amp;#123;   let a &#x3D; 0;   a   &#x2F;&#x2F; 0 &amp;#125; a   &#x2F;&#x2F; 报错 ReferenceError: a is not defined  代码块内有效 let 是在代码块内">
+    
+    <meta name="description" content="JavaScript 关键字: let 和 const。let 声明的变量只在 let 命令所在的代码块内有效。 const 声明一个只读的常量，一旦声明，常量的值就不能改变。 let 命令基本用法: &amp;#123;   let a &#x3D; 0;   a   &#x2F;&#x2F; 0 &amp;#125; a   &#x2F;&#x2F; 报错 ReferenceError: a is not defined  代码块内有效 let 是在代码块内">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6">
 <meta property="og:url" content="http://example.com/2022/01/09/es6/index.html">
@@ -32,163 +23,87 @@
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/01/09/es6/">
+    
+    <link rel="alternative" href="/atom.xml" title="font-end study" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
 
+<meta name="generator" content="Hexo 6.0.0"></head>
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'en'
-  };
-</script>
-
-  <title>es6 | font-end study</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">font-end study</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="font-end study" title="font-end study"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="font-end study">font-end study</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
 </div>
     </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
-            
-
-    
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/01/09/es6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Weiling Wu">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="font-end study">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          es6
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-01-09 15:26:41 / Modified: 16:57:31" itemprop="dateCreated datePublished" datetime="2022-01-09T15:26:41+08:00">2022-01-09</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
     
+      <a href="/2022/01/09/es6/" title="es6" itemprop="url">es6</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-09T07:26:41.000Z" itemprop="datePublished"> Published 2022-01-09</time>
     
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-        <h1 id="JavaScript-关键字-let-和-const。"><a href="#JavaScript-关键字-let-和-const。" class="headerlink" title="JavaScript 关键字: let 和 const。"></a>JavaScript 关键字: let 和 const。</h1><p><strong>let 声明的变量只在 let 命令所在的代码块内有效。</strong></p>
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-%E5%85%B3%E9%94%AE%E5%AD%97-let-%E5%92%8C-const%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 关键字: let 和 const。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#let-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">let 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">const 命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A7%A3%E6%9E%84%EF%BC%88Array%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">数组模型的解构（Array）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AD%89"><span class="toc-number">2.2.</span> <span class="toc-text">字符串等</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Map-%E4%B8%8E-Set"><span class="toc-number">3.</span> <span class="toc-text">ES6 Map 与 Set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">Map 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-%E4%B8%AD%E7%9A%84-key"><span class="toc-number">3.2.</span> <span class="toc-text">Map 中的 key</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.2.1.</span> <span class="toc-text">Map 的迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.2.</span> <span class="toc-text">Map 对象的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E4%B8%8E-Array%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">Map 与 Array的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E7%9A%84%E5%85%8B%E9%9A%86"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">Map 的克隆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E7%9A%84%E5%90%88%E5%B9%B6"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">Map 的合并</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">Set 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="toc-number">3.3.1.</span> <span class="toc-text">Set 中的特殊值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-%E5%AF%B9%E8%B1%A1%E4%BD%9C%E7%94%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">Set 对象作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">3.3.2.1.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E9%9B%86"><span class="toc-number">3.3.2.2.</span> <span class="toc-text">并集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E9%9B%86"><span class="toc-number">3.3.2.3.</span> <span class="toc-text">交集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%AE%E9%9B%86"><span class="toc-number">3.3.2.4.</span> <span class="toc-text">差集</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">字符串拓展方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E4%B8%B2%E7%9A%84%E8%AF%86%E5%88%AB"><span class="toc-number">4.1.</span> <span class="toc-text">子串的识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E5%A4%8D"><span class="toc-number">4.2.</span> <span class="toc-text">字符串重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A5%E5%85%A8"><span class="toc-number">4.3.</span> <span class="toc-text">字符串补全</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="JavaScript-关键字-let-和-const。"><a href="#JavaScript-关键字-let-和-const。" class="headerlink" title="JavaScript 关键字: let 和 const。"></a>JavaScript 关键字: let 和 const。</h1><p><strong>let 声明的变量只在 let 命令所在的代码块内有效。</strong></p>
 <p><strong>const 声明一个只读的常量，一旦声明，常量的值就不能改变。</strong></p>
 <h2 id="let-命令"><a href="#let-命令" class="headerlink" title="let 命令"></a>let 命令</h2><p>基本用法:</p>
 <pre><code>&#123;
@@ -523,170 +438,291 @@ console.log(&quot;h&quot;.padStart(5));      // &quot;    h&quot;
 <p>常用于补全位数：</p>
 <pre><code>console.log(&quot;123&quot;.padStart(10,&quot;0&quot;));  // &quot;0000000123&quot;
 </code></pre>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
 
-    </div>
 
-    
-    
-    
+</div>
 
-      <footer class="post-footer">
 
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2022/01/09/es6/" data-title="es6 | font-end study" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/01/09/刷题经验/"  title="刷题经验">
+ <strong>下一篇：</strong><br/> 
+ <span>刷题经验
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-%E5%85%B3%E9%94%AE%E5%AD%97-let-%E5%92%8C-const%E3%80%82"><span class="toc-number">1.</span> <span class="toc-text">JavaScript 关键字: let 和 const。</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#let-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.1.</span> <span class="toc-text">let 命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#const-%E5%91%BD%E4%BB%A4"><span class="toc-number">1.2.</span> <span class="toc-text">const 命令</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">2.</span> <span class="toc-text">解构赋值</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A7%A3%E6%9E%84%EF%BC%88Array%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">数组模型的解构（Array）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AD%89"><span class="toc-number">2.2.</span> <span class="toc-text">字符串等</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ES6-Map-%E4%B8%8E-Set"><span class="toc-number">3.</span> <span class="toc-text">ES6 Map 与 Set</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.1.</span> <span class="toc-text">Map 对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Map-%E4%B8%AD%E7%9A%84-key"><span class="toc-number">3.2.</span> <span class="toc-text">Map 中的 key</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="toc-number">3.2.1.</span> <span class="toc-text">Map 的迭代</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Map-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="toc-number">3.2.2.</span> <span class="toc-text">Map 对象的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E4%B8%8E-Array%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-number">3.2.2.1.</span> <span class="toc-text">Map 与 Array的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E7%9A%84%E5%85%8B%E9%9A%86"><span class="toc-number">3.2.2.2.</span> <span class="toc-text">Map 的克隆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Map-%E7%9A%84%E5%90%88%E5%B9%B6"><span class="toc-number">3.2.2.3.</span> <span class="toc-text">Map 的合并</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Set-%E5%AF%B9%E8%B1%A1"><span class="toc-number">3.3.</span> <span class="toc-text">Set 对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="toc-number">3.3.1.</span> <span class="toc-text">Set 中的特殊值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Set-%E5%AF%B9%E8%B1%A1%E4%BD%9C%E7%94%A8"><span class="toc-number">3.3.2.</span> <span class="toc-text">Set 对象作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">3.3.2.1.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E9%9B%86"><span class="toc-number">3.3.2.2.</span> <span class="toc-text">并集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%A4%E9%9B%86"><span class="toc-number">3.3.2.3.</span> <span class="toc-text">交集</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%AE%E9%9B%86"><span class="toc-number">3.3.2.4.</span> <span class="toc-text">差集</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-number">4.</span> <span class="toc-text">字符串拓展方法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%90%E4%B8%B2%E7%9A%84%E8%AF%86%E5%88%AB"><span class="toc-number">4.1.</span> <span class="toc-text">子串的识别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E5%A4%8D"><span class="toc-number">4.2.</span> <span class="toc-text">字符串重复</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A5%E5%85%A8"><span class="toc-number">4.3.</span> <span class="toc-text">字符串补全</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html/" title="html">html<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jQuery-bootstrap/" title="jQuery &amp; bootstrap">jQuery &amp; bootstrap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sort/" title="sort">sort<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
         
-
-
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
         
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/2022/01/09/%E5%88%B7%E9%A2%98%E7%BB%8F%E9%AA%8C/" rel="prev" title="刷题经验">
-      <i class="fa fa-chevron-left"></i> 刷题经验
-    </a></div>
-      <div class="post-nav-item"></div>
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
     </div>
-      </footer>
-    
-  </article>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
+		
+		<a href="/about" target="_blank" title="Weiling Wu">Weiling Wu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
   
-  
-  
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
     }
   });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
+});
 </script>
 
-        </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JavaScript-%E5%85%B3%E9%94%AE%E5%AD%97-let-%E5%92%8C-const%E3%80%82"><span class="nav-number">1.</span> <span class="nav-text">JavaScript 关键字: let 和 const。</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#let-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.1.</span> <span class="nav-text">let 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const-%E5%91%BD%E4%BB%A4"><span class="nav-number">1.2.</span> <span class="nav-text">const 命令</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%A7%A3%E6%9E%84%EF%BC%88Array%EF%BC%89"><span class="nav-number">2.1.</span> <span class="nav-text">数组模型的解构（Array）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%AD%89"><span class="nav-number">2.2.</span> <span class="nav-text">字符串等</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ES6-Map-%E4%B8%8E-Set"><span class="nav-number">3.</span> <span class="nav-text">ES6 Map 与 Set</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.1.</span> <span class="nav-text">Map 对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Map-%E4%B8%AD%E7%9A%84-key"><span class="nav-number">3.2.</span> <span class="nav-text">Map 中的 key</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-%E7%9A%84%E8%BF%AD%E4%BB%A3"><span class="nav-number">3.2.1.</span> <span class="nav-text">Map 的迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Map-%E5%AF%B9%E8%B1%A1%E7%9A%84%E6%93%8D%E4%BD%9C"><span class="nav-number">3.2.2.</span> <span class="nav-text">Map 对象的操作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-%E4%B8%8E-Array%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">Map 与 Array的转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-%E7%9A%84%E5%85%8B%E9%9A%86"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">Map 的克隆</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Map-%E7%9A%84%E5%90%88%E5%B9%B6"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">Map 的合并</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Set-%E5%AF%B9%E8%B1%A1"><span class="nav-number">3.3.</span> <span class="nav-text">Set 对象</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="nav-number">3.3.1.</span> <span class="nav-text">Set 中的特殊值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Set-%E5%AF%B9%E8%B1%A1%E4%BD%9C%E7%94%A8"><span class="nav-number">3.3.2.</span> <span class="nav-text">Set 对象作用</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="nav-number">3.3.2.1.</span> <span class="nav-text">数组去重</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B6%E9%9B%86"><span class="nav-number">3.3.2.2.</span> <span class="nav-text">并集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%A4%E9%9B%86"><span class="nav-number">3.3.2.3.</span> <span class="nav-text">交集</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B7%AE%E9%9B%86"><span class="nav-number">3.3.2.4.</span> <span class="nav-text">差集</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">字符串拓展方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%90%E4%B8%B2%E7%9A%84%E8%AF%86%E5%88%AB"><span class="nav-number">4.1.</span> <span class="nav-text">子串的识别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%87%8D%E5%A4%8D"><span class="nav-number">4.2.</span> <span class="nav-text">字符串重复</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%A1%A5%E5%85%A8"><span class="nav-number">4.3.</span> <span class="nav-text">字符串补全</span></a></li></ol></li></ol></div>
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">Weiling Wu</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
-          <span class="site-state-item-count">13</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">4</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
 
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
 
-      </div>
+  $('.hoverqrcode').hide();
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">Weiling Wu</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a>
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/muse.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -698,13 +734,65 @@ console.log(&quot;h&quot;.padStart(5));      // &quot;    h&quot;
 
 
 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
 
 
 
+<!-- Analytics Begin -->
 
-  
 
-  
 
-</body>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
 </html>
