@@ -11,15 +11,15 @@
     
 
     
-    <meta name="description" content="PHP 变量规则：  变量以 $ 符号开始，后面跟着变量的名称 变量名必须以字母或者下划线字符开始 变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ） 变量名不能包含空格 变量名是区分大小写的（$y 和 $Y 是两个不同的变量）  &lt;?php $txt&#x3D;&quot;Hello world!&quot;; $x&#x3D;5; $y&#x3D;10.5; echo $txt.$x.$y ?&gt;">
+    <meta name="description" content="php变量PHP 变量规则 变量以 $ 符号开始，后面跟着变量的名称 变量名必须以字母或者下划线字符开始 变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ） 变量名不能包含空格 变量名是区分大小写的（$y 和 $Y 是两个不同的变量）  &lt;?php $txt&#x3D;&quot;Hello world!&quot;; $x&#x3D;5; $y&#x3D;10.5; echo $txt.$x.$y ?&amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="php">
 <meta property="og:url" content="http://example.com/2022/01/06/php/index.html">
 <meta property="og:site_name" content="front-end study">
-<meta property="og:description" content="PHP 变量规则：  变量以 $ 符号开始，后面跟着变量的名称 变量名必须以字母或者下划线字符开始 变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ） 变量名不能包含空格 变量名是区分大小写的（$y 和 $Y 是两个不同的变量）  &lt;?php $txt&#x3D;&quot;Hello world!&quot;; $x&#x3D;5; $y&#x3D;10.5; echo $txt.$x.$y ?&gt;">
+<meta property="og:description" content="php变量PHP 变量规则 变量以 $ 符号开始，后面跟着变量的名称 变量名必须以字母或者下划线字符开始 变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ） 变量名不能包含空格 变量名是区分大小写的（$y 和 $Y 是两个不同的变量）  &lt;?php $txt&#x3D;&quot;Hello world!&quot;; $x&#x3D;5; $y&#x3D;10.5; echo $txt.$x.$y ?&amp;gt">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T11:43:01.000Z">
-<meta property="article:modified_time" content="2022-01-12T02:29:38.310Z">
+<meta property="article:modified_time" content="2022-01-12T03:31:00.256Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -27,7 +27,7 @@
     <link rel="alternative" href="/atom.xml" title="front-end study" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/katong.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -57,7 +57,7 @@
 				<ul>
 					<ul>
 					 
-						<li><a href="/">Home</a></li>
+						<li><a href="/archives">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
 					
@@ -99,12 +99,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.</span> <span class="toc-text">PHP 变量作用域</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">php变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E8%A7%84%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text">PHP 变量规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.</span> <span class="toc-text">PHP 变量作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%92%8C%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">局部和全局作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-echo-%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">PHP echo 语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">php数据类型</span></a></li></ol>
 		
 		</div>
 		
-		<p><strong>PHP 变量规则</strong>：</p>
-<ul>
+		<h1 id="php变量"><a href="#php变量" class="headerlink" title="php变量"></a>php变量</h1><h2 id="PHP-变量规则"><a href="#PHP-变量规则" class="headerlink" title="PHP 变量规则"></a>PHP 变量规则</h2><ul>
 <li>变量以 $ 符号开始，后面跟着变量的名称</li>
 <li>变量名必须以字母或者下划线字符开始</li>
 <li>变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ）</li>
@@ -118,7 +117,7 @@ $y=10.5;
 echo $txt.$x.$y
 ?&gt;
 </code></pre>
-<h3 id="PHP-变量作用域"><a href="#PHP-变量作用域" class="headerlink" title="PHP 变量作用域"></a>PHP 变量作用域</h3><p>变量的作用域是脚本中变量可被引用/使用的部分。</p>
+<h2 id="PHP-变量作用域"><a href="#PHP-变量作用域" class="headerlink" title="PHP 变量作用域"></a>PHP 变量作用域</h2><p>变量的作用域是脚本中变量可被引用/使用的部分。</p>
 <p>PHP 有四种不同的变量作用域：</p>
 <ul>
 <li><p>local</p>
@@ -130,176 +129,85 @@ echo $txt.$x.$y
 <li><p>parameter</p>
 </li>
 </ul>
-<p><strong>局部和全局作用域</strong></p>
-<pre><code> &lt;?php
-$x=5; // 全局变量
-
-function myTest()
-&#123;
-    $y=10; // 局部变量
-    echo &quot;&lt;p&gt;测试函数内变量:&lt;p&gt;&quot;;
+<h3 id="局部和全局作用域"><a href="#局部和全局作用域" class="headerlink" title="局部和全局作用域"></a>局部和全局作用域</h3><pre><code> &lt;?php
+    $x=5; // 全局变量
+    
+    function myTest()
+    &#123;
+        $y=10; // 局部变量
+        echo &quot;&lt;p&gt;测试函数内变量:&lt;p&gt;&quot;;
+        echo &quot;变量 x 为: $x&quot;;
+        echo &quot;&lt;br&gt;&quot;;
+        echo &quot;变量 y 为: $y&quot;;
+    &#125; 
+    
+    myTest();
+    
+    echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
     echo &quot;变量 x 为: $x&quot;;
     echo &quot;&lt;br&gt;&quot;;
     echo &quot;变量 y 为: $y&quot;;
-&#125; 
-
-myTest();
-
-echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
-echo &quot;变量 x 为: $x&quot;;
-echo &quot;&lt;br&gt;&quot;;
-echo &quot;变量 y 为: $y&quot;;
 ?&gt; 
 </code></pre>
 <p><strong>global</strong> 关键字用于函数内访问全局变量。在函数内调用函数外定义的全局变量，我们需要在函数中的变量前加上 global 关键字：</p>
 <pre><code>&lt;?php
-$x=5;
-$y=10;
- 
-function myTest()
-&#123;
-    global $x,$y;
-    $y=$x+$y;
-&#125;
- 
-myTest();
-echo $y; // 输出 15
+    $x=5;
+    $y=10;
+     
+    function myTest()
+    &#123;
+        global $x,$y;
+        $y=$x+$y;
+    &#125;
+     
+    myTest();
+    echo $y; // 输出 15
 ?&gt;
 </code></pre>
-<p><strong>PHP echo 语句</strong></p>
-<p>echo 是一个语言结构，使用的时候可以不用加括号，也可以加上括号： echo 或 echo()。</p>
+<h1 id="PHP-echo-语句"><a href="#PHP-echo-语句" class="headerlink" title="PHP echo 语句"></a>PHP echo 语句</h1><p>echo 是一个语言结构，使用的时候可以不用加括号，也可以加上括号： echo 或 echo()。</p>
 <pre><code>&lt;?php
-echo &quot;&lt;h2&gt;PHP 很有趣!&lt;/h2&gt;&quot;;
-echo &quot;Hello world!&lt;br&gt;&quot;;
-echo &quot;我要学 PHP!&lt;br&gt;&quot;;
-echo &quot;这是一个&quot;, &quot;字符串，&quot;, &quot;使用了&quot;, &quot;多个&quot;, &quot;参数。&quot;;
+    echo &quot;&lt;h2&gt;PHP 很有趣!&lt;/h2&gt;&quot;;
+    echo &quot;Hello world!&lt;br&gt;&quot;;
+    echo &quot;我要学 PHP!&lt;br&gt;&quot;;
+    echo &quot;这是一个&quot;, &quot;字符串，&quot;, &quot;使用了&quot;, &quot;多个&quot;, &quot;参数。&quot;;
 ?&gt;
 </code></pre>
-<p><strong>表单验证实例</strong>：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;body&gt;
-
-&lt;h1&gt;My first PHP page&lt;/h1&gt;
-
-&lt;?php
-// 定义变量并默认设置为空值
-$nameErr = $emailErr = $genderErr = $websiteErr = &quot;&quot;;
-$name = $email = $gender = $comment = $website = &quot;&quot;;
-
-if ($_SERVER[&quot;REQUEST_METHOD&quot;] == &quot;POST&quot;)
-&#123;
-    if (empty($_POST[&quot;name&quot;]))
-    &#123;
-        $nameErr = &quot;名字是必需的&quot;;
-    &#125;
-    else
-    &#123;
-        $name = test_input($_POST[&quot;name&quot;]);
-        // 检测名字是否只包含字母跟空格
-        if (!preg_match(&quot;/^[a-zA-Z ]*$/&quot;,$name))
-        &#123;
-            $nameErr = &quot;只允许字母和空格&quot;; 
+<h1 id="php数据类型"><a href="#php数据类型" class="headerlink" title="php数据类型"></a>php数据类型</h1><ul>
+<li><p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。</p>
+</li>
+<li><p>PHP 字符串：一个字符串是一串字符的序列，就像 “Hello world!”。你可以将任何文本放在单引号和双引号中。</p>
+</li>
+<li><p>PHP 布尔型：布尔型可以是 TRUE 或 FALSE。</p>
+</li>
+<li><p>PHP 数组：数组可以在一个变量中存储多个值。</p>
+</li>
+<li><p>PHP 对象：对象数据类型也可以用于存储数据。在 PHP 中，对象必须声明。首先，你必须使用class关键字声明类对象。类是可以包含属性和方法的结构。然后我们在类中定义数据类型，然后在实例化的类中使用数据类型：</p>
+<pre><code>  &lt;?php
+      class Car
+      &#123;
+        var $color;
+        function __construct($color=&quot;green&quot;) &#123;
+      $this-&gt;color = $color;
         &#125;
-    &#125;
-    
-    if (empty($_POST[&quot;email&quot;]))
-    &#123;
-      $emailErr = &quot;邮箱是必需的&quot;;
-    &#125;
-    else
-    &#123;
-        $email = test_input($_POST[&quot;email&quot;]);
-        // 检测邮箱是否合法
-        if (!preg_match(&quot;/([\w\-]+\@[\w\-]+\.[\w\-]+)/&quot;,$email))
-        &#123;
-            $emailErr = &quot;非法邮箱格式&quot;; 
+        function what_color() &#123;
+      return $this-&gt;color;
         &#125;
-    &#125;
-    
-    if (empty($_POST[&quot;website&quot;]))
-    &#123;
-        $website = &quot;&quot;;
-    &#125;
-    else
-    &#123;
-        $website = test_input($_POST[&quot;website&quot;]);
-        // 检测 URL 地址是否合法
-        if (!preg_match(&quot;/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&amp;@#\/%?=~_|!:,.;]*[-a-z0-9+&amp;@#\/%=~_|]/i&quot;,$website))
-        &#123;
-            $websiteErr = &quot;非法的 URL 的地址&quot;; 
-        &#125;
-    &#125;
-    
-    if (empty($_POST[&quot;comment&quot;]))
-    &#123;
-        $comment = &quot;&quot;;
-    &#125;
-    else
-    &#123;
-        $comment = test_input($_POST[&quot;comment&quot;]);
-    &#125;
-    
-    if (empty($_POST[&quot;gender&quot;]))
-    &#123;
-        $genderErr = &quot;性别是必需的&quot;;
-    &#125;
-    else
-    &#123;
-        $gender = test_input($_POST[&quot;gender&quot;]);
-    &#125;
-&#125;
-
-function test_input($data)
-&#123;
-    $data = trim($data);
-    $data = stripslashes($data);
-    $data = htmlspecialchars($data);
-    return $data;
-&#125;
-?&gt;
-
-&lt;h2&gt;PHP 表单验证实例&lt;/h2&gt;
-&lt;p&gt;&lt;span class=&quot;error&quot;&gt;* 必需字段。&lt;/span&gt;&lt;/p&gt;
-&lt;form method=&quot;post&quot; action=&quot;&lt;?php echo htmlspecialchars($_SERVER[&quot;PHP_SELF&quot;]);?&gt;&quot;&gt; 
-   名字: &lt;input type=&quot;text&quot; name=&quot;name&quot; value=&quot;&lt;?php echo $name;?&gt;&quot;&gt;
-   &lt;span class=&quot;error&quot;&gt;* &lt;?php echo $nameErr;?&gt;&lt;/span&gt;
-   &lt;br&gt;&lt;br&gt;
-   E-mail: &lt;input type=&quot;text&quot; name=&quot;email&quot; value=&quot;&lt;?php echo $email;?&gt;&quot;&gt;
-   &lt;span class=&quot;error&quot;&gt;* &lt;?php echo $emailErr;?&gt;&lt;/span&gt;
-   &lt;br&gt;&lt;br&gt;
-   网址: &lt;input type=&quot;text&quot; name=&quot;website&quot; value=&quot;&lt;?php echo $website;?&gt;&quot;&gt;
-   &lt;span class=&quot;error&quot;&gt;&lt;?php echo $websiteErr;?&gt;&lt;/span&gt;
-   &lt;br&gt;&lt;br&gt;
-   备注: &lt;textarea name=&quot;comment&quot; rows=&quot;5&quot; cols=&quot;40&quot;&gt;&lt;?php echo $comment;?&gt;&lt;/textarea&gt;
-   &lt;br&gt;&lt;br&gt;
-   性别:
-   &lt;input type=&quot;radio&quot; name=&quot;gender&quot; &lt;?php if (isset($gender) &amp;&amp; $gender==&quot;female&quot;) echo &quot;checked&quot;;?&gt;  value=&quot;female&quot;&gt;女
-   &lt;input type=&quot;radio&quot; name=&quot;gender&quot; &lt;?php if (isset($gender) &amp;&amp; $gender==&quot;male&quot;) echo &quot;checked&quot;;?&gt;  value=&quot;male&quot;&gt;男
-   &lt;span class=&quot;error&quot;&gt;* &lt;?php echo $genderErr;?&gt;&lt;/span&gt;
-   &lt;br&gt;&lt;br&gt;
-   &lt;input type=&quot;submit&quot; name=&quot;submit&quot; value=&quot;Submit&quot;&gt; 
-&lt;/form&gt;
-
-&lt;?php
-echo &quot;&lt;h2&gt;您输入的内容是:&lt;/h2&gt;&quot;;
-echo $name;
-echo &quot;&lt;br&gt;&quot;;
-echo $email;
-echo &quot;&lt;br&gt;&quot;;
-echo $website;
-echo &quot;&lt;br&gt;&quot;;
-echo $comment;
-echo &quot;&lt;br&gt;&quot;;
-echo $gender;
-
-
-
-?&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
+      &#125;
+  ?&gt;
 </code></pre>
+</li>
+</ul>
+<p>以上实例中php关键字this就是指向当前对象实例的指针，不指向任何其他对象或类。</p>
+<ul>
+<li><p>PHP NULL 值:NULL 值表示变量没有值。NULL 是数据类型为 NULL 的值。NULL 值指明一个变量是否为空值。 同样可用于数据空值和NULL值的区别。可以通过设置变量值为 NULL 来清空变量数据：</p>
+<pre><code>  &lt;?php
+      $x=&quot;Hello world!&quot;;
+      $x=null;
+      var_dump($x);
+  ?&gt;
+</code></pre>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -354,7 +262,7 @@ echo $gender;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.</span> <span class="toc-text">PHP 变量作用域</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E5%8F%98%E9%87%8F"><span class="toc-number">1.</span> <span class="toc-text">php变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E8%A7%84%E5%88%99"><span class="toc-number">1.1.</span> <span class="toc-text">PHP 变量规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP-%E5%8F%98%E9%87%8F%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.</span> <span class="toc-text">PHP 变量作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B1%80%E9%83%A8%E5%92%8C%E5%85%A8%E5%B1%80%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="toc-number">1.2.1.</span> <span class="toc-text">局部和全局作用域</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP-echo-%E8%AF%AD%E5%8F%A5"><span class="toc-number">2.</span> <span class="toc-text">PHP echo 语句</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#php%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">php数据类型</span></a></li></ol>
  
   </div>
 
@@ -436,8 +344,8 @@ echo $gender;
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m Weiling Wu in Google. <br/>
+			</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">

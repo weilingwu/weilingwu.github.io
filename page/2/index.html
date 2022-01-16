@@ -23,7 +23,7 @@
     <link rel="alternative" href="/atom.xml" title="front-end study" type="application/atom+xml">
     
     
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/img/katong.ico">
     
     
     <link rel="apple-touch-icon" href="/img/jacman.jpg">
@@ -53,7 +53,7 @@
 				<ul>
 					<ul>
 					 
-						<li><a href="/">Home</a></li>
+						<li><a href="/archives">Home</a></li>
 					
 						<li><a href="/archives">Archives</a></li>
 					
@@ -450,15 +450,279 @@ class Hello extends React.Component&#123;
     &#125;
 &#125;
 </code></pre>
-<h1 id="组件通讯的三种方式"><a href="#组件通讯的三种方式" class="headerlink" title="组件通讯的三种方式"></a>组件通讯的三种方式</h1><h2 id="1-父组件传递数据给子组件"><a href="#1-父组件传递数据给子组件" class="headerlink" title="1.父组件传递数据给子组件"></a>1.父组件传递数据给子组件</h2><p>父组件提供要传递的state数据</p>
-<p>给子组件标签添加属性，值为state中的数据</p>
-<p>子组件中通过props接收负组件中传递的数据<br>    class Parent extends React.Component{<br>        state = {lastName:’王’}//第一步<br>        render(){<br>            return (<div><br>                传递给子组件：&lt;Child name = {this.state.lastName}//第二步<br>            </div>)<br>        }<br>    }</p>
-<pre><code>function Child(props)&#123;
-        return &lt;div&gt;子组件接收到的数据：&#123;props.lastName&#125;&lt;/div&gt;//第三步
+<h1 id="组件通讯的三种方式"><a href="#组件通讯的三种方式" class="headerlink" title="组件通讯的三种方式"></a>组件通讯的三种方式</h1><h2 id="父组件传递数据给子组件"><a href="#父组件传递数据给子组件" class="headerlink" title="父组件传递数据给子组件"></a>父组件传递数据给子组件</h2><ul>
+<li><p>父组件提供要传递的state数据</p>
+</li>
+<li><p>给子组件标签添加属性，值为state中的数据</p>
+</li>
+<li><p>子组件中通过props接收负组件中传递的数据</p>
+<p>  class Parent extends React.Component{</p>
+<pre><code>  state = &#123;lastName:&#39;王&#39;&#125;//第一步
+  render()&#123;
+      return (&lt;div&gt;
+          传递给子组件：&lt;Child name = &#123;this.state.lastName&#125;//第二步
+      &lt;/div&gt;)
+  &#125;
+</code></pre>
+<p>  }</p>
+<p>  function Child(props){</p>
+<pre><code>      return &lt;div&gt;子组件接收到的数据：&#123;props.lastName&#125;&lt;/div&gt;//第三步
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<h2 id="子组件传递数据给父组件"><a href="#子组件传递数据给父组件" class="headerlink" title="子组件传递数据给父组件"></a>子组件传递数据给父组件</h2><p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数</p>
+<ol>
+<li><p>父组件中提供一个回调函数（用于接收数据）</p>
+</li>
+<li><p>将该函数作为属性的值传递给子组件</p>
+</li>
+<li><p>子组件通过props调用回调函数</p>
+</li>
+<li><p>将子组件的数据作为参数传递给回调函数</p>
+</li>
+</ol>
+<h1 id="待补充"><a href="#待补充" class="headerlink" title="待补充"></a>待补充</h1><h1 id="React-Hook基本使用"><a href="#React-Hook基本使用" class="headerlink" title="React Hook基本使用"></a>React Hook基本使用</h1><p>（下面是我觉得对Hook介绍的比较清楚的一篇文章。）</p>
+<p>react中hook即为钩子函数，react 16.8以上版本方可使用，为了解决函数式组件，不能像基于类的组件一样，可以使用state以及React的其他特性。</p>
+<h2 id="useState"><a href="#useState" class="headerlink" title="useState"></a>useState</h2><p>首先，我们先说下什么时候使用useState。如果你编写函数组件，并且需要向其添加state。在有hook之前，你需要将它转变成class组件。但现在你可以使用useState。下面例子一个为计时器和input操作state的例子</p>
+<pre><code>import React, &#123; useState, useEffect &#125; from &quot;react&quot;;
+
+export default function HookTest() &#123;
+  // useState(initState)
+  const [count, setCount] = useState(0);//定义初始状态值，设置了一个新的state以及更新state的函数
+  const [fruit, setFruit] = useState(&quot;banana&quot;);
+  const [input, setInput] = useState(&quot;&quot;);
+  const [fruits, setFruits] = useState([&quot;apple&quot;, &quot;banana&quot;]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;点击了&#123;count&#125;次&lt;/p&gt;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;点击&lt;/button&gt;
+
+      &lt;p&gt;年龄：&#123;age ? age : &#39;loading...&#39;&#125;&lt;/p&gt;
+      &lt;p&gt;选择的水果：&#123;fruit&#125;&lt;/p&gt;
+      &lt;p&gt;
+        &lt;input
+          type=&quot;text&quot;
+          value=&#123;input&#125;
+          onChange=&#123;e =&gt; setInput(e.target.value)&#125;
+        /&gt;
+        &lt;button onClick=&#123;() =&gt; setFruits([...fruits, input])&#125;&gt;新增水果&lt;/button&gt;
+      &lt;/p&gt;
+      &lt;ul&gt;
+        &#123;fruits.map(f =&gt; (
+          &lt;li key=&#123;f&#125; onClick=&#123;() =&gt; setFruit(f)&#125;&gt;
+            &#123;f&#125;
+          &lt;/li&gt;
+        ))&#125;- 
+      &lt;/ul&gt;
+    &lt;/div&gt;
+  );
 &#125;
 </code></pre>
-<h2 id="2-子组件传递数据给父组件"><a href="#2-子组件传递数据给父组件" class="headerlink" title="2.子组件传递数据给父组件"></a>2.子组件传递数据给父组件</h2><p>思路：利用回调函数，父组件提供回调，子组件调用，将要传递的数据作为回调函数的参数</p>
-<p>父组件中提供一个回调函数（用于接收数据）<br>将该函数作为属性的值传递给子组件<br>子组件通过props调用回调函数<br>将子组件的数据作为参数传递给回调函数</p>
+<p>useState的参数为初始state。可以是数字，字符串，也可以是对象<br><strong>useState的返回值为一个数组，数组的第一个值是当前state名称，第二个是是更新state的函数。因此其使用方法为 <code>const [count,setCount]=useState(0)</code></strong></p>
+<h2 id="副作用hook-useEffect"><a href="#副作用hook-useEffect" class="headerlink" title="副作用hook useEffect."></a>副作用hook useEffect.</h2><p>使用上面计时器的例子，如果想要每次数目count改变时，页面的title也有变化。在基于类的组件中的写法,在生命周期函数componentDidMount和componentDidUpdate中写</p>
+<pre><code>class Example extends React.Component &#123;
+  constructor(props) &#123;
+    super(props);
+    this.state = &#123;
+      count: 0
+    &#125;;
+  &#125;
+
+  componentDidMount() &#123;
+    document.title = `You clicked $&#123;this.state.count&#125; times`;
+  &#125;
+
+  componentDidUpdate() &#123;
+    document.title = `You clicked $&#123;this.state.count&#125; times`;
+  &#125;
+
+  render() &#123;
+    return (
+      &lt;div&gt;
+        &lt;p&gt;You clicked &#123;this.state.count&#125; times&lt;/p&gt;
+        &lt;button onClick=&#123;() =&gt; this.setState(&#123; count: this.state.count + 1 &#125;)&#125;&gt;
+          Click me
+        &lt;/button&gt;
+      &lt;/div&gt;
+    );
+  &#125;
+&#125;
+</code></pre>
+<p>这样写的话，在更新和组件加载都需要调用相同的函数，有没有一种方法，可以在每次渲染的时候执行呢。在基于class的组件中没有提供，不过我们可以使用钩子函数useEffect来实现哦。看下面例子。</p>
+<pre><code>import React, &#123; useState, useEffect &#125; from &#39;react&#39;;
+
+function Example() &#123;
+  const [count, setCount] = useState(0);
+
+  useEffect(() =&gt; &#123;
+    document.title = `You clicked $&#123;count&#125; times`;
+  &#125;,[count]);
+
+  return (
+    &lt;div&gt;
+      &lt;p&gt;You clicked &#123;count&#125; times&lt;/p&gt;
+      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;
+        Click me
+      &lt;/button&gt;
+    &lt;/div&gt;
+  );
+&#125;
+</code></pre>
+<p>useEffect在每次渲染的时候，就会运行。不需要考虑挂载和更新。<br>useEffect 第一个参数为每次渲染完成执行的函数。第二次参数是一个数组。可以用来监听某个状态的变化，只有状态改变才会执行useEffect总的一个函数。当传入一个空数组[]，则代表只是执行一次。</p>
+<pre><code>useEffect(() =&gt; &#123;
+    document.title = `You clicked $&#123;count&#125; times`;
+  &#125;,[count]);
+</code></pre>
+<p>如果useE ffect的执行函数，返回一个函数,React则会在执行清除操作（组件卸载）时调用它</p>
+<pre><code>useEffect(() =&gt; &#123;
+    function handleStatusChange(status) &#123;
+      setIsOnline(status.isOnline);
+    &#125;
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    // Specify how to clean up after this effect:
+    return function cleanup() &#123;
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    &#125;;
+    &#125;);
+</code></pre>
+<p>什么时候需要执行清楚副作用操作呢？当有订阅时，需要执行清除操作，避免内存泄漏。</p>
+<h2 id="自定义hook"><a href="#自定义hook" class="headerlink" title="自定义hook"></a>自定义hook</h2><p>当我们在2个函数之间共享逻辑时，我们可以提取到第三个函数中。自定义hook时一个函数，其名称以use开头，在内部可以调用其他的hook函数。例如：在一个app中，需要在多个组件中知道用户的登陆状态，这个时候就可以把登陆状态的函数。写成一个hook，在多个组件中调用.</p>
+<pre><code>function useFriendStatus(friendID) &#123;
+  const [isOnline, setIsOnline] = useState(null);
+
+  // ...
+
+  return isOnline;
+&#125;
+</code></pre>
+<p>useFriendStatus函数式一个hook函数，可以返回当前用户的登陆状态。从而得到复用。<br>在其他组件中直接使用    </p>
+<pre><code>const isOnline = useFriendStatus(props.friend.id);
+</code></pre>
+<p>（作者：单只蝴蝶_569d<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/99fde7e3f458/">https://www.jianshu.com/p/99fde7e3f458/</a><br>来源：简书）</p>
+<h1 id="fetch用法详解"><a href="#fetch用法详解" class="headerlink" title="fetch用法详解"></a>fetch用法详解</h1><p>（转自<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36529459/article/details/80374756%EF%BC%89">https://blog.csdn.net/qq_36529459/article/details/80374756）</a></p>
+<p>fetch是一个和axios一样的一个基于promise封装的一个http库。</p>
+<p>但是他与axios不同，从我个人角度理解，他比axios封装的更为严谨。</p>
+<p>在刚使用 fetch 去请求数据的时候：</p>
+<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
+    console.log(res);
+ &#125;)
+</code></pre>
+<p>输出的并不是我们请求的数据，而是Response对象</p>
+<p>但是，从status来看，我们的确从服务端请求到了数据。</p>
+<p>这就是他与其他http库的区别，他并不是直接输出请求内容。</p>
+<p>所以，我们需要用 json() 方法去解析内容。</p>
+<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
+   console.log(res.json());
+&#125;)
+</code></pre>
+<p>利用json方法，成功的返回了一个promise对象，其中包含一个数组，即我们请求的内容.</p>
+<p>但是，这还不是我们需要的内容，我们需要的只是请求到的数组。</p>
+<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
+    res.json().then((data)=&gt;&#123;
+        console.log(data);
+    &#125;)
+&#125;)
+</code></pre>
+<p>注意：这里fetch请求的地址只能是特定的JSON对象，比如（<a target="_blank" rel="noopener" href="https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4%EF%BC%89">https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4）</a></p>
+<p>下面举例说明fetch的使用：</p>
+<pre><code>export default class MyComponent extends React.Component&#123;
+    constructor(props) &#123;
+        super(props);
+        this.state = &#123;
+            error:null,
+            items:[],
+            isloaded:false
+        &#125;
+    &#125;
+    componentDidMount()&#123;
+        fetch(&#39;https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4&#39;)
+            .then(res=&gt;res.json())
+            .then(
+                (result)=&gt;&#123;
+                    this.setState(&#123;
+                        isloaded: true,
+                        items:result.Search
+                        &#125;
+                    )
+                &#125;,
+    // 注意：需要在此处处理错误
+    // 而不是使用 catch() 去捕获错误
+    // 因为使用 catch 去捕获异常会掩盖掉组件本身可能产生的 bug
+                (error)=&gt;&#123;
+                    this.setState(&#123;
+                        isloaded: true,
+                        error:error
+                    &#125;)
+                &#125;
+            )
+    &#125;
+    render()&#123;
+        const &#123;error, items, isloaded&#125; = this.state;
+        if(error)&#123;
+            return(&lt;div&gt;
+                Error: &#123;error.message&#125;
+            &lt;/div&gt;)
+        &#125;
+        return(
+            &lt;div&gt;
+                &lt;ul&gt;
+                    &#123;items.map(item=&gt;(
+                    &lt;li&gt;&#123;item.Title&#125;, &#123;item.Year&#125;&lt;/li&gt;
+                ))&#125;
+
+                &lt;/ul&gt;
+            &lt;/div&gt;
+        )
+    &#125;
+&#125;
+</code></pre>
+<p>配合hook的使用，程序如下：</p>
+<pre><code>export default function MyComponent() &#123;
+const [loaded, setLoaded] = useState(false);
+const [error, setError] = useState(null);
+const [items, setItems] = useState([]);
+
+useEffect(()=&gt;&#123;
+    fetch(&#39;https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4&#39;)
+        .then(res =&gt; res.json())
+        .then(
+            (result) =&gt; &#123;
+                setItems(result.Search);
+                setLoaded(true);
+                    &#125;,
+            (error) =&gt; &#123;
+                setLoaded(true);
+                setError(error);
+            &#125;
+        )
+&#125;, [])
+if(error)&#123;
+    return(&lt;div&gt;
+        Error:&#123;error.message&#125;
+    &lt;/div&gt;)
+&#125;
+else &#123;
+    return (
+        &lt;div&gt;
+            &lt;ul&gt;
+                &#123;
+                    items.map(item=&gt; &#123;
+                        return &lt;li&gt;
+                            &#123;item.Year&#125;, &#123;item.Title&#125;
+                        &lt;/li&gt;
+                    &#125;)
+                &#125;
+
+            &lt;/ul&gt;
+        &lt;/div&gt;
+    )
+
+&#125;
+</code></pre>
+<p>}</p>
 
         
         
@@ -575,8 +839,8 @@ class Hello extends React.Component&#123;
 	
 	
 	<section class="info">
-		<p> Hello ,I&#39;m Larry Page in Google. <br/>
-			This is my blog,believe it or not.</p>
+		<p> Hello ,I&#39;m Weiling Wu in Google. <br/>
+			</p>
 	</section>
 	 
 	<div class="social-font" class="clearfix">
