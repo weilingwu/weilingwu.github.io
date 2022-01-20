@@ -19,7 +19,7 @@
 <meta property="og:description" content="树树的概念：树是一种数据结构，它是由n(n≥1)个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点： 每个节点有零个或多个子节点；没有父节点的节点称为根节点；每一个非根节点有且只有一个父节点；除了根节点外，每个子节点可以分为多个不相交的子树。 二叉树：二叉树是n(n&gt;&#x3D;0)个结点的有限集合，该集合或者为空集（称为">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:14:38.000Z">
-<meta property="article:modified_time" content="2022-01-11T11:47:17.122Z">
+<meta property="article:modified_time" content="2022-01-20T01:57:48.746Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -99,7 +99,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">二叉树遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E7%82%B9%E5%88%A0%E9%99%A4"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树结点删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">广度优先遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">深度优先遍历</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">二叉树深度遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B9%BF%E5%BA%A6%E9%81%8D%E5%8E%86%E2%80%93%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树广度遍历–层次遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E7%82%B9%E5%88%A0%E9%99%A4"><span class="toc-number">1.5.</span> <span class="toc-text">二叉树结点删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">广度优先遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">深度优先遍历</span></a></li></ol></li></ol></li></ol>
 		
 		</div>
 		
@@ -109,7 +109,7 @@
 <p>由二叉树定义以及图示分析得出二叉树有以下特点：<br>1）每个结点最多有两颗子树，所以二叉树中不存在度大于2的结点。<br>2）左子树和右子树是有顺序的，次序不能任意颠倒。<br>3）即使树中某结点只有一棵子树，也要区分它是左子树还是右子树。<br>性质：</p>
 <p>1）在二叉树的第i层上最多有2i-1 个节点 。（i&gt;=1）<br>2）二叉树中如果深度为k,那么最多有2k-1个节点。(k&gt;=1）<br>3）n0=n2+1 n0表示度数为0的节点数，n2表示度数为2的节点数。<br>4）在完全二叉树中，具有n个节点的完全二叉树的深度为[log2n]+1，其中[log2n]是向下取整。<br>5）若对含 n 个结点的完全二叉树从上到下且从左至右进行 1 至 n 的编号，则对完全二叉树中任意一个编号为 i 的结点有如下特性：</p>
 <p>(1) 若 i=1，则该结点是二叉树的根，无双亲, 否则，编号为 [i/2] 的结点为其双亲结点;<br>(2) 若 2i&gt;n，则该结点无左孩子， 否则，编号为 2i 的结点为其左孩子结点；<br>(3) 若 2i+1&gt;n，则该结点无右孩子结点， 否则，编号为2i+1 的结点为其右孩子结点。</p>
-<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
+<h2 id="二叉树深度遍历"><a href="#二叉树深度遍历" class="headerlink" title="二叉树深度遍历"></a>二叉树深度遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
 <p>前序遍历通俗的说就是从二叉树的根结点出发，当第一次到达结点时就输出结点数据，按照先向左在向右的方向访问。中序后序以此类推。</p>
 <p><strong>//前序遍历</strong></p>
 <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
@@ -153,6 +153,53 @@
         inorder(root.right);
         res.push(root.val);
     &#125;
+</code></pre>
+<h2 id="二叉树广度遍历–层次遍历"><a href="#二叉树广度遍历–层次遍历" class="headerlink" title="二叉树广度遍历–层次遍历"></a>二叉树广度遍历–层次遍历</h2><pre><code>     3   
+    / \  
+   9  20
+       /  \   
+    15   7 
+返回其层次遍历结果：
+[ [3], [9,20], [15,7] ]
+</code></pre>
+<p><strong>解题思路</strong></p>
+<p>二叉树的层序遍历，即二叉树的广度遍历，先遍历根节点的相邻节点，再一次遍历相邻节点的子节点。广度遍历通常借助队列来实现。用队列来存储当前层的节点数，遍历当前层的节点，将当前层的节点依次推入数组subRes[]，再将当前节点的左右子节点推入队列中，进入下一层进行遍历，直到遍历完整棵树，即完成到二叉树的层序遍历。</p>
+<pre><code>/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) &#123;
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * &#125;
+ */
+/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;number[][]&#125;
+ */
+//广度遍历 + 队列
+var levelOrder = function(root) &#123;
+    if(!root)&#123;
+        return []
+    &#125;
+    var res = [] //结果最外层数组
+    var queue = [root]
+    while(queue.length&gt;0)&#123;
+        var len = queue.length//当前层的节点数目
+        var subRes = []
+        for(var i=0;i&lt;len;i++)&#123;
+            var node = queue.shift() //节点出列
+            subRes.push(node.val) //将当前层的节点值加入subRes数组中
+            //将下一层节点计入队列中
+            if(node.left)&#123;
+                queue.push(node.left)
+            &#125;
+            if(node.right)&#123;
+                queue.push(node.right)
+            &#125;
+        &#125;
+        res.push(subRes)
+    &#125;
+    return res
+&#125;;
 </code></pre>
 <h2 id="二叉树结点删除"><a href="#二叉树结点删除" class="headerlink" title="二叉树结点删除"></a>二叉树结点删除</h2><p>规定：</p>
 <p>1）如果删除的节点是叶子节点，则删除该节点</p>
@@ -426,7 +473,7 @@ for (var i=1; i&lt;myVertices.length; i++)&#123;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">二叉树遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E7%82%B9%E5%88%A0%E9%99%A4"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树结点删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">广度优先遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">深度优先遍历</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%A0%91"><span class="toc-number">1.</span> <span class="toc-text">树</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%91%E7%9A%84%E6%A6%82%E5%BF%B5%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">树的概念：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">二叉树：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E6%B7%B1%E5%BA%A6%E9%81%8D%E5%8E%86"><span class="toc-number">1.3.</span> <span class="toc-text">二叉树深度遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E5%B9%BF%E5%BA%A6%E9%81%8D%E5%8E%86%E2%80%93%E5%B1%82%E6%AC%A1%E9%81%8D%E5%8E%86"><span class="toc-number">1.4.</span> <span class="toc-text">二叉树广度遍历–层次遍历</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E5%8F%89%E6%A0%91%E7%BB%93%E7%82%B9%E5%88%A0%E9%99%A4"><span class="toc-number">1.5.</span> <span class="toc-text">二叉树结点删除</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE"><span class="toc-number">2.</span> <span class="toc-text">图</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BE%E7%9A%84%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.</span> <span class="toc-text">图的遍历</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.1.</span> <span class="toc-text">广度优先遍历</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E9%81%8D%E5%8E%86"><span class="toc-number">2.1.2.</span> <span class="toc-text">深度优先遍历</span></a></li></ol></li></ol></li></ol>
  
   </div>
 

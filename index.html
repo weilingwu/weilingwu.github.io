@@ -920,7 +920,7 @@ function KMPNext(dest)&#123;
 <p>由二叉树定义以及图示分析得出二叉树有以下特点：<br>1）每个结点最多有两颗子树，所以二叉树中不存在度大于2的结点。<br>2）左子树和右子树是有顺序的，次序不能任意颠倒。<br>3）即使树中某结点只有一棵子树，也要区分它是左子树还是右子树。<br>性质：</p>
 <p>1）在二叉树的第i层上最多有2i-1 个节点 。（i&gt;=1）<br>2）二叉树中如果深度为k,那么最多有2k-1个节点。(k&gt;=1）<br>3）n0=n2+1 n0表示度数为0的节点数，n2表示度数为2的节点数。<br>4）在完全二叉树中，具有n个节点的完全二叉树的深度为[log2n]+1，其中[log2n]是向下取整。<br>5）若对含 n 个结点的完全二叉树从上到下且从左至右进行 1 至 n 的编号，则对完全二叉树中任意一个编号为 i 的结点有如下特性：</p>
 <p>(1) 若 i=1，则该结点是二叉树的根，无双亲, 否则，编号为 [i/2] 的结点为其双亲结点;<br>(2) 若 2i&gt;n，则该结点无左孩子， 否则，编号为 2i 的结点为其左孩子结点；<br>(3) 若 2i+1&gt;n，则该结点无右孩子结点， 否则，编号为2i+1 的结点为其右孩子结点。</p>
-<h2 id="二叉树遍历"><a href="#二叉树遍历" class="headerlink" title="二叉树遍历"></a>二叉树遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
+<h2 id="二叉树深度遍历"><a href="#二叉树深度遍历" class="headerlink" title="二叉树深度遍历"></a>二叉树深度遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
 <p>前序遍历通俗的说就是从二叉树的根结点出发，当第一次到达结点时就输出结点数据，按照先向左在向右的方向访问。中序后序以此类推。</p>
 <p><strong>//前序遍历</strong></p>
 <pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
@@ -964,6 +964,53 @@ function KMPNext(dest)&#123;
         inorder(root.right);
         res.push(root.val);
     &#125;
+</code></pre>
+<h2 id="二叉树广度遍历–层次遍历"><a href="#二叉树广度遍历–层次遍历" class="headerlink" title="二叉树广度遍历–层次遍历"></a>二叉树广度遍历–层次遍历</h2><pre><code>     3   
+    / \  
+   9  20
+       /  \   
+    15   7 
+返回其层次遍历结果：
+[ [3], [9,20], [15,7] ]
+</code></pre>
+<p><strong>解题思路</strong></p>
+<p>二叉树的层序遍历，即二叉树的广度遍历，先遍历根节点的相邻节点，再一次遍历相邻节点的子节点。广度遍历通常借助队列来实现。用队列来存储当前层的节点数，遍历当前层的节点，将当前层的节点依次推入数组subRes[]，再将当前节点的左右子节点推入队列中，进入下一层进行遍历，直到遍历完整棵树，即完成到二叉树的层序遍历。</p>
+<pre><code>/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) &#123;
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * &#125;
+ */
+/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;number[][]&#125;
+ */
+//广度遍历 + 队列
+var levelOrder = function(root) &#123;
+    if(!root)&#123;
+        return []
+    &#125;
+    var res = [] //结果最外层数组
+    var queue = [root]
+    while(queue.length&gt;0)&#123;
+        var len = queue.length//当前层的节点数目
+        var subRes = []
+        for(var i=0;i&lt;len;i++)&#123;
+            var node = queue.shift() //节点出列
+            subRes.push(node.val) //将当前层的节点值加入subRes数组中
+            //将下一层节点计入队列中
+            if(node.left)&#123;
+                queue.push(node.left)
+            &#125;
+            if(node.right)&#123;
+                queue.push(node.right)
+            &#125;
+        &#125;
+        res.push(subRes)
+    &#125;
+    return res
+&#125;;
 </code></pre>
 <h2 id="二叉树结点删除"><a href="#二叉树结点删除" class="headerlink" title="二叉树结点删除"></a>二叉树结点删除</h2><p>规定：</p>
 <p>1）如果删除的节点是叶子节点，则删除该节点</p>
@@ -1906,7 +1953,7 @@ $(&quot;.test&quot;)
 &lt;/body&gt;
 &lt;/html&gt;
 </code></pre>
-<p>CSS模块<br>边框</p>
+<p>CSS模块边框</p>
 <p>边框属性：</p>
 <p>border-radius 用于创建圆角<br>box-shadow 用来添加阴影<br>border-image 属性允许你指定一个图片作为边框，用于创建上文边框的原始图像</p>
 <pre><code>&lt;head&gt;
