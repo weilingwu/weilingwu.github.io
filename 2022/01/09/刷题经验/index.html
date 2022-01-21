@@ -19,7 +19,7 @@
 <meta property="og:description" content="链表求中点 #：var slow &#x3D; head, fast &#x3D; head.next; while(fast!&#x3D;null &amp;&amp; fast.next!&#x3D;null)&amp;#123;     slow &#x3D; slow.next;     fast &#x3D; fast.next.next; &amp;#125;  围成圆，提取的位置不能相邻 #：（采用枚举法）两种情况：1.有头没尾；2.没头有尾 三数之和：#v">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-09T01:53:11.000Z">
-<meta property="article:modified_time" content="2022-01-12T01:59:51.949Z">
+<meta property="article:modified_time" content="2022-01-21T09:08:35.223Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -99,7 +99,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%B1%82%E4%B8%AD%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">链表求中点 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%B4%E6%88%90%E5%9C%86%EF%BC%8C%E6%8F%90%E5%8F%96%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E8%83%BD%E7%9B%B8%E9%82%BB-%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">围成圆，提取的位置不能相邻 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三数之和：#</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E9%A2%9D%E5%A4%96%E7%A9%BA%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B0%B1%E5%BE%80%E4%BD%8D%E8%BF%90%E7%AE%97%E4%B8%8A%E6%83%B3"><span class="toc-number">4.</span> <span class="toc-text">不需要额外空间的方法，就往位运算上想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">map的使用：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E5%92%8C%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">子数组最大和：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%BD%A2%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">环形数组：</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%B1%82%E4%B8%AD%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">链表求中点 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%B4%E6%88%90%E5%9C%86%EF%BC%8C%E6%8F%90%E5%8F%96%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E8%83%BD%E7%9B%B8%E9%82%BB-%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">围成圆，提取的位置不能相邻 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三数之和：#</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E9%A2%9D%E5%A4%96%E7%A9%BA%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B0%B1%E5%BE%80%E4%BD%8D%E8%BF%90%E7%AE%97%E4%B8%8A%E6%83%B3"><span class="toc-number">4.</span> <span class="toc-text">不需要额外空间的方法，就往位运算上想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">map的使用：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E5%92%8C%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">子数组最大和：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%BD%A2%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">环形数组：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">8.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B4%E6%95%B0%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">数组、字符串、整数互相转换：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A1-lt-a-lt-2%E8%BF%99%E7%A7%8D%E5%86%99%E6%B3%95%E6%98%AF%E9%94%99%E8%AF%AF%E7%9A%84%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%94%B9%E6%88%901-lt-a-amp-amp-a-lt-2"><span class="toc-number">10.</span> <span class="toc-text">注意：1&lt;a&lt;&#x3D;2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;&#x3D;2</span></a></li></ol>
 		
 		</div>
 		
@@ -202,7 +202,45 @@ for(var i=nums.length-1;i&gt;=0;i--)&#123;
 return max;
 &#125;;
 </code></pre>
-  
+<h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><pre><code>ingredients.forEach(function(a)&#123;return new Set(a)&#125;)
+[...new Set(supplies)]
+</code></pre>
+<p>不断重复的过程中添加新的元素，循环推出条件：没有新元素加入则退出。下面这个代码的循环推出条件值得参考。</p>
+<pre><code>var findAllRecipes = function(recipes, ingredients, supplies) &#123;
+    var intersect, result = [], valid, interact;
+    ingredients.forEach(function(a)&#123;return new Set(a)&#125;)
+    supplies.forEach(function(a)&#123;return new Set(a)&#125;)
+    while(true)&#123;
+        valid = false;
+        for(let i = 0;i&lt;recipes.length;i++)&#123;
+            if(result.indexOf(recipes[i])!=-1)&#123;
+                continue
+            &#125;
+            interact = new Set(ingredients[i].filter(x =&gt; supplies.indexOf(x)!=-1));
+            if([...interact].length == ingredients[i].length)&#123;
+                valid = true;
+                result.push(recipes[i]);
+                supplies.push(recipes[i]);
+            &#125;
+        &#125;
+        if (valid == false)&#123;
+            break;
+        &#125;
+    &#125;
+    return result;
+&#125;;
+</code></pre>
+<h1 id="数组、字符串、整数互相转换："><a href="#数组、字符串、整数互相转换：" class="headerlink" title="数组、字符串、整数互相转换："></a>数组、字符串、整数互相转换：</h1><ul>
+<li><p>split() 方法，功能：将字符串按某个字符切割成若干个字符串，并以数组形式返回，<code>arr.split(&quot;&quot;)</code></p>
+</li>
+<li><p>join() 方法 功能：将数组元素用某个字符连接成字符串， <code>arr.join(&quot;&quot;)</code></p>
+</li>
+<li><p>字符串转换成整数：parseInt，<code>parseInt(&#39;123&#39;)</code></p>
+</li>
+<li><p>将数值转换成字符串，<code>&#39;123&#39;.toString()</code></p>
+</li>
+</ul>
+<h1 id="注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2"><a href="#注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2" class="headerlink" title="注意：1&lt;a&lt;=2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;=2"></a>注意：<code>1&lt;a&lt;=2</code>这种写法是错误的，应该改成<code>1&lt;a &amp;&amp; a&lt;=2</code></h1>  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
@@ -256,7 +294,7 @@ return max;
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%B1%82%E4%B8%AD%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">链表求中点 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%B4%E6%88%90%E5%9C%86%EF%BC%8C%E6%8F%90%E5%8F%96%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E8%83%BD%E7%9B%B8%E9%82%BB-%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">围成圆，提取的位置不能相邻 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三数之和：#</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E9%A2%9D%E5%A4%96%E7%A9%BA%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B0%B1%E5%BE%80%E4%BD%8D%E8%BF%90%E7%AE%97%E4%B8%8A%E6%83%B3"><span class="toc-number">4.</span> <span class="toc-text">不需要额外空间的方法，就往位运算上想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">map的使用：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E5%92%8C%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">子数组最大和：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%BD%A2%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">环形数组：</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%93%BE%E8%A1%A8%E6%B1%82%E4%B8%AD%E7%82%B9-%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">链表求中点 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%B4%E6%88%90%E5%9C%86%EF%BC%8C%E6%8F%90%E5%8F%96%E7%9A%84%E4%BD%8D%E7%BD%AE%E4%B8%8D%E8%83%BD%E7%9B%B8%E9%82%BB-%EF%BC%9A"><span class="toc-number">2.</span> <span class="toc-text">围成圆，提取的位置不能相邻 #：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C%EF%BC%9A"><span class="toc-number">3.</span> <span class="toc-text">三数之和：#</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%8D%E9%9C%80%E8%A6%81%E9%A2%9D%E5%A4%96%E7%A9%BA%E9%97%B4%E7%9A%84%E6%96%B9%E6%B3%95%EF%BC%8C%E5%B0%B1%E5%BE%80%E4%BD%8D%E8%BF%90%E7%AE%97%E4%B8%8A%E6%83%B3"><span class="toc-number">4.</span> <span class="toc-text">不需要额外空间的方法，就往位运算上想</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#map%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%9A"><span class="toc-number">5.</span> <span class="toc-text">map的使用：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%90%E6%95%B0%E7%BB%84%E6%9C%80%E5%A4%A7%E5%92%8C%EF%BC%9A"><span class="toc-number">6.</span> <span class="toc-text">子数组最大和：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%8E%AF%E5%BD%A2%E6%95%B0%E7%BB%84%EF%BC%9A"><span class="toc-number">7.</span> <span class="toc-text">环形数组：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D"><span class="toc-number">8.</span> <span class="toc-text">数组去重</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E3%80%81%E5%AD%97%E7%AC%A6%E4%B8%B2%E3%80%81%E6%95%B4%E6%95%B0%E4%BA%92%E7%9B%B8%E8%BD%AC%E6%8D%A2%EF%BC%9A"><span class="toc-number">9.</span> <span class="toc-text">数组、字符串、整数互相转换：</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%EF%BC%9A1-lt-a-lt-2%E8%BF%99%E7%A7%8D%E5%86%99%E6%B3%95%E6%98%AF%E9%94%99%E8%AF%AF%E7%9A%84%EF%BC%8C%E5%BA%94%E8%AF%A5%E6%94%B9%E6%88%901-lt-a-amp-amp-a-lt-2"><span class="toc-number">10.</span> <span class="toc-text">注意：1&lt;a&lt;&#x3D;2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;&#x3D;2</span></a></li></ol>
  
   </div>
 

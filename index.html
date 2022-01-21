@@ -557,7 +557,45 @@ for(var i=nums.length-1;i&gt;=0;i--)&#123;
 return max;
 &#125;;
 </code></pre>
-
+<h1 id="数组去重"><a href="#数组去重" class="headerlink" title="数组去重"></a>数组去重</h1><pre><code>ingredients.forEach(function(a)&#123;return new Set(a)&#125;)
+[...new Set(supplies)]
+</code></pre>
+<p>不断重复的过程中添加新的元素，循环推出条件：没有新元素加入则退出。下面这个代码的循环推出条件值得参考。</p>
+<pre><code>var findAllRecipes = function(recipes, ingredients, supplies) &#123;
+    var intersect, result = [], valid, interact;
+    ingredients.forEach(function(a)&#123;return new Set(a)&#125;)
+    supplies.forEach(function(a)&#123;return new Set(a)&#125;)
+    while(true)&#123;
+        valid = false;
+        for(let i = 0;i&lt;recipes.length;i++)&#123;
+            if(result.indexOf(recipes[i])!=-1)&#123;
+                continue
+            &#125;
+            interact = new Set(ingredients[i].filter(x =&gt; supplies.indexOf(x)!=-1));
+            if([...interact].length == ingredients[i].length)&#123;
+                valid = true;
+                result.push(recipes[i]);
+                supplies.push(recipes[i]);
+            &#125;
+        &#125;
+        if (valid == false)&#123;
+            break;
+        &#125;
+    &#125;
+    return result;
+&#125;;
+</code></pre>
+<h1 id="数组、字符串、整数互相转换："><a href="#数组、字符串、整数互相转换：" class="headerlink" title="数组、字符串、整数互相转换："></a>数组、字符串、整数互相转换：</h1><ul>
+<li><p>split() 方法，功能：将字符串按某个字符切割成若干个字符串，并以数组形式返回，<code>arr.split(&quot;&quot;)</code></p>
+</li>
+<li><p>join() 方法 功能：将数组元素用某个字符连接成字符串， <code>arr.join(&quot;&quot;)</code></p>
+</li>
+<li><p>字符串转换成整数：parseInt，<code>parseInt(&#39;123&#39;)</code></p>
+</li>
+<li><p>将数值转换成字符串，<code>&#39;123&#39;.toString()</code></p>
+</li>
+</ul>
+<h1 id="注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2"><a href="#注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2" class="headerlink" title="注意：1&lt;a&lt;=2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;=2"></a>注意：<code>1&lt;a&lt;=2</code>这种写法是错误的，应该改成<code>1&lt;a &amp;&amp; a&lt;=2</code></h1>
         
         
         <p class="article-more-link">
@@ -614,10 +652,10 @@ return max;
 <li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
 </ul>
 <pre><code>&lt;?php
-$txt=&quot;Hello world!&quot;;
-$x=5;
-$y=10.5;
-echo $txt.$x.$y
+    $txt=&quot;Hello world!&quot;;
+    $x=5;
+    $y=10.5;
+    echo $txt.$x.$y
 ?&gt;
 </code></pre>
 <h2 id="PHP-变量作用域"><a href="#PHP-变量作用域" class="headerlink" title="PHP 变量作用域"></a>PHP 变量作用域</h2><p>变量的作用域是脚本中变量可被引用/使用的部分。</p>
@@ -690,10 +728,10 @@ echo $txt.$x.$y
       &#123;
         var $color;
         function __construct($color=&quot;green&quot;) &#123;
-      $this-&gt;color = $color;
+          $this-&gt;color = $color;
         &#125;
         function what_color() &#123;
-      return $this-&gt;color;
+          return $this-&gt;color;
         &#125;
       &#125;
   ?&gt;
@@ -711,6 +749,55 @@ echo $txt.$x.$y
 </code></pre>
 </li>
 </ul>
+<h1 id="PHP-类定义"><a href="#PHP-类定义" class="headerlink" title="PHP 类定义"></a>PHP 类定义</h1><p>PHP 定义类通常语法格式如下：</p>
+<pre><code>&lt;?php
+class phpClass &#123;
+  var $var1;
+  var $var2 = &quot;constant string&quot;;
+  
+  function myfunc ($arg1, $arg2) &#123;
+     [..]
+  &#125;
+  [..]
+&#125;
+?&gt;
+</code></pre>
+<p>解析如下：</p>
+<ul>
+<li><p>类使用 class 关键字后加上类名定义。</p>
+</li>
+<li><p>类名后的一对大括号({})内可以定义变量和方法。</p>
+</li>
+<li><p>类的变量使用 var 来声明, 变量也可以初始化值。</p>
+</li>
+<li><p>函数定义类似 PHP 函数的定义，但函数只能通过该类及其实例化的对象访问。</p>
+</li>
+</ul>
+<pre><code>&lt;?php
+    class Site &#123;
+      /* 成员变量 */
+      var $url;
+      var $title;
+      
+      /* 成员函数 */
+      function setUrl($par)&#123;
+         $this-&gt;url = $par;
+      &#125;
+      
+      function getUrl()&#123;
+         echo $this-&gt;url . PHP_EOL;
+      &#125;
+      
+      function setTitle($par)&#123;
+         $this-&gt;title = $par;
+      &#125;
+      
+      function getTitle()&#123;
+         echo $this-&gt;title . PHP_EOL;
+      &#125;
+    &#125;
+?&gt;
+</code></pre>
 
         
         
