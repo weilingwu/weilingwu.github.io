@@ -595,7 +595,44 @@ return max;
 <li><p>将数值转换成字符串，<code>&#39;123&#39;.toString()</code></p>
 </li>
 </ul>
-<h1 id="注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2"><a href="#注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2" class="headerlink" title="注意：1&lt;a&lt;=2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;=2"></a>注意：<code>1&lt;a&lt;=2</code>这种写法是错误的，应该改成<code>1&lt;a &amp;&amp; a&lt;=2</code></h1>
+<h1 id="注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2"><a href="#注意：1-lt-a-lt-2这种写法是错误的，应该改成1-lt-a-amp-amp-a-lt-2" class="headerlink" title="注意：1&lt;a&lt;=2这种写法是错误的，应该改成1&lt;a &amp;&amp; a&lt;=2"></a>注意：<code>1&lt;a&lt;=2</code>这种写法是错误的，应该改成<code>1&lt;a &amp;&amp; a&lt;=2</code></h1><h1 id="KMP算法："><a href="#KMP算法：" class="headerlink" title="KMP算法："></a>KMP算法：</h1><pre><code>function KMPNext(str)&#123;
+    var next = [0];
+    for(var i = 1, j = 0;i&lt;str.length;i++)&#123;
+        while(j&gt;0 &amp;&amp; str[i]!=str[j])&#123;
+            j = next[j-1];//这里其实是与前面的相比较，比如ABCDAB，B这个数的部分匹配值其实是与前面的ABCD中B相比较，如果相同则加一，不然归零。
+            console.log(j);
+
+        &#125;
+        if(str[i] == str[j])&#123;
+            j++;
+        &#125;
+        next[i] = j;
+
+    &#125;
+    return next;
+&#125;
+function KMPSearch(str1, str2)&#123;
+    var next = KMPNext(str2);
+    for(var i = 0, j = 0;i&lt;str1.length;i++)&#123;
+        if(str1[i] == str2[j])&#123;
+            j++;
+        &#125;
+        else&#123;
+            i = i-(j-next[j]);
+            j = 0;
+        &#125;
+        if(j == str2.length)&#123;
+            return i-j+1;
+
+        &#125;
+    &#125;
+    return -1;
+
+&#125;
+var str1 = &quot;BBC ABCDAB ABCDABCDABDE&quot;, str2 = &quot;ABCDABD&quot;;
+console.log(KMPSearch(str1, str2));
+</code></pre>
+
         
         
         <p class="article-more-link">
