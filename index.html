@@ -946,11 +946,39 @@ function KMPNext(dest)&#123;
         &#125;
 </code></pre>
 <h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
-<p>*算法思路：</p>
-<p>1）遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
-<p>2）将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
-<p>3）重复第一步，直到覆盖了全部的地区。<br>Prim算法（应用场景：修路问题）</p>
+<p>问题描述：假设存在如下表的需要付费的广播台，以及广播台信号可以覆盖的地区。如何选择最少的广播台，让所有的地区都可以接收到信号？</p>
+<table border="1px" cellspacing="0px" cellpadding="8px" >
+    <tr height = "27px" align = "center">
+        <td width = "80px">广播台</td>
+        <td width = "120px">覆盖地区</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>K1</td>
+        <td >"北京","上海","天津"</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>K2</td>
+        <td colspan="4">"广州","北京","深圳"</td>
+    </tr>
+    <tr height = "27px" align = "center">
+    <td>K3</td>
+    <td>"成都","上海","杭州"</td>
+    </tr>
+    <tr height = "27px" align = "center">
+    <td>K4</td>
+    <td>"上海","天津"</td>
+    </tr>
+    <tr height = "27px" align = "center">
+    <td>K5</td>
+    <td>"杭州","大连"</td>
+    </tr>
+</table>
 
+<p><strong>算法思路：</strong></p>
+<p>1). 遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
+<p>2). 将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
+<p>3). 重复第一步，直到覆盖了全部的地区。</p>
+<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1>
         
         
         <p class="article-more-link">
