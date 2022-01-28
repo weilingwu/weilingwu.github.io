@@ -632,6 +632,10 @@ function KMPSearch(str1, str2)&#123;
 var str1 = &quot;BBC ABCDAB ABCDABCDABDE&quot;, str2 = &quot;ABCDABD&quot;;
 console.log(KMPSearch(str1, str2));
 </code></pre>
+<h1 id="map删除某个key值："><a href="#map删除某个key值：" class="headerlink" title="map删除某个key值："></a>map删除某个key值：</h1><pre><code>map.delete(key)
+map.keys()
+map.values()
+</code></pre>
 
         
         
@@ -975,10 +979,66 @@ function KMPNext(dest)&#123;
 </table>
 
 <p><strong>算法思路：</strong></p>
-<p>1). 遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
+<p>1). 遍历所有的广播电台，<strong>找到一个覆盖了最多未覆盖的地区的电台</strong>（此电台可能包含一些已覆盖的地区，但没关系）</p>
 <p>2). 将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
-<p>3). 重复第一步，直到覆盖了全部的地区。</p>
-<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1>
+<p>3). <strong>重复第一步</strong>，直到覆盖了全部的地区。</p>
+<pre><code>function greedy(broadcast, allAreas)&#123;
+    var selects = [];
+    //定义一个临时的集合， 在遍历的过程中，存放遍历过程中的电台覆盖的地区和当前还没有覆盖的地区的交集
+    var tempSet = [];
+    //定义maxKey，保存在一次遍历过程中，能够覆盖最大未覆盖的地区对应的电台的key
+    //如果maxKey不为null， 则会加入到selects中
+    var maxKey = null;
+    while(allAreas.length != 0)&#123;
+        //如果allAreas不为0，则表示还没有覆盖到所有的地区
+        //遍历broadcast，取出对应key
+        maxKey = null;
+        for(let item of broadcast.keys())&#123;
+            let intersect = [...new Set([...broadcast.get(item)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+            if(maxKey == null)&#123;
+                maxKey = item;
+    
+            &#125;
+            else&#123;
+                let intersect2 = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+                if(intersect.length &gt; intersect2.length)&#123;
+                    maxKey = item;
+                &#125;
+            &#125;
+        &#125;
+        if(maxKey!=null)&#123;
+            selects.push(maxKey);
+            var preto_delete = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+            let item;
+            for(var i = 0;i&lt;preto_delete.length;i++)&#123;
+                item = allAreas.indexOf(preto_delete[i])
+                allAreas.splice(item, item + 1);
+            &#125;
+        &#125;
+    &#125;
+    return selects;
+&#125;
+//创建广播电台，放入到Map中
+var broadcast = new Map();
+//将各个电台放入到broadcast中
+broadcast.set(&#39;k1&#39;, [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;]);
+broadcast.set(&#39;k2&#39;, [&quot;广州&quot;, &quot;北京&quot;, &quot;深圳&quot;]);
+broadcast.set(&#39;k3&#39;, [&quot;成都&quot;, &quot;上海&quot;, &quot;杭州&quot;]);
+broadcast.set(&#39;k4&#39;, [&quot;上海&quot;, &quot;天津&quot;]);
+broadcast.set(&#39;k5&#39;, [&quot;杭州&quot;, &quot;大连&quot;]);
+
+var allAreas = [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;, &quot;广州&quot;, &quot;深圳&quot;, &quot;成都&quot;, &quot;大连&quot;, &quot;杭州&quot;];
+console.log(greedy(broadcast, allAreas));
+</code></pre>
+<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1><p>修路问题的本质就是最小生成树问题，最小生成树（Minimum Cost Spanning Tree），简称MST。<br>1).给定一个带权的无向连通图，如何选取一棵生成树，使树上所有边上权的总和为最小，这叫最小生成树；</p>
+<p>2).N个顶点，一定有N-1条边</p>
+<p>3).包含全部顶点</p>
+<p>4).N-1条边都在图中</p>
+<p>Prime算法介绍<br>1.Prime算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有（n-1）条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图</p>
+<ol start="2">
+<li> 普利姆算法如下：<br>（1）设G=(V, E)是连通网，T=(U, D)是最小生成树，V,U是顶点集合， E,D是边的集合<br>（2）若从顶点u开始构造最小生成树，则从集合V中取出顶点u放入集合U中，标记顶点v的visited[u] = 1<br>（3）若集合U中顶点ui与集合V-U中的顶点vj之间存在边，则寻找这些边中权值最小的边，但不能构成回路，将顶点vj加入集合U中，将边（ui， vj）加入集合D中，标记visited[vj] = 1<br>（4）重复步骤2，直到U与V相等，即所有顶点都被标记为访问过，此时D中有n-1条边</li>
+</ol>
+
         
         
         <p class="article-more-link">
@@ -1135,214 +1195,111 @@ var levelOrder = function(root) &#123;
 <p>4）如果当前节点的右子节点不为空，并且右子节点就是需要删除节点，就将this.right= null，并且就返回（结束递归删除）</p>
 <p>5）如果第2步和第3步没有删除节点，那么我们就需要向左子树进行递归删除</p>
 <p>6）如果第4步没有删除节点，则应当向右子树进行递归删除。</p>
-<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p>(引自<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42126431/article/details/89537923">https://blog.csdn.net/weixin_42126431/article/details/89537923</a>)<br>图的相关术语</p>
-<p>1.1.有一条边相连的顶点叫相邻顶点；<br>1.2.一个顶点的度就是该顶点的相邻顶点数；<br>1.3.路径指顶点组成的连续序列；<br>1.4.简单路径没有重复顶点；<br>1.5.有向图和无向图<br>图的表示<br>邻接矩阵</p>
-<p>array[i][j] ===1代表i节点和j节点相邻，否则不相邻<br>邻接表</p>
-<p>相当于把每个节点的相邻节点一一列举出来。<br>关联矩阵</p>
-<p>形式和邻接矩阵一样，只是把邻接矩阵的直接维度换成对应的边，适用于边比顶点多的情况。<br>创建图类</p>
-<p>接下来就采用邻接表的方式创建上面的图并且采用字典来表示：</p>
-<p>创建字典类    </p>
-<p> //创建字典类</p>
-<pre><code>function Dictionary()&#123;
-    var items = &#123;&#125;;
-
-    //set(key,value)向字典里添加新元素，这里主要用来添加边
-    this.set = function(key,value)&#123;
-        items[key] = value;
-    &#125;
-
-    //has(key)如果存在就返回true，否则false
-    this.has = function(key)&#123;
-        return key in items;
-    &#125;
-
-    //get(key)通过key查找特定的数值并返回，这里主要用来查找顶点对应的边数组
-    this.get = function(key)&#123;
-        return this.has(key) ? items[key] : undefined;
-    &#125;
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p>(引自<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42126431/article/details/89537923">https://blog.csdn.net/weixin_42126431/article/details/89537923</a>)</p>
+<h2 id="图的相关术语"><a href="#图的相关术语" class="headerlink" title="图的相关术语"></a>图的相关术语</h2><ol>
+<li><p>有一条边相连的顶点叫相邻顶点；</p>
+</li>
+<li><p>一个顶点的度就是该顶点的相邻顶点数；</p>
+</li>
+<li><p>路径指顶点组成的连续序列；</p>
+</li>
+<li><p>简单路径没有重复顶点；</p>
+</li>
+<li><p>有向图和无向图</p>
+</li>
+</ol>
+<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><ul>
+<li><p>邻接矩阵 array[i][j] ===1代表i节点和j节点相邻，否则不相邻</p>
+</li>
+<li><p>邻接表 相当于把每个节点的相邻节点一一列举出来。</p>
+</li>
+<li><p>关联矩阵 形式和邻接矩阵一样，只是把邻接矩阵的直接维度换成对应的边，适用于边比顶点多的情况。</p>
+</li>
+</ul>
+<h2 id="创建图类"><a href="#创建图类" class="headerlink" title="创建图类"></a>创建图类</h2><p>图由边的集合及顶点的集合组成。边是有方向的是有序图（有向图），否则就是无序图（无向图）。图中的一系列顶点构成路径，路径中所有的顶点都由边连接。路径的长度用路径中第一个顶点到最后一个顶点之间边的数量表示。</p>
+<p>用邻接表来表示边，即将与某一顶点的相邻的边表示为由该顶点的相邻顶点列表构成的数组，并以该顶点作为索引。比如，如果顶点 2 与顶点 0、 1、3、4 相连，那么就将0、1、3、4存储在数组中索引为 2 的位置。</p>
+<p><strong>Graph 类定义图</strong></p>
+<pre><code>function Graph(v) &#123;
+  this.vertices = v;  //顶点的数量
+  this.edges = 0;
+  this.adj = []; //边，邻接矩阵
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    this.adj[i] = [];  //保存与顶点 i 相邻的顶点列表
+  &#125;
+  this.addEdge = addEdge;
+  this.showGraph = showGraph;
+  this.dfs = dfs;
+  this.bfs = bfs;
+  this.marked = [];  //保存未访问过的顶点
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    this.marked[i] = false;
+  &#125;
+  this.pathTo = pathTo;
+  this.hasPathTo = hashPathTo;
+  this.edgeTo = [];
 &#125;
 </code></pre>
-<p>创建图类    </p>
-<p>//创建图类Graph()</p>
-<pre><code>function Graph()&#123;
-    var vertices = [];    //用来储存顶点
-    var adjList = new Dictionary();    //用来储存边
-
-    //创建initializeColor用来初始化各个顶点的颜色，为遍历过程中的标记做准备
-    var initializeColor = function()&#123;
-        var color = [];
-        for (var i=0; i&lt;vertices.length; i++)&#123;
-            color[vertices[i]] = &#39;white&#39;;
-        &#125;
-        return color;
-    &#125;
-    
-    //addVertex(key)用来添加顶点
-    this.addVertex = function(v)&#123;
-        vertices.push(v);
-        adjList.set(v, []);
-    &#125;
-
-    //addEdge(key,value)用来添加边v-w
-    this.addEdge = function(v,w)&#123;
-        adjList.get(v).push(w);
-        adjList.get(w).push(v);
-    &#125;
-
-    //toString()把邻接表转化成字符串的形式，便于输出显示
-    this.toString = function()&#123;
-        var s = &#39;&#39;;
-        for(var i=0; i&lt;vertices.length; i++)&#123;
-            s += vertices[i] + &#39;-&gt;&#39;;
-            var neighbors = adjList.get(vertices[i]);
-            for(var j=0; j&lt;neighbors.length; j++)&#123;
-                s += neighbors[j] + &#39; &#39;;
-            &#125;
-            s += &#39;\n&#39;;
-        &#125;
-        return s;
-    &#125;
+<p><strong>addEdge(A,B)</strong> 添加边，先查找顶点 A 的邻接表，将顶点 B 添加到列表中，然后再查找顶点 B 的邻接表，将顶点 A 加入列表。最后，将边数加 1。</p>
+<pre><code>function addEdge(v, w) &#123;
+　　this.ajd[v].push(w);
+　　this.adj[w].push(v);
+　　this.edges++;
 &#125;
 </code></pre>
-<p>创建实例<br>//创建实例</p>
-<pre><code>var graph = new Graph();
-var myVertices = [&#39;A&#39;,&#39;B&#39;,&#39;C&#39;,&#39;D&#39;,&#39;E&#39;,&#39;F&#39;,&#39;G&#39;,&#39;H&#39;,&#39;I&#39;];
-//添加顶点
-for(var i=0; i&lt;myVertices.length; i++)&#123;
-    graph.addVertex(myVertices[i]);
+<p><strong>showGraph()</strong> 方法显示所有顶点及其相邻顶点列表</p>
+<pre><code>function showGraph() &#123;
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    var str = &#39;&#39;;
+    str += i + &quot; -&gt; &quot;;
+    for (var j = 0; j &lt; this.vertices; ++j) &#123;
+      if (this.adj[i][j] != undefined) &#123;
+        str += this.adj[i][j] + &#39; &#39;;
+      &#125;
+    &#125;
+    console.log(str);
+  &#125;
 &#125;
 </code></pre>
-<p>//逐一加入边</p>
-<pre><code>graph.addEdge(&#39;A&#39;,&#39;B&#39;);
-graph.addEdge(&#39;A&#39;,&#39;C&#39;);
-graph.addEdge(&#39;A&#39;,&#39;D&#39;);
-graph.addEdge(&#39;C&#39;,&#39;G&#39;);
-graph.addEdge(&#39;C&#39;,&#39;D&#39;);
-graph.addEdge(&#39;D&#39;,&#39;G&#39;);
-graph.addEdge(&#39;D&#39;,&#39;H&#39;);
-graph.addEdge(&#39;B&#39;,&#39;E&#39;);
-graph.addEdge(&#39;B&#39;,&#39;F&#39;);
-graph.addEdge(&#39;E&#39;,&#39;I&#39;);
-console.log(graph.toString());
-</code></pre>
-<p>输出的结果为：<br>A-&gt;B C D<br>B-&gt;A E F<br>C-&gt;A G D<br>D-&gt;A C G H<br>E-&gt;B I<br>F-&gt;B<br>G-&gt;C D<br>H-&gt;D<br>I-&gt;E </p>
-<h2 id="图的遍历"><a href="#图的遍历" class="headerlink" title="图的遍历"></a>图的遍历</h2><h3 id="广度优先遍历"><a href="#广度优先遍历" class="headerlink" title="广度优先遍历"></a>广度优先遍历</h3><p>采用队列的方式，先添加节点的先被探索；<br>采用三种颜色来反应节点的状态：<br>白色：还没被访问；<br>灰色：被访问但未被探索；<br>黑色：被访问且探索过；<br>思路：</p>
-<p>首先搜索节点A，探索A节点的相邻节点B,C,D,把其加入队列中，再逐一出队列进行探索，从而实现广度遍历。<br>添加bfs方法     </p>
-<p>//广度优先遍历，在Graph()类中添加以下方法</p>
-<pre><code>this.bfs = function(v, callback)&#123;
-    var color = initializeColor();    //初始化节点，都标记为白色
-    var queue = [];    //创建队列用来顶点的入队；
-    queue.push(v);    //访问的节点入队列
-    while(!queue.length==0)&#123;    //如果队列非空就执行以下
-        var u = queue.shift();    //节点出队列
-        var neighbors = adjList.get(u);  //探索节点对应的边
-        color[u] = &#39;grey&#39;;    //把搜索过的节点变成灰色
-        for (var i=0; i&lt;neighbors.length; i++)&#123;  
-            var w = neighbors[i];
-            if(color[w] === &#39;white&#39;)&#123;    //如果探索到的子节点是白色就逐一变灰并入队列
-                color[w] = &#39;grey&#39;;
-                queue.push(w);
-            &#125;
-        &#125;
-        color[u] = &#39;black&#39;;        //节点完成搜索和探索的过程，直接变黑
-        if(callback)&#123;    
-            callback(u);        //回调函数，可以用来输出
-        &#125;
+<h2 id="搜索图"><a href="#搜索图" class="headerlink" title="搜索图"></a>搜索图</h2><p>确定从一个指定的顶点可以到达其他哪些顶点，有两种搜索方法：<strong>深度优先搜索</strong>和<strong>广度优先搜索</strong>。</p>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>从起始顶点开始追溯，直到到达最后一个顶点，然后回溯， 继续追溯下一条路径，直到到达最后的顶点，如此往复，直到没有路径为止。当访问一个没有访问过的顶点时，将它标记为已访问，再递归地去访问在初始顶点的邻接表中其他没有访问过的顶点。</p>
+<pre><code>function dfs(v) &#123;
+  this.marked[v] = true;
+  if (this.adj[v] != undefined) &#123;
+    console.log(&quot;Visited vertex: &quot; + v);
+  &#125;
+  for(var w of this.adj[v]) &#123;
+    if (!this.marked[w]) &#123;
+      this.dfs(w);
     &#125;
+  &#125;
+&#125;
+//调用
+g = new Graph(5);
+g.addEdge(0, 1);
+g.addEdge(0, 2);
+g.addEdge(1, 3);
+g.addEdge(2, 4);
+g.showGraph();
+g.dfs(0);
+</code></pre>
+<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>从第一个顶点开始，尝试访问尽可能靠近它的顶点。本质上，这种搜索是逐层移动的，首先检查最靠近第一个顶点的层，再逐渐向下移动到离起始顶点最远的层。</p>
+<pre><code>function bfs(s) &#123;
+  var queue = [];
+  this.marked[s] = true;
+  queue.push(s); // 添加到队尾
+  while (queue.length &gt; 0) &#123;
+    var v = queue.shift(); // 从队首移除
+    if (v != undefined) &#123;
+      console.log(&quot;Visisted vertex: &quot; + v);
+    &#125;
+    for(var w of this.adj[v]) &#123;
+      if (!this.marked[w]) &#123;this.marked[w] = true;
+        queue.push(w);
+      &#125;
+    &#125;
+  &#125;
 &#125;
 </code></pre>
-<p>创建bfs实例<br>//bfs实例</p>
-<pre><code>function printNode(value)&#123;
-    console.log(&#39;Visited vertex:&#39;+value);
-&#125;
-graph.bfs(myVertices[0],printNode);
-</code></pre>
-<p>bfs输出结果<br>Visited vertex:A<br>Visited vertex:B<br>Visited vertex:C<br>Visited vertex:D<br>Visited vertex:E<br>Visited vertex:F<br>Visited vertex:G<br>Visited vertex:H<br>Visited vertex:I</p>
-<p>使用BFS寻找最短路径</p>
-<pre><code>this.BFS = function(v)&#123;
-        var color = initializeColor(),
-        queue = [],
-        d = [],    //用来储存从v到u的距离
-        pred = [];    //用来储存节点的前溯点
-        queue.push(v);
-
-        for(var i=0; i&lt;vertices.length; i++)&#123;
-            d[vertices[i]] = 0;        //初始化
-            pred[vertices[i]] = null;
-        &#125;
-
-        while(!queue.length == 0)&#123;
-            var u = queue.shift();
-            var neighbors = adjList.get(u);
-            color[u] = &#39;grey&#39;;
-            for (i=0; i&lt;neighbors.length; i++)&#123;
-                var w = neighbors[i];
-                if(color[w] === &#39;white&#39;)&#123;
-                    color[w] = &#39;grey&#39;;
-                    d[w] = d[u]+1;    //从头节点到w的距离
-                    pred[w] = u;
-                    queue.push(w);
-                &#125;
-            &#125; 
-            color[u] = &#39;black&#39;;
-        &#125;
-        return&#123;
-            distance:d,
-            predecessers:pred
-        &#125;
-    &#125;
-</code></pre>
-<p>创建BFS实例<br>//BFS实例</p>
-<pre><code>var shortestPathA = graph.BFS(myVertices[0]);//需要输入头节点myVertice[0]
-//console.log(shortestPathA);
-</code></pre>
-<p>//搜索路径BFS</p>
-<pre><code>var fromVertex = myVertices[0];
-for (var i=1; i&lt;myVertices.length; i++)&#123;
-    var toVertex = myVertices[i];
-    var path = [];    //path用来储存路径
-    for (var v=toVertex; v!==fromVertex; v=shortestPathA.predecessers[v])&#123;
-        path.push(v);
-    &#125;
-    path.push(fromVertex);
-    var s = path.pop();
-    while(!path.length==0)&#123;
-        s += &#39;-&#39; + path.pop();
-    &#125;
-    console.log(s)
-&#125;
-</code></pre>
-<p>BFS输出结果<br>A-B<br>A-C<br>A-D<br>A-B-E<br>A-B-F<br>A-C-G<br>A-D-H<br>A-B-E-I</p>
-<h3 id="深度优先遍历"><a href="#深度优先遍历" class="headerlink" title="深度优先遍历"></a>深度优先遍历</h3><p>采用栈的方式，先添加节点的先被探索；<br>由递归实现。<br>思路：</p>
-<p>从节点A开始，探索到A的相邻节点B,C,D压入栈中（这里的代码采用for循环，所以没有实质上的栈，但是用栈更容易理解），接着搜索B，探索到B的相邻节点E,F压入栈中，以此递归。<br>添加dfs方法</p>
-<pre><code>this.dfs = function(callback)&#123;
-        var color = initializeColor();
-        for (var i=0; i&lt;vertices.length; i++)&#123;
-            if(color[vertices[i]]===&#39;white&#39;)&#123;
-                dfsVisit(vertices[i], color, callback)//调用递归函数
-            &#125;
-        &#125;
-    &#125;
-
-    var dfsVisit = function(u, color, callback)&#123;
-        color[u] = &#39;grey&#39;;
-        if(callback)&#123;
-            callback(u);
-        &#125;
-        var neighbors = adjList.get(u);
-        for(var i=0; i&lt;neighbors.length; i++)&#123;
-            var w = neighbors[i];
-            if(color[w] === &#39;white&#39;)&#123;
-                dfsVisit(w, color, callback);
-            &#125;
-        &#125;
-        color[u] = &#39;black&#39;;
-    &#125;
-</code></pre>
-<p>创建dfs实例</p>
-<pre><code>graph.dfs(printNode);
-</code></pre>
-<p>dfs输出结果<br>Visited vertex:A<br>Visited vertex:B<br>Visited vertex:E<br>Visited vertex:I<br>Visited vertex:F<br>Visited vertex:C<br>Visited vertex:G<br>Visited vertex:D<br>Visited vertex:H</p>
 
         
         
@@ -1678,7 +1635,9 @@ function heapSort(arr) &#123;
     return arr;
 &#125;
 </code></pre>
-<h1 id="计数排序"><a href="#计数排序" class="headerlink" title="计数排序"></a>计数排序</h1>
+<h1 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h1><p><strong>基本思想：</strong><br>将所有待比较数值统一为同样的数位长度，数位较短的数往前面补零。然后，从最低位开始，以此进行一次排序，这样从最低位排序一直到最高位排序完成以后，数列就变成一个有序序列。
+  </p>
+
         
         
         <p class="article-more-link">

@@ -19,7 +19,7 @@
 <meta property="og:description" content="Redux准备工作 构建react项目   npx create-react-app redux-demo  删除多余的文件(留下index.css,index.js,App.js)  在pages目录下创建Home组件  编写一个简单的结构样式   &lt;button&gt;发送一个action&lt;&#x2F;button&gt;  在App.js中引入这个组件  安装redux   yarn ad">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-04T07:25:55.000Z">
-<meta property="article:modified_time" content="2022-01-04T11:52:51.507Z">
+<meta property="article:modified_time" content="2022-01-26T03:07:36.339Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -99,7 +99,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redux"><span class="toc-number">1.</span> <span class="toc-text">Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="toc-number">1.2.</span> <span class="toc-text">创建一个Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="toc-number">1.3.</span> <span class="toc-text">创建一个Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="toc-number">1.4.</span> <span class="toc-text">创建store</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redux"><span class="toc-number">1.</span> <span class="toc-text">Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="toc-number">1.2.</span> <span class="toc-text">创建一个Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="toc-number">1.3.</span> <span class="toc-text">创建一个Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="toc-number">1.4.</span> <span class="toc-text">创建store</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#react-redux%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">react-redux基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8connect%E6%96%B9%E6%B3%95%E8%AE%A9%E6%88%91%E4%BB%AC%E7%BB%84%E4%BB%B6%E4%B8%8Estore%E5%85%B3%E8%81%94"><span class="toc-number">2.1.</span> <span class="toc-text">利用connect方法让我们组件与store关联</span></a></li></ol></li></ol>
 		
 		</div>
 		
@@ -143,15 +143,57 @@
 <li><p>如果是的话，我们可以通过return返回新的state</p>
 </li>
 <li><p>把reducer进行导出</p>
-<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2></li>
+</li>
+</ul>
+<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2><ul>
 <li><p>在根目录下创建一个文件夹store</p>
 </li>
 <li><p>在该目录下创建一个index.js文件，用来构建store，注意createStore函数里面第一个参数接收的是reducer</p>
-<p>  import {createStore} from “redux”;<br>  const store = createStore{reducer};</p>
+<pre><code>  import &#123;createStore&#125; from &quot;redux&quot;;
+  const store = createStore&#123;reducer&#125;;
+</code></pre>
 </li>
 <li><p>我们需要导入刚刚创建的reducer，然后设置到函数里面去</p>
 </li>
 <li><p>createStore的返回值就是我们构建好的store，然后进行导出</p>
+</li>
+</ul>
+<h1 id="react-redux基本使用"><a href="#react-redux基本使用" class="headerlink" title="react-redux基本使用"></a>react-redux基本使用</h1><ul>
+<li><p>在app.js中导入Provider组件</p>
+<p>  <code>import &#123;Provider&#125; from &#39;react-redux&#39;</code></p>
+</li>
+<li><p>利用Provider组件将我们整个结构进行包裹，并且传递store</p>
+<pre><code>  function App()&#123;
+      return (&lt;Provider store = &#123;store&#125;&gt;&lt;/Provider)
+  &#125;
+</code></pre>
+</li>
+<li><p>导入connect方法</p>
+<p>  <code>import &#123;connect&#125; from &quot;react-redux&quot;;</code></p>
+</li>
+<li><p>调用connect方法</p>
+<p>  <code>connect(...)(Component)</code></p>
+</li>
+</ul>
+<p>connect参数说明：</p>
+<ul>
+<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组建上</strong></p>
+</li>
+<li><p><strong>mapDisPatchToProps(dispatch, ownProps) 将action作为props绑定到我们自己的函数中，dispatch就是store.dispatch(), ownProps自己的props</strong></p>
+</li>
+<li><p>mergeProps(stateProps, dispatchProps, ownProps) 不管是stateProps还是dispatchProps，都需要和ownProps merge之后才会被赋给我们的组件，通常情况下，可以不传这个参数，connect就会使用Object.assign替代该方法</p>
+</li>
+</ul>
+<h2 id="利用connect方法让我们组件与store关联"><a href="#利用connect方法让我们组件与store关联" class="headerlink" title="利用connect方法让我们组件与store关联"></a>利用connect方法让我们组件与store关联</h2><ul>
+<li><p>在组件ComA和ComB，分别导入connect方法</p>
+<p>  import {connect} from ‘react-redux’</p>
+</li>
+<li><p>利用connect()方法来对我们组件进行加强，并且导出</p>
+<p>  export default connect(mapStateToProps, mapDisPatchToProps)(Home)</p>
+</li>
+<li><p>组件ComA属于发送方，所以要实现第二个参数</p>
+</li>
+<li><p>组件ComB属于接收方，所以要实现第一个参数</p>
 </li>
 </ul>
   
@@ -208,7 +250,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redux"><span class="toc-number">1.</span> <span class="toc-text">Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="toc-number">1.2.</span> <span class="toc-text">创建一个Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="toc-number">1.3.</span> <span class="toc-text">创建一个Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="toc-number">1.4.</span> <span class="toc-text">创建store</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Redux"><span class="toc-number">1.</span> <span class="toc-text">Redux</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.1.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAAction"><span class="toc-number">1.2.</span> <span class="toc-text">创建一个Action</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E4%B8%80%E4%B8%AAReducer"><span class="toc-number">1.3.</span> <span class="toc-text">创建一个Reducer</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BAstore"><span class="toc-number">1.4.</span> <span class="toc-text">创建store</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#react-redux%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">2.</span> <span class="toc-text">react-redux基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%A9%E7%94%A8connect%E6%96%B9%E6%B3%95%E8%AE%A9%E6%88%91%E4%BB%AC%E7%BB%84%E4%BB%B6%E4%B8%8Estore%E5%85%B3%E8%81%94"><span class="toc-number">2.1.</span> <span class="toc-text">利用connect方法让我们组件与store关联</span></a></li></ol></li></ol>
  
   </div>
 

@@ -134,15 +134,57 @@
 <li><p>如果是的话，我们可以通过return返回新的state</p>
 </li>
 <li><p>把reducer进行导出</p>
-<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2></li>
+</li>
+</ul>
+<h2 id="创建store"><a href="#创建store" class="headerlink" title="创建store"></a>创建store</h2><ul>
 <li><p>在根目录下创建一个文件夹store</p>
 </li>
 <li><p>在该目录下创建一个index.js文件，用来构建store，注意createStore函数里面第一个参数接收的是reducer</p>
-<p>  import {createStore} from “redux”;<br>  const store = createStore{reducer};</p>
+<pre><code>  import &#123;createStore&#125; from &quot;redux&quot;;
+  const store = createStore&#123;reducer&#125;;
+</code></pre>
 </li>
 <li><p>我们需要导入刚刚创建的reducer，然后设置到函数里面去</p>
 </li>
 <li><p>createStore的返回值就是我们构建好的store，然后进行导出</p>
+</li>
+</ul>
+<h1 id="react-redux基本使用"><a href="#react-redux基本使用" class="headerlink" title="react-redux基本使用"></a>react-redux基本使用</h1><ul>
+<li><p>在app.js中导入Provider组件</p>
+<p>  <code>import &#123;Provider&#125; from &#39;react-redux&#39;</code></p>
+</li>
+<li><p>利用Provider组件将我们整个结构进行包裹，并且传递store</p>
+<pre><code>  function App()&#123;
+      return (&lt;Provider store = &#123;store&#125;&gt;&lt;/Provider)
+  &#125;
+</code></pre>
+</li>
+<li><p>导入connect方法</p>
+<p>  <code>import &#123;connect&#125; from &quot;react-redux&quot;;</code></p>
+</li>
+<li><p>调用connect方法</p>
+<p>  <code>connect(...)(Component)</code></p>
+</li>
+</ul>
+<p>connect参数说明：</p>
+<ul>
+<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组建上</strong></p>
+</li>
+<li><p><strong>mapDisPatchToProps(dispatch, ownProps) 将action作为props绑定到我们自己的函数中，dispatch就是store.dispatch(), ownProps自己的props</strong></p>
+</li>
+<li><p>mergeProps(stateProps, dispatchProps, ownProps) 不管是stateProps还是dispatchProps，都需要和ownProps merge之后才会被赋给我们的组件，通常情况下，可以不传这个参数，connect就会使用Object.assign替代该方法</p>
+</li>
+</ul>
+<h2 id="利用connect方法让我们组件与store关联"><a href="#利用connect方法让我们组件与store关联" class="headerlink" title="利用connect方法让我们组件与store关联"></a>利用connect方法让我们组件与store关联</h2><ul>
+<li><p>在组件ComA和ComB，分别导入connect方法</p>
+<p>  import {connect} from ‘react-redux’</p>
+</li>
+<li><p>利用connect()方法来对我们组件进行加强，并且导出</p>
+<p>  export default connect(mapStateToProps, mapDisPatchToProps)(Home)</p>
+</li>
+<li><p>组件ComA属于发送方，所以要实现第二个参数</p>
+</li>
+<li><p>组件ComB属于接收方，所以要实现第一个参数</p>
 </li>
 </ul>
 

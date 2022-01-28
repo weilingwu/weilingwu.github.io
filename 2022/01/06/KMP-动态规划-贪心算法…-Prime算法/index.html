@@ -19,7 +19,7 @@
 <meta property="og:description" content="KMP算法问题 KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。 代码实现 function KMPSearch(str1, str2, next)&amp;#123;     for(var i &#x3D; 0, j &#x3D; 0;i&lt;str1.length;i++)&amp;#123;         while(j&gt;0 &amp;&amp; str1[i] !&#x3D; s">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-06T05:43:53.000Z">
-<meta property="article:modified_time" content="2022-01-23T04:58:14.929Z">
+<meta property="article:modified_time" content="2022-01-23T11:13:09.113Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -194,10 +194,66 @@ function KMPNext(dest)&#123;
 </table>
 
 <p><strong>算法思路：</strong></p>
-<p>1). 遍历所有的广播电台，找到一个覆盖了最多未覆盖的地区的电台（此电台可能包含一些已覆盖的地区，但没关系）</p>
+<p>1). 遍历所有的广播电台，<strong>找到一个覆盖了最多未覆盖的地区的电台</strong>（此电台可能包含一些已覆盖的地区，但没关系）</p>
 <p>2). 将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
-<p>3). 重复第一步，直到覆盖了全部的地区。</p>
-<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1>  
+<p>3). <strong>重复第一步</strong>，直到覆盖了全部的地区。</p>
+<pre><code>function greedy(broadcast, allAreas)&#123;
+    var selects = [];
+    //定义一个临时的集合， 在遍历的过程中，存放遍历过程中的电台覆盖的地区和当前还没有覆盖的地区的交集
+    var tempSet = [];
+    //定义maxKey，保存在一次遍历过程中，能够覆盖最大未覆盖的地区对应的电台的key
+    //如果maxKey不为null， 则会加入到selects中
+    var maxKey = null;
+    while(allAreas.length != 0)&#123;
+        //如果allAreas不为0，则表示还没有覆盖到所有的地区
+        //遍历broadcast，取出对应key
+        maxKey = null;
+        for(let item of broadcast.keys())&#123;
+            let intersect = [...new Set([...broadcast.get(item)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+            if(maxKey == null)&#123;
+                maxKey = item;
+    
+            &#125;
+            else&#123;
+                let intersect2 = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+                if(intersect.length &gt; intersect2.length)&#123;
+                    maxKey = item;
+                &#125;
+            &#125;
+        &#125;
+        if(maxKey!=null)&#123;
+            selects.push(maxKey);
+            var preto_delete = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
+            let item;
+            for(var i = 0;i&lt;preto_delete.length;i++)&#123;
+                item = allAreas.indexOf(preto_delete[i])
+                allAreas.splice(item, item + 1);
+            &#125;
+        &#125;
+    &#125;
+    return selects;
+&#125;
+//创建广播电台，放入到Map中
+var broadcast = new Map();
+//将各个电台放入到broadcast中
+broadcast.set(&#39;k1&#39;, [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;]);
+broadcast.set(&#39;k2&#39;, [&quot;广州&quot;, &quot;北京&quot;, &quot;深圳&quot;]);
+broadcast.set(&#39;k3&#39;, [&quot;成都&quot;, &quot;上海&quot;, &quot;杭州&quot;]);
+broadcast.set(&#39;k4&#39;, [&quot;上海&quot;, &quot;天津&quot;]);
+broadcast.set(&#39;k5&#39;, [&quot;杭州&quot;, &quot;大连&quot;]);
+
+var allAreas = [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;, &quot;广州&quot;, &quot;深圳&quot;, &quot;成都&quot;, &quot;大连&quot;, &quot;杭州&quot;];
+console.log(greedy(broadcast, allAreas));
+</code></pre>
+<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1><p>修路问题的本质就是最小生成树问题，最小生成树（Minimum Cost Spanning Tree），简称MST。<br>1).给定一个带权的无向连通图，如何选取一棵生成树，使树上所有边上权的总和为最小，这叫最小生成树；</p>
+<p>2).N个顶点，一定有N-1条边</p>
+<p>3).包含全部顶点</p>
+<p>4).N-1条边都在图中</p>
+<p>Prime算法介绍<br>1.Prime算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有（n-1）条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图</p>
+<ol start="2">
+<li> 普利姆算法如下：<br>（1）设G=(V, E)是连通网，T=(U, D)是最小生成树，V,U是顶点集合， E,D是边的集合<br>（2）若从顶点u开始构造最小生成树，则从集合V中取出顶点u放入集合U中，标记顶点v的visited[u] = 1<br>（3）若集合U中顶点ui与集合V-U中的顶点vj之间存在边，则寻找这些边中权值最小的边，但不能构成回路，将顶点vj加入集合U中，将边（ui， vj）加入集合D中，标记visited[vj] = 1<br>（4）重复步骤2，直到U与V相等，即所有顶点都被标记为访问过，此时D中有n-1条边</li>
+</ol>
+  
 	</div>
 		<footer class="article-footer clearfix">
 <div class="article-catetags">
