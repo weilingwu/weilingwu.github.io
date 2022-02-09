@@ -113,6 +113,17 @@
 <li>而我们在项目中，更多的喜欢用<strong>action</strong>创建函数（就是创建action的地方）</li>
 <li><strong>只是描述了有事情要发生，并没有描述如何去更新state</strong></li>
 </ul>
+<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p><strong>reducer</strong>本质就是一个函数，它用来<strong>响应</strong>发送过来的<strong>actions</strong>，然后经过处理，把<strong>state</strong>发送给<strong>Store</strong>的</p>
+<p><strong>注意：</strong>在reducer函数中，需要return返回值，这样Store才能接收到数据，函数会接收两个参数，第一个参数是初始化的state，第二个参数是action</p>
+<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><p>store就是把action与reducer联系到一起的对象</p>
+<p>主要职责：</p>
+<ul>
+<li>维持应用的state</li>
+<li>提供getState()方法获取state</li>
+<li>提供dispatch()方法发送action</li>
+<li>通过subscribe()来注册监听</li>
+<li>通过subscribe()返回值注销监听</li>
+</ul>
 <h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><ul>
 <li><p>构建react项目</p>
 <p>  <code>npx create-react-app redux-demo</code></p>
@@ -1199,6 +1210,133 @@ console.log(greedy(broadcast, allAreas));
 <ol start="2">
 <li> 普利姆算法如下：<br>（1）设G=(V, E)是连通网，T=(U, D)是最小生成树，V,U是顶点集合， E,D是边的集合<br>（2）若从顶点u开始构造最小生成树，则从集合V中取出顶点u放入集合U中，标记顶点v的visited[u] = 1<br>（3）若集合U中顶点ui与集合V-U中的顶点vj之间存在边，则寻找这些边中权值最小的边，但不能构成回路，将顶点vj加入集合U中，将边（ui， vj）加入集合D中，标记visited[vj] = 1<br>（4）重复步骤2，直到U与V相等，即所有顶点都被标记为访问过，此时D中有n-1条边</li>
 </ol>
+<h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Timor7hao/article/details/108423423%EF%BC%89">https://blog.csdn.net/Timor7hao/article/details/108423423）</a></p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>回溯算法：回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</p>
+<p>解决一个回溯问题，实际上就是一个决策树的遍历过程。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>三个步骤：</p>
+<p>（1）开头写好跳出条件，满足条件才将当前结果加入总结果中。</p>
+<p>（2）已经拿过的数不再拿。</p>
+<p>（3）向下遍历，结束后回溯到上一步。<br>伪代码：</p>
+<pre><code>result = []
+def backtrack(路径, 选择列表):
+    if 满足结束条件:                  // (1)
+        result.add(路径)
+        return
+​
+    for 选择 in 选择列表:
+        去掉已经拿过的数              // (2)
+        做选择                       // (3)
+        backtrack(路径, 选择列表)     
+        撤销选择
+</code></pre>
+<p>3、leetcode真题（全排列、子集、组合、拓展题）</p>
+<pre><code>全排列问题（leetcode46）
+
+var allArray = function(nums) &#123;
+    var res = []
+    var dfs = function(path)&#123;
+        if(nums.length === path.length)&#123;              //(1)
+            res.push([...path]);
+            return;
+        &#125;
+        for(let i=0; i&lt;nums.length; i++)&#123;
+            if(path.indexOf(nums[i]) !== -1) &#123;        //(2)
+                continue;
+            &#125;
+            path.push(nums[i]);                       //(3)
+            dfs(path);
+            path.pop();
+ 
+        &#125;
+    &#125;
+    dfs([]);
+    return res;
+&#125;;
+ 
+console.log(allArray([1,2,3]))          
+// [[ 1, 2, 3 ],[ 1, 3, 2 ],[ 2, 1, 3 ],[ 2, 3, 1 ],[ 3, 1, 2 ],[ 3, 2, 1 ]]
+
+子集问题（leetcode78）
+</code></pre>
+<p>和全排列区别：</p>
+<p>1》所有可能的子集，每次递归中都将当前组合加入结果中，不用之前的结束条件。</p>
+<p>2》[1,3]和[3,1]是相同的，故每次取数时要从其位置取后面的数，加个标志位start。</p>
+<pre><code>var sonArray = function(nums) &#123;
+    var res = [];
+    var dfs = function(path,start) &#123;
+        res.push([...path])                        //(1)
+        for(let i=start; i&lt;nums.length; i++) &#123;     //(2)
+            path.push(nums[i]);                    //(3)
+            dfs(path,i+1);
+            path.pop();
+        &#125;
+    &#125;
+    dfs([],0)
+    return res;
+&#125;
+ 
+console.log(sonArray([1,2,3]))
+//[ [], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
+
+组合求和问题（leetcode39）
+</code></pre>
+<p>和全排列区别：</p>
+<p>1》结束条件是满足目标target。</p>
+<p>2》组合包括自身和，故每次取数时要从自己位置开始取数。</p>
+<pre><code>var targetArray = function(nums, target) &#123;
+    var res = [];
+    var dfs = function(path,start) &#123;
+        if(sum(path) === target) &#123;                  //(1)
+            res.push([...path]);
+            return;
+        &#125;
+        if(sum(path) &gt; target) &#123;
+            return;
+        &#125;
+        for(let i=start; i&lt;nums.length; i++) &#123;     //(2)
+            path.push(nums[i]);                    //(3)
+            dfs(path.slice(), i);
+            path.pop();
+        &#125;
+    &#125;
+    dfs([],0)
+    return res;
+&#125;
+function sum(arr) &#123;
+    if(arr.length===0)
+        return 0;
+    return arr.reduce((a,b)=&gt;a+b)
+&#125;
+ 
+console.log(targetArray([2,3,5],8))
+// [ [ 2, 2, 2, 2 ], [ 2, 3, 3 ], [ 3, 5 ] ]
+
+拓展题
+</code></pre>
+<p>输入目标字符串：比如”南京“输出包含目标字符串的节点路径集合。</p>
+<pre><code>function func(arr, str) &#123;
+    var res = [];
+    var recur = function(arr, path) &#123;
+        let string = path.join(&#39;-&#39;);
+        if(string.indexOf(str) !== -1)&#123;
+            res.push(string);
+        &#125;
+        if(arr === undefined || arr.length === 0)
+            return;
+        
+        for(let i=0; i&lt;arr.length; i++)&#123;
+            path.push(arr[i].label);
+            recur(arr[i].children, path);
+            path.pop();
+        &#125;
+    &#125;
+    recur(arr, []);
+    return res;
+&#125;
+ 
+console.log(func([&#123;label:&#39;江苏省&#39;,children:[&#123;label:&#39;南京市&#39;,children:[&#123;label:&#39;xxx区&#39;,children:[]&#125;]&#125;]&#125;],&#39;南京&#39;))
+//[ &#39;江苏省-南京市&#39;, &#39;江苏省-南京市-xxx区&#39; ]
+</code></pre>
 
         
         
