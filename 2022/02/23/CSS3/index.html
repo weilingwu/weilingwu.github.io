@@ -1,0 +1,599 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>CSS3 | font-end study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Weiling Wu">
+    
+
+    
+    <meta name="description" content="position 的四个值：static、relative、absolute、fixed absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。  fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “righ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSS3">
+<meta property="og:url" content="http://example.com/2022/02/23/CSS3/index.html">
+<meta property="og:site_name" content="font-end study">
+<meta property="og:description" content="position 的四个值：static、relative、absolute、fixed absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。  fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “righ">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-23T08:19:43.000Z">
+<meta property="article:modified_time" content="2022-02-23T10:26:52.491Z">
+<meta property="article:author" content="Weiling Wu">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="font-end study" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/katong.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="font-end study" title="font-end study"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="font-end study">font-end study</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/archives">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/02/23/CSS3/" title="CSS3" itemprop="url">CSS3</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-02-23T08:19:43.000Z" itemprop="datePublished"> Published 2022-02-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#position-%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%80%BC%EF%BC%9Astatic%E3%80%81relative%E3%80%81absolute%E3%80%81fixed"><span class="toc-number">1.</span> <span class="toc-text">position 的四个值：static、relative、absolute、fixed</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E4%BC%AA%E7%B1%BB-Pseudo-classes"><span class="toc-number">2.</span> <span class="toc-text">CSS 伪类(Pseudo-classes)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#anchor%E4%BC%AA%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">anchor伪类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB%E5%92%8CCSS%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">伪类和CSS类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-first-child-%E4%BC%AA%E7%B1%BB"><span class="toc-number">2.4.</span> <span class="toc-text">CSS :first-child 伪类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.</span> <span class="toc-text">CSS 伪元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-number">3.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#first-line-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.2.</span> <span class="toc-text">:first-line 伪元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%85%83%E7%B4%A0%E5%92%8CCSS%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">伪元素和CSS类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-before-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.4.</span> <span class="toc-text">CSS - :before 伪元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-after-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.5.</span> <span class="toc-text">CSS - :after 伪元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90-Flex-Box"><span class="toc-number">5.</span> <span class="toc-text">弹性盒子(Flex Box)</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="position-的四个值：static、relative、absolute、fixed"><a href="#position-的四个值：static、relative、absolute、fixed" class="headerlink" title="position 的四个值：static、relative、absolute、fixed"></a>position 的四个值：static、relative、absolute、fixed</h1><ul>
+<li><p>absolute：生成绝对定位的元素，相对于 static 定位以外的第一个父元素进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+</li>
+<li><p>fixed：生成绝对定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。</p>
+</li>
+<li><p>relative：生成相对定位的元素，相对于其正常位置进行定位。因此，”left:20” 会向元素的 LEFT 位置添加 20 像素。</p>
+</li>
+<li><p>static：默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right 或者 z-index 声明）。</p>
+</li>
+</ul>
+<h1 id="CSS-伪类-Pseudo-classes"><a href="#CSS-伪类-Pseudo-classes" class="headerlink" title="CSS 伪类(Pseudo-classes)"></a>CSS 伪类(Pseudo-classes)</h1><p>CSS伪类是用来添加一些选择器的特殊效果。</p>
+<h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><p>伪类的语法：<code>selector:pseudo-class &#123;property:value;&#125;</code></p>
+<p>CSS类也可以使用伪类：<code>selector.class:pseudo-class &#123;property:value;&#125;</code></p>
+<h2 id="anchor伪类"><a href="#anchor伪类" class="headerlink" title="anchor伪类"></a>anchor伪类</h2><p>在支持 CSS 的浏览器中，链接的不同状态都可以以不同的方式显示<br>实例：</p>
+<pre><code>a:link &#123;color:#FF0000;&#125; /* 未访问的链接 */
+a:visited &#123;color:#00FF00;&#125; /* 已访问的链接 */
+a:hover &#123;color:#FF00FF;&#125; /* 鼠标划过链接 */
+a:active &#123;color:#0000FF;&#125; /* 已选中的链接 */
+</code></pre>
+<p>注意： 在CSS定义中，a:hover 必须被置于 a:link 和 a:visited 之后，才是有效的。</p>
+<p>注意： 在 CSS 定义中，a:active 必须被置于 a:hover 之后，才是有效的。</p>
+<p>注意：伪类的名称不区分大小写。</p>
+<h2 id="伪类和CSS类"><a href="#伪类和CSS类" class="headerlink" title="伪类和CSS类"></a>伪类和CSS类</h2><p>伪类可以与 CSS 类配合使用：</p>
+<pre><code>a.red:visited &#123;color:#FF0000;&#125;
+ 
+&lt;a class=&quot;red&quot; href=&quot;css-syntax.html&quot;&gt;CSS 语法&lt;/a&gt;
+</code></pre>
+<p>如果在上面的例子的链接已被访问，它会显示为红色。</p>
+<h2 id="CSS-first-child-伪类"><a href="#CSS-first-child-伪类" class="headerlink" title="CSS :first-child 伪类"></a>CSS :first-child 伪类</h2><p>您可以使用 :first-child 伪类来选择父元素的第一个子元素。</p>
+<p>注意：在IE8的之前版本必须声明&lt;!DOCTYPE&gt; ，这样 :first-child 才能生效。<br>匹配第一个 <code>&lt;p&gt;</code> 元素</p>
+<p>在下面的例子中，选择器匹配作为任何元素的第一个子元素的 <code>&lt;p&gt;</code> 元素：</p>
+<pre><code>p:first-child
+&#123;
+    color:blue;
+&#125;
+</code></pre>
+<p>匹配所有<code>&lt;p&gt;</code> 元素中的第一个 <code>&lt;i&gt;</code> 元素</p>
+<p>在下面的例子中，选择相匹配的所有<p>元素的第一个 <code>&lt;i&gt;</code> 元素：</p>
+<pre><code>p &gt; i:first-child
+&#123;
+    color:blue;
+&#125;
+</code></pre>
+<p>匹配所有作为第一个子元素的 <p> 元素中的所有 <code>&lt;i&gt;</code> 元素</p>
+<p>在下面的例子中，选择器匹配所有作为元素的第一个子元素的 <code>&lt;p&gt;</code> 元素中的所有 <code>&lt;i&gt;</code> 元素：</p>
+<pre><code>p:first-child i
+&#123;
+    color:blue;
+&#125;
+</code></pre>
+<h1 id="CSS-伪元素"><a href="#CSS-伪元素" class="headerlink" title="CSS 伪元素"></a>CSS 伪元素</h1><p>CSS伪元素是用来添加一些选择器的特殊效果。</p>
+<h2 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h2><p>伪元素的语法：<code>selector:pseudo-element &#123;property:value;&#125;</code></p>
+<p>CSS类也可以使用伪元素：<code>selector.class:pseudo-element &#123;property:value;&#125;</code></p>
+<h2 id="first-line-伪元素"><a href="#first-line-伪元素" class="headerlink" title=":first-line 伪元素"></a>:first-line 伪元素</h2><p>“first-line” 伪元素用于向文本的首行设置特殊样式。</p>
+<p>在下面的例子中，浏览器会根据 “first-line” 伪元素中的样式对 p 元素的第一行文本进行格式化：</p>
+<pre><code>p:first-line 
+&#123;
+    color:#ff0000;
+    font-variant:small-caps;
+&#125;
+</code></pre>
+<p>注意：”first-line” 伪元素只能用于块级元素。</p>
+<h2 id="伪元素和CSS类"><a href="#伪元素和CSS类" class="headerlink" title="伪元素和CSS类"></a>伪元素和CSS类</h2><p>伪元素可以结合CSS类： </p>
+<pre><code>p.article:first-letter &#123;color:#ff0000;&#125;
+
+&lt;p class=&quot;article&quot;&gt;文章段落&lt;/p&gt;
+</code></pre>
+<p>上面的例子会使所有 class 为 article 的段落的首字母变为红色。</p>
+<p>在下面的例子中，段落的第一个字母将显示为红色，其字体大小为 xx-large。第一行中的其余文本将为蓝色，并以小型大写字母显示。</p>
+<p>段落中的其余文本将以默认字体大小和颜色来显示：</p>
+<pre><code>p:first-letter
+&#123;
+    color:#ff0000;
+    font-size:xx-large;
+&#125;
+p:first-line 
+&#123;
+    color:#0000ff;
+    font-variant:small-caps;
+&#125;
+</code></pre>
+<h2 id="CSS-before-伪元素"><a href="#CSS-before-伪元素" class="headerlink" title="CSS - :before 伪元素"></a>CSS - :before 伪元素</h2><p>“:before” 伪元素可以在元素的内容前面插入新内容。</p>
+<p>下面的例子在每个 <code>&lt;h1&gt;</code>元素前面插入一幅图片：</p>
+<pre><code>h1:before 
+&#123;
+    content:url(smiley.gif);
+&#125;
+</code></pre>
+<h2 id="CSS-after-伪元素"><a href="#CSS-after-伪元素" class="headerlink" title="CSS - :after 伪元素"></a>CSS - :after 伪元素</h2><p>“:after” 伪元素可以在元素的内容之后插入新内容。</p>
+<p>下面的例子在每个 <code>&lt;h1&gt;</code> 元素后面插入一幅图片：</p>
+<pre><code>h1:after
+&#123;
+    content:url(smiley.gif);
+&#125;
+</code></pre>
+<h1 id="伪类与伪元素的区别"><a href="#伪类与伪元素的区别" class="headerlink" title="伪类与伪元素的区别"></a>伪类与伪元素的区别</h1><ul>
+<li><p><strong>伪类选择元素基于的是当前元素处于的状态</strong>，或者说元素当前所具有的特性，而不是元素的id、class、属性等静态的标志。由于状态是动态变化的，所以一个元素达到一个特定状态时，它可能得到一个伪类的样式；当状态改变时，它又会失去这个样式。由此可以看出，它的功能和class有些类似，但它是基于文档之外的抽象，所以叫伪类。</p>
+</li>
+<li><p>与伪类针对特殊状态的元素不同的是，<strong>伪元素是对元素中的特定内容进行操作</strong>，它所操作的层次比伪类更深了一层，也因此它的动态性比伪类要低得多。实际上，设计伪元素的目的就是去选取诸如元素内容第一个字（母）、第一行，选取某些内容前面或后面这种普通的选择器无法完成的工作。它控制的内容实际上和元素是相同的，但是它本身只是基于元素的抽象，并不存在于文档中，所以叫伪元素。</p>
+</li>
+</ul>
+<h1 id="弹性盒子-Flex-Box"><a href="#弹性盒子-Flex-Box" class="headerlink" title="弹性盒子(Flex Box)"></a>弹性盒子(Flex Box)</h1><ul>
+<li><p>CSS3 弹性盒子（ Flexible Box 或 flexbox），<strong>是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</strong>引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。</p>
+</li>
+<li><p>弹性盒子由<strong>弹性容器</strong>(Flex container)和<strong>弹性子元素</strong>(Flex item)组成。弹性容器通过设置 <strong>display</strong> 属性的值为 flex 或 inline-flex将其定义为弹性容器。弹性容器内包含了一个或多个弹性子元素。</p>
+  <!DOCTYPE html>
+  <html>
+  <head>
+  <style>
+  .flex-container {
+      display: -webkit-flex;
+      display: flex;
+      width: 400px;
+      height: 250px;
+      background-color: lightgrey;
+  }
+   
+<p>  .flex-item {</p>
+<pre><code>  background-color: cornflowerblue;
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+</code></pre>
+<p>  }<br>  </style></p>
+  </head>
+  <body>
+   
+  <div class="flex-container">
+    <div class="flex-item">flex item 1</div>
+    <div class="flex-item">flex item 2</div>
+    <div class="flex-item">flex item 3</div> 
+  </div>
+   
+  </body>
+  </html></li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2022/02/23/CSS3/" data-title="CSS3 | font-end study" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/02/23/mockjs/"  title="mockjs">
+ <strong>下一篇：</strong><br/> 
+ <span>mockjs
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#position-%E7%9A%84%E5%9B%9B%E4%B8%AA%E5%80%BC%EF%BC%9Astatic%E3%80%81relative%E3%80%81absolute%E3%80%81fixed"><span class="toc-number">1.</span> <span class="toc-text">position 的四个值：static、relative、absolute、fixed</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E4%BC%AA%E7%B1%BB-Pseudo-classes"><span class="toc-number">2.</span> <span class="toc-text">CSS 伪类(Pseudo-classes)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-number">2.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#anchor%E4%BC%AA%E7%B1%BB"><span class="toc-number">2.2.</span> <span class="toc-text">anchor伪类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB%E5%92%8CCSS%E7%B1%BB"><span class="toc-number">2.3.</span> <span class="toc-text">伪类和CSS类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-first-child-%E4%BC%AA%E7%B1%BB"><span class="toc-number">2.4.</span> <span class="toc-text">CSS :first-child 伪类</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#CSS-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.</span> <span class="toc-text">CSS 伪元素</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-number">3.1.</span> <span class="toc-text">语法</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#first-line-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.2.</span> <span class="toc-text">:first-line 伪元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BC%AA%E5%85%83%E7%B4%A0%E5%92%8CCSS%E7%B1%BB"><span class="toc-number">3.3.</span> <span class="toc-text">伪元素和CSS类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-before-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.4.</span> <span class="toc-text">CSS - :before 伪元素</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS-after-%E4%BC%AA%E5%85%83%E7%B4%A0"><span class="toc-number">3.5.</span> <span class="toc-text">CSS - :after 伪元素</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BC%AA%E7%B1%BB%E4%B8%8E%E4%BC%AA%E5%85%83%E7%B4%A0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">4.</span> <span class="toc-text">伪类与伪元素的区别</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BC%B9%E6%80%A7%E7%9B%92%E5%AD%90-Flex-Box"><span class="toc-number">5.</span> <span class="toc-text">弹性盒子(Flex Box)</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jQuery-bootstrap/" title="jQuery &amp; bootstrap">jQuery &amp; bootstrap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sort/" title="sort">sort<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Weiling Wu in Google. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
+		
+		<a href="/about" target="_blank" title="Weiling Wu">Weiling Wu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
