@@ -81,6 +81,558 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2022/01/06/css/" title="css" itemprop="url">css</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-06T05:00:02.000Z" itemprop="datePublished"> Published 2022-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="照片墙"><a href="#照片墙" class="headerlink" title="照片墙"></a>照片墙</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;照片墙&lt;/title&gt;
+    &lt;style type = &quot;text/css&quot;&gt;
+        body&#123;
+            text-align: center;
+            background-color: gray;
+        &#125;
+        img&#123;
+            width: 20%;/*设置高度*/
+            padding: 10px;/*设置内边距*/
+            background-color: white;/*设置背景颜色*/
+            transform: rotate(-10deg);/*设置倾斜角度*/
+            margin-left: 10px;/*设置外边距*/
+        &#125;
+        img:hover&#123;
+            transform: rotate(0deg) scale(1.5);/*设置倾斜角度和缩放比例*/
+            z-index: 2;/*    设置显示优先级别*/
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;&lt;br/&gt;
+    &lt;img src=&quot;https://img0.baidu.com/it/u=652732258,3535184171&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://img0.baidu.com/it/u=3459544028,1422320751&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://img1.baidu.com/it/u=3806063294,3480903396&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://img0.baidu.com/it/u=121804161,3053314887&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;br/&gt;&lt;br/&gt;
+    &lt;img src=&quot;https://img2.baidu.com/it/u=3108583535,4104247024&amp;fm=253&amp;fmt=auto&amp;app=120&amp;f=JPEG?w=640&amp;h=360&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://img0.baidu.com/it/u=2135482323,1459336928&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fn.sinaimg.cn%2Fsinacn%2Fw500h280%2F20171219%2F13f2-fypvuqe0957796.gif&amp;refer=http%3A%2F%2Fn.sinaimg.cn&amp;app=2002&amp;size=f9999,10000&amp;q=a80&amp;n=0&amp;g=0n&amp;fmt=jpeg?sec=1636370856&amp;t=e55fc69178ee867433ab3e74c60adbf2&quot; alt=&quot;&quot;/&gt;
+    &lt;img src=&quot;https://img2.baidu.com/it/u=2414916686,3188715239&amp;fm=26&amp;fmt=auto&quot; alt=&quot;&quot;/&gt;
+    &lt;hr/&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="css选择器"><a href="#css选择器" class="headerlink" title="css选择器"></a>css选择器</h1><p><strong>示例：</strong></p>
+<pre><code>&lt;style type = &quot;text/css&quot;&gt;
+    /*标签选择器*/
+    table&#123;
+        height: 300px;
+        width: 200px;
+        border: solid 1px;
+        background-color: red;
+    &#125;
+    /*id选择器*/
+    #t1&#123;
+        background-color: blue;
+    &#125;
+    /*类选择器*/
+    .common&#123;
+        color:red;
+    &#125;
+    /*组合选择器*/
+    table,.common&#123;
+        color:red;
+    &#125;
+&lt;/style&gt;
+</code></pre>
+<p><strong>标签选择器</strong>：标签名{样式名1：样式值1；…}   </p>
+<p><strong>作用</strong>：会将当前网页内所有该标签增加相同的样式</p>
+<p><strong>id选择器</strong>：#标签的id属性值{样式名1：样式值1；…}</p>
+<p><strong>作用</strong>：给某个指定的标签添加样式</p>
+<p><strong>类选择器</strong>：.类选择器名{样式名1：样式值1；…}</p>
+<p><strong>作用</strong>：给不同的标签添加相同的样式</p>
+<p><strong>全部选择选择器</strong>：*{样式名1：样式值1；…}</p>
+<p><strong>作用</strong>：选择所有的HTML标签，并添加相同的样式</p>
+<p><strong>组合选择器</strong>：选择器1，选择器2，…{样式名1：样式值1；…}</p>
+<p><strong>作用</strong>：解决不同的选择器之间重复样式的问题</p>
+<h1 id="CSS-分组-和-嵌套-选择器"><a href="#CSS-分组-和-嵌套-选择器" class="headerlink" title="CSS 分组 和 嵌套 选择器"></a>CSS 分组 和 嵌套 选择器</h1><h2 id="分组选择器"><a href="#分组选择器" class="headerlink" title="分组选择器"></a>分组选择器</h2><p>在样式表中有很多具有相同样式的元素。</p>
+<pre><code>h1 &#123;
+    color:green;
+&#125;
+h2 &#123;
+    color:green;
+&#125;
+p &#123;
+    color:green;
+&#125;
+</code></pre>
+<p>为了尽量减少代码，你可以使用分组选择器，每个选择器用逗号分隔。</p>
+<p>在下面的例子中，我们对以上代码使用分组选择器：</p>
+<pre><code>h1,h2,p
+&#123;
+    color:green;
+&#125;
+</code></pre>
+<h2 id="嵌套选择器"><a href="#嵌套选择器" class="headerlink" title="嵌套选择器"></a>嵌套选择器</h2><p>它可能适用于选择器内部的选择器的样式。</p>
+<p>在下面的例子设置了四个样式：</p>
+<ul>
+<li><p>p{ }: 为所有 p 元素指定一个样式。</p>
+</li>
+<li><p>.marked{ }: 为所有 class=”marked” 的元素指定一个样式。</p>
+</li>
+<li><p>.marked p{ }: 为所有 class=”marked” 元素内的 p 元素指定一个样式。</p>
+</li>
+<li><p>p.marked{ }: 为所有 class=”marked” 的 p 元素指定一个样式。</p>
+<p>  p{</p>
+<pre><code>  color:blue;
+  text-align:center;
+</code></pre>
+<p>  }<br>  .marked{</p>
+<pre><code>  background-color:red;
+</code></pre>
+<p>  }<br>  .marked p{</p>
+<pre><code>  color:white;
+</code></pre>
+<p>  }<br>  p.marked{</p>
+<pre><code>  text-decoration:underline;
+</code></pre>
+<p>  }</p>
+</li>
+</ul>
+<h1 id="CSS-组合选择符"><a href="#CSS-组合选择符" class="headerlink" title="CSS 组合选择符"></a>CSS 组合选择符</h1><p>组合选择符说明了两个选择器之间的关系。CSS组合选择符包括各种简单选择符的组合方式。</p>
+<p>在 CSS3 中包含了四种组合方式:</p>
+<p>后代选择器(以空格     分隔)<br>子元素选择器(以大于 &gt; 号分隔）<br>相邻兄弟选择器（以加号 + 分隔）<br>普通兄弟选择器（以波浪号 ～ 分隔）</p>
+<h1 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h1><p>CSS盒模型本质上是一个盒子，封装周围的HTML元素，它包括：边距，边框，填充，和实际内容。<br>盒模型允许我们在其它元素和周围元素边框之间的空间放置元素。</p>
+<p>不同部分的说明：</p>
+<ul>
+<li><p>Margin(外边距) - 清除边框外的区域，外边距是透明的。</p>
+</li>
+<li><p>Border(边框) - 围绕在内边距和内容外的边框。</p>
+</li>
+<li><p>Padding(内边距) - 清除内容周围的区域，内边距是透明的。</p>
+</li>
+<li><p>Content(内容) - 盒子的内容，显示文本和图像。</p>
+</li>
+</ul>
+<p><strong>外边距</strong>：margin，用来设置元素与元素之间的间隔；margin：0px auto；上下间隔是0px，水平居中。</p>
+<p><strong>边框</strong>：border，用来设置元素的边框大小，可以单独设置上下左右。</p>
+<p><strong>内边距</strong>：padding，设置内容与边框之间的距离，内边距不会改变内容区域的大小，可以单独设置上下左右的内边距。</p>
+<p><strong>内容区域</strong>：改变内容区域的大小，设置宽和高即可改变内容区域的大小。</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;title&gt;盒子模型&lt;/title&gt;
+    &lt;style type = &quot;text/css&quot;&gt;
+        div&#123;
+            width: 300px;
+            height: 300px;
+        &#125;
+        #div01&#123;
+            border: solid 1px orange;
+        &#125;
+        #div02&#123;
+            border:solid 1px blueviolet;
+        &#125;
+        #div03&#123;
+            border:solid 1px aqua;
+        &#125;
+        #div04&#123;
+            border:bisque;
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+    &lt;div id = &quot;div01&quot;&gt;
+        我是div01
+    &lt;/div&gt;
+    &lt;div id = &quot;div02&quot;&gt;
+        我是div02
+    &lt;/div&gt;
+    &lt;div id = &quot;div03&quot;&gt;
+        我是div03
+    &lt;/div&gt;
+    &lt;div id = &quot;div04&quot;&gt;
+        我是div04
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="CSS模块边框"><a href="#CSS模块边框" class="headerlink" title="CSS模块边框"></a>CSS模块边框</h1><p><strong>边框属性</strong>：border-radius 用于创建圆角；box-shadow 用来添加阴影；border-image 属性允许你指定一个图片作为边框，用于创建上文边框的原始图像。</p>
+<pre><code>&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+    &lt;style&gt;
+        #test&#123;
+            width:300px;
+            height: 100px;
+            padding: 1px;
+            border: 2px solid #00a0ff;
+            border-radius: 25px;
+            background-image: url(&quot;https://img0.baidu.com/it/u=280905735,1446098188&amp;fm=26&amp;fmt=auto&quot;);
+            box-shadow: 10px 10px 10px aqua;
+        &#125;
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+&lt;div id = &quot;test&quot;&gt;
+    这是一道美丽的风景线
+&lt;/div&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<h1 id="css背景"><a href="#css背景" class="headerlink" title="css背景"></a>css背景</h1><p><strong>background-image</strong> 添加背景图片，不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。</p>
+<p><strong>background-size</strong> 指定背景图像的大小。CSS3以前，背景图像大小由图像的实际大小决定。</p>
+<p>CSS3中可以指定背景图片，让我们重新在不同的环境中指定背景图片的大小。您可以指定像素或百分比大小。你指定的大小是相对于父元素的宽度和高度的百分比的大小。</p>
+<h1 id="CSS-链接"><a href="#CSS-链接" class="headerlink" title="CSS 链接"></a>CSS 链接</h1><p>不同的链接可以有不同的样式。<br>链接样式</p>
+<p>链接的样式，可以用任何CSS属性（如颜色，字体，背景等）。</p>
+<p>特别的链接，可以有不同的样式，这取决于他们是什么状态。</p>
+<p>这四个链接状态是：</p>
+<ul>
+<li><p>a:link - 正常，未访问过的链接</p>
+</li>
+<li><p>a:visited - 用户已访问过的链接</p>
+</li>
+<li><p>a:hover - 当用户鼠标放在链接上时</p>
+</li>
+<li><p>a:active - 链接被点击的那一刻</p>
+</li>
+</ul>
+<p>示例：</p>
+<pre><code>&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt; 
+    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt; 
+    &lt;style&gt;
+        a:link &#123;color:#000000;&#125;      /* 未访问链接*/
+        a:visited &#123;color:#00FF00;&#125;  /* 已访问链接 */
+        a:hover &#123;color:#FF00FF;&#125;  /* 鼠标移动到链接上 */
+        a:active &#123;color:#0000FF;&#125;  /* 鼠标点击时 */
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;&lt;b&gt;&lt;a href=&quot;/css/&quot; target=&quot;_blank&quot;&gt;这是一个链接&lt;/a&gt;&lt;/b&gt;&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;注意：&lt;/b&gt; a:hover 必须在 a:link 和 a:visited 之后，需要严格按顺序才能看到效果。&lt;/p&gt;
+    &lt;p&gt;&lt;b&gt;注意：&lt;/b&gt; a:active 必须在 a:hover 之后。&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p>当设置为若干链路状态的样式，也有一些顺序规则：</p>
+<ul>
+<li><p>a:hover 必须跟在 a:link 和 a:visited后面</p>
+</li>
+<li><p>a:active 必须跟在 a:hover后面</p>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/css/">css</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/01/06/html/" title="html5" itemprop="url">html5</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-06T04:55:25.000Z" itemprop="datePublished"> Published 2022-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>HTML 提示：使用小写标签</p>
+<p>HTML 标签对大小写不敏感：<code>&lt;P&gt;</code>等同于<code>&lt;p&gt;</code>。许多网站都使用大写的 HTML 标签。</p>
+<h1 id="body-标签"><a href="#body-标签" class="headerlink" title="body 标签"></a>body 标签</h1><pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;utf-8&quot;&gt;
+    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h1 aligh = &quot;left&quot;&gt;
+    全红禅祝大家国庆节快乐！
+&lt;/h1&gt;
+
+&lt;hr width = &quot;20%&quot; size = 5px color = &quot;purple&quot;/&gt;
+&lt;p&gt;
+    全红婵发文祝大家国庆节快乐，并且晒出长隆假期游玩照，准备恢复挥汗如雨的训练生活了，妹妹玩得开心啊! 妹妹真的太可爱了!
+&lt;/p&gt;
+    哈哈哈，&lt;b&gt;全红婵&lt;/b&gt;妹妹有心啦！特意发文祝大家国庆节快乐！还真是个体贴又温暖的&lt;i&gt;女孩呢！&lt;/i&gt;&lt;br/&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;你也要快乐过节，&lt;u&gt;快乐训练！&lt;/u&gt;期待你下次精彩表现。
+&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+<p><strong>标题标签</strong>： h1到h6：将其中的内容加粗加黑显示，并且显示依次减弱，自带换行功能（块级标签）。</p>
+<p><strong>属性</strong>：aligh = “center”/ “left”/“right”</p>
+<p><strong>水平线标签</strong>：hr 在页面中显示一条水平线，默认居中显示</p>
+<p><strong>属性</strong>：</p>
+<ul>
+<li><p>width = “宽度” 设置水平线的宽度</p>
+</li>
+<li><p>size = “高度” 设置水平线的高度</p>
+</li>
+<li><p>color = “颜色” 设置水平线的颜色</p>
+</li>
+</ul>
+<p><strong>段落标签</strong>：p 会将一段数据作为整体进行显示自动换行，段间距比较大</p>
+<p><strong>换行符</strong>：br 告诉浏览器在此位置增加空格</p>
+<p><strong>权重标签</strong>： </p>
+<ul>
+<li><p>b 会将内容加黑显示</p>
+</li>
+<li><p>i 会将内容斜体显示</p>
+</li>
+<li><p>u 会将内容增加下划线</p>
+</li>
+<li><p>del 增加中划线</p>
+<h1 id="表格学习"><a href="#表格学习" class="headerlink" title="表格学习"></a>表格学习</h1>  <table border="1px" cellspacing="0px" cellpadding="8px">
+      <tr height = "27px">
+          <td colspan="5">基本情况</td>
+      </tr>
+      <tr height = "27px">
+          <td width = "120px">姓名</td>
+          <td width = "120px"></td>
+          <td width = "120px">性别</td>
+          <td width = "120px"></td>
+          <td width = "120px" rowspan="7"></td>
+      </tr>
+      <tr height = "27px">
+          <td>民族</td>
+          <td></td>
+          <td>出生年月</td>
+          <td></td>
+      </tr>
+      <tr height = "27px">
+          <td>政治面貌</td>
+          <td></td>
+          <td>健康</td>
+          <td></td>
+      </tr>
+      <tr height = "27px">
+          <td>籍贯</td>
+          <td></td>
+          <td>学历</td>
+          <td></td>
+      </tr>
+      <tr height = "27px">
+          <td>电子信箱</td>
+          <td></td>
+          <td>联系电话</td>
+          <td></td>
+      </tr>
+      <tr height = "27px">
+          <td>专业</td>
+          <td colspan="3"></td>
+      </tr>
+      <tr height = "27px">
+          <td>毕业院校</td>
+          <td colspan="3"></td>
+      </tr>
+      <tr height = "27px">
+          <td>求职意向</td>
+          <td colspan="4"></td>
+      </tr>
+  </table></li>
+</ul>
+<ul>
+<li><p>table：声明一个表格</p>
+</li>
+<li><p>tr：声明一行，设置行高以及该行所有单元格的高度</p>
+</li>
+<li><p>th：声明一个单元格，表头格，默认居中加黑显示</p>
+</li>
+<li><p>td：声明一个单元格，默认居左显示原始数据</p>
+</li>
+<li></li>
+</ul>
+<p><strong>注意</strong>：行高即该行所有单元格的宽度，单元格的宽度即列宽</p>
+<p><strong>简单写法</strong>：五行六列的表格</p>
+<pre><code>table&gt;tr*5&gt;td*6
+</code></pre>
+<p><strong>属性</strong>：</p>
+<ul>
+<li><p>border：给表格添加边框</p>
+</li>
+<li><p>width：设置表格的宽度</p>
+</li>
+<li><p>height：设置表格的高度</p>
+</li>
+<li><p>cellpadding：设置内容居边框的距离</p>
+</li>
+<li><p>cellspacing：设置边框的大小</p>
+</li>
+</ul>
+<p><strong>单元格合并</strong>：</p>
+<ol>
+<li>首先确保表格是一个规整的表格</li>
+<li>根据要合并的单元格，找到其所在的源码位置</li>
+<li>行合并：在要合并的单元格中第一个单元格上使用属性rowspan=“要合并的单元格的个数”，并删除其他单元格完成合并</li>
+</ol>
+<p>列合并：在要合并的单元格中任意一个上使用属性colspan = “要合并的单元格的个数”并删除其他要合并的单元格完成合并</p>
+<h1 id="内嵌标签学习"><a href="#内嵌标签学习" class="headerlink" title="内嵌标签学习"></a>内嵌标签学习</h1><p><strong>内嵌标签</strong>：iframe</p>
+<ul>
+<li><p>src：要显示的网页资源路径，可以是本地（相对路径）也可以是网络资源（URL），默认当前页面打开及加载src指向的资源</p>
+</li>
+<li><p>width：设置区域的宽度</p>
+</li>
+<li><p>height：设置区域的高度</p>
+</li>
+</ul>
+<h1 id="form表单标签"><a href="#form表单标签" class="headerlink" title="form表单标签"></a>form表单标签</h1><p>作用：收集并提交用户数据给指定服务器。</p>
+<p>注意：form标签会收集其标签内部的数据，要提交的表单项必须拥有name属性，否则不会提交</p>
+<p><strong>属性</strong>：</p>
+<ul>
+<li><p>action：收集的数据的提交地址，URL</p>
+</li>
+<li><p>method：收集的数据的提交方式，</p>
+</li>
+<li><p>get：适合小量数据，表单数据以？隔开拼接在用户书写的URL后面，不同的键值对用&amp;连接，不安全。</p>
+</li>
+<li><p>post：适合大量数据，安全，隐式提交。</p>
+</li>
+<li><p>表单域标签：作用，给用户提供可以进行数据书写或者选择的标签，</p>
+</li>
+<li><p>文本框：input：</p>
+</li>
+</ul>
+<p><strong>type</strong>：</p>
+<ul>
+<li><p>text 收集少量文本数据，用户可见</p>
+</li>
+<li><p>password 收集用户密码数据</p>
+</li>
+<li><p>name：数据提交的键，也会被js使用</p>
+</li>
+<li><p>value：默认值</p>
+</li>
+</ul>
+<p><strong>单选框</strong>：type = “radio”，name属性相同的只能选一项数据 value 要提交的数据，checked checked使用此属性的单选默认是选择状态</p>
+<p><strong>form表单标签</strong>：form标签会将其内部所有的form表单标签中的所有的用户数据按照method指定的提交方式提交给action指明的地址</p>
+<pre><code>&lt;form action = &#39;#&#39; method=&quot;get&quot;&gt;
+    用户名&lt;input type=&quot;text&quot; name = &quot;rtr&quot;/&gt;&lt;br/&gt;
+    密码&lt;input type = &quot;text&quot; name = &quot;uid&quot;/&gt;&lt;br&gt;
+    &lt;input type = &quot;submit&quot; value=&quot;提交&quot;/&gt;
+    性别：男&lt;input type = &quot;radio&quot; name = &quot;sex&quot; value = &quot;male&quot; checked = &quot;checked&quot;/&gt;女&lt;input type = &quot;radio&quot; name = &quot;sex&quot; value = &quot;female&quot;/&gt;
+&lt;/form&gt;
+</code></pre>
+<h1 id="html区块"><a href="#html区块" class="headerlink" title="html区块"></a>html区块</h1><h2 id="HTML-lt-div-gt-和-lt-span-gt"><a href="#HTML-lt-div-gt-和-lt-span-gt" class="headerlink" title="HTML &lt;div&gt; 和&lt;span&gt;"></a>HTML <code>&lt;div&gt;</code> 和<code>&lt;span&gt;</code></h2><p>HTML 可以通过 <div> 和 <span>将元素组合起来。</p>
+<h2 id="HTML-区块元素"><a href="#HTML-区块元素" class="headerlink" title="HTML 区块元素"></a>HTML 区块元素</h2><p>大多数 HTML 元素被定义为块级元素或内联元素。</p>
+<p><strong>块级元素在浏览器显示时，通常会以新行来开始（和结束）。</strong></p>
+<p>实例: <code>&lt;h1&gt;, &lt;p&gt;, &lt;ul&gt;, &lt;table&gt;</code></p>
+<h2 id="HTML-内联元素"><a href="#HTML-内联元素" class="headerlink" title="HTML 内联元素"></a>HTML 内联元素</h2><p><strong>内联元素在显示时通常不会以新行开始。</strong></p>
+<p>实例: <code>&lt;b&gt;, &lt;td&gt;, &lt;a&gt;, &lt;img&gt;</code></p>
+<h2 id="HTML-lt-div-gt-元素"><a href="#HTML-lt-div-gt-元素" class="headerlink" title="HTML &lt;div&gt; 元素"></a>HTML <code>&lt;div&gt;</code> 元素</h2><p>HTML <code>&lt;div&gt;</code> 元素是块级元素，它可用于组合其他 HTML 元素的容器。</p>
+<p><code>&lt;div&gt;</code> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。</p>
+<p>如果与 CSS 一同使用，<code>&lt;div&gt;</code> 元素可用于对大的内容块设置样式属性。</p>
+<p><code>&lt;div&gt;</code> 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <code>&lt;table&gt;</code> 元素进行文档布局不是表格的正确用法。<code>&lt;table&gt;</code> 元素的作用是显示表格化的数据。</p>
+<h2 id="HTML-元素"><a href="#HTML-元素" class="headerlink" title="HTML  元素"></a>HTML <span> 元素</h2><p><strong>HTML <code>&lt;span&gt;</code> 元素是内联元素，可用作文本的容器。<code>&lt;span&gt;</code> 元素也没有特定的含义。当与 CSS 一同使用时，<code>&lt;span&gt;</code> 元素可用于为部分文本设置样式属性。</strong></p>
+<h2 id="HTML-分组标签"><a href="#HTML-分组标签" class="headerlink" title="HTML 分组标签"></a>HTML 分组标签</h2><table border="1px" cellspacing="0px" cellpadding="8px" >
+    <tr height = "27px" align = "center">
+        <td width = "80px">标签</td>
+        <td width = "120px">描述</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>div</td>
+        <td >定义了文档的区域，块级 (block-level)</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>span</td>
+        <td colspan="4">用来组合文档中的行内元素， 内联元素(inline)</td>
+    </tr>
+</table>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/html5/">html5</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2022/01/06/JS-Study/" title="JS Study" itemprop="url">JS Study</a>
   </h1>
   <p class="article-author">By

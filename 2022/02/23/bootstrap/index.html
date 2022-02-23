@@ -4,24 +4,23 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>jQuery&amp;bootstrap | font-end study</title>
+    <title>bootstrap | font-end study</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Weiling Wu">
     
 
     
-    <meta name="description" content="jQuery语法jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。 基础语法 ##：$(*selector*).*action*()  美元符号定义 jQuery 选择符（selector）“查询”和”查找” HTML 元素 jQuery 的 action() 执行对元素的操作  实例: $(this).hide() - 隐藏当前元素 $(“p”).hide() - 隐藏所">
+    <meta name="description" content="Bootstrap代码：&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt;    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;    &lt;title&gt;Bootstrap 实例 - 响应式的列重置&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&amp;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="jQuery&amp;bootstrap">
-<meta property="og:url" content="http://example.com/2022/01/06/jQuery-bootstrap/index.html">
+<meta property="og:title" content="bootstrap">
+<meta property="og:url" content="http://example.com/2022/02/23/bootstrap/index.html">
 <meta property="og:site_name" content="font-end study">
-<meta property="og:description" content="jQuery语法jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。 基础语法 ##：$(*selector*).*action*()  美元符号定义 jQuery 选择符（selector）“查询”和”查找” HTML 元素 jQuery 的 action() 执行对元素的操作  实例: $(this).hide() - 隐藏当前元素 $(“p”).hide() - 隐藏所">
+<meta property="og:description" content="Bootstrap代码：&lt;!DOCTYPE html&gt; &lt;html&gt; &lt;head&gt;    &lt;meta charset&#x3D;&quot;utf-8&quot;&gt;    &lt;title&gt;Bootstrap 实例 - 响应式的列重置&lt;&#x2F;title&gt;    &lt;link rel&#x3D;&quot;stylesheet&quot; href&#x3D;&amp;">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-01-06T05:03:18.000Z">
-<meta property="article:modified_time" content="2022-01-20T06:32:04.256Z">
+<meta property="article:published_time" content="2022-02-23T06:58:58.000Z">
+<meta property="article:modified_time" content="2022-02-23T07:00:03.449Z">
 <meta property="article:author" content="Weiling Wu">
-<meta property="article:tag" content="jQuery &amp; bootstrap">
 <meta name="twitter:card" content="summary">
 
     
@@ -84,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/01/06/jQuery-bootstrap/" title="jQuery&amp;bootstrap" itemprop="url">jQuery&amp;bootstrap</a>
+      <a href="/2022/02/23/bootstrap/" title="bootstrap" itemprop="url">bootstrap</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
 		
   <p class="article-time">
-    <time datetime="2022-01-06T05:03:18.000Z" itemprop="datePublished"> Published 2022-01-06</time>
+    <time datetime="2022-02-23T06:58:58.000Z" itemprop="datePublished"> Published 2022-02-23</time>
     
   </p>
 </header>
@@ -100,120 +99,11 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">jQuery语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">基础语法 ##：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">文档就绪事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">jQuery选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">#id 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">.class 选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">jQuery事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#click"><span class="toc-number">1.4.1.</span> <span class="toc-text">click()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery%E5%8A%A8%E7%94%BB%E2%80%93animate-%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">jQuery动画–animate() 方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap"><span class="toc-number">2.</span> <span class="toc-text">Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.</span> <span class="toc-text">栅格系统</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap"><span class="toc-number">1.</span> <span class="toc-text">Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.</span> <span class="toc-text">栅格系统</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="jQuery语法"><a href="#jQuery语法" class="headerlink" title="jQuery语法"></a>jQuery语法</h1><p>jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。</p>
-<h2 id="基础语法-："><a href="#基础语法-：" class="headerlink" title="基础语法 ##："></a>基础语法 ##：</h2><p><code>$(*selector*).*action*()</code></p>
-<ul>
-<li>美元符号定义 jQuery</li>
-<li>选择符（selector）“查询”和”查找” HTML 元素</li>
-<li>jQuery 的 action() 执行对元素的操作</li>
-</ul>
-<p>实例:</p>
-<pre><code>$(this).hide() - 隐藏当前元素
-$(“p”).hide() - 隐藏所有
-
-元素
-$(“p.test”).hide() - 隐藏所有 class=“test” 的
-
-元素
-$(“#test”).hide() - 隐藏 id=“test” 的元素
-</code></pre>
-<h2 id="文档就绪事件"><a href="#文档就绪事件" class="headerlink" title="文档就绪事件"></a>文档就绪事件</h2><p>在我们的实例中的所有 jQuery 函数位于一个 document ready 函数中：</p>
-<pre><code>$(document).ready(function()&#123;
- // 开始写 jQuery 代码...  
-        &#125;);
-</code></pre>
-<p>这是为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。</p>
-<p>如果在文档没有完全加载之前就运行函数，操作可能失败。</p>
-<p><strong>提示：</strong>简洁写法（与以上写法效果相同）:    </p>
-<pre><code>$(function()&#123;
-    // 开始写 jQuery 代码...  
-        &#125;);
-</code></pre>
-<p>以上两种方式你可以选择你喜欢的方式实现文档就绪后执行 jQuery 方法。</p>
-<h2 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h2><p>jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。</p>
-<p>jQuery 选择器基于元素的 id、类、类型、属性、属性值等”查找”（或选择）HTML 元素。 它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。</p>
-<p>jQuery 中所有选择器都以美元符号开头：$()。</p>
-<p>元素选择器：jQuery 元素选择器基于元素名选取元素。</p>
-<pre><code>$(&quot;p&quot;)
-</code></pre>
-<h3 id="id-选择器"><a href="#id-选择器" class="headerlink" title="#id 选择器"></a>#id 选择器</h3><p>jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素。</p>
-<p>页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。</p>
-<p>通过 id 选取元素语法如下：</p>
-<pre><code>$(&quot;#test&quot;)
-</code></pre>
-<h3 id="class-选择器"><a href="#class-选择器" class="headerlink" title=".class 选择器"></a>.class 选择器</h3><p>jQuery 类选择器可以通过指定的 class 查找元素。</p>
-<p>语法如下：</p>
-<pre><code>$(&quot;.test&quot;)
-</code></pre>
-<h2 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h2><p>页面对不同访问者的响应叫做事件。</p>
-<p>事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。</p>
-<h3 id="click"><a href="#click" class="headerlink" title="click()"></a>click()</h3><p>click() 方法是当按钮点击事件被触发时会调用一个函数。</p>
-<p>该函数在用户点击 HTML 元素时执行。</p>
-<p>在下面的实例中，当点击事件在某个元素上触发时，隐藏当前的元素：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
-    &lt;script src=&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;&gt;
-    &lt;/script&gt;
-    &lt;script&gt;
-        $(function()&#123;
-            $(&quot;p&quot;).click(function()&#123;
-                $(this).hide();
-                        &#125;)&#125;);
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;p&gt;如果你点我，我就会消失。&lt;/p&gt;
-    &lt;p&gt;继续点我!&lt;/p&gt;
-    &lt;p&gt;接着点我!&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>dblclick() – 鼠标双击事件， mouseenter() – 当鼠标指针穿过元素， mouseleave() – 当鼠标指针离开元素，mousedown() – 当鼠标指针移动到元素上方，并按下鼠标按键，等等。</p>
-<p>jQuery Fading 方法：</p>
-<p>通过 jQuery，您可以实现元素的淡入淡出效果。</p>
-<p>jQuery 拥有下面四种 fade 方法：</p>
-<pre><code>    fadeIn()
-    fadeOut()
-    fadeToggle()
-    fadeTo()
-</code></pre>
-<h3 id="jQuery动画–animate-方法"><a href="#jQuery动画–animate-方法" class="headerlink" title="jQuery动画–animate() 方法"></a>jQuery动画–animate() 方法</h3><p>jQuery animate() 方法用于创建自定义动画。</p>
-<p>语法：</p>
-<pre><code>$(selector).animate(&#123;params&#125;,speed,callback);
-</code></pre>
-<p>必需的 params 参数定义形成动画的 CSS 属性。可选的 speed 参数规定效果的时长。它可以取以下值：“slow”、“fast” 或毫秒。可选的 callback 参数是动画完成后所执行的函数名称。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;script src=&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;&gt;
-    &lt;/script&gt;
-    &lt;script&gt;
-        $(document).ready(function()&#123;
-            $(&quot;button&quot;).click(function()&#123;
-                $(&quot;div&quot;).animate(&#123;left:&#39;250px&#39;&#125;);
-            &#125;);
-        &#125;);
-    &lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;button&gt;开始动画&lt;/button&gt;
-&lt;p&gt;默认情况下，所有的 HTML 元素有一个静态的位置，且是不可移动的。
-    如果需要改变为，我们需要将元素的 position 属性设置为 relative, fixed, 或 absolute!&lt;/p&gt;
-&lt;div style=&quot;background:#98bf21;height:100px;width:100px;position:absolute;&quot;&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code>&lt;!DOCTYPE html&gt;
+		<h1 id="Bootstrap"><a href="#Bootstrap" class="headerlink" title="Bootstrap"></a>Bootstrap</h1><h2 id="代码："><a href="#代码：" class="headerlink" title="代码："></a>代码：</h2><pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
    &lt;meta charset=&quot;utf-8&quot;&gt;
@@ -291,18 +181,13 @@ $(“#test”).hide() - 隐藏 id=“test” 的元素
 <div class="article-catetags">
 
 
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/jQuery-bootstrap/">jQuery & bootstrap</a>
-  </div>
-
 </div>
 
 
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://example.com/2022/01/06/jQuery-bootstrap/" data-title="jQuery&amp;bootstrap | font-end study" data-tsina="" class="share clearfix">
+	  <div data-url="http://example.com/2022/02/23/bootstrap/" data-title="bootstrap | font-end study" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -316,18 +201,18 @@ $(“#test”).hide() - 隐藏 id=“test” 的元素
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2022/01/06/sort/" title="sort">
+ <a href="/2022/02/23/react-router-dom/" title="react-router-dom">
   <strong>上一篇：</strong><br/>
   <span>
-  sort</span>
+  react-router-dom</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/2022/01/06/css/"  title="css">
+<a href="/2022/01/29/react-redux/"  title="react-redux">
  <strong>下一篇：</strong><br/> 
- <span>css
+ <span>react-redux
 </span>
 </a>
 </div>
@@ -344,7 +229,7 @@ $(“#test”).hide() - 隐藏 id=“test” 的元素
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#jQuery%E8%AF%AD%E6%B3%95"><span class="toc-number">1.</span> <span class="toc-text">jQuery语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95-%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">基础语法 ##：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E5%B0%B1%E7%BB%AA%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">文档就绪事件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.</span> <span class="toc-text">jQuery选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#id-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.1.</span> <span class="toc-text">#id 选择器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#class-%E9%80%89%E6%8B%A9%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">.class 选择器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#jQuery%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.4.</span> <span class="toc-text">jQuery事件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#click"><span class="toc-number">1.4.1.</span> <span class="toc-text">click()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#jQuery%E5%8A%A8%E7%94%BB%E2%80%93animate-%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">jQuery动画–animate() 方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap"><span class="toc-number">2.</span> <span class="toc-text">Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">2.1.</span> <span class="toc-text">代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.2.</span> <span class="toc-text">栅格系统</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Bootstrap"><span class="toc-number">1.</span> <span class="toc-text">Bootstrap</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">代码：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%85%E6%A0%BC%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.</span> <span class="toc-text">栅格系统</span></a></li></ol></li></ol>
  
   </div>
 
