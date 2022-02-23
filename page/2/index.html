@@ -81,6 +81,268 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2022/01/06/Tree-Graph/" title="Tree&amp;Graph" itemprop="url">Tree&amp;Graph</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-01-06T05:14:38.000Z" itemprop="datePublished"> Published 2022-01-06</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><h2 id="树的概念："><a href="#树的概念：" class="headerlink" title="树的概念："></a>树的概念：</h2><p>树是一种数据结构，它是由n(n≥1)个有限节点组成一个具有层次关系的集合。把它叫做“树”是因为它看起来像一棵倒挂的树，也就是说它是根朝上，而叶朝下的。它具有以下的特点：</p>
+<p>每个节点有零个或多个子节点；没有父节点的节点称为根节点；每一个非根节点有且只有一个父节点；除了根节点外，每个子节点可以分为多个不相交的子树。</p>
+<h2 id="二叉树："><a href="#二叉树：" class="headerlink" title="二叉树："></a>二叉树：</h2><p>二叉树是n(n&gt;=0)个结点的有限集合，该集合或者为空集（称为空二叉树），或者由一个根结点和两棵互不相交的、分别称为根结点的左子树和右子树组成。<br>树的特点：</p>
+<p>由二叉树定义以及图示分析得出二叉树有以下特点：<br>1）每个结点最多有两颗子树，所以二叉树中不存在度大于2的结点。<br>2）左子树和右子树是有顺序的，次序不能任意颠倒。<br>3）即使树中某结点只有一棵子树，也要区分它是左子树还是右子树。<br>性质：</p>
+<p>1）在二叉树的第i层上最多有2i-1 个节点 。（i&gt;=1）<br>2）二叉树中如果深度为k,那么最多有2k-1个节点。(k&gt;=1）<br>3）n0=n2+1 n0表示度数为0的节点数，n2表示度数为2的节点数。<br>4）在完全二叉树中，具有n个节点的完全二叉树的深度为[log2n]+1，其中[log2n]是向下取整。<br>5）若对含 n 个结点的完全二叉树从上到下且从左至右进行 1 至 n 的编号，则对完全二叉树中任意一个编号为 i 的结点有如下特性：</p>
+<p>(1) 若 i=1，则该结点是二叉树的根，无双亲, 否则，编号为 [i/2] 的结点为其双亲结点;<br>(2) 若 2i&gt;n，则该结点无左孩子， 否则，编号为 2i 的结点为其左孩子结点；<br>(3) 若 2i+1&gt;n，则该结点无右孩子结点， 否则，编号为2i+1 的结点为其右孩子结点。</p>
+<h2 id="二叉树深度遍历"><a href="#二叉树深度遍历" class="headerlink" title="二叉树深度遍历"></a>二叉树深度遍历</h2><p>前序遍历，中序遍历，后序遍历。</p>
+<p>前序遍历通俗的说就是从二叉树的根结点出发，当第一次到达结点时就输出结点数据，按照先向左在向右的方向访问。中序后序以此类推。</p>
+<p><strong>//前序遍历</strong></p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+        function TreeNode(val) &#123;
+          this.val = val;
+          this.left = this.right = null;
+         &#125;
+
+        function preorderTraversal(root)&#123;
+            const res = [];
+            function inorder(root) &#123;
+                if(root==null)
+                    return;
+                res.push(root.val);
+                inorder(root.left);//递归
+                inorder(root.right);
+            &#125;
+            inorder(root);
+
+        &#125;
+&lt;/script&gt;
+</code></pre>
+<p><strong>//中序遍历</strong></p>
+<pre><code>function inorderTraversal(root)&#123;
+    const res = [];
+    function inorder(root) &#123;
+        if(root==null)
+            return;
+        inorder(root.left);//递归
+        res.push(root.val);
+        inorder(root.right);
+    &#125;
+</code></pre>
+<p><strong>//后序遍历</strong></p>
+<pre><code>function postorderTraversal(root)&#123;
+    const res = [];
+    function inorder(root) &#123;
+        if(root==null)
+            return;
+        inorder(root.left);//递归
+        inorder(root.right);
+        res.push(root.val);
+    &#125;
+</code></pre>
+<h2 id="二叉树广度遍历–层次遍历"><a href="#二叉树广度遍历–层次遍历" class="headerlink" title="二叉树广度遍历–层次遍历"></a>二叉树广度遍历–层次遍历</h2><pre><code>     3   
+    / \  
+   9  20
+       /  \   
+    15   7 
+返回其层次遍历结果：
+[ [3], [9,20], [15,7] ]
+</code></pre>
+<p><strong>解题思路</strong></p>
+<p>二叉树的层序遍历，即二叉树的广度遍历，先遍历根节点的相邻节点，再一次遍历相邻节点的子节点。广度遍历通常借助队列来实现。用队列来存储当前层的节点数，遍历当前层的节点，将当前层的节点依次推入数组subRes[]，再将当前节点的左右子节点推入队列中，进入下一层进行遍历，直到遍历完整棵树，即完成到二叉树的层序遍历。</p>
+<pre><code>/**
+ * Definition for a binary tree node.
+ * function TreeNode(val) &#123;
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * &#125;
+ */
+/**
+ * @param &#123;TreeNode&#125; root
+ * @return &#123;number[][]&#125;
+ */
+//广度遍历 + 队列
+var levelOrder = function(root) &#123;
+    if(!root)&#123;
+        return []
+    &#125;
+    var res = [] //结果最外层数组
+    var queue = [root]
+    while(queue.length&gt;0)&#123;
+        var len = queue.length//当前层的节点数目
+        var subRes = []
+        for(var i=0;i&lt;len;i++)&#123;
+            var node = queue.shift() //节点出列
+            subRes.push(node.val) //将当前层的节点值加入subRes数组中
+            //将下一层节点计入队列中
+            if(node.left)&#123;
+                queue.push(node.left)
+            &#125;
+            if(node.right)&#123;
+                queue.push(node.right)
+            &#125;
+        &#125;
+        res.push(subRes)
+    &#125;
+    return res
+&#125;;
+</code></pre>
+<h2 id="二叉树结点删除"><a href="#二叉树结点删除" class="headerlink" title="二叉树结点删除"></a>二叉树结点删除</h2><p>规定：</p>
+<p>1）如果删除的节点是叶子节点，则删除该节点</p>
+<p>2）如果删除的节点是非叶子节点，则删除该子树</p>
+<p>思路：</p>
+<p>1）考虑树是空树root。那么只有一个root节点，则等价将二叉树置空。</p>
+<p>2）因为我们的二叉树是单向的，所以我们是判断当前节点的子节点是否删除节点，而不能去判断当前节点是不是需要删除节点。</p>
+<p>3）如果当前节点的左子节点不为空，并且左子节点就是需要删除节点，就将this.left = null，并且就返回（结束递归删除）</p>
+<p>4）如果当前节点的右子节点不为空，并且右子节点就是需要删除节点，就将this.right= null，并且就返回（结束递归删除）</p>
+<p>5）如果第2步和第3步没有删除节点，那么我们就需要向左子树进行递归删除</p>
+<p>6）如果第4步没有删除节点，则应当向右子树进行递归删除。</p>
+<h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><p>(引自<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42126431/article/details/89537923">https://blog.csdn.net/weixin_42126431/article/details/89537923</a>)</p>
+<h2 id="图的相关术语"><a href="#图的相关术语" class="headerlink" title="图的相关术语"></a>图的相关术语</h2><ol>
+<li><p>有一条边相连的顶点叫相邻顶点；</p>
+</li>
+<li><p>一个顶点的度就是该顶点的相邻顶点数；</p>
+</li>
+<li><p>路径指顶点组成的连续序列；</p>
+</li>
+<li><p>简单路径没有重复顶点；</p>
+</li>
+<li><p>有向图和无向图</p>
+</li>
+</ol>
+<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><ul>
+<li><p>邻接矩阵 array[i][j] ===1代表i节点和j节点相邻，否则不相邻</p>
+</li>
+<li><p>邻接表 相当于把每个节点的相邻节点一一列举出来。</p>
+</li>
+<li><p>关联矩阵 形式和邻接矩阵一样，只是把邻接矩阵的直接维度换成对应的边，适用于边比顶点多的情况。</p>
+</li>
+</ul>
+<h2 id="创建图类"><a href="#创建图类" class="headerlink" title="创建图类"></a>创建图类</h2><p>图由边的集合及顶点的集合组成。边是有方向的是有序图（有向图），否则就是无序图（无向图）。图中的一系列顶点构成路径，路径中所有的顶点都由边连接。路径的长度用路径中第一个顶点到最后一个顶点之间边的数量表示。</p>
+<p>用邻接表来表示边，即将与某一顶点的相邻的边表示为由该顶点的相邻顶点列表构成的数组，并以该顶点作为索引。比如，如果顶点 2 与顶点 0、 1、3、4 相连，那么就将0、1、3、4存储在数组中索引为 2 的位置。</p>
+<p><strong>Graph 类定义图</strong></p>
+<pre><code>function Graph(v) &#123;
+  this.vertices = v;  //顶点的数量
+  this.edges = 0;
+  this.adj = []; //边，邻接矩阵
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    this.adj[i] = [];  //保存与顶点 i 相邻的顶点列表
+  &#125;
+  this.addEdge = addEdge;
+  this.showGraph = showGraph;
+  this.dfs = dfs;
+  this.bfs = bfs;
+  this.marked = [];  //保存未访问过的顶点
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    this.marked[i] = false;
+  &#125;
+  this.pathTo = pathTo;
+  this.hasPathTo = hashPathTo;
+  this.edgeTo = [];
+&#125;
+</code></pre>
+<p><strong>addEdge(A,B)</strong> 添加边，先查找顶点 A 的邻接表，将顶点 B 添加到列表中，然后再查找顶点 B 的邻接表，将顶点 A 加入列表。最后，将边数加 1。</p>
+<pre><code>function addEdge(v, w) &#123;
+　　this.ajd[v].push(w);
+　　this.adj[w].push(v);
+　　this.edges++;
+&#125;
+</code></pre>
+<p><strong>showGraph()</strong> 方法显示所有顶点及其相邻顶点列表</p>
+<pre><code>function showGraph() &#123;
+  for (var i = 0; i &lt; this.vertices; ++i) &#123;
+    var str = &#39;&#39;;
+    str += i + &quot; -&gt; &quot;;
+    for (var j = 0; j &lt; this.vertices; ++j) &#123;
+      if (this.adj[i][j] != undefined) &#123;
+        str += this.adj[i][j] + &#39; &#39;;
+      &#125;
+    &#125;
+    console.log(str);
+  &#125;
+&#125;
+</code></pre>
+<h2 id="搜索图"><a href="#搜索图" class="headerlink" title="搜索图"></a>搜索图</h2><p>确定从一个指定的顶点可以到达其他哪些顶点，有两种搜索方法：<strong>深度优先搜索</strong>和<strong>广度优先搜索</strong>。</p>
+<h3 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h3><p>从起始顶点开始追溯，直到到达最后一个顶点，然后回溯， 继续追溯下一条路径，直到到达最后的顶点，如此往复，直到没有路径为止。当访问一个没有访问过的顶点时，将它标记为已访问，再递归地去访问在初始顶点的邻接表中其他没有访问过的顶点。</p>
+<pre><code>function dfs(v) &#123;
+  this.marked[v] = true;
+  if (this.adj[v] != undefined) &#123;
+    console.log(&quot;Visited vertex: &quot; + v);
+  &#125;
+  for(var w of this.adj[v]) &#123;
+    if (!this.marked[w]) &#123;
+      this.dfs(w);
+    &#125;
+  &#125;
+&#125;
+//调用
+g = new Graph(5);
+g.addEdge(0, 1);
+g.addEdge(0, 2);
+g.addEdge(1, 3);
+g.addEdge(2, 4);
+g.showGraph();
+g.dfs(0);
+</code></pre>
+<h3 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h3><p>从第一个顶点开始，尝试访问尽可能靠近它的顶点。本质上，这种搜索是逐层移动的，首先检查最靠近第一个顶点的层，再逐渐向下移动到离起始顶点最远的层。</p>
+<pre><code>function bfs(s) &#123;
+  var queue = [];
+  this.marked[s] = true;
+  queue.push(s); // 添加到队尾
+  while (queue.length &gt; 0) &#123;
+    var v = queue.shift(); // 从队首移除
+    if (v != undefined) &#123;
+      console.log(&quot;Visisted vertex: &quot; + v);
+    &#125;
+    for(var w of this.adj[v]) &#123;
+      if (!this.marked[w]) &#123;this.marked[w] = true;
+        queue.push(w);
+      &#125;
+    &#125;
+  &#125;
+&#125;
+</code></pre>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2022/01/06/sort/" title="sort" itemprop="url">sort</a>
   </h1>
   <p class="article-author">By
