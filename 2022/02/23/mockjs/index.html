@@ -1,0 +1,675 @@
+
+ <!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>mockjs | font-end study</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Weiling Wu">
+    
+
+    
+    <meta name="description" content="为什么使用mockjs（原文出自：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;d812ce349265） 在做开发时，当后端的接口还未完成，前端为了不影响工作效率，手动模拟后端接口， 1.我们可以使用json文件来模拟后台数据，但比较局限，无法模拟数据的增删改查 2.使用json-server模拟，但不能随机生成所需数据 3.使用mockjs模拟后端接口，可随机生成所需数据，可模拟对数据的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mockjs">
+<meta property="og:url" content="http://example.com/2022/02/23/mockjs/index.html">
+<meta property="og:site_name" content="font-end study">
+<meta property="og:description" content="为什么使用mockjs（原文出自：https:&#x2F;&#x2F;www.jianshu.com&#x2F;p&#x2F;d812ce349265） 在做开发时，当后端的接口还未完成，前端为了不影响工作效率，手动模拟后端接口， 1.我们可以使用json文件来模拟后台数据，但比较局限，无法模拟数据的增删改查 2.使用json-server模拟，但不能随机生成所需数据 3.使用mockjs模拟后端接口，可随机生成所需数据，可模拟对数据的">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-02-23T08:01:45.000Z">
+<meta property="article:modified_time" content="2022-02-23T08:16:59.890Z">
+<meta property="article:author" content="Weiling Wu">
+<meta name="twitter:card" content="summary">
+
+    
+    <link rel="alternative" href="/atom.xml" title="font-end study" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/katong.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="font-end study" title="font-end study"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="font-end study">font-end study</a></h1>
+				<h2 class="blog-motto"></h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/archives">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:example.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2022/02/23/mockjs/" title="mockjs" itemprop="url">mockjs</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-02-23T08:01:45.000Z" itemprop="datePublished"> Published 2022-02-23</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8mockjs"><span class="toc-number">1.</span> <span class="toc-text">为什么使用mockjs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mock%E4%BC%98%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">mock优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mock%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">mock使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mockjs%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%8A-%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="toc-number">4.</span> <span class="toc-text">mockjs的数据类型 及 语法规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mock-Random"><span class="toc-number">4.1.</span> <span class="toc-text">Mock.Random</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%AF%A6%E6%83%85%E8%A7%81%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-number">4.2.</span> <span class="toc-text">定义数据类型，详情见官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mockjs%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="toc-number">4.3.</span> <span class="toc-text">mockjs语法规范</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mock-setup"><span class="toc-number">5.</span> <span class="toc-text">Mock.setup()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mock-Random-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">Mock.Random 扩展方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mockjs%E8%8E%B7%E5%8F%96%E5%89%8D%E7%AB%AF%E4%BC%A0%E9%80%92%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">7.</span> <span class="toc-text">mockjs获取前端传递的数据</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="为什么使用mockjs"><a href="#为什么使用mockjs" class="headerlink" title="为什么使用mockjs"></a>为什么使用mockjs</h1><p>（原文出自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d812ce349265%EF%BC%89">https://www.jianshu.com/p/d812ce349265）</a></p>
+<p>在做开发时，当后端的接口还未完成，前端为了不影响工作效率，手动模拟后端接口，</p>
+<pre><code>1.我们可以使用json文件来模拟后台数据，但比较局限，无法模拟数据的增删改查
+2.使用json-server模拟，但不能随机生成所需数据
+3.使用mockjs模拟后端接口，可随机生成所需数据，可模拟对数据的增删改查
+</code></pre>
+<h1 id="mock优点"><a href="#mock优点" class="headerlink" title="mock优点"></a>mock优点</h1><pre><code>1.前后端分离，
+2.可随机生成大量的数据
+3.用法简单
+4.数据类型丰富
+5.可扩展数据类型
+6.在已有接口文档的情况下，我们可以直接按照接口文档来开发，将相应的字段写好，在接口完成 之后，只需要改变url地址即可。
+</code></pre>
+<h1 id="mock使用"><a href="#mock使用" class="headerlink" title="mock使用"></a>mock使用</h1><pre><code>npm install mockjs --save-dev
+// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+
+// 定义数据类型
+var data = Mock.mock(&#123;
+  // 20条数据
+  &quot;data|20&quot;: [&#123;
+    // 商品种类
+    &quot;goodsClass&quot;: &quot;女装&quot;,
+    // 商品Id
+    &quot;goodsId|+1&quot;: 1,
+    //商品名称
+    &quot;goodsName&quot;: &quot;@ctitle(10)&quot;,
+    //商品地址
+    &quot;goodsAddress&quot;: &quot;@county(true)&quot;,
+    //商品等级评价★
+    &quot;goodsStar|1-5&quot;: &quot;★&quot;,
+    //商品图片
+    &quot;goodsImg&quot;: &quot;@Image(&#39;100x100&#39;,&#39;@color&#39;,&#39;小甜甜&#39;)&quot;,
+    //商品售价
+    &quot;goodsSale|30-500&quot;: 30
+
+  &#125;]
+&#125;)
+// 输出结果随机生成的数据（node index.js）
+ console.log(data);
+</code></pre>
+<h1 id="mockjs的数据类型-及-语法规范"><a href="#mockjs的数据类型-及-语法规范" class="headerlink" title="mockjs的数据类型 及 语法规范"></a>mockjs的数据类型 及 语法规范</h1><h2 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h2><p>Mock.Random是一个工具类，用于生成各种随机数据。<br>Mock.Random 的方法在数据模板中称为『占位符』，书写格式为 @占位符(参数 [, 参数])</p>
+<h2 id="定义数据类型，详情见官方文档"><a href="#定义数据类型，详情见官方文档" class="headerlink" title="定义数据类型，详情见官方文档"></a>定义数据类型，详情见官方文档</h2><pre><code>// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+
+// 定义数据类型
+var data = Mock.mock(&#123;
+  // 20条数据
+  &quot;data|3&quot;: [&#123;
+    // 商品种类
+    &quot;goodsClass&quot;: &quot;女装&quot;,
+    // 商品Id
+    &quot;goodsId|+1&quot;: 1,
+    //商品名称
+    &quot;goodsName&quot;: &quot;@ctitle(10)&quot;,
+    //商品地址
+    &quot;goodsAddress&quot;: &quot;@county(true)&quot;,
+    //商品等级评价★
+    &quot;goodsStar|1-5&quot;: &quot;★&quot;,
+    //商品图片
+    &quot;goodsImg&quot;: &quot;@Image(&#39;100x100&#39;,&#39;@color&#39;,&#39;小甜甜&#39;)&quot;,
+    //商品售价
+    &quot;goodsSale|30-500&quot;: 30,
+
+    // 邮箱：
+    &quot;email&quot;: &quot;@email&quot;,
+    // 颜色
+    &quot;color&quot;: &quot;@color&quot;,
+
+    // name
+    &quot;name&quot;: &quot;@name&quot;,
+
+    //img,参数1：背景色，参2：前景色，参3：图片的格式，默认png，参4：图片上的文字
+
+    &quot;img&quot;: &quot;@image(&#39;100*100&#39;,&#39;@color&#39;)&quot;,
+    //英文文本(句子)参1：句子的个数，参2：句子的最小个数  参3：句子的最大个数，没有参1时，参2参3才会生效
+    &quot;Etext&quot;:&quot;@paragraph(1,1,3)&quot;,
+
+    //中文文本(句子)参1：句子的个数，参2：句子的最小个数  参3：句子的最大个数，没有参1时，参2参3才会生效
+    &quot;Ctext&quot;:&quot;@cparagraph(1,1,3)&quot;,
+
+    //中国大区
+    &quot;cregion&quot;:&quot;@region&quot;,
+    // 省
+    &quot;cprovince&quot;:&quot;@province&quot;,
+    //市
+    &quot;ccity&quot;:&quot;@city&quot;,
+    //省 + 市
+    &quot;ss&quot;:&quot;@city(true)&quot;,
+    //县
+    &quot;country&quot;:&quot;@county&quot;,
+    //省市县
+    &quot;countrysx&quot;:&quot;@county(true)&quot;,
+    //邮政编码
+    &quot;code&quot;:&quot;@zip&quot;
+
+  &#125;]
+&#125;)
+
+// 输出结果
+// console.log(data);
+</code></pre>
+<h2 id="mockjs语法规范"><a href="#mockjs语法规范" class="headerlink" title="mockjs语法规范"></a>mockjs语法规范</h2><p>数据模板中的每个属性由 3 部分构成：属性名、生成规则、属性值：</p>
+<pre><code>// 属性名   name
+// 生成规则 rule
+// 属性值   value
+&#39;name|rule&#39;: value
+</code></pre>
+<p>注意：属性名 和 生成规则 之间用竖线 | 分隔。<br>生成规则 是可选的。<br>生成规则 有 7 种格式：</p>
+<p> <code>&#39;name|min-max&#39;: value &#39;name|count&#39;: value &#39;name|min-max.dmin-dmax&#39;: value &#39;name|min-max.dcount&#39;: value &#39;name|count.dmin-dmax&#39;: value &#39;name|count.dcount&#39;: value</code></p>
+<p>//属性值自动加 1，初始值为 <code>number</code> ‘name|+step’: value    </p>
+<p>生成规则 的 含义 需要依赖 属性值的类型 才能确定。</p>
+<p>属性值 中可以含有 @占位符。</p>
+<p>属性值 还指定了最终值的初始值和类型。</p>
+<ol>
+<li><p>属性值是字符串 String</p>
+<p> ‘name|min-max’: string</p>
+<p> 通过重复 string 生成一个字符串，重复次数大于等于 min，小于等于 max。</p>
+<p> ‘name|count’: string</p>
+<p> 通过重复 string 生成一个字符串，重复次数等于 count。</p>
+</li>
+<li><p>属性值是数字 Number</p>
+<p> ‘name|+1’: number</p>
+<p> 属性值自动加 1，初始值为 number。</p>
+<p> ‘name|min-max’: number</p>
+<p> 生成一个大于等于 min、小于等于 max 的整数，属性值 number 只是用来确定类型。</p>
+<p> ‘name|min-max.dmin-dmax’: number</p>
+<p> 生成一个浮点数，整数部分大于等于 min、小于等于 max，小数部分保留 dmin 到 dmax 位。</p>
+</li>
+<li><p>属性值是布尔型 Boolean</p>
+<p> ‘name|1’: boolean</p>
+<p> 随机生成一个布尔值，值为 true 的概率是 1/2，值为 false 的概率同样是 1/2。</p>
+<p> ‘name|min-max’: value</p>
+<p> 随机生成一个布尔值，值为 value 的概率是 min / (min + max)，值为 !value 的概率是 max / (min + max)。</p>
+</li>
+<li><p>属性值是对象 Object</p>
+<p> ‘name|count’: object</p>
+<p> 从属性值 object 中随机选取 count 个属性。</p>
+<p> ‘name|min-max’: object</p>
+<p> 从属性值 object 中随机选取 min 到 max 个属性。</p>
+</li>
+<li><p>属性值是数组 Array</p>
+<p> ‘name|1’: array 从属性值 array 中随机选取 1 个元素，作为最终值。</p>
+<p> ‘name|+1’: array 从属性值 array 中顺序选取 1 个元素，作为最终值。</p>
+<p> ‘name|min-max’: array</p>
+<p> 通过重复属性值 array 生成一个新数组，重复次数大于等于 min，小于等于 max。</p>
+<p> ‘name|count’: array</p>
+<p> 通过重复属性值 array 生成一个新数组，重复次数为 count。</p>
+</li>
+<li><p>属性值是函数 Function</p>
+<p> ‘name’: function</p>
+<p> 执行函数 function，取其返回值作为最终的属性值，函数的上下文为属性 ‘name’ 所在的对象。</p>
+</li>
+</ol>
+<h1 id="Mock-setup"><a href="#Mock-setup" class="headerlink" title="Mock.setup()"></a>Mock.setup()</h1><p>Mock.setup( settings )</p>
+<p>配置拦截 Ajax 请求时的行为。支持的配置项有：timeout</p>
+<p>指定被拦截的 Ajax 请求的响应时间，单位是毫秒。</p>
+<p>值可以是正整数，例如 400，表示 400 毫秒 后才会返回响应内容；</p>
+<p>也可以是横杠 ‘-‘ 风格的字符串，例如 ‘200-600’，表示响应时间介于 200 和 600 毫秒之间。默认值是’10-100’。</p>
+<pre><code>  Mock.setup(&#123;
+    timeout: 400
+&#125;)
+Mock.setup(&#123;
+    timeout: &#39;200-600&#39;
+&#125;)
+</code></pre>
+<p>目前，接口 Mock.setup( settings ) 仅用于配置 Ajax 请求，将来可能用于配置 Mock 的其他行为。</p>
+<h1 id="Mock-Random-扩展方法"><a href="#Mock-Random-扩展方法" class="headerlink" title="Mock.Random 扩展方法"></a>Mock.Random 扩展方法</h1><pre><code>// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+var random = Mock.Random;
+//扩展数据模板
+random.extend(&#123;
+  type: function (index:number) &#123;
+    const types = [&#39;products&#39;, &#39;industryApp&#39;, &#39;solution&#39;, &#39;experts&#39;];
+    return this.pick(types[index])
+  &#125;
+&#125;);
+
+// 定义数据类型
+const  menuSource:Array&lt;any&gt; = [];
+ menuSource[0] = Mock.mock(&#123;
+  &quot;type&quot;: &quot;@type(0)&quot;,
+   &#39;data|3-4&#39;:[&#123;
+     &#39;id|+1&#39;: 1,
+     name: &quot;@ctitle( 4,6)&quot;,
+     &quot;childs|5-10&quot;: [&#123;
+       &#39;id|+1&#39;: 1,
+       name: &quot;@ctitle(4,6)&quot;,
+     &#125;]
+   &#125;]
+&#125;);
+// 输出结果
+ console.log(data);
+</code></pre>
+<h1 id="mockjs获取前端传递的数据"><a href="#mockjs获取前端传递的数据" class="headerlink" title="mockjs获取前端传递的数据"></a>mockjs获取前端传递的数据</h1><pre><code>axios(&#123;
+      method: &quot;get&quot;,
+      url: &quot;/getGoods&quot;,
+      data: &#123;
+        id:2
+      &#125;
+    &#125;).then(data =&gt; &#123;
+      //成功的回调函数，返回的是增加的数据
+      console.log(data.data.data);
+      this.url = data.data.data[0].goodsImg
+    &#125;);
+  &#125;
+
+  Mock.mock(&quot;/getGoods&quot;, &quot;get&quot;, (config) =&gt; &#123;
+  console.log(config);
+  return data;
+&#125;)
+</code></pre>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://example.com/2022/02/23/mockjs/" data-title="mockjs | font-end study" data-tsina="" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2022/02/23/react-router-dom/"  title="react-router-dom">
+ <strong>下一篇：</strong><br/> 
+ <span>react-router-dom
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8mockjs"><span class="toc-number">1.</span> <span class="toc-text">为什么使用mockjs</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mock%E4%BC%98%E7%82%B9"><span class="toc-number">2.</span> <span class="toc-text">mock优点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mock%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">mock使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mockjs%E7%9A%84%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B-%E5%8F%8A-%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="toc-number">4.</span> <span class="toc-text">mockjs的数据类型 及 语法规范</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Mock-Random"><span class="toc-number">4.1.</span> <span class="toc-text">Mock.Random</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%EF%BC%8C%E8%AF%A6%E6%83%85%E8%A7%81%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="toc-number">4.2.</span> <span class="toc-text">定义数据类型，详情见官方文档</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mockjs%E8%AF%AD%E6%B3%95%E8%A7%84%E8%8C%83"><span class="toc-number">4.3.</span> <span class="toc-text">mockjs语法规范</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mock-setup"><span class="toc-number">5.</span> <span class="toc-text">Mock.setup()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Mock-Random-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95"><span class="toc-number">6.</span> <span class="toc-text">Mock.Random 扩展方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#mockjs%E8%8E%B7%E5%8F%96%E5%89%8D%E7%AB%AF%E4%BC%A0%E9%80%92%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-number">7.</span> <span class="toc-text">mockjs获取前端传递的数据</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/css/" title="css">css<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/jQuery-bootstrap/" title="jQuery &amp; bootstrap">jQuery &amp; bootstrap<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/sort/" title="sort">sort<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">Links</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">Weibo</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Weiling Wu in Google. <br/>
+			</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2022 
+		
+		<a href="/about" target="_blank" title="Weiling Wu">Weiling Wu</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

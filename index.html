@@ -81,6 +81,267 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2022/02/23/mockjs/" title="mockjs" itemprop="url">mockjs</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-02-23T08:01:45.000Z" itemprop="datePublished"> Published 2022-02-23</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="为什么使用mockjs"><a href="#为什么使用mockjs" class="headerlink" title="为什么使用mockjs"></a>为什么使用mockjs</h1><p>（原文出自：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d812ce349265%EF%BC%89">https://www.jianshu.com/p/d812ce349265）</a></p>
+<p>在做开发时，当后端的接口还未完成，前端为了不影响工作效率，手动模拟后端接口，</p>
+<pre><code>1.我们可以使用json文件来模拟后台数据，但比较局限，无法模拟数据的增删改查
+2.使用json-server模拟，但不能随机生成所需数据
+3.使用mockjs模拟后端接口，可随机生成所需数据，可模拟对数据的增删改查
+</code></pre>
+<h1 id="mock优点"><a href="#mock优点" class="headerlink" title="mock优点"></a>mock优点</h1><pre><code>1.前后端分离，
+2.可随机生成大量的数据
+3.用法简单
+4.数据类型丰富
+5.可扩展数据类型
+6.在已有接口文档的情况下，我们可以直接按照接口文档来开发，将相应的字段写好，在接口完成 之后，只需要改变url地址即可。
+</code></pre>
+<h1 id="mock使用"><a href="#mock使用" class="headerlink" title="mock使用"></a>mock使用</h1><pre><code>npm install mockjs --save-dev
+// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+
+// 定义数据类型
+var data = Mock.mock(&#123;
+  // 20条数据
+  &quot;data|20&quot;: [&#123;
+    // 商品种类
+    &quot;goodsClass&quot;: &quot;女装&quot;,
+    // 商品Id
+    &quot;goodsId|+1&quot;: 1,
+    //商品名称
+    &quot;goodsName&quot;: &quot;@ctitle(10)&quot;,
+    //商品地址
+    &quot;goodsAddress&quot;: &quot;@county(true)&quot;,
+    //商品等级评价★
+    &quot;goodsStar|1-5&quot;: &quot;★&quot;,
+    //商品图片
+    &quot;goodsImg&quot;: &quot;@Image(&#39;100x100&#39;,&#39;@color&#39;,&#39;小甜甜&#39;)&quot;,
+    //商品售价
+    &quot;goodsSale|30-500&quot;: 30
+
+  &#125;]
+&#125;)
+// 输出结果随机生成的数据（node index.js）
+ console.log(data);
+</code></pre>
+<h1 id="mockjs的数据类型-及-语法规范"><a href="#mockjs的数据类型-及-语法规范" class="headerlink" title="mockjs的数据类型 及 语法规范"></a>mockjs的数据类型 及 语法规范</h1><h2 id="Mock-Random"><a href="#Mock-Random" class="headerlink" title="Mock.Random"></a>Mock.Random</h2><p>Mock.Random是一个工具类，用于生成各种随机数据。<br>Mock.Random 的方法在数据模板中称为『占位符』，书写格式为 @占位符(参数 [, 参数])</p>
+<h2 id="定义数据类型，详情见官方文档"><a href="#定义数据类型，详情见官方文档" class="headerlink" title="定义数据类型，详情见官方文档"></a>定义数据类型，详情见官方文档</h2><pre><code>// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+
+// 定义数据类型
+var data = Mock.mock(&#123;
+  // 20条数据
+  &quot;data|3&quot;: [&#123;
+    // 商品种类
+    &quot;goodsClass&quot;: &quot;女装&quot;,
+    // 商品Id
+    &quot;goodsId|+1&quot;: 1,
+    //商品名称
+    &quot;goodsName&quot;: &quot;@ctitle(10)&quot;,
+    //商品地址
+    &quot;goodsAddress&quot;: &quot;@county(true)&quot;,
+    //商品等级评价★
+    &quot;goodsStar|1-5&quot;: &quot;★&quot;,
+    //商品图片
+    &quot;goodsImg&quot;: &quot;@Image(&#39;100x100&#39;,&#39;@color&#39;,&#39;小甜甜&#39;)&quot;,
+    //商品售价
+    &quot;goodsSale|30-500&quot;: 30,
+
+    // 邮箱：
+    &quot;email&quot;: &quot;@email&quot;,
+    // 颜色
+    &quot;color&quot;: &quot;@color&quot;,
+
+    // name
+    &quot;name&quot;: &quot;@name&quot;,
+
+    //img,参数1：背景色，参2：前景色，参3：图片的格式，默认png，参4：图片上的文字
+
+    &quot;img&quot;: &quot;@image(&#39;100*100&#39;,&#39;@color&#39;)&quot;,
+    //英文文本(句子)参1：句子的个数，参2：句子的最小个数  参3：句子的最大个数，没有参1时，参2参3才会生效
+    &quot;Etext&quot;:&quot;@paragraph(1,1,3)&quot;,
+
+    //中文文本(句子)参1：句子的个数，参2：句子的最小个数  参3：句子的最大个数，没有参1时，参2参3才会生效
+    &quot;Ctext&quot;:&quot;@cparagraph(1,1,3)&quot;,
+
+    //中国大区
+    &quot;cregion&quot;:&quot;@region&quot;,
+    // 省
+    &quot;cprovince&quot;:&quot;@province&quot;,
+    //市
+    &quot;ccity&quot;:&quot;@city&quot;,
+    //省 + 市
+    &quot;ss&quot;:&quot;@city(true)&quot;,
+    //县
+    &quot;country&quot;:&quot;@county&quot;,
+    //省市县
+    &quot;countrysx&quot;:&quot;@county(true)&quot;,
+    //邮政编码
+    &quot;code&quot;:&quot;@zip&quot;
+
+  &#125;]
+&#125;)
+
+// 输出结果
+// console.log(data);
+</code></pre>
+<h2 id="mockjs语法规范"><a href="#mockjs语法规范" class="headerlink" title="mockjs语法规范"></a>mockjs语法规范</h2><p>数据模板中的每个属性由 3 部分构成：属性名、生成规则、属性值：</p>
+<pre><code>// 属性名   name
+// 生成规则 rule
+// 属性值   value
+&#39;name|rule&#39;: value
+</code></pre>
+<p>注意：属性名 和 生成规则 之间用竖线 | 分隔。<br>生成规则 是可选的。<br>生成规则 有 7 种格式：</p>
+<p> <code>&#39;name|min-max&#39;: value &#39;name|count&#39;: value &#39;name|min-max.dmin-dmax&#39;: value &#39;name|min-max.dcount&#39;: value &#39;name|count.dmin-dmax&#39;: value &#39;name|count.dcount&#39;: value</code></p>
+<p>//属性值自动加 1，初始值为 <code>number</code> ‘name|+step’: value    </p>
+<p>生成规则 的 含义 需要依赖 属性值的类型 才能确定。</p>
+<p>属性值 中可以含有 @占位符。</p>
+<p>属性值 还指定了最终值的初始值和类型。</p>
+<ol>
+<li><p>属性值是字符串 String</p>
+<p> ‘name|min-max’: string</p>
+<p> 通过重复 string 生成一个字符串，重复次数大于等于 min，小于等于 max。</p>
+<p> ‘name|count’: string</p>
+<p> 通过重复 string 生成一个字符串，重复次数等于 count。</p>
+</li>
+<li><p>属性值是数字 Number</p>
+<p> ‘name|+1’: number</p>
+<p> 属性值自动加 1，初始值为 number。</p>
+<p> ‘name|min-max’: number</p>
+<p> 生成一个大于等于 min、小于等于 max 的整数，属性值 number 只是用来确定类型。</p>
+<p> ‘name|min-max.dmin-dmax’: number</p>
+<p> 生成一个浮点数，整数部分大于等于 min、小于等于 max，小数部分保留 dmin 到 dmax 位。</p>
+</li>
+<li><p>属性值是布尔型 Boolean</p>
+<p> ‘name|1’: boolean</p>
+<p> 随机生成一个布尔值，值为 true 的概率是 1/2，值为 false 的概率同样是 1/2。</p>
+<p> ‘name|min-max’: value</p>
+<p> 随机生成一个布尔值，值为 value 的概率是 min / (min + max)，值为 !value 的概率是 max / (min + max)。</p>
+</li>
+<li><p>属性值是对象 Object</p>
+<p> ‘name|count’: object</p>
+<p> 从属性值 object 中随机选取 count 个属性。</p>
+<p> ‘name|min-max’: object</p>
+<p> 从属性值 object 中随机选取 min 到 max 个属性。</p>
+</li>
+<li><p>属性值是数组 Array</p>
+<p> ‘name|1’: array 从属性值 array 中随机选取 1 个元素，作为最终值。</p>
+<p> ‘name|+1’: array 从属性值 array 中顺序选取 1 个元素，作为最终值。</p>
+<p> ‘name|min-max’: array</p>
+<p> 通过重复属性值 array 生成一个新数组，重复次数大于等于 min，小于等于 max。</p>
+<p> ‘name|count’: array</p>
+<p> 通过重复属性值 array 生成一个新数组，重复次数为 count。</p>
+</li>
+<li><p>属性值是函数 Function</p>
+<p> ‘name’: function</p>
+<p> 执行函数 function，取其返回值作为最终的属性值，函数的上下文为属性 ‘name’ 所在的对象。</p>
+</li>
+</ol>
+<h1 id="Mock-setup"><a href="#Mock-setup" class="headerlink" title="Mock.setup()"></a>Mock.setup()</h1><p>Mock.setup( settings )</p>
+<p>配置拦截 Ajax 请求时的行为。支持的配置项有：timeout</p>
+<p>指定被拦截的 Ajax 请求的响应时间，单位是毫秒。</p>
+<p>值可以是正整数，例如 400，表示 400 毫秒 后才会返回响应内容；</p>
+<p>也可以是横杠 ‘-‘ 风格的字符串，例如 ‘200-600’，表示响应时间介于 200 和 600 毫秒之间。默认值是’10-100’。</p>
+<pre><code>  Mock.setup(&#123;
+    timeout: 400
+&#125;)
+Mock.setup(&#123;
+    timeout: &#39;200-600&#39;
+&#125;)
+</code></pre>
+<p>目前，接口 Mock.setup( settings ) 仅用于配置 Ajax 请求，将来可能用于配置 Mock 的其他行为。</p>
+<h1 id="Mock-Random-扩展方法"><a href="#Mock-Random-扩展方法" class="headerlink" title="Mock.Random 扩展方法"></a>Mock.Random 扩展方法</h1><pre><code>// 引入 Mock
+var Mock = require(&#39;mockjs&#39;)
+var random = Mock.Random;
+//扩展数据模板
+random.extend(&#123;
+  type: function (index:number) &#123;
+    const types = [&#39;products&#39;, &#39;industryApp&#39;, &#39;solution&#39;, &#39;experts&#39;];
+    return this.pick(types[index])
+  &#125;
+&#125;);
+
+// 定义数据类型
+const  menuSource:Array&lt;any&gt; = [];
+ menuSource[0] = Mock.mock(&#123;
+  &quot;type&quot;: &quot;@type(0)&quot;,
+   &#39;data|3-4&#39;:[&#123;
+     &#39;id|+1&#39;: 1,
+     name: &quot;@ctitle( 4,6)&quot;,
+     &quot;childs|5-10&quot;: [&#123;
+       &#39;id|+1&#39;: 1,
+       name: &quot;@ctitle(4,6)&quot;,
+     &#125;]
+   &#125;]
+&#125;);
+// 输出结果
+ console.log(data);
+</code></pre>
+<h1 id="mockjs获取前端传递的数据"><a href="#mockjs获取前端传递的数据" class="headerlink" title="mockjs获取前端传递的数据"></a>mockjs获取前端传递的数据</h1><pre><code>axios(&#123;
+      method: &quot;get&quot;,
+      url: &quot;/getGoods&quot;,
+      data: &#123;
+        id:2
+      &#125;
+    &#125;).then(data =&gt; &#123;
+      //成功的回调函数，返回的是增加的数据
+      console.log(data.data.data);
+      this.url = data.data.data[0].goodsImg
+    &#125;);
+  &#125;
+
+  Mock.mock(&quot;/getGoods&quot;, &quot;get&quot;, (config) =&gt; &#123;
+  console.log(config);
+  return data;
+&#125;)
+</code></pre>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2022/02/23/react-router-dom/" title="react-router-dom" itemprop="url">react-router-dom</a>
   </h1>
   <p class="article-author">By
@@ -94,7 +355,56 @@
 </header>
     <div class="article-content">
         
-        
+        <h1 id="React路由介绍"><a href="#React路由介绍" class="headerlink" title="React路由介绍"></a>React路由介绍</h1><p>现代的前端应用大多是SPA（单页面应用程序），也就是只有一个HTML页面的应用程序。因为它的用户体验更好、对服务器的压力更小，为了有效的使用单个页面来管理原来多页面的功能，前端路由应运而生。</p>
+<ul>
+<li>前端路由的功能：让用户从一个视图（页面）导航到另一个视图（页面）</li>
+<li>前端路由是一套映射规则，在React中，是URL路径与组建的对应关系</li>
+<li>使用React路由简单来说，就是配置路径和组件（配对）</li>
+</ul>
+<h1 id="路由的基本使用"><a href="#路由的基本使用" class="headerlink" title="路由的基本使用"></a>路由的基本使用</h1><ol>
+<li>安装：yarn add react-router-dom</li>
+<li>导入路由的核心组件：Router/Routes/Route/Link<br> import {BrowerRouter as Router, Routes, Route, Link} from ‘react-router-dom’</li>
+<li>使用Router组件包裹整个应用</li>
+</ol>
+<p>4.使用Link组件作为导航菜单（路由入口）<br><code>&lt;Link to=&quot;\first&quot;&gt;页面&lt;/Link&gt; </code><br>5.使用Route组件配置路由规则和要展示的组件（路由出口）<br>    const First = ()=&gt;<p>页面一的页面内容</p><br>    <Router><br>            <div className="App"><br>                <Link to="\first"><br>                    页面一<br>                </Link><br>                <Routes><br>                &lt;Route path=”/first” element={<First/>}&gt;</Route><br>            </Routes><br>         </div><br>    </Router></p>
+<h2 id="常用组件说明"><a href="#常用组件说明" class="headerlink" title="常用组件说明"></a>常用组件说明</h2><ul>
+<li><p>Router组件：包裹整个应用，一个React应用只需要使用一次</p>
+</li>
+<li><p>两种常用的Router：HashRouter和BrowserRouter</p>
+</li>
+<li><p>HashRouter：使用URL的哈希值实现（localhost:3000/#/first）</p>
+</li>
+<li><p>（推荐）BrowserRouter：使用H5的history API实现（localhost:3000/first）</p>
+</li>
+<li><p>Link组件：用于指定导航链接（a标签）</p>
+<p>  //to属性：浏览器地址栏中的pathname（location.pathname）</p>
+  <Link to="/first">页面一</Link></li>
+<li><p>Route组件：指定路由展示组件相关信息</p>
+<p>  //path属性：展示的组件<br>  //element属性：展示的内容<br>  //Route组件写在哪，渲染的组件就展示在哪<br>  &lt;Route path=”/first” element={<First/>}&gt;</Route></p>
+</li>
+</ul>
+<h1 id="路由的执行过程"><a href="#路由的执行过程" class="headerlink" title="路由的执行过程"></a>路由的执行过程</h1><ol>
+<li>点击Link组件（a标签），修改了浏览器地址栏中的url。</li>
+<li>React路由监听到地址栏url的变化。</li>
+<li>React路由内部遍历所有的Route组件，使用路由规则（path）与pathname进行匹配。</li>
+<li>当路由规则（path）能够匹配地址栏中的pathname时，就展示该Route组件的内容。</li>
+</ol>
+<h1 id="默认路由"><a href="#默认路由" class="headerlink" title="默认路由"></a>默认路由</h1><p>默认路由：表示进入页面时就会匹配的路由<br>默认路由path为：/</p>
+<pre><code>&lt;Route path=&quot;/&quot; element=&#123;&lt;Home/&gt;&#125;&lt;/Route&gt;
+</code></pre>
+<h1 id="匹配模式"><a href="#匹配模式" class="headerlink" title="匹配模式"></a>匹配模式</h1><h2 id="模糊匹配模式"><a href="#模糊匹配模式" class="headerlink" title="模糊匹配模式"></a>模糊匹配模式</h2><p>当Link组件的to属性值为”/login”时，默认路由也会被匹配成功。<br>默认情况下，React路由是模糊匹配方式，模糊匹配规则：只要pathname以path开头就会匹配成功</p>
+<pre><code>&lt;Link to=&quot;/login&quot;&gt;登录页面&lt;/Link&gt;
+&lt;Route path=&quot;/&quot; element=&#123;&lt;Home/&gt;&#125;&gt;   匹配成功
+
+//path代表Route组件的path属性
+//pathname代表Link组件的to属性（也就是location.pathname）
+</code></pre>
+<h2 id="精确匹配"><a href="#精确匹配" class="headerlink" title="精确匹配"></a>精确匹配</h2><p>给Route组件添加exact属性，让其变为精确匹配模式。精确匹配：只有当path和pathname完全匹配时才会展示该路由</p>
+<pre><code>//此时，该组件只能匹配pathname=&quot;/&quot;这一种情况
+&lt;Route exact path=&quot;/&quot; element=&#123;&lt;Home/&gt;&#125;&gt;&lt;/Route&gt;
+</code></pre>
+<p>推荐：给默认路由添加exact属性。</p>
+
         
         
         <p class="article-more-link">
@@ -2141,169 +2451,6 @@ function heapSort(arr) &#123;
   <div class="article-tags">
   
   <span></span> <a href="/tags/sort/">sort</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2022/01/06/jQuery/" title="jQuery&amp;bootstrap" itemprop="url">jQuery&amp;bootstrap</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
-		
-  <p class="article-time">
-    <time datetime="2022-01-06T05:03:18.000Z" itemprop="datePublished"> Published 2022-01-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="jQuery语法"><a href="#jQuery语法" class="headerlink" title="jQuery语法"></a>jQuery语法</h1><p>jQuery 语法是通过选取 HTML 元素，并对选取的元素执行某些操作。</p>
-<h2 id="基础语法-："><a href="#基础语法-：" class="headerlink" title="基础语法 ##："></a>基础语法 ##：</h2><p><code>$(*selector*).*action*()</code></p>
-<ul>
-<li>美元符号定义 jQuery</li>
-<li>选择符（selector）“查询”和”查找” HTML 元素</li>
-<li>jQuery 的 action() 执行对元素的操作</li>
-</ul>
-<p>实例:</p>
-<pre><code>$(this).hide() - 隐藏当前元素
-$(“p”).hide() - 隐藏所有
-
-元素
-$(“p.test”).hide() - 隐藏所有 class=“test” 的
-
-元素
-$(“#test”).hide() - 隐藏 id=“test” 的元素
-</code></pre>
-<h2 id="文档就绪事件"><a href="#文档就绪事件" class="headerlink" title="文档就绪事件"></a>文档就绪事件</h2><p>在我们的实例中的所有 jQuery 函数位于一个 document ready 函数中：</p>
-<pre><code>$(document).ready(function()&#123;
- // 开始写 jQuery 代码...  
-        &#125;);
-</code></pre>
-<p>这是为了防止文档在完全加载（就绪）之前运行 jQuery 代码，即在 DOM 加载完成后才可以对 DOM 进行操作。</p>
-<p>如果在文档没有完全加载之前就运行函数，操作可能失败。</p>
-<p><strong>提示：</strong>简洁写法（与以上写法效果相同）:    </p>
-<pre><code>$(function()&#123;
-    // 开始写 jQuery 代码...  
-        &#125;);
-</code></pre>
-<p>以上两种方式你可以选择你喜欢的方式实现文档就绪后执行 jQuery 方法。</p>
-<h2 id="jQuery选择器"><a href="#jQuery选择器" class="headerlink" title="jQuery选择器"></a>jQuery选择器</h2><p>jQuery 选择器允许您对 HTML 元素组或单个元素进行操作。</p>
-<p>jQuery 选择器基于元素的 id、类、类型、属性、属性值等”查找”（或选择）HTML 元素。 它基于已经存在的 CSS 选择器，除此之外，它还有一些自定义的选择器。</p>
-<p>jQuery 中所有选择器都以美元符号开头：$()。</p>
-<p>元素选择器：jQuery 元素选择器基于元素名选取元素。</p>
-<pre><code>$(&quot;p&quot;)
-</code></pre>
-<h3 id="id-选择器"><a href="#id-选择器" class="headerlink" title="#id 选择器"></a>#id 选择器</h3><p>jQuery #id 选择器通过 HTML 元素的 id 属性选取指定的元素。</p>
-<p>页面中元素的 id 应该是唯一的，所以您要在页面中选取唯一的元素需要通过 #id 选择器。</p>
-<p>通过 id 选取元素语法如下：</p>
-<pre><code>$(&quot;#test&quot;)
-</code></pre>
-<h3 id="class-选择器"><a href="#class-选择器" class="headerlink" title=".class 选择器"></a>.class 选择器</h3><p>jQuery 类选择器可以通过指定的 class 查找元素。</p>
-<p>语法如下：</p>
-<pre><code>$(&quot;.test&quot;)
-</code></pre>
-<h2 id="jQuery事件"><a href="#jQuery事件" class="headerlink" title="jQuery事件"></a>jQuery事件</h2><p>页面对不同访问者的响应叫做事件。</p>
-<p>事件处理程序指的是当 HTML 中发生某些事件时所调用的方法。</p>
-<h3 id="click"><a href="#click" class="headerlink" title="click()"></a>click()</h3><p>click() 方法是当按钮点击事件被触发时会调用一个函数。</p>
-<p>该函数在用户点击 HTML 元素时执行。</p>
-<p>在下面的实例中，当点击事件在某个元素上触发时，隐藏当前的元素：</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
-    &lt;script src=&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;&gt;
-    &lt;/script&gt;
-    &lt;script&gt;
-        $(function()&#123;
-            $(&quot;p&quot;).click(function()&#123;
-                $(this).hide();
-                        &#125;)&#125;);
-    &lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;p&gt;如果你点我，我就会消失。&lt;/p&gt;
-    &lt;p&gt;继续点我!&lt;/p&gt;
-    &lt;p&gt;接着点我!&lt;/p&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>dblclick() – 鼠标双击事件， mouseenter() – 当鼠标指针穿过元素， mouseleave() – 当鼠标指针离开元素，mousedown() – 当鼠标指针移动到元素上方，并按下鼠标按键，等等。</p>
-<p>jQuery Fading 方法：</p>
-<p>通过 jQuery，您可以实现元素的淡入淡出效果。</p>
-<p>jQuery 拥有下面四种 fade 方法：</p>
-<pre><code>    fadeIn()
-    fadeOut()
-    fadeToggle()
-    fadeTo()
-</code></pre>
-<h3 id="jQuery动画–animate-方法"><a href="#jQuery动画–animate-方法" class="headerlink" title="jQuery动画–animate() 方法"></a>jQuery动画–animate() 方法</h3><p>jQuery animate() 方法用于创建自定义动画。</p>
-<p>语法：</p>
-<pre><code>$(selector).animate(&#123;params&#125;,speed,callback);
-</code></pre>
-<p>必需的 params 参数定义形成动画的 CSS 属性。可选的 speed 参数规定效果的时长。它可以取以下值：“slow”、“fast” 或毫秒。可选的 callback 参数是动画完成后所执行的函数名称。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;script src=&quot;https://cdn.staticfile.org/jquery/1.10.2/jquery.min.js&quot;&gt;
-    &lt;/script&gt;
-    &lt;script&gt;
-        $(document).ready(function()&#123;
-            $(&quot;button&quot;).click(function()&#123;
-                $(&quot;div&quot;).animate(&#123;left:&#39;250px&#39;&#125;);
-            &#125;);
-        &#125;);
-    &lt;/script&gt;
-&lt;/head&gt;
-
-&lt;body&gt;
-&lt;button&gt;开始动画&lt;/button&gt;
-&lt;p&gt;默认情况下，所有的 HTML 元素有一个静态的位置，且是不可移动的。
-    如果需要改变为，我们需要将元素的 position 属性设置为 relative, fixed, 或 absolute!&lt;/p&gt;
-&lt;div style=&quot;background:#98bf21;height:100px;width:100px;position:absolute;&quot;&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/jQuery-bootstrap/">jQuery & bootstrap</a>
   </div>
 
 </div>
