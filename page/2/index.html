@@ -1046,30 +1046,6 @@ p &#123;
 &lt;/html&gt;
 </code></pre>
 <h1 id="CSS模块边框"><a href="#CSS模块边框" class="headerlink" title="CSS模块边框"></a>CSS模块边框</h1><p><strong>边框属性</strong>：border-radius 用于创建圆角；box-shadow 用来添加阴影；border-image 属性允许你指定一个图片作为边框，用于创建上文边框的原始图像。</p>
-<pre><code>&lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt;
-    &lt;style&gt;
-        #test&#123;
-            width:300px;
-            height: 100px;
-            padding: 1px;
-            border: 2px solid #00a0ff;
-            border-radius: 25px;
-            background-image: url(&quot;https://img0.baidu.com/it/u=280905735,1446098188&amp;fm=26&amp;fmt=auto&quot;);
-            box-shadow: 10px 10px 10px aqua;
-        &#125;
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-
-&lt;div id = &quot;test&quot;&gt;
-    这是一道美丽的风景线
-&lt;/div&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
 <h1 id="css背景"><a href="#css背景" class="headerlink" title="css背景"></a>css背景</h1><p><strong>background-image</strong> 添加背景图片，不同的背景图像和图像用逗号隔开，所有的图片中显示在最顶端的为第一张。</p>
 <p><strong>background-size</strong> 指定背景图像的大小。CSS3以前，背景图像大小由图像的实际大小决定。</p>
 <p>CSS3中可以指定背景图片，让我们重新在不同的环境中指定背景图片的大小。您可以指定像素或百分比大小。你指定的大小是相对于父元素的宽度和高度的百分比的大小。</p>
@@ -1090,7 +1066,7 @@ p &#123;
 <p>示例：</p>
 <pre><code>&lt;head&gt;
     &lt;meta charset=&quot;utf-8&quot;&gt; 
-    &lt;title&gt;菜鸟教程(runoob.com)&lt;/title&gt; 
+    &lt;title&gt;链接&lt;/title&gt; 
     &lt;style&gt;
         a:link &#123;color:#000000;&#125;      /* 未访问链接*/
         a:visited &#123;color:#00FF00;&#125;  /* 已访问链接 */
@@ -1112,6 +1088,37 @@ p &#123;
 <li><p>a:active 必须跟在 a:hover后面</p>
 </li>
 </ul>
+<h1 id="CSS导航栏"><a href="#CSS导航栏" class="headerlink" title="CSS导航栏"></a>CSS导航栏</h1><h1 id="overflow"><a href="#overflow" class="headerlink" title="overflow"></a>overflow</h1><p>overflow属性用于控制内容溢出元素框时显示的方式。</p>
+<table border="1px" cellspacing="0px" cellpadding="8px" >
+    <tr height = "27px" align = "center">
+        <td width = "80px">值</td>
+        <td width = "120px">描述</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>visible</td>
+        <td >默认值。内容不会被修剪，会呈现的元素框之外</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>hidden</td>
+        <td colspan="4">内容会被修剪，并且其余内容是不可见的</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>scroll</td>
+        <td colspan="4">内容会被修剪，但是浏览器会显示滚动条以查看其余的内容。</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>auto</td>
+        <td colspan="4">如果内容被修剪，则浏览器会显示滚动条以查看其余的内容</td>
+    </tr>
+    <tr height = "27px" align = "center">
+        <td>inherit</td>
+        <td colspan="4">规定应该从父元素继承overflow属性的值</td>
+    </tr>
+</table>
+
+
+
+
 
         
         
