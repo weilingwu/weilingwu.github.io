@@ -1008,6 +1008,7 @@ const  menuSource:Array&lt;any&gt; = [];
 <li><p>组件ComB属于接收方，所以要实现第一个参数</p>
 </li>
 </ul>
+<p>//数据转换流程<br>//mapDispatchToProps把方法的返回值传递给了counter组件的内部，<br>//这样组件就可以通过this.props拿到要发送的action的方法，事件触发action的发送<br>//reducer来进行接收action，返回值返回给store， store全局状态管理容器，<br>//store与Provider存在绑定关系，store拿到数据后，就会传递给mapStateToProps，<br>// 这个函数拿到了最新的值之后。就通过return把值返回给组件的内部，<br>// 组件通过this.props拿到传递过来的数据了。</p>
 
         
         

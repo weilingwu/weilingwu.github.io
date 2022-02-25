@@ -19,7 +19,7 @@
 <meta property="og:description" content="Reduxredux的组成state-状态就是我们传递的数据，我们在用React开发项目的时候，大致可以把State分成三类：  DomainDate：可以理解为服务器端的数据，比如：获取用户的信息，商品的列表等等  UI State：决定当前UI展示的状态，比如：弹框的显示隐藏，受控组件等等  App State：App级别的状态，比如：当前是否请求loading，当前路由信息等可能被多个和组件">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-29T02:46:01.000Z">
-<meta property="article:modified_time" content="2022-01-29T02:59:41.372Z">
+<meta property="article:modified_time" content="2022-02-24T02:13:08.409Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -226,6 +226,7 @@
 <li><p>组件ComB属于接收方，所以要实现第一个参数</p>
 </li>
 </ul>
+<p>//数据转换流程<br>//mapDispatchToProps把方法的返回值传递给了counter组件的内部，<br>//这样组件就可以通过this.props拿到要发送的action的方法，事件触发action的发送<br>//reducer来进行接收action，返回值返回给store， store全局状态管理容器，<br>//store与Provider存在绑定关系，store拿到数据后，就会传递给mapStateToProps，<br>// 这个函数拿到了最新的值之后。就通过return把值返回给组件的内部，<br>// 组件通过this.props拿到传递过来的数据了。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
