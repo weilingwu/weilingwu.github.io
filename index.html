@@ -81,6 +81,70 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2022/03/03/dom/" title="dom" itemprop="url">dom</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-03-03T06:08:16.000Z" itemprop="datePublished"> Published 2022-03-03</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h1 id="dom-文档对象模型"><a href="#dom-文档对象模型" class="headerlink" title="dom(文档对象模型)"></a>dom(文档对象模型)</h1><p><strong>JS中通过DOM来对HTML文档进行操作</strong>，只要理解了DOM就可以随心所欲的操作WEB页面。</p>
+<ul>
+<li><p>文档：文档表示的就是整个HTML网页文档</p>
+</li>
+<li><p>对象：对象表示将网页中的每一个部分都转换成了一个对象</p>
+</li>
+<li><p>模型：使用模型来表示对象之间的关系，这样方便我们获取对象</p>
+</li>
+</ul>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><ul>
+<li><p><strong>节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。</strong>比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
+</li>
+<li><p>虽然是节点，但是实际上他们的具体类型是不同的。比如：标签我们成为<strong>元素节点</strong>，属性成为<strong>属性节点</strong>，文本称为<strong>文本节点</strong>，文档成为<strong>文档节点</strong>。节点的类型不同，属性和方法也都不尽相同。</p>
+</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2022/02/23/html5/" title="html5" itemprop="url">html5</a>
   </h1>
   <p class="article-author">By
@@ -897,12 +961,18 @@ const  menuSource:Array&lt;any&gt; = [];
 <h3 id="Action-事件"><a href="#Action-事件" class="headerlink" title="Action-事件"></a>Action-事件</h3><p>Action是把数据从应用传到store的载体，它是store数据的唯一来源，一般来说，我们可以通过store.dispatch()将action传递给store</p>
 <p><strong>Action特点：</strong></p>
 <ul>
-<li>Action的本质就是一个javascript的普通对象</li>
-<li>Action对象内部必须要有一个<strong>type</strong>属性来表示要执行的动作</li>
-<li>多数情况下，这个<strong>type</strong>会被定义成字符串常量</li>
-<li>除了<strong>type</strong>之外，action的结构随意进行定义</li>
-<li>而我们在项目中，更多的喜欢用<strong>action</strong>创建函数（就是创建action的地方）</li>
-<li><strong>只是描述了有事情要发生，并没有描述如何去更新state</strong></li>
+<li><p>Action的本质就是一个javascript的普通对象</p>
+</li>
+<li><p>Action对象内部必须要有一个<strong>type</strong>属性来表示要执行的动作</p>
+</li>
+<li><p>多数情况下，这个<strong>type</strong>会被定义成字符串常量</p>
+</li>
+<li><p>除了<strong>type</strong>之外，action的结构随意进行定义</p>
+</li>
+<li><p>而我们在项目中，更多的喜欢用<strong>action</strong>创建函数（就是创建action的地方）</p>
+</li>
+<li><p><strong>只是描述了有事情要发生，并没有描述如何去更新state</strong></p>
+</li>
 </ul>
 <h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p><strong>reducer</strong>本质就是一个函数，它用来<strong>响应</strong>发送过来的<strong>actions</strong>，然后经过处理，把<strong>state</strong>发送给<strong>Store</strong>的</p>
 <p><strong>注意：</strong>在reducer函数中，需要return返回值，这样Store才能接收到数据，函数会接收两个参数，第一个参数是初始化的state，第二个参数是action</p>
@@ -989,7 +1059,7 @@ const  menuSource:Array&lt;any&gt; = [];
 </ul>
 <p>connect参数说明：</p>
 <ul>
-<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组建上</strong></p>
+<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组件上</strong></p>
 </li>
 <li><p><strong>mapDisPatchToProps(dispatch, ownProps) 将action作为props绑定到我们自己的函数中，dispatch就是store.dispatch(), ownProps自己的props</strong></p>
 </li>
@@ -1803,353 +1873,6 @@ class phpClass &#123;
     &#125;
 ?&gt;
 </code></pre>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2022/01/06/KMP-动态规划-贪心算法…-Prime算法/" title="KMP&amp;动态规划&amp;贪心算法…&amp;Prime算法" itemprop="url">KMP&amp;动态规划&amp;贪心算法…&amp;Prime算法</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
-		
-  <p class="article-time">
-    <time datetime="2022-01-06T05:43:53.000Z" itemprop="datePublished"> Published 2022-01-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="KMP算法"><a href="#KMP算法" class="headerlink" title="KMP算法"></a>KMP算法</h1><p><strong>问题</strong></p>
-<p>KMP算法指的是字符串模式匹配算法，问题是：在主串T中找到第一次出现完整子串P时的起始位置。</p>
-<p><strong>代码实现</strong></p>
-<pre><code>function KMPSearch(str1, str2, next)&#123;
-    for(var i = 0, j = 0;i&lt;str1.length;i++)&#123;
-        while(j&gt;0 &amp;&amp; str1[i] != str2[j])&#123;
-            j = next[j-1];
-        &#125;
-        if(str1[i] == str2[j])&#123;
-            j++;
-        &#125;
-        if(j == str2.length)&#123;
-            return i-j+1;
-        &#125;
-    &#125;
-    return -1;
-&#125;
-function KMPNext(dest)&#123;
-    var next = new Array(dest.length);
-    for(var i = 0;i&lt;dest.length;i++)&#123;
-        dest[i] = 0;
-    &#125;
-    for(var i = 0, j = 0;i&lt;dest.length;i++)&#123;
-        while(j&gt;0 &amp;&amp; dest[i]!=dest[j])&#123;
-            j = next[j-1];
-        &#125;
-        if(dest[i] == dest[j])&#123;
-            j++;
-        &#125;
-        next[i] = j;
-    &#125;
-    return next;
-&#125;
-</code></pre>
-<p>#动态规划#<br><strong>背包问题</strong></p>
-<p>背包问题：假如目前有三种物品：吉他、音响、电脑，他们的价值分别是1000、2000、2500，重量分别是1磅、3磅、2磅，背包的容量是固定值4磅，现在要把几种物品放进背包中使得在不超重的前提下背包的价值达到最大。<br>**代码实现    **</p>
-<pre><code>function dynamic_planning()&#123;
-    var val = [1000, 3000, 2500];
-    var w = [1, 3, 2];
-    var sum = 4;
-    var v = new Array(w.length);
-    for(var i = 0;i&lt;v.length;i++)&#123;
-        v[i] = new Array(sum);
-    &#125;
-    for(i = 0;i&lt;v.length;i++)&#123;
-        for(var j = 0;j&lt;sum;j++)&#123;
-            v[i][j] = 0;
-        &#125;
-    &#125;
-    for(i = 0;i&lt;v.length;i++)&#123;
-        for(j = 0;j&lt;sum;j++)&#123;
-            if(w[i-1]&gt;j)&#123;
-                v[i][j] = v[i-1][j];
-            &#125;
-            else&#123;
-                v[i][j] = Math.max(v[i-1][j], val[i-1]+v[i-1][j-w[i-1]]);
-            &#125;
-        &#125;
-    &#125;
-        &#125;
-</code></pre>
-<h1 id="贪心算法（最佳应用：集合覆盖问题）"><a href="#贪心算法（最佳应用：集合覆盖问题）" class="headerlink" title="贪心算法（最佳应用：集合覆盖问题）"></a>贪心算法（最佳应用：集合覆盖问题）</h1><p><strong>概念：</strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解 。贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。</p>
-<p>问题描述：假设存在如下表的需要付费的广播台，以及广播台信号可以覆盖的地区。如何选择最少的广播台，让所有的地区都可以接收到信号？</p>
-<table border="1px" cellspacing="0px" cellpadding="8px" >
-    <tr height = "27px" align = "center">
-        <td width = "80px">广播台</td>
-        <td width = "120px">覆盖地区</td>
-    </tr>
-    <tr height = "27px" align = "center">
-        <td>K1</td>
-        <td >"北京","上海","天津"</td>
-    </tr>
-    <tr height = "27px" align = "center">
-        <td>K2</td>
-        <td colspan="4">"广州","北京","深圳"</td>
-    </tr>
-    <tr height = "27px" align = "center">
-    <td>K3</td>
-    <td>"成都","上海","杭州"</td>
-    </tr>
-    <tr height = "27px" align = "center">
-    <td>K4</td>
-    <td>"上海","天津"</td>
-    </tr>
-    <tr height = "27px" align = "center">
-    <td>K5</td>
-    <td>"杭州","大连"</td>
-    </tr>
-</table>
-
-<p><strong>算法思路：</strong></p>
-<p>1). 遍历所有的广播电台，<strong>找到一个覆盖了最多未覆盖的地区的电台</strong>（此电台可能包含一些已覆盖的地区，但没关系）</p>
-<p>2). 将这个电台加入到一个集合中（比如ArrayList），想办法把电台覆盖的地区在下次比较时去掉。</p>
-<p>3). <strong>重复第一步</strong>，直到覆盖了全部的地区。</p>
-<pre><code>function greedy(broadcast, allAreas)&#123;
-    var selects = [];
-    //定义一个临时的集合， 在遍历的过程中，存放遍历过程中的电台覆盖的地区和当前还没有覆盖的地区的交集
-    var tempSet = [];
-    //定义maxKey，保存在一次遍历过程中，能够覆盖最大未覆盖的地区对应的电台的key
-    //如果maxKey不为null， 则会加入到selects中
-    var maxKey = null;
-    while(allAreas.length != 0)&#123;
-        //如果allAreas不为0，则表示还没有覆盖到所有的地区
-        //遍历broadcast，取出对应key
-        maxKey = null;
-        for(let item of broadcast.keys())&#123;
-            let intersect = [...new Set([...broadcast.get(item)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
-            if(maxKey == null)&#123;
-                maxKey = item;
-    
-            &#125;
-            else&#123;
-                let intersect2 = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
-                if(intersect.length &gt; intersect2.length)&#123;
-                    maxKey = item;
-                &#125;
-            &#125;
-        &#125;
-        if(maxKey!=null)&#123;
-            selects.push(maxKey);
-            var preto_delete = [...new Set([...broadcast.get(maxKey)].filter(x =&gt; allAreas.indexOf(x)!=-1))];
-            let item;
-            for(var i = 0;i&lt;preto_delete.length;i++)&#123;
-                item = allAreas.indexOf(preto_delete[i])
-                allAreas.splice(item, item + 1);
-            &#125;
-        &#125;
-    &#125;
-    return selects;
-&#125;
-//创建广播电台，放入到Map中
-var broadcast = new Map();
-//将各个电台放入到broadcast中
-broadcast.set(&#39;k1&#39;, [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;]);
-broadcast.set(&#39;k2&#39;, [&quot;广州&quot;, &quot;北京&quot;, &quot;深圳&quot;]);
-broadcast.set(&#39;k3&#39;, [&quot;成都&quot;, &quot;上海&quot;, &quot;杭州&quot;]);
-broadcast.set(&#39;k4&#39;, [&quot;上海&quot;, &quot;天津&quot;]);
-broadcast.set(&#39;k5&#39;, [&quot;杭州&quot;, &quot;大连&quot;]);
-
-var allAreas = [&quot;北京&quot;, &quot;上海&quot;, &quot;天津&quot;, &quot;广州&quot;, &quot;深圳&quot;, &quot;成都&quot;, &quot;大连&quot;, &quot;杭州&quot;];
-console.log(greedy(broadcast, allAreas));
-</code></pre>
-<h1 id="Prim算法（应用场景：修路问题）"><a href="#Prim算法（应用场景：修路问题）" class="headerlink" title="Prim算法（应用场景：修路问题）"></a>Prim算法（应用场景：修路问题）</h1><p>修路问题的本质就是最小生成树问题，最小生成树（Minimum Cost Spanning Tree），简称MST。<br>1).给定一个带权的无向连通图，如何选取一棵生成树，使树上所有边上权的总和为最小，这叫最小生成树；</p>
-<p>2).N个顶点，一定有N-1条边</p>
-<p>3).包含全部顶点</p>
-<p>4).N-1条边都在图中</p>
-<p>Prime算法介绍<br>1.Prime算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有（n-1）条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图</p>
-<ol start="2">
-<li> 普利姆算法如下：<br>（1）设G=(V, E)是连通网，T=(U, D)是最小生成树，V,U是顶点集合， E,D是边的集合<br>（2）若从顶点u开始构造最小生成树，则从集合V中取出顶点u放入集合U中，标记顶点v的visited[u] = 1<br>（3）若集合U中顶点ui与集合V-U中的顶点vj之间存在边，则寻找这些边中权值最小的边，但不能构成回路，将顶点vj加入集合U中，将边（ui， vj）加入集合D中，标记visited[vj] = 1<br>（4）重复步骤2，直到U与V相等，即所有顶点都被标记为访问过，此时D中有n-1条边</li>
-</ol>
-<h1 id="回溯算法"><a href="#回溯算法" class="headerlink" title="回溯算法"></a>回溯算法</h1><p>（原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/Timor7hao/article/details/108423423%EF%BC%89">https://blog.csdn.net/Timor7hao/article/details/108423423）</a></p>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>回溯算法：回溯算法实际上一个类似枚举的搜索尝试过程，主要是在搜索尝试过程中寻找问题的解，当发现已不满足求解条件时，就“回溯”返回，尝试别的路径。</p>
-<p>解决一个回溯问题，实际上就是一个决策树的遍历过程。</p>
-<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><p>三个步骤：</p>
-<p>（1）开头写好跳出条件，满足条件才将当前结果加入总结果中。</p>
-<p>（2）已经拿过的数不再拿。</p>
-<p>（3）向下遍历，结束后回溯到上一步。<br>伪代码：</p>
-<pre><code>result = []
-def backtrack(路径, 选择列表):
-    if 满足结束条件:                  // (1)
-        result.add(路径)
-        return
-​
-    for 选择 in 选择列表:
-        去掉已经拿过的数              // (2)
-        做选择                       // (3)
-        backtrack(路径, 选择列表)     
-        撤销选择
-</code></pre>
-<p>3、leetcode真题（全排列、子集、组合、拓展题）</p>
-<pre><code>全排列问题（leetcode46）
-
-var allArray = function(nums) &#123;
-    var res = []
-    var dfs = function(path)&#123;
-        if(nums.length === path.length)&#123;              //(1)
-            res.push([...path]);
-            return;
-        &#125;
-        for(let i=0; i&lt;nums.length; i++)&#123;
-            if(path.indexOf(nums[i]) !== -1) &#123;        //(2)
-                continue;
-            &#125;
-            path.push(nums[i]);                       //(3)
-            dfs(path);
-            path.pop();
- 
-        &#125;
-    &#125;
-    dfs([]);
-    return res;
-&#125;;
- 
-console.log(allArray([1,2,3]))          
-// [[ 1, 2, 3 ],[ 1, 3, 2 ],[ 2, 1, 3 ],[ 2, 3, 1 ],[ 3, 1, 2 ],[ 3, 2, 1 ]]
-
-子集问题（leetcode78）
-</code></pre>
-<p>和全排列区别：</p>
-<p>1》所有可能的子集，每次递归中都将当前组合加入结果中，不用之前的结束条件。</p>
-<p>2》[1,3]和[3,1]是相同的，故每次取数时要从其位置取后面的数，加个标志位start。</p>
-<pre><code>var sonArray = function(nums) &#123;
-    var res = [];
-    var dfs = function(path,start) &#123;
-        res.push([...path])                        //(1)
-        for(let i=start; i&lt;nums.length; i++) &#123;     //(2)
-            path.push(nums[i]);                    //(3)
-            dfs(path,i+1);
-            path.pop();
-        &#125;
-    &#125;
-    dfs([],0)
-    return res;
-&#125;
- 
-console.log(sonArray([1,2,3]))
-//[ [], [ 1 ], [ 1, 2 ], [ 1, 2, 3 ], [ 1, 3 ], [ 2 ], [ 2, 3 ], [ 3 ] ]
-
-组合求和问题（leetcode39）
-</code></pre>
-<p>和全排列区别：</p>
-<p>1》结束条件是满足目标target。</p>
-<p>2》组合包括自身和，故每次取数时要从自己位置开始取数。</p>
-<pre><code>var targetArray = function(nums, target) &#123;
-    var res = [];
-    var dfs = function(path,start) &#123;
-        if(sum(path) === target) &#123;                  //(1)
-            res.push([...path]);
-            return;
-        &#125;
-        if(sum(path) &gt; target) &#123;
-            return;
-        &#125;
-        for(let i=start; i&lt;nums.length; i++) &#123;     //(2)
-            path.push(nums[i]);                    //(3)
-            dfs(path.slice(), i);
-            path.pop();
-        &#125;
-    &#125;
-    dfs([],0)
-    return res;
-&#125;
-function sum(arr) &#123;
-    if(arr.length===0)
-        return 0;
-    return arr.reduce((a,b)=&gt;a+b)
-&#125;
- 
-console.log(targetArray([2,3,5],8))
-// [ [ 2, 2, 2, 2 ], [ 2, 3, 3 ], [ 3, 5 ] ]
-
-拓展题
-</code></pre>
-<p>输入目标字符串：比如”南京“输出包含目标字符串的节点路径集合。</p>
-<pre><code>function func(arr, str) &#123;
-    var res = [];
-    var recur = function(arr, path) &#123;
-        let string = path.join(&#39;-&#39;);
-        if(string.indexOf(str) !== -1)&#123;
-            res.push(string);
-        &#125;
-        if(arr === undefined || arr.length === 0)
-            return;
-        
-        for(let i=0; i&lt;arr.length; i++)&#123;
-            path.push(arr[i].label);
-            recur(arr[i].children, path);
-            path.pop();
-        &#125;
-    &#125;
-    recur(arr, []);
-    return res;
-&#125;
- 
-console.log(func([&#123;label:&#39;江苏省&#39;,children:[&#123;label:&#39;南京市&#39;,children:[&#123;label:&#39;xxx区&#39;,children:[]&#125;]&#125;]&#125;],&#39;南京&#39;))
-//[ &#39;江苏省-南京市&#39;, &#39;江苏省-南京市-xxx区&#39; ]
-</code></pre>
-<h1 id="约瑟夫环问题"><a href="#约瑟夫环问题" class="headerlink" title="约瑟夫环问题"></a>约瑟夫环问题</h1><h2 id="构建单向的环形链表思路"><a href="#构建单向的环形链表思路" class="headerlink" title="构建单向的环形链表思路"></a>构建单向的环形链表思路</h2><ol>
-<li>先创建第一个节点，让first指向该节点，并形成环形；</li>
-<li>后面当我们每创建一个新的节点，就把该节点，加入到已有的环形链表中即可。</li>
-</ol>
-<h2 id="遍历环形链表"><a href="#遍历环形链表" class="headerlink" title="遍历环形链表"></a>遍历环形链表</h2><ol>
-<li>先让一个辅助指针（变量），指向first节点；</li>
-<li>然后通过一个while循环遍历该环形链表即可，curBoy.next == first;即可。</li>
-</ol>
-<h1 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h1><ol>
-<li>堆排序是利用堆这种数据结构而设计的一种排序算法，堆排序是一种选择排序，它的最坏，最好，平均时间复杂度均为O(nlogn)，它也是不稳定排序。</li>
-<li>堆是具有以下性质的完全二叉树：每个节点的值都大于或等于其左右孩子节点的值，称为大顶堆，<strong>注意</strong>：没有要求节点的左孩子的值和右孩子的值的大小关系；</li>
-<li>每个节点的值都小于或等于其左右孩子节点的值，称为小顶堆。</li>
-<li>大顶堆特点：arr[i]&gt;=arr[2<em>i+1<br>] &amp;&amp; arr[i]&gt;=arr[2</em>i+2]//i对应第几个节点，i从0开始编号；小顶堆特点：arr[i]&lt;=arr[2<em>i+1] &amp;&amp; arr[i]&lt;=arr[2</em>i+2]。一般升序采用大顶堆，降序采用小顶堆。<h2 id="堆排序基本思想"><a href="#堆排序基本思想" class="headerlink" title="堆排序基本思想"></a>堆排序基本思想</h2></li>
-</ol>
-<p>堆排序的基本思想：</p>
-<ol>
-<li>将待排序序列构造成一个大顶堆</li>
-<li>此时，整个序列的最大值就是堆顶的根节点</li>
-<li>将其与末尾元素进行交换，此时末尾就是最大值</li>
-<li>然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了。<br>可以看到在构建大顶堆的过程中，元素的个数逐渐减少，最后得到一个有序序列了。</li>
-</ol>
 
         
         

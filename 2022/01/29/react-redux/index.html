@@ -19,7 +19,7 @@
 <meta property="og:description" content="Reduxredux的组成state-状态就是我们传递的数据，我们在用React开发项目的时候，大致可以把State分成三类：  DomainDate：可以理解为服务器端的数据，比如：获取用户的信息，商品的列表等等  UI State：决定当前UI展示的状态，比如：弹框的显示隐藏，受控组件等等  App State：App级别的状态，比如：当前是否请求loading，当前路由信息等可能被多个和组件">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-01-29T02:46:01.000Z">
-<meta property="article:modified_time" content="2022-02-24T02:13:08.409Z">
+<meta property="article:modified_time" content="2022-03-02T01:04:16.010Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -115,12 +115,18 @@
 <h3 id="Action-事件"><a href="#Action-事件" class="headerlink" title="Action-事件"></a>Action-事件</h3><p>Action是把数据从应用传到store的载体，它是store数据的唯一来源，一般来说，我们可以通过store.dispatch()将action传递给store</p>
 <p><strong>Action特点：</strong></p>
 <ul>
-<li>Action的本质就是一个javascript的普通对象</li>
-<li>Action对象内部必须要有一个<strong>type</strong>属性来表示要执行的动作</li>
-<li>多数情况下，这个<strong>type</strong>会被定义成字符串常量</li>
-<li>除了<strong>type</strong>之外，action的结构随意进行定义</li>
-<li>而我们在项目中，更多的喜欢用<strong>action</strong>创建函数（就是创建action的地方）</li>
-<li><strong>只是描述了有事情要发生，并没有描述如何去更新state</strong></li>
+<li><p>Action的本质就是一个javascript的普通对象</p>
+</li>
+<li><p>Action对象内部必须要有一个<strong>type</strong>属性来表示要执行的动作</p>
+</li>
+<li><p>多数情况下，这个<strong>type</strong>会被定义成字符串常量</p>
+</li>
+<li><p>除了<strong>type</strong>之外，action的结构随意进行定义</p>
+</li>
+<li><p>而我们在项目中，更多的喜欢用<strong>action</strong>创建函数（就是创建action的地方）</p>
+</li>
+<li><p><strong>只是描述了有事情要发生，并没有描述如何去更新state</strong></p>
+</li>
 </ul>
 <h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p><strong>reducer</strong>本质就是一个函数，它用来<strong>响应</strong>发送过来的<strong>actions</strong>，然后经过处理，把<strong>state</strong>发送给<strong>Store</strong>的</p>
 <p><strong>注意：</strong>在reducer函数中，需要return返回值，这样Store才能接收到数据，函数会接收两个参数，第一个参数是初始化的state，第二个参数是action</p>
@@ -207,7 +213,7 @@
 </ul>
 <p>connect参数说明：</p>
 <ul>
-<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组建上</strong></p>
+<li><p><strong>mapStateToProps(state, ownProps) 这个函数允许我们将store中的数据作为props绑定到组件上</strong></p>
 </li>
 <li><p><strong>mapDisPatchToProps(dispatch, ownProps) 将action作为props绑定到我们自己的函数中，dispatch就是store.dispatch(), ownProps自己的props</strong></p>
 </li>

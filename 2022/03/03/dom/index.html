@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>html5 | front-end study</title>
+    <title>dom | front-end study</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Weiling Wu">
     
 
     
-    <meta name="description" content="&lt;audio&gt;播放声音： &lt;audio controls&gt;   &lt;source src&#x3D;&quot;horse.ogg&quot; type&#x3D;&quot;audio&#x2F;ogg&quot;&gt;   &lt;source src&#x3D;&quot;horse.mp3&quot; type&#x3D;&quot;audio&#x2F;mpeg&quot;&gt;   您的浏览器不支持 audio">
+    <meta name="description" content="dom(文档对象模型)JS中通过DOM来对HTML文档进行操作，只要理解了DOM就可以随心所欲的操作WEB页面。  文档：文档表示的就是整个HTML网页文档  对象：对象表示将网页中的每一个部分都转换成了一个对象  模型：使用模型来表示对象之间的关系，这样方便我们获取对象   节点 节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。比如：html标签、属性、文">
 <meta property="og:type" content="article">
-<meta property="og:title" content="html5">
-<meta property="og:url" content="http://example.com/2022/02/23/html5/index.html">
+<meta property="og:title" content="dom">
+<meta property="og:url" content="http://example.com/2022/03/03/dom/index.html">
 <meta property="og:site_name" content="front-end study">
-<meta property="og:description" content="&lt;audio&gt;播放声音： &lt;audio controls&gt;   &lt;source src&#x3D;&quot;horse.ogg&quot; type&#x3D;&quot;audio&#x2F;ogg&quot;&gt;   &lt;source src&#x3D;&quot;horse.mp3&quot; type&#x3D;&quot;audio&#x2F;mpeg&quot;&gt;   您的浏览器不支持 audio">
+<meta property="og:description" content="dom(文档对象模型)JS中通过DOM来对HTML文档进行操作，只要理解了DOM就可以随心所欲的操作WEB页面。  文档：文档表示的就是整个HTML网页文档  对象：对象表示将网页中的每一个部分都转换成了一个对象  模型：使用模型来表示对象之间的关系，这样方便我们获取对象   节点 节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。比如：html标签、属性、文">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-02-23T10:43:25.000Z">
-<meta property="article:modified_time" content="2022-02-23T11:14:47.790Z">
+<meta property="article:published_time" content="2022-03-03T06:08:16.000Z">
+<meta property="article:modified_time" content="2022-03-03T06:18:50.592Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/02/23/html5/" title="html5" itemprop="url">html5</a>
+      <a href="/2022/03/03/dom/" title="dom" itemprop="url">dom</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
 		
   <p class="article-time">
-    <time datetime="2022-02-23T10:43:25.000Z" itemprop="datePublished"> Published 2022-02-23</time>
+    <time datetime="2022-03-03T06:08:16.000Z" itemprop="datePublished"> Published 2022-03-03</time>
     
   </p>
 </header>
@@ -99,87 +99,25 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-audio-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;audio&gt;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-video-gt-%E7%B1%BB%E5%90%8C-lt-audio-gt"><span class="toc-number">2.</span> <span class="toc-text">&lt;video&gt;类同&lt;audio&gt;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#input"><span class="toc-number">3.</span> <span class="toc-text">input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#canvas"><span class="toc-number">4.</span> <span class="toc-text">canvas</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0-lt-datalist-gt"><span class="toc-number">5.</span> <span class="toc-text">表单元素&lt;datalist&gt;</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dom-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">dom(文档对象模型)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">节点</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="lt-audio-gt"><a href="#lt-audio-gt" class="headerlink" title="&lt;audio&gt;"></a><code>&lt;audio&gt;</code></h1><p>播放声音：</p>
-<pre><code>&lt;audio controls&gt;
-  &lt;source src=&quot;horse.ogg&quot; type=&quot;audio/ogg&quot;&gt;
-  &lt;source src=&quot;horse.mp3&quot; type=&quot;audio/mpeg&quot;&gt;
-  您的浏览器不支持 audio 元素。
-&lt;/audio&gt;
-</code></pre>
-<p><audio> 标签定义声音，比如音乐或其他音频流。<audio> 标签是 HTML5 的新标签。</p>
-<table align="center" border="1px" cellspacing="0px" cellpadding="8px" >
-    <tr height="20px" align="center" >
-        <td width="50px">属性</td>
-        <td>值</td>
-        <td>描述</td>
-    </tr>
-    <tr height="20px" align="center">
-        <td width="100px">autoplay</td>
-        <td>autoplay</td>
-        <td>如果出现该属性，则音频在就绪后马上播放。</td>
-    </tr>
-     <tr height="20px" align="center">
-        <td width="100px">controls</td>
-        <td>controls</td>
-        <td>如果出现该属性，则向用户显示音频控件（比如播放/暂停按钮）。</td>
-    </tr>
-     <tr height="20px" align="center">
-        <td width="100px">loop</td>
-        <td>loop</td>
-        <td>如果出现该属性，则每当音频结束时重新开始播放。</td>
-    </tr>
-     <tr height="20px" align="center">
-        <td width="100px">mutedNew</td>
-        <td>muted</td>
-        <td>如果出现该属性，则音频输出为静音。</td>
-    </tr>
-     <tr height="20px" align="center">
-        <td width="100px">preloadNew</td>
-        <td>auto、metadata、none</td>
-        <td>规定当网页加载时，音频是否默认被加载以及如何被加载。</td>
-    </tr>
-     <tr height="20px" align="center">
-        <td width="100px">metadata</td>
-        <td>URL</td>
-        <td>规定音频文件的 URL。</td>
-    </tr>
-</table>
-
-<h1 id="lt-video-gt-类同-lt-audio-gt"><a href="#lt-video-gt-类同-lt-audio-gt" class="headerlink" title="&lt;video&gt;类同&lt;audio&gt;"></a><code>&lt;video&gt;</code>类同<code>&lt;audio&gt;</code></h1><h1 id="input"><a href="#input" class="headerlink" title="input"></a>input</h1><p>HTML5 拥有多个新的表单输入类型。这些新特性提供了更好的输入控制和验证：color、date、datetime、datetime-local、email、month、number、range、search、tel、time、url、week。</p>
-<p>选择你喜欢的颜色: <code>&lt;input type=&quot;color&quot;&gt;</code></p>
-<h1 id="canvas"><a href="#canvas" class="headerlink" title="canvas"></a>canvas</h1><p>HTML5 <code>&lt;canvas&gt;</code> 元素用于图形的绘制，通过脚本 (通常是JavaScript)来完成。<code>&lt;canvas&gt;</code> 标签只是图形容器，您必须使用脚本来绘制图形。你可以通过多种方法使用 canvas 绘制路径,盒、圆、字符以及添加图像。</p>
-<pre><code>&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-&lt;head&gt; 
-    &lt;meta charset=&quot;utf-8&quot;&gt; 
-    &lt;title&gt;study&lt;/title&gt; 
-&lt;/head&gt;
-&lt;body&gt;
-
-    &lt;canvas id=&quot;myCanvas&quot; width=&quot;200&quot; height=&quot;100&quot; style=&quot;border:1px solid #d3d3d3;&quot;&gt;&lt;/canvas&gt;
-    &lt;script&gt;
-    
-        var c=document.getElementById(&quot;myCanvas&quot;);
-        var ctx=c.getContext(&quot;2d&quot;);
-        ctx.font=&quot;30px Arial&quot;;
-        ctx.strokeText(&quot;Hello World&quot;,10,50);
-    
-    &lt;/script&gt;
-
-&lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<h1 id="表单元素-lt-datalist-gt"><a href="#表单元素-lt-datalist-gt" class="headerlink" title="表单元素&lt;datalist&gt;"></a>表单元素<code>&lt;datalist&gt;</code></h1><p><code>&lt;datalist&gt;</code> 元素规定输入域的选项列表。<code>&lt;datalist&gt;</code> 属性规定 <code>form</code> 或 <code>input</code> 域应该拥有自动完成功能。当用户在自动完成域中开始输入时，浏览器应该在该域中显示填写的选项：使用 <code>&lt;input&gt;</code> 元素的列表属性与 <code>&lt;datalist&gt;</code> 元素绑定.</p>
-<pre><code>&lt;input&quot;&gt;
-&lt;datalist&gt;
-  &lt;option value=&quot;IE&quot;&gt;
-  &lt;option value=&quot;Firefox&quot;&gt;
-&lt;/datalist&gt;
-</code></pre>
+		<h1 id="dom-文档对象模型"><a href="#dom-文档对象模型" class="headerlink" title="dom(文档对象模型)"></a>dom(文档对象模型)</h1><p><strong>JS中通过DOM来对HTML文档进行操作</strong>，只要理解了DOM就可以随心所欲的操作WEB页面。</p>
+<ul>
+<li><p>文档：文档表示的就是整个HTML网页文档</p>
+</li>
+<li><p>对象：对象表示将网页中的每一个部分都转换成了一个对象</p>
+</li>
+<li><p>模型：使用模型来表示对象之间的关系，这样方便我们获取对象</p>
+</li>
+</ul>
+<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><ul>
+<li><p><strong>节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。</strong>比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
+</li>
+<li><p>虽然是节点，但是实际上他们的具体类型是不同的。比如：标签我们成为<strong>元素节点</strong>，属性成为<strong>属性节点</strong>，文本称为<strong>文本节点</strong>，文档成为<strong>文档节点</strong>。节点的类型不同，属性和方法也都不尽相同。</p>
+</li>
+</ul>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -192,7 +130,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://example.com/2022/02/23/html5/" data-title="html5 | front-end study" data-tsina="" class="share clearfix">
+	  <div data-url="http://example.com/2022/03/03/dom/" data-title="dom | front-end study" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -205,19 +143,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2022/03/03/dom/" title="dom">
-  <strong>上一篇：</strong><br/>
-  <span>
-  dom</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2022/02/23/CSS3/"  title="CSS3">
+<a href="/2022/02/23/html5/"  title="html5">
  <strong>下一篇：</strong><br/> 
- <span>CSS3
+ <span>html5
 </span>
 </a>
 </div>
@@ -234,7 +164,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-audio-gt"><span class="toc-number">1.</span> <span class="toc-text">&lt;audio&gt;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#lt-video-gt-%E7%B1%BB%E5%90%8C-lt-audio-gt"><span class="toc-number">2.</span> <span class="toc-text">&lt;video&gt;类同&lt;audio&gt;</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#input"><span class="toc-number">3.</span> <span class="toc-text">input</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#canvas"><span class="toc-number">4.</span> <span class="toc-text">canvas</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%A1%A8%E5%8D%95%E5%85%83%E7%B4%A0-lt-datalist-gt"><span class="toc-number">5.</span> <span class="toc-text">表单元素&lt;datalist&gt;</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dom-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">dom(文档对象模型)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">节点</span></a></li></ol></li></ol>
  
   </div>
 
