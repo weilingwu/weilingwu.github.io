@@ -2135,6 +2135,78 @@ var newArray = oldArray.filter(function(val)&#123;return val&lt;6;&#125;);
 </li>
 </ul>
 <p>注意:不要使用 “on” 前缀。 例如，使用 “click” ,而不是使用 “onclick”。</p>
+<h1 id="变量存储位置"><a href="#变量存储位置" class="headerlink" title="变量存储位置"></a>变量存储位置</h1><p>（引自<a target="_blank" rel="noopener" href="https://blog.csdn.net/hhthwx/article/details/78146169%EF%BC%89">https://blog.csdn.net/hhthwx/article/details/78146169）</a><br>栈、堆</p>
+<p>JS中变量分为两种类型：<strong>基本数据类型</strong>和<strong>引用类型</strong></p>
+<p>（一）基本数据类型：Undefined,Null,Boolean,Number和String</p>
+<p>（二)引用类型：对象，数组，函数</p>
+<p>原始值和引用值存储在内存中的位置分别是栈和堆。原始值是存储在栈中的简单数据段，他们的值直接存储在变量访问的位置。引用值是存储在堆中的对象。</p>
+<p>栈:</p>
+<p>主要表现为一种数据结构，是只能在某一端插入和删除的特殊线性表。它按照后进先出的原则存储数据,先进入的数据被压入栈底，最后的数据在栈顶，需要读取数据的时候从栈顶开始弹出数据（最后一个数据被第一个读出来）。<br>栈是允许在同一端进行插入和删除操作的特殊线性表。允许进行插入和删除操作的一段成为栈顶，另一端称为栈底；栈底固定，而栈顶浮动 ；栈中元素个数为零时，称为空栈。插入一般称为进栈（PUSH），删除则称为退栈（POP）。栈也称为后进先出表。<br>图谱解释：</p>
+<p>存储在栈中的值是一个指针，指向存储在堆中的实际对象<br>关于基本变量的交换，按值访问操作的是他们实际保存的值；</p>
+<pre><code> function qk()
+ &#123;
+   var store1 = &quot;China&quot;;
+   var store2 = store2;
+   store1 = &quot;USA&quot;;
+   alert(store2);//China
+
+ &#125;
+ qk();
+</code></pre>
+<p>将基本类型store1传递给另一个变量（赋值）时，其实是分配了一块新的内存空间，因此改变了store1的值对store2没有任何影响。</p>
+<p>堆：</p>
+<p>在程序中，堆用于动态分配和释放程序所使用的对象。在以下情况中调用堆操作：</p>
+<p>　　　　1.事先不知道程序所需对象的数量和大小。</p>
+<p>　　　　2.对象太大，不适合使用堆栈分配器。</p>
+<p>　　堆使用运行期间分配给代码和堆栈以外的部分内存。</p>
+<p>　　在javascript中，引用数据是放在堆中的，例如数组和对象，因为在javascript中，一切都是对象，对象可以进行扩展，放置在堆中可以进行不断的扩展，如果放在内存中就会消耗大量资源。放置在堆中的数据的查询效率比较低。这也是内存优于堆的好处，但是内存的存储空间要比堆的小很多。<br>　　按引用访问，当查询时，需要先从栈中读取内存地址，然后再顺藤摸瓜找到保存在堆内存中的值<br>　　<br>        var obj1 = new Object();<br>        obj1.name = “obji name”;<br>        console.log(obj1.name);//输出obj1 name<br>        var obj2 = obj1;<br>        console.log(obj2.name);//输出obj1 name<br>        obj1.name = “qk”;<br>        console.log(obj2.name);//qk<br>　　<br>　　<br>　　栈的优势就是存取速度比堆要快，仅次于直接位于CPU中的寄存器，但缺点是，存在栈中的数据大小与生存期必须是确定的，缺乏灵活性。堆的优势是可以动态地分配内存大小，生存期也不必事先告诉编译器，垃圾收集器会自动地收走这些不再使用的数据，但是缺点是由于在运行时动态分配内存，所以存取速度较慢。</p>
+<p>所以相对于简单数据类型而言，他们占用内存比较小，如果放在堆中，查找会浪费很多时间，而把堆中的数据放入栈中也会影响栈的效率。比如对象和数组是可以无限拓展的，正好放在可以动态分配大小的堆中。<br>————————————————<br>原文链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/hhthwx/article/details/78146169">https://blog.csdn.net/hhthwx/article/details/78146169</a></p>
+<h1 id="Null与undefined"><a href="#Null与undefined" class="headerlink" title="Null与undefined"></a>Null与undefined</h1><p><strong>Null</strong>类型的值只有一个，就是null。null这个值专门用来表示为空的对象，typeof a为object。</p>
+<p><strong>Undefined</strong>类型的值只有一个，就是undefined，当声明一个变量，但不给变量赋值时，它的值就是undefined，使用typeof检查一个undefined时也会返回undefined。</p>
+<h1 id="相等-不相等运算符"><a href="#相等-不相等运算符" class="headerlink" title="相等/不相等运算符 ==#"></a>相等/不相等运算符 ==#</h1><ul>
+<li><p>比较两个<strong>值</strong>是否相等，如果相等会返回true，否则返回false。当使用==来比较两个值时，如果值得类型不同，则会自动进行类型转换，将其转换为相同的类型，然后在比较，<strong>大部分</strong>情况下转换成数字。<strong>NaN（Not a number）不和任何值相等，包括他本身。可以通过isNaN()函数来判断一个值是否是NaN。</strong></p>
+<pre><code>  console.log(&quot;hello&quot; == true)//false
+  console.log(null == 0)//false
+  //undefined衍生自null，所以两个值做相等判断时，会返回true。
+  console.log(undefined == null)//true
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p><strong>不相等</strong>：！=不相等与相等相反。</p>
+</li>
+<li><p><strong>全等</strong>：===，用来判断两个值是否全等，与相等类似，<strong>不同的是它不会做类型转换</strong>，如果两个值得类型不同，直接返回false。</p>
+<pre><code>  console.log(null === undefined)//false
+</code></pre>
+</li>
+<li><p>不全等：！==，与全等相反。</p>
+</li>
+</ul>
+<h1 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h1><p>函数定义完，立即被调用，这种函数叫做立即执行函数，立即执行函数往往只会执行一次。</p>
+<pre><code>(function()&#123;
+    console.log(&quot;hello&quot;)
+&#125;)()
+</code></pre>
+<h1 id="BigInt"><a href="#BigInt" class="headerlink" title="BigInt"></a>BigInt</h1><p>大整数</p>
+<pre><code>let c = 512n;
+console.log(c, typeof c);//512n，bigint
+//函数
+let n = 123n;
+console.log(BigInt(n));
+// console.log(BigInt(1.2));
+
+//大数值运算
+let max = Number.MAX_SAFE_INTEGER;
+console.log(max);
+console.log(max+2);
+
+
+console.log((BigInt(max)));
+console.log(BigInt(max)+BigInt(2));
+</code></pre>
+<h1 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h1><p>深拷贝：开辟了新的区域<br>浅拷贝：共用地址</p>
+<p>concat、slice、from、JSON.parse(JSON.stringify(Array))深拷贝</p>
+<p>扩展运算符、map、filter、reduce、assign：浅拷贝</p>
 
         
         
@@ -2597,209 +2669,7 @@ export default function HookTest() &#123;
 &#125;
 </code></pre>
 <p>useState的参数为初始state。可以是数字，字符串，也可以是对象<br><strong>useState的返回值为一个数组，数组的第一个值是当前state名称，第二个是是更新state的函数。因此其使用方法为 <code>const [count,setCount]=useState(0)</code></strong></p>
-<h2 id="副作用hook-useEffect"><a href="#副作用hook-useEffect" class="headerlink" title="副作用hook useEffect."></a>副作用hook useEffect.</h2><p>使用上面计时器的例子，如果想要每次数目count改变时，页面的title也有变化。在基于类的组件中的写法,在生命周期函数componentDidMount和componentDidUpdate中写</p>
-<pre><code>class Example extends React.Component &#123;
-  constructor(props) &#123;
-    super(props);
-    this.state = &#123;
-      count: 0
-    &#125;;
-  &#125;
 
-  componentDidMount() &#123;
-    document.title = `You clicked $&#123;this.state.count&#125; times`;
-  &#125;
-
-  componentDidUpdate() &#123;
-    document.title = `You clicked $&#123;this.state.count&#125; times`;
-  &#125;
-
-  render() &#123;
-    return (
-      &lt;div&gt;
-        &lt;p&gt;You clicked &#123;this.state.count&#125; times&lt;/p&gt;
-        &lt;button onClick=&#123;() =&gt; this.setState(&#123; count: this.state.count + 1 &#125;)&#125;&gt;
-          Click me
-        &lt;/button&gt;
-      &lt;/div&gt;
-    );
-  &#125;
-&#125;
-</code></pre>
-<p>这样写的话，在更新和组件加载都需要调用相同的函数，有没有一种方法，可以在每次渲染的时候执行呢。在基于class的组件中没有提供，不过我们可以使用钩子函数useEffect来实现哦。看下面例子。</p>
-<pre><code>import React, &#123; useState, useEffect &#125; from &#39;react&#39;;
-
-function Example() &#123;
-  const [count, setCount] = useState(0);
-
-  useEffect(() =&gt; &#123;
-    document.title = `You clicked $&#123;count&#125; times`;
-  &#125;,[count]);
-
-  return (
-    &lt;div&gt;
-      &lt;p&gt;You clicked &#123;count&#125; times&lt;/p&gt;
-      &lt;button onClick=&#123;() =&gt; setCount(count + 1)&#125;&gt;
-        Click me
-      &lt;/button&gt;
-    &lt;/div&gt;
-  );
-&#125;
-</code></pre>
-<p>useEffect在每次渲染的时候，就会运行。不需要考虑挂载和更新。<br>useEffect 第一个参数为每次渲染完成执行的函数。第二次参数是一个数组。可以用来监听某个状态的变化，只有状态改变才会执行useEffect总的一个函数。当传入一个空数组[]，则代表只是执行一次。</p>
-<pre><code>useEffect(() =&gt; &#123;
-    document.title = `You clicked $&#123;count&#125; times`;
-  &#125;,[count]);
-</code></pre>
-<p>如果useE ffect的执行函数，返回一个函数,React则会在执行清除操作（组件卸载）时调用它</p>
-<pre><code>useEffect(() =&gt; &#123;
-    function handleStatusChange(status) &#123;
-      setIsOnline(status.isOnline);
-    &#125;
-
-    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
-    // Specify how to clean up after this effect:
-    return function cleanup() &#123;
-      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
-    &#125;;
-    &#125;);
-</code></pre>
-<p>什么时候需要执行清楚副作用操作呢？当有订阅时，需要执行清除操作，避免内存泄漏。</p>
-<h2 id="自定义hook"><a href="#自定义hook" class="headerlink" title="自定义hook"></a>自定义hook</h2><p>当我们在2个函数之间共享逻辑时，我们可以提取到第三个函数中。自定义hook时一个函数，其名称以use开头，在内部可以调用其他的hook函数。例如：在一个app中，需要在多个组件中知道用户的登陆状态，这个时候就可以把登陆状态的函数。写成一个hook，在多个组件中调用.</p>
-<pre><code>function useFriendStatus(friendID) &#123;
-  const [isOnline, setIsOnline] = useState(null);
-
-  // ...
-
-  return isOnline;
-&#125;
-</code></pre>
-<p>useFriendStatus函数式一个hook函数，可以返回当前用户的登陆状态。从而得到复用。<br>在其他组件中直接使用    </p>
-<pre><code>const isOnline = useFriendStatus(props.friend.id);
-</code></pre>
-<p>（作者：单只蝴蝶_569d<br>链接：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/99fde7e3f458/">https://www.jianshu.com/p/99fde7e3f458/</a><br>来源：简书）</p>
-<h1 id="fetch用法详解"><a href="#fetch用法详解" class="headerlink" title="fetch用法详解"></a>fetch用法详解</h1><p>（转自<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_36529459/article/details/80374756%EF%BC%89">https://blog.csdn.net/qq_36529459/article/details/80374756）</a></p>
-<p>fetch是一个和axios一样的一个基于promise封装的一个http库。</p>
-<p>但是他与axios不同，从我个人角度理解，他比axios封装的更为严谨。</p>
-<p>在刚使用 fetch 去请求数据的时候：</p>
-<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
-    console.log(res);
- &#125;)
-</code></pre>
-<p>输出的并不是我们请求的数据，而是Response对象</p>
-<p>但是，从status来看，我们的确从服务端请求到了数据。</p>
-<p>这就是他与其他http库的区别，他并不是直接输出请求内容。</p>
-<p>所以，我们需要用 json() 方法去解析内容。</p>
-<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
-   console.log(res.json());
-&#125;)
-</code></pre>
-<p>利用json方法，成功的返回了一个promise对象，其中包含一个数组，即我们请求的内容.</p>
-<p>但是，这还不是我们需要的内容，我们需要的只是请求到的数组。</p>
-<pre><code>fetch(&#39;url&#39;).then(res=&gt;&#123;
-    res.json().then((data)=&gt;&#123;
-        console.log(data);
-    &#125;)
-&#125;)
-</code></pre>
-<p>注意：这里fetch请求的地址只能是特定的JSON对象，比如（<a target="_blank" rel="noopener" href="https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4%EF%BC%89">https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4）</a></p>
-<p>下面举例说明fetch的使用：</p>
-<pre><code>export default class MyComponent extends React.Component&#123;
-    constructor(props) &#123;
-        super(props);
-        this.state = &#123;
-            error:null,
-            items:[],
-            isloaded:false
-        &#125;
-    &#125;
-    componentDidMount()&#123;
-        fetch(&#39;https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4&#39;)
-            .then(res=&gt;res.json())
-            .then(
-                (result)=&gt;&#123;
-                    this.setState(&#123;
-                        isloaded: true,
-                        items:result.Search
-                        &#125;
-                    )
-                &#125;,
-    // 注意：需要在此处处理错误
-    // 而不是使用 catch() 去捕获错误
-    // 因为使用 catch 去捕获异常会掩盖掉组件本身可能产生的 bug
-                (error)=&gt;&#123;
-                    this.setState(&#123;
-                        isloaded: true,
-                        error:error
-                    &#125;)
-                &#125;
-            )
-    &#125;
-    render()&#123;
-        const &#123;error, items, isloaded&#125; = this.state;
-        if(error)&#123;
-            return(&lt;div&gt;
-                Error: &#123;error.message&#125;
-            &lt;/div&gt;)
-        &#125;
-        return(
-            &lt;div&gt;
-                &lt;ul&gt;
-                    &#123;items.map(item=&gt;(
-                    &lt;li&gt;&#123;item.Title&#125;, &#123;item.Year&#125;&lt;/li&gt;
-                ))&#125;
-
-                &lt;/ul&gt;
-            &lt;/div&gt;
-        )
-    &#125;
-&#125;
-</code></pre>
-<p>配合hook的使用，程序如下：</p>
-<pre><code>export default function MyComponent() &#123;
-const [loaded, setLoaded] = useState(false);
-const [error, setError] = useState(null);
-const [items, setItems] = useState([]);
-
-useEffect(()=&gt;&#123;
-    fetch(&#39;https://www.omdbapi.com/?s=$transformer&amp;apikey=957687c4&#39;)
-        .then(res =&gt; res.json())
-        .then(
-            (result) =&gt; &#123;
-                setItems(result.Search);
-                setLoaded(true);
-                    &#125;,
-            (error) =&gt; &#123;
-                setLoaded(true);
-                setError(error);
-            &#125;
-        )
-&#125;, [])
-if(error)&#123;
-    return(&lt;div&gt;
-        Error:&#123;error.message&#125;
-    &lt;/div&gt;)
-&#125;
-else &#123;
-    return (
-        &lt;div&gt;
-            &lt;ul&gt;
-                &#123;
-                    items.map(item=&gt; &#123;
-                        return &lt;li&gt;
-                            &#123;item.Year&#125;, &#123;item.Title&#125;
-                        &lt;/li&gt;
-                    &#125;)
-                &#125;
-
-            &lt;/ul&gt;
-        &lt;/div&gt;
-    )
-
-&#125;
-</code></pre>
-<p>}</p>
-<h1 id="虚拟dom与diff函数"><a href="#虚拟dom与diff函数" class="headerlink" title="虚拟dom与diff函数"></a>虚拟dom与diff函数</h1>
         
         
         <p class="article-more-link">

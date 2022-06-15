@@ -108,6 +108,23 @@
 </li>
 <li><p>虽然是节点，但是实际上他们的具体类型是不同的。比如：标签我们成为<strong>元素节点</strong>，属性成为<strong>属性节点</strong>，文本称为<strong>文本节点</strong>，文档成为<strong>文档节点</strong>。节点的类型不同，属性和方法也都不尽相同。</p>
 </li>
+<li><p>浏览器已经为我们提供了文档节点，这个对象是window属性，可以在页面中直接使用。文档节点代表的是整个网页。<strong>document就是这个文档节点。</strong></p>
+</li>
+</ul>
+<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
+<li><p>事件，就是文档或浏览器窗口中发生的一些特性交互瞬间。</p>
+</li>
+<li><p><strong>js与HTML之间的交互是通过事件来实现的。</strong></p>
+</li>
+<li><p>对于Web应用来说，有下面的这些代表性的事件：<strong>点击某个元素</strong>，<strong>将鼠标移动到某个元素上方</strong>，<strong>按下键盘上的某个键</strong>，等等。</p>
+<pre><code>  //获取按钮对象
+  var btn = document.getElementById(&quot;btn&quot;);
+  //可以为按钮的对应事件绑定处理函数的形式来响应事件，这样当事件被触发时，其对应的函数将会被调用。
+  btn.onclick = function()&#123;
+  alert(&quot;你还点~~&quot;);
+  &#125;
+</code></pre>
+</li>
 </ul>
 
         
