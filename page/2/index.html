@@ -703,7 +703,7 @@ g.dfs(0);
 </header>
     <div class="article-content">
         
-        <h1 id="Bubble-Sorting"><a href="#Bubble-Sorting" class="headerlink" title="Bubble Sorting"></a>Bubble Sorting</h1><p>冒泡排序：（Bubble Sorting）：通过对待排序序列从前向后（从下标较小的元素开始）通过依次比较相邻的元素的值，若发现逆序则交换，使值较大的元素逐渐从前向后移动，就像水底的气泡一样逐渐网上冒。</p>
+        <h1 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h1><p>冒泡排序：（Bubble Sorting）：通过对待排序序列从前向后（从下标较小的元素开始）通过依次比较相邻的元素的值，若发现逆序则交换，使值较大的元素逐渐从前向后移动，就像水底的气泡一样逐渐网上冒。</p>
 <pre><code>function bubbleSort(arr) &#123;
     var i = arr.length, j;
     var tempExchangVal;
@@ -769,7 +769,7 @@ var arrSorted = InsertSort(arr);
 console.log(arrSorted);
 alert(arrSorted);
 </code></pre>
-<h1 id="希尔排序（shell-sorting）"><a href="#希尔排序（shell-sorting）" class="headerlink" title="希尔排序（shell sorting）"></a>希尔排序（shell sorting）</h1><p>它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
+<h1 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h1><p>它与插入排序的不同之处在于，它会优先比较距离较远的元素。希尔排序又叫缩小增量排序。</p>
 <p><strong>算法描述：</strong></p>
 <p>先将整个待排序的记录序列分割成为若干子序列分别进行直接插入排序，具体算法描述：</p>
 <ol>
@@ -799,7 +799,7 @@ alert(arrSorted);
 </code></pre>
 </li>
 </ol>
-<h1 id="归并排序（merge-sorting）"><a href="#归并排序（merge-sorting）" class="headerlink" title="归并排序（merge sorting）"></a>归并排序（merge sorting）</h1><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。<br><strong>算法描述：</strong></p>
+<h1 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h1><p>归并排序是建立在归并操作上的一种有效的排序算法。该算法是采用分治法（Divide and Conquer）的一个非常典型的应用。将已有序的子序列合并，得到完全有序的序列；即先使每个子序列有序，再使子序列段间有序。若将两个有序表合并成一个有序表，称为2-路归并。<br><strong>算法描述：</strong></p>
 <ol>
 <li><p>把长度为n的输入序列分成两个长度为n/2的子序列；</p>
 </li>
@@ -838,7 +838,7 @@ alert(arrSorted);
 <p> }</p>
 </li>
 </ol>
-<h1 id="快速排序（quick-sorting）"><a href="#快速排序（quick-sorting）" class="headerlink" title="快速排序（quick sorting）"></a>快速排序（quick sorting）</h1><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。<br><strong>算法描述</strong></p>
+<h1 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h1><p>快速排序的基本思想：通过一趟排序将待排记录分隔成独立的两部分，其中一部分记录的关键字均比另一部分的关键字小，则可分别对这两部分记录继续进行排序，以达到整个序列有序。<br><strong>算法描述</strong></p>
 <p>快速排序使用分治法来把一个串（list）分为两个子串（sub-lists）。具体算法描述如下：</p>
 <ol>
 <li><p>从数列中挑出一个元素，称为 “基准”（pivot）；</p>
