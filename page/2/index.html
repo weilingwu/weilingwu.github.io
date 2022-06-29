@@ -392,7 +392,7 @@ console.log(func([&#123;label:&#39;江苏省&#39;,children:[&#123;label:&#39;南
 <li>将其与末尾元素进行交换，此时末尾就是最大值</li>
 <li>然后将剩余n-1个元素重新构造成一个堆，这样会得到n个元素的次小值。如此反复执行，便能得到一个有序序列了。<br>可以看到在构建大顶堆的过程中，元素的个数逐渐减少，最后得到一个有序序列了。</li>
 </ol>
-
+<h1 id="深度-广度优先遍历算法模板"><a href="#深度-广度优先遍历算法模板" class="headerlink" title="深度/广度优先遍历算法模板"></a>深度/广度优先遍历算法模板</h1>
         
         
         <p class="article-more-link">
@@ -2668,6 +2668,12 @@ export default function HookTest() &#123;
 &#125;
 </code></pre>
 <p>useState的参数为初始state。可以是数字，字符串，也可以是对象<br><strong>useState的返回值为一个数组，数组的第一个值是当前state名称，第二个是是更新state的函数。因此其使用方法为 <code>const [count,setCount]=useState(0)</code></strong></p>
+<h2 id="useEffect"><a href="#useEffect" class="headerlink" title="useEffect"></a>useEffect</h2><ol>
+<li><p><strong>useEffect在每次渲染的时候，就会运行。不需要考虑挂载和更新。</strong></p>
+</li>
+<li><p><strong>useEffect 第一个参数为每次渲染完成执行的函数。第二次参数是一个数组。可以用来监听某个状态的变化，只有状态改变才会执行useEffect总的一个函数。当传入一个空数组[]，则代表只是执行一次。</strong></p>
+</li>
+</ol>
 
         
         
