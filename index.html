@@ -406,37 +406,16 @@ p:first-line
 <li><p>CSS3 弹性盒子（ Flexible Box 或 flexbox），<strong>是一种当页面需要适应不同的屏幕大小以及设备类型时确保元素拥有恰当的行为的布局方式。</strong>引入弹性盒布局模型的目的是提供一种更加有效的方式来对一个容器中的子元素进行排列、对齐和分配空白空间。</p>
 </li>
 <li><p>弹性盒子由<strong>弹性容器</strong>(Flex container)和<strong>弹性子元素</strong>(Flex item)组成。弹性容器通过设置 <strong>display</strong> 属性的值为 flex 或 inline-flex将其定义为弹性容器。弹性容器内包含了一个或多个弹性子元素。</p>
-  <!DOCTYPE html>
-  <html>
-  <head>
-  <style>
-  .flex-container {
-      display: -webkit-flex;
-      display: flex;
-      width: 400px;
-      height: 250px;
-      background-color: lightgrey;
-  }
-   
-<p>  .flex-item {</p>
-<pre><code>  background-color: cornflowerblue;
-  width: 100px;
-  height: 100px;
-  margin: 10px;
-</code></pre>
-<p>  }<br>  </style></p>
-  </head>
-  <body>
-   
-  <div class="flex-container">
-    <div class="flex-item">flex item 1</div>
-    <div class="flex-item">flex item 2</div>
-    <div class="flex-item">flex item 3</div> 
-  </div>
-   
-  </body>
-  </html></li>
+</li>
 </ul>
+<h1 id="响应式布局"><a href="#响应式布局" class="headerlink" title="响应式布局"></a>响应式布局</h1><p>实现思路：</p>
+<p>一般都是先实现PC端页面，然后再去做其他设备的兼容</p>
+<p>设置宽度时，最好不要写死(px)，而是用%单位参照父元素的大小</p>
+<p>设置最外层容器时，用vw, vh作单位</p>
+<p>不同设备需要换行显示时，使用flex-direction:columns;</p>
+<p>导航条一定条件下，显示隐藏</p>
+<p>内边距和外边距还有高度可以适当的用px单位</p>
+<p>媒体查询时，主要的改变有：换行显示、隐藏，其余都是小改动，比如font-size, margin等等</p>
 
         
         
@@ -1687,6 +1666,17 @@ console.log(KMPSearch(str1, str2));
 map.keys()
 map.values()
 </code></pre>
+<h1 id="实现单行文本在父元素中不换行-溢出部分变成省略号形式"><a href="#实现单行文本在父元素中不换行-溢出部分变成省略号形式" class="headerlink" title="实现单行文本在父元素中不换行, 溢出部分变成省略号形式"></a>实现单行文本在父元素中不换行, 溢出部分变成省略号形式</h1><p>CSS样式：</p>
+<pre><code>.text-inner &#123;
+    width: 500px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid rgba(0,0,0,0.1);
+    &#125;
+</code></pre>
+<p>text-overflow 属性指定当文本溢出包含它的元素时，应该如何显示。可以设置溢出后，文本被剪切、显示省略号 (…) 或显示自定义字符串（不是所有浏览器都支持）。</p>
+<p>text-overflow 需要配合以下两个属性使用：<br>white-space: nowrap;<br>overflow: hidden;</p>
 
         
         
