@@ -4,22 +4,22 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>dom | front-end study</title>
+    <title>git的基本使用 | front-end study</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Weiling Wu">
     
 
     
-    <meta name="description" content="dom(文档对象模型)JS中通过DOM来对HTML文档进行操作，只要理解了DOM就可以随心所欲的操作WEB页面。  文档：文档表示的就是整个HTML网页文档  对象：对象表示将网页中的每一个部分都转换成了一个对象  模型：使用模型来表示对象之间的关系，这样方便我们获取对象   节点 节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。比如：html标签、属性、文">
+    <meta name="description" content="git的工作就是创建和保存你项目的快照及与之后的快照进行对比。Git常用的是以下的6个命令：git clone、 git push、git add、git commit、git checkout、git pull。 git init-初始化仓库git add .-添加文件到暂存区。git commit-将暂存区内容添加到仓库中。git clone：拷贝一份远程仓库，也就是下载一个项目git sta">
 <meta property="og:type" content="article">
-<meta property="og:title" content="dom">
-<meta property="og:url" content="http://example.com/2022/03/03/dom/index.html">
+<meta property="og:title" content="git的基本使用">
+<meta property="og:url" content="http://example.com/2022/06/29/git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="front-end study">
-<meta property="og:description" content="dom(文档对象模型)JS中通过DOM来对HTML文档进行操作，只要理解了DOM就可以随心所欲的操作WEB页面。  文档：文档表示的就是整个HTML网页文档  对象：对象表示将网页中的每一个部分都转换成了一个对象  模型：使用模型来表示对象之间的关系，这样方便我们获取对象   节点 节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。比如：html标签、属性、文">
+<meta property="og:description" content="git的工作就是创建和保存你项目的快照及与之后的快照进行对比。Git常用的是以下的6个命令：git clone、 git push、git add、git commit、git checkout、git pull。 git init-初始化仓库git add .-添加文件到暂存区。git commit-将暂存区内容添加到仓库中。git clone：拷贝一份远程仓库，也就是下载一个项目git sta">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-03-03T06:08:16.000Z">
-<meta property="article:modified_time" content="2022-03-03T07:03:38.613Z">
+<meta property="article:published_time" content="2022-06-29T07:35:45.000Z">
+<meta property="article:modified_time" content="2022-06-29T07:52:23.604Z">
 <meta property="article:author" content="Weiling Wu">
 <meta name="twitter:card" content="summary">
 
@@ -83,14 +83,14 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2022/03/03/dom/" title="dom" itemprop="url">dom</a>
+      <a href="/2022/06/29/git的基本使用/" title="git的基本使用" itemprop="url">git的基本使用</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
 		
   <p class="article-time">
-    <time datetime="2022-03-03T06:08:16.000Z" itemprop="datePublished"> Published 2022-03-03</time>
+    <time datetime="2022-06-29T07:35:45.000Z" itemprop="datePublished"> Published 2022-06-29</time>
     
   </p>
 </header>
@@ -99,42 +99,13 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dom-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">dom(文档对象模型)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">事件</span></a></li></ol></li></ol>
+			
 		
 		</div>
 		
-		<h1 id="dom-文档对象模型"><a href="#dom-文档对象模型" class="headerlink" title="dom(文档对象模型)"></a>dom(文档对象模型)</h1><p><strong>JS中通过DOM来对HTML文档进行操作</strong>，只要理解了DOM就可以随心所欲的操作WEB页面。</p>
-<ul>
-<li><p>文档：文档表示的就是整个HTML网页文档</p>
-</li>
-<li><p>对象：对象表示将网页中的每一个部分都转换成了一个对象</p>
-</li>
-<li><p>模型：使用模型来表示对象之间的关系，这样方便我们获取对象</p>
-</li>
-</ul>
-<h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><ul>
-<li><p><strong>节点Node，是构成我们网页的最基本的组成部分，网页中的每一个部分都可以称为是一个节点。</strong>比如：html标签、属性、文本、注释、整个文档等都是一个节点。</p>
-</li>
-<li><p>虽然是节点，但是实际上他们的具体类型是不同的。比如：标签我们成为<strong>元素节点</strong>，属性成为<strong>属性节点</strong>，文本称为<strong>文本节点</strong>，文档成为<strong>文档节点</strong>。节点的类型不同，属性和方法也都不尽相同。</p>
-</li>
-<li><p>浏览器已经为我们提供了文档节点，这个对象是window属性，可以在页面中直接使用。文档节点代表的是整个网页。<strong>document就是这个文档节点。</strong></p>
-</li>
-</ul>
-<h2 id="事件"><a href="#事件" class="headerlink" title="事件"></a>事件</h2><ul>
-<li><p>事件，就是文档或浏览器窗口中发生的一些特性交互瞬间。</p>
-</li>
-<li><p><strong>js与HTML之间的交互是通过事件来实现的。</strong></p>
-</li>
-<li><p>对于Web应用来说，有下面的这些代表性的事件：<strong>点击某个元素</strong>，<strong>将鼠标移动到某个元素上方</strong>，<strong>按下键盘上的某个键</strong>，等等。</p>
-<pre><code>  //获取按钮对象
-  var btn = document.getElementById(&quot;btn&quot;);
-  //可以为按钮的对应事件绑定处理函数的形式来响应事件，这样当事件被触发时，其对应的函数将会被调用。
-  btn.onclick = function()&#123;
-  alert(&quot;你还点~~&quot;);
-  &#125;
-</code></pre>
-</li>
-</ul>
+		<p>git的工作就是创建和保存你项目的快照及与之后的快照进行对比。<br>Git常用的是以下的6个命令：git clone、 git push、git add、git commit、git checkout、git pull。</p>
+<p>git init-初始化仓库<br>git add .-添加文件到暂存区。<br>git commit-将暂存区内容添加到仓库中。<br>git clone：拷贝一份远程仓库，也就是下载一个项目<br>git status： 查看仓库当前的状态，显示有变更的文件<br>git diff： 比较文件的不同，即暂存区与工作区的差异<br>git reset：回退版本<br>git rm：将文件从暂存区和工作区中删除<br>git mv移动或重命名工作区文件<br>git push：上传远程代码并合并<br>git pull：下载远程代码并合并<br>git fetch：从远程获取代码库<br>git remote：远程仓库操作<br>git log：查看历史提交记录<br>git blame <file>：以列表形式查看指定文件的历史修改记录</p>
+<p>workspace：工作区， staging area：暂存区/缓存区<br>local repository：版本库或本地仓库<br>remote repository：远程仓库</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -147,7 +118,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://example.com/2022/03/03/dom/" data-title="dom | front-end study" data-tsina="" class="share clearfix">
+	  <div data-url="http://example.com/2022/06/29/git%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8/" data-title="git的基本使用 | front-end study" data-tsina="" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -160,19 +131,11 @@
 	
 <nav class="article-nav clearfix">
  
- <div class="prev" >
- <a href="/2022/06/29/git的基本使用/" title="git的基本使用">
-  <strong>上一篇：</strong><br/>
-  <span>
-  git的基本使用</span>
-</a>
-</div>
-
 
 <div class="next">
-<a href="/2022/02/23/html5/"  title="html5">
+<a href="/2022/03/03/dom/"  title="dom">
  <strong>下一篇：</strong><br/> 
- <span>html5
+ <span>dom
 </span>
 </a>
 </div>
@@ -189,7 +152,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#dom-%E6%96%87%E6%A1%A3%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.</span> <span class="toc-text">dom(文档对象模型)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%8A%82%E7%82%B9"><span class="toc-number">1.1.</span> <span class="toc-text">节点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8B%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">事件</span></a></li></ol></li></ol>
+ 
  
   </div>
 

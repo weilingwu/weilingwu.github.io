@@ -81,6 +81,58 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2022/06/29/git的基本使用/" title="git的基本使用" itemprop="url">git的基本使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
+		
+  <p class="article-time">
+    <time datetime="2022-06-29T07:35:45.000Z" itemprop="datePublished"> Published 2022-06-29</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <p>git的工作就是创建和保存你项目的快照及与之后的快照进行对比。<br>Git常用的是以下的6个命令：git clone、 git push、git add、git commit、git checkout、git pull。</p>
+<p>git init-初始化仓库<br>git add .-添加文件到暂存区。<br>git commit-将暂存区内容添加到仓库中。<br>git clone：拷贝一份远程仓库，也就是下载一个项目<br>git status： 查看仓库当前的状态，显示有变更的文件<br>git diff： 比较文件的不同，即暂存区与工作区的差异<br>git reset：回退版本<br>git rm：将文件从暂存区和工作区中删除<br>git mv移动或重命名工作区文件<br>git push：上传远程代码并合并<br>git pull：下载远程代码并合并<br>git fetch：从远程获取代码库<br>git remote：远程仓库操作<br>git log：查看历史提交记录<br>git blame <file>：以列表形式查看指定文件的历史修改记录</p>
+<p>workspace：工作区， staging area：暂存区/缓存区<br>local repository：版本库或本地仓库<br>remote repository：远程仓库</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2022/03/03/dom/" title="dom" itemprop="url">dom</a>
   </h1>
   <p class="article-author">By
@@ -1677,209 +1729,6 @@ map.values()
 </code></pre>
 <p>text-overflow 属性指定当文本溢出包含它的元素时，应该如何显示。可以设置溢出后，文本被剪切、显示省略号 (…) 或显示自定义字符串（不是所有浏览器都支持）。</p>
 <p>text-overflow 需要配合以下两个属性使用：<br>white-space: nowrap;<br>overflow: hidden;</p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2022/01/06/php/" title="php" itemprop="url">php</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Weiling Wu" target="_blank" itemprop="author">Weiling Wu</a>
-		
-  <p class="article-time">
-    <time datetime="2022-01-06T11:43:01.000Z" itemprop="datePublished"> Published 2022-01-06</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h1 id="php变量"><a href="#php变量" class="headerlink" title="php变量"></a>php变量</h1><h2 id="PHP-变量规则"><a href="#PHP-变量规则" class="headerlink" title="PHP 变量规则"></a>PHP 变量规则</h2><ul>
-<li>变量以 $ 符号开始，后面跟着变量的名称</li>
-<li>变量名必须以字母或者下划线字符开始</li>
-<li>变量名只能包含字母、数字以及下划线（A-z、0-9 和 _ ）</li>
-<li>变量名不能包含空格</li>
-<li>变量名是区分大小写的（$y 和 $Y 是两个不同的变量）</li>
-</ul>
-<pre><code>&lt;?php
-    $txt=&quot;Hello world!&quot;;
-    $x=5;
-    $y=10.5;
-    echo $txt.$x.$y
-?&gt;
-</code></pre>
-<h2 id="PHP-变量作用域"><a href="#PHP-变量作用域" class="headerlink" title="PHP 变量作用域"></a>PHP 变量作用域</h2><p>变量的作用域是脚本中变量可被引用/使用的部分。</p>
-<p>PHP 有四种不同的变量作用域：</p>
-<ul>
-<li><p>local</p>
-</li>
-<li><p>global</p>
-</li>
-<li><p>static</p>
-</li>
-<li><p>parameter</p>
-</li>
-</ul>
-<h3 id="局部和全局作用域"><a href="#局部和全局作用域" class="headerlink" title="局部和全局作用域"></a>局部和全局作用域</h3><pre><code> &lt;?php
-    $x=5; // 全局变量
-    
-    function myTest()
-    &#123;
-        $y=10; // 局部变量
-        echo &quot;&lt;p&gt;测试函数内变量:&lt;p&gt;&quot;;
-        echo &quot;变量 x 为: $x&quot;;
-        echo &quot;&lt;br&gt;&quot;;
-        echo &quot;变量 y 为: $y&quot;;
-    &#125; 
-    
-    myTest();
-    
-    echo &quot;&lt;p&gt;测试函数外变量:&lt;p&gt;&quot;;
-    echo &quot;变量 x 为: $x&quot;;
-    echo &quot;&lt;br&gt;&quot;;
-    echo &quot;变量 y 为: $y&quot;;
-?&gt; 
-</code></pre>
-<p><strong>global</strong> 关键字用于函数内访问全局变量。在函数内调用函数外定义的全局变量，我们需要在函数中的变量前加上 global 关键字：</p>
-<pre><code>&lt;?php
-    $x=5;
-    $y=10;
-     
-    function myTest()
-    &#123;
-        global $x,$y;
-        $y=$x+$y;
-    &#125;
-     
-    myTest();
-    echo $y; // 输出 15
-?&gt;
-</code></pre>
-<h1 id="PHP-echo-语句"><a href="#PHP-echo-语句" class="headerlink" title="PHP echo 语句"></a>PHP echo 语句</h1><p>echo 是一个语言结构，使用的时候可以不用加括号，也可以加上括号： echo 或 echo()。</p>
-<pre><code>&lt;?php
-    echo &quot;&lt;h2&gt;PHP 很有趣!&lt;/h2&gt;&quot;;
-    echo &quot;Hello world!&lt;br&gt;&quot;;
-    echo &quot;我要学 PHP!&lt;br&gt;&quot;;
-    echo &quot;这是一个&quot;, &quot;字符串，&quot;, &quot;使用了&quot;, &quot;多个&quot;, &quot;参数。&quot;;
-?&gt;
-</code></pre>
-<h1 id="php数据类型"><a href="#php数据类型" class="headerlink" title="php数据类型"></a>php数据类型</h1><ul>
-<li><p>String（字符串）, Integer（整型）, Float（浮点型）, Boolean（布尔型）, Array（数组）, Object（对象）, NULL（空值）。</p>
-</li>
-<li><p>PHP 字符串：一个字符串是一串字符的序列，就像 “Hello world!”。你可以将任何文本放在单引号和双引号中。</p>
-</li>
-<li><p>PHP 布尔型：布尔型可以是 TRUE 或 FALSE。</p>
-</li>
-<li><p>PHP 数组：数组可以在一个变量中存储多个值。</p>
-</li>
-<li><p>PHP 对象：对象数据类型也可以用于存储数据。在 PHP 中，对象必须声明。首先，你必须使用class关键字声明类对象。类是可以包含属性和方法的结构。然后我们在类中定义数据类型，然后在实例化的类中使用数据类型：</p>
-<pre><code>  &lt;?php
-      class Car
-      &#123;
-        var $color;
-        function __construct($color=&quot;green&quot;) &#123;
-          $this-&gt;color = $color;
-        &#125;
-        function what_color() &#123;
-          return $this-&gt;color;
-        &#125;
-      &#125;
-  ?&gt;
-</code></pre>
-</li>
-</ul>
-<p>以上实例中php关键字this就是指向当前对象实例的指针，不指向任何其他对象或类。</p>
-<ul>
-<li><p>PHP NULL 值:NULL 值表示变量没有值。NULL 是数据类型为 NULL 的值。NULL 值指明一个变量是否为空值。 同样可用于数据空值和NULL值的区别。可以通过设置变量值为 NULL 来清空变量数据：</p>
-<pre><code>  &lt;?php
-      $x=&quot;Hello world!&quot;;
-      $x=null;
-      var_dump($x);
-  ?&gt;
-</code></pre>
-</li>
-</ul>
-<h1 id="PHP-类定义"><a href="#PHP-类定义" class="headerlink" title="PHP 类定义"></a>PHP 类定义</h1><p>PHP 定义类通常语法格式如下：</p>
-<pre><code>&lt;?php
-class phpClass &#123;
-  var $var1;
-  var $var2 = &quot;constant string&quot;;
-  
-  function myfunc ($arg1, $arg2) &#123;
-     [..]
-  &#125;
-  [..]
-&#125;
-?&gt;
-</code></pre>
-<p>解析如下：</p>
-<ul>
-<li><p>类使用 class 关键字后加上类名定义。</p>
-</li>
-<li><p>类名后的一对大括号({})内可以定义变量和方法。</p>
-</li>
-<li><p>类的变量使用 var 来声明, 变量也可以初始化值。</p>
-</li>
-<li><p>函数定义类似 PHP 函数的定义，但函数只能通过该类及其实例化的对象访问。</p>
-</li>
-</ul>
-<pre><code>&lt;?php
-    class Site &#123;
-      /* 成员变量 */
-      var $url;
-      var $title;
-      
-      /* 成员函数 */
-      function setUrl($par)&#123;
-         $this-&gt;url = $par;
-      &#125;
-      
-      function getUrl()&#123;
-         echo $this-&gt;url . PHP_EOL;
-      &#125;
-      
-      function setTitle($par)&#123;
-         $this-&gt;title = $par;
-      &#125;
-      
-      function getTitle()&#123;
-         echo $this-&gt;title . PHP_EOL;
-      &#125;
-    &#125;
-?&gt;
-</code></pre>
 
         
         
